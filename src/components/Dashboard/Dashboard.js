@@ -5,7 +5,7 @@ export class Dashboard extends Component {
     return (
       <div>
         <h2>
-          TEST
+          
         </h2>  
       </div>
     )
