@@ -5,7 +5,7 @@ export class DashboardRoute extends Component {
   render() {
     return (
       <div>
-        <h1>test</h1>
+        <Dashboard />
       </div>
     );
   }
