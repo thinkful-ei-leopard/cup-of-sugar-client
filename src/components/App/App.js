@@ -27,8 +27,8 @@ export default class App extends Component {
           {hasError && <p>There was an error! Oh no!</p>}
           <Switch>
             <PrivateRoute exact path={'/'} component={DashboardRoute} />
-            {/* <PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
-            <PublicOnlyRoute path={'/login'} component={LoginRoute} />
+             <PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
+            {/* <PublicOnlyRoute path={'/login'} component={LoginRoute} />
             <Route component={NotFoundRoute} /> */}
           </Switch>
         </main>

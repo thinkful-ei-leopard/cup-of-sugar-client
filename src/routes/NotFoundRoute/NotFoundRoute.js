@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './NotFoundRoute.scss';
+import './NotFoundRoute.modules.scss';
 
 class NotFoundRoute extends Component {
   render() {
