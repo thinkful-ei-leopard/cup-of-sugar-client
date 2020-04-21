@@ -14,3 +14,12 @@ nav {
   display: flex;
   justify-content: center;
 }
+
+a {
+  color: var(--black);
+  text-decoration: none;
+  transition: color .2s;
+  &:hover {
+    color: var(--dark1);
+  }
+}
