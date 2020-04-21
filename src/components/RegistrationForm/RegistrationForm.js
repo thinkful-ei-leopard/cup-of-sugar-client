@@ -16,16 +16,20 @@ class RegistrationForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault()
-    const { name, username, password } = ev.target
+    const { name, username, password, zip, email} = ev.target
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
       password: password.value,
+      zip: zip.value,
+      email: email.value
     })
       .then(user => {
         name.value = ''
         username.value = ''
         password.value = ''
+        zip.value = ''
+        email.value = ''
         this.props.onRegistrationSuccess()
       })
       .catch(res => {
@@ -96,12 +100,12 @@ class RegistrationForm extends Component {
           />
         </div>
         <div className='reg-div'>
-          <Label htmlFor='registration-zipcode-input' className='regLabel'>
+          <Label htmlFor='registration-zip-input' className='regLabel'>
             Enter your zipcode<Required />
           </Label>
           <Input
-            id='registration-zipcode-input'
-            name='zipcode'
+            id='registration-zip-input'
+            name='zip'
             type='number'
             className='regInput'
             required
