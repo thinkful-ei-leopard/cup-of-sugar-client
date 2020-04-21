@@ -1,16 +1,30 @@
 import React from 'react';
 import styles from './Post.module.scss';
+import cx from 'classnames';
+import { Link } from 'react-router-dom';
 
 export default class Post extends React.Component {
   render() {
+    const { post } = this.props;
+    console.log(post);
     return (
-      <li>
-        <span className={styles.postTitle}>{this.props.post.title}</span>
-        <span className={styles.postType}>{this.props.post.type}</span>
-        <span className={styles.postComments}>{this.props.post.comments}</span>
-        <span className={styles.postUserName}>{this.props.post.user_name}</span>
-        <span className={styles.postDate}>{this.props.post.date_modified}</span>
-      </li>
+      <Link to={`/post/${post.id}`}>
+        <li className={styles.Post}>
+          <span className={cx(styles.postTitle, styles.postEl)}>
+            {post.title}
+          </span>
+          <span className={cx(styles.postType, styles.postEl)}>{post.type}</span>
+          <span className={cx(styles.postComments, styles.postEl)}>
+            {post.comments}
+          </span>
+          <span className={cx(styles.postUserName, styles.postEl)}>
+            {post.user_name}
+          </span>
+          <span className={cx(styles.postDate, styles.postEl)}>
+            {post.date_modified.slice(0, 10)}
+          </span>
+        </li>
+      </Link>
     );
   }
 }

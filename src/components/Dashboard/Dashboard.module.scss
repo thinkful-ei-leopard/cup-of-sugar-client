@@ -9,13 +9,12 @@
 }
 
 .addPostButton {
-  margin: 0 auto;
   text-align: center;
   padding: 1rem 2rem;
   margin: 4rem;
   border: 2px solid var(--black);
   background-color: var(--light1);
-  transition: background-color .2s;
+  transition: background-color 0.2s;
   &:hover {
     cursor: pointer;
     background-color: var(--neutral);
@@ -50,10 +49,9 @@
 
 .titleHeader {
   margin: 0 2rem;
+  width: 250px;
 }
 
 .datePostedHeader {
   margin-right: 2rem;
 }
-
-

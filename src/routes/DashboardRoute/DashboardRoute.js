@@ -12,13 +12,15 @@ export class DashboardRoute extends Component {
 
   async getPosts() {
     const posts = await PostsApiService.getPosts();
-    this.context.setPosts(posts.posts);
+    console.log(this.context);
+    this.context.setPosts(posts);
   }
 
   render() {
+    const { posts } = this.context;
     return (
       <div>
-        <Dashboard />
+        <Dashboard posts={posts} />
       </div>
     );
   }

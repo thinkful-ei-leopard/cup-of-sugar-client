@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 const PostsContext = React.createContext({
   posts: [],
+  setPosts: () => {},
 });
 
 export default PostsContext;
@@ -18,6 +19,7 @@ export class PostsProvider extends Component {
   render() {
     const value = {
       posts: this.state.posts,
+      setPosts: this.setPosts,
     };
 
     return (
