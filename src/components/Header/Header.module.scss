@@ -1,0 +1,25 @@
+.Header {
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.loginLink, .signUpLink {
+  display: block;
+  position: relative;
+  margin: 1rem 2rem 0 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  color: var(--black);
+  text-decoration: none;
+  transition: color .2s;
+  &:hover {
+    color: var(--dark1);
+  }
+}

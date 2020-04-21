@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './RegistrationRoute.modules.scss';
+import './RegistrationRoute.module.scss';
 
 export class RegistrationRoute extends Component {
   static defaultProps = {
