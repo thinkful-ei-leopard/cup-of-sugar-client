@@ -1,0 +1,18 @@
+@import '../../../styles/_variables';
+@import '../../../styles/_breakpoints';
+
+.postEl {
+  margin-right: 1rem;
+}
+
+.Post {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem rem;
+  text-align: center;
+}
+
+.postTitle {
+  width: 250px;
+  text-align: left;
+}

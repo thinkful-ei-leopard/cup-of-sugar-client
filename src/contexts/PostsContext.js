@@ -25,8 +25,9 @@ export class PostsProvider extends Component {
 
   render() {
     const value = {
-      setPosts: this.setPosts(),
       posts: this.state.posts,
+      setPosts: this.setPosts,
+      setComments: this.setComments
     };
 
     return (
