@@ -17,10 +17,9 @@ export class DashboardRoute extends Component {
   }
 
   render() {
-    const { posts } = this.context;
     return (
       <div>
-        <Dashboard posts={posts} />
+        <Dashboard />
       </div>
     );
   }
