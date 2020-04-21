@@ -20,7 +20,6 @@ class LoginForm extends Component {
     ev.preventDefault()
     const { username, password } = ev.target
     this.context.setLoading()
-    this.setState({ error: null })
 
     AuthApiService.postLogin({
       username: username.value,
@@ -76,7 +75,7 @@ class LoginForm extends Component {
           />
         </div>
         <div
-          className='login-div'
+          className='loginDiv'
         >
           <Label htmlFor='login-password-input' className='loginLabel'>
             Password

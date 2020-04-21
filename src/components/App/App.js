@@ -28,8 +28,8 @@ export default class App extends Component {
           <Switch>
             <PublicOnlyRoute exact path={'/'} component={DashboardRoute} />
              <PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
-            {/* <PublicOnlyRoute path={'/login'} component={LoginRoute} />
-            <Route component={NotFoundRoute} /> */}
+             <PublicOnlyRoute path={'/login'} component={LoginRoute} />
+            {/* <Route component={NotFoundRoute} /> */}
           </Switch>
         </main>
       </div>
