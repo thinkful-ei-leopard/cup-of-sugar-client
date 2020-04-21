@@ -1,0 +1,21 @@
+@import '../../styles/_variables';
+@import '../../styles/_breakpoints';
+
+.Button {
+  text-align: center;
+  padding: 1rem 2rem;
+  border: 2px solid var(--black);
+  background-color: var(--light1);
+  transition: background-color 0.2s;
+  &:hover {
+    cursor: pointer;
+    background-color: var(--neutral);
+  }
+}
+
+.buttonText {
+  font-family: Nunito;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--black);
+}

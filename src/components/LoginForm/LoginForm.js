@@ -1,100 +1,102 @@
-import React, { Component } from 'react'
-import { Input, Label } from '../Form/Form'
-import AuthApiService from '../../services/auth-api-service'
-import UserContext from '../../contexts/UserContext'
-import Button from '../Button/Button'
-// import './LoginForm.css'
+import React, { Component } from 'react';
+import { Input, Label } from '../Form/Form';
+import AuthApiService from '../../services/auth-api-service';
+import UserContext from '../../contexts/UserContext';
+import Button from '../Button/Button';
+import cx from 'classnames';
+import styles from './LoginForm.module.scss';
 
 class LoginForm extends Component {
   static defaultProps = {
-    onLoginSuccess: () => { }
-  }
+    onLoginSuccess: () => {},
+  };
 
-  static contextType = UserContext
+  static contextType = UserContext;
 
-  state = { error: null }
+  state = { error: null };
 
-  firstInput = React.createRef()
+  firstInput = React.createRef();
 
-  handleSubmit = ev => {
-    ev.preventDefault()
-    const { username, password } = ev.target
-    this.context.setLoading()
+  handleSubmit = (ev) => {
+    ev.preventDefault();
+    const { username, password } = ev.target;
+    this.context.setLoading();
 
     AuthApiService.postLogin({
       username: username.value,
       password: password.value,
     })
-      .then(res => {
-        username.value = ''
-        password.value = ''
-        this.context.processLogin(res.authToken)
-        this.props.onLoginSuccess()
+      .then((res) => {
+        username.value = '';
+        password.value = '';
+        this.context.processLogin(res.authToken);
+        this.props.onLoginSuccess();
       })
-      .catch(res => {
-        this.setState({ error: res.error })
-      })
-  }
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
+  };
 
   componentDidMount() {
-    this.firstInput.current.focus()
-    this.context.clearLoading()
+    this.firstInput.current.focus();
+    this.context.clearLoading();
   }
 
   componentWillUnmount() {
-    this.context.clearLoading()
+    this.context.clearLoading();
   }
 
   render() {
-    const { error } = this.state
+    const { error } = this.state;
 
     return (
       <>
-      {this.context.isLoading && 
-      this.state.error === null ? <div id="loader"></div> :
-      <form
-        className='LoginForm'
-        onSubmit={this.handleSubmit}
-      >
-        <div role='alert'>
-          {error && <p>{error}</p>}
-        </div>
-        <div
-          className='login-div'
-        >
-          <h3>Log In</h3>
-          <Label htmlFor='login-username-input' className='loginLabel'>
-            Username
-          </Label>
-          <Input
-            ref={this.firstInput}
-            id='login-username-input'
-            name='username'
-            className='loginInput'
-            required
-          />
-        </div>
-        <div
-          className='loginDiv'
-        >
-          <Label htmlFor='login-password-input' className='loginLabel'>
-            Password
-          </Label>
-          <Input
-            id='login-password-input'
-            name='password'
-            type='password'
-            className='loginInput'
-            required
-          />
-        </div>
-        <Button type='submit'>
-          Login
-        </Button>
-      </form>}
+        {this.context.isLoading && this.state.error === null ? (
+          <div id="loader"></div>
+        ) : (
+          <form className={styles.LoginForm} onSubmit={this.handleSubmit}>
+            <div role="alert">{error && <p>{error}</p>}</div>
+            <div className={styles.inputContainer}>
+              <div className={styles.userNameDiv}>
+                <h3 className={styles.loginHeader}>Log In</h3>
+                <Label
+                  htmlFor="login-username-input"
+                  className={styles.loginLabel}>
+                  Username:
+                </Label>
+                <Input
+                  ref={this.firstInput}
+                  id="login-username-input"
+                  name="username"
+                  className={styles.loginInput}
+                  autoComplete="off"
+                  required
+                />
+              </div>
+              <div className={styles.passwordDiv}>
+                <Label
+                  htmlFor="login-password-input"
+                  className={styles.loginLabel}>
+                  Password:
+                </Label>
+                <Input
+                  id="login-password-input"
+                  name="password"
+                  type="password"
+                  className={styles.loginInput}
+                  autoComplete="off"
+                  required
+                />
+              </div>
+            </div>
+            <Button type="submit">
+              <span className="buttonText">Login</span>
+            </Button>
+          </form>
+        )}
       </>
-    )
+    );
   }
 }
 
-export default LoginForm
+export default LoginForm;

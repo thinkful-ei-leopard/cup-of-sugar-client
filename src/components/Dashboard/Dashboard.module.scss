@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-.addPostButton {
+.Button {
   text-align: center;
   padding: 1rem 2rem;
   margin: 4rem;
@@ -45,13 +45,23 @@
 .columnHeader {
   font-weight: 600;
   color: var(--black);
+  margin-right: 1rem;
+  text-align: left;
 }
 
 .titleHeader {
-  margin: 0 2rem;
-  width: 250px;
+  width: 350px;
+}
+
+.typeHeader {
+  width: 70px;
+  text-align: left;
+}
+
+.postedByHeader {
+  margin-left: 2rem;
 }
 
 .datePostedHeader {
-  margin-right: 2rem;
+  margin-right: 1rem;
 }

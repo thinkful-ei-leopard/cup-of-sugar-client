@@ -1,18 +1,33 @@
 @import '../../../styles/_variables';
 @import '../../../styles/_breakpoints';
 
-.postEl {
-  margin-right: 1rem;
-}
-
 .Post {
   display: flex;
   justify-content: space-between;
-  padding: 1rem rem;
-  text-align: center;
+  padding: 1rem 3rem;
+  border: 2px solid var(--dark1);
+  margin: 0 auto;
+}
+
+.postEl {
+  margin-right: 1rem;
+  text-align: left;
 }
 
 .postTitle {
-  width: 250px;
+  width: 350px;
   text-align: left;
 }
+
+.postType {
+  width: 70px;
+}
+
+.postUserName {
+  margin-right: 2rem;
+  text-align: left;
+}
+
+// .postDate {
+//   margin-right: 2rem;
+// }
