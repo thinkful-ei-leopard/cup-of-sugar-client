@@ -6,6 +6,7 @@ import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import RegistrationRoute from '../../routes/RegistrastionRoute/RegistrationRoute';
 import LoginRoute from '../../routes/LoginRoute/LoginRoute';
 import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute';
+import PostRoute from '../../routes/PostRoute/PostRoute';
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 import './App.scss';
 
@@ -26,6 +27,7 @@ export default class App extends Component {
         <main>
           {hasError && <p>There was an error! Oh no!</p>}
           <Switch>
+            <PrivateRoute exact path='/post/:post_id' component={PostRoute} />
             <PublicOnlyRoute exact path={'/'} component={DashboardRoute} />
              <PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
              <PublicOnlyRoute path={'/login'} component={LoginRoute} />
