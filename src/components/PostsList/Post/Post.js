@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './Post.module.scss';
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Button from '../../Button/Button'
 
 export default class Post extends React.Component {
   render() {

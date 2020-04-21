@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
-// import './LoginRoute.css'
 
 class LoginRoute extends Component {
   static defaultProps = {
@@ -30,3 +29,4 @@ class LoginRoute extends Component {
 }
 
 export default LoginRoute
+
