@@ -17,10 +17,10 @@ class Header extends Component {
         <Link to="/" className={styles.homeLink}>
           Cup of Sugar
         </Link>
-        {/* <p className={styles.welcomeMessage}>
+        <p className={styles.welcomeMessage}>
           Welcome to the neighborhood,
           <span className={styles.userSpan}>{this.context.user.name}</span>!
-        </p> */}
+        </p>
         <nav className="logoutNav">
           <Link
             onClick={this.handleLogoutClick}
@@ -36,9 +36,9 @@ class Header extends Component {
   renderLoginLink() {
     return (
       <nav className={styles.loginDiv}>
-        {/* <Link to="/login" className={styles.loginLink}>
+        <Link to="/login" className={styles.loginLink}>
           Login
-        </Link>{' '} */}
+        </Link>{' '}
         <Link to="/register" className={styles.signUpLink}>
           Sign up
         </Link>

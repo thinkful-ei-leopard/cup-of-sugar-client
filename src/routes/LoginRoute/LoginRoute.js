@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import styles from './LoginRoute.module.scss';
-import GiveIcon from '../../components/Icons/GiveIcon';
+import WelcomeDisplay from '../../components/WelcomeDisplay/WelcomeDisplay';
 
 class LoginRoute extends Component {
   static defaultProps = {
@@ -21,9 +21,7 @@ class LoginRoute extends Component {
     return (
       <section className={styles.loginSection}>
         <div className={styles.loginContainer}>
-          <GiveIcon className={styles.GiveIcon} />
-          <h1 className={styles.cupOfSugarHeader}>Cup of Sugar</h1>
-          <p className={styles.tagline}>When you need a helping hand.</p>
+          <WelcomeDisplay />
           <LoginForm onLoginSuccess={this.handleLoginSuccess} />
         </div>
       </section>

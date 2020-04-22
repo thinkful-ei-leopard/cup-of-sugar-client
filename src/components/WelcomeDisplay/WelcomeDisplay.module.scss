@@ -1,0 +1,33 @@
+@import '../../styles/_variables';
+@import '../../styles/_breakpoints';
+
+.cupOfSugarHeader {
+  font-size: 2.5rem;
+  margin: 0 0 -0.5rem;
+  color: var(--black);
+}
+
+.tagline {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+svg {
+  fill: var(--black);
+  width: 80px;
+}
+
+@include mobileLandscape {
+  svg {
+    width: 150px;
+  }
+  .cupOfSugarHeader {
+    font-size: 3rem;
+    margin: 0;
+  }
+
+  .tagline {
+    margin-bottom: 2rem;
+  }
+}
