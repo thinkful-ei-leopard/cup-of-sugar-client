@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import cx from 'classnames';
 import Button from '../Button/Button';
 import PostsList from '../PostsList/PostsList';
@@ -18,9 +19,11 @@ export class Dashboard extends Component {
           <span className={styles.userSpan}> {this.context.user.name}</span>!
         </p>
 
-        <Button className={cx(styles.Button, styles.addPostButton)}>
-          <span className={styles.buttonText}>Add Post</span>
-        </Button>
+        <Link to='/add-post'>
+          <Button className={cx(styles.Button, styles.addPostButton)}>
+            <span className={styles.buttonText}>Add Post</span>
+          </Button>
+        </Link>
 
         <div className={styles.bulletinHeaderContainer}>
           <div className={styles.legendContainer}>
