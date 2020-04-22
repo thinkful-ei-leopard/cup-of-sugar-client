@@ -20,7 +20,7 @@ export default class Post extends React.Component {
             {post.comments}
           </span>
           <span className={cx(styles.postUserName, styles.postEl)}>
-            {post.user_name}
+            {post.name}
           </span>
           <span className={cx(styles.postDate, styles.postEl)}>
             {post.date_modified.slice(0, 10)}

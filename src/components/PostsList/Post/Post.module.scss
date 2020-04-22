@@ -4,7 +4,7 @@
 .Post {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 3rem;
+  padding: .5rem 1rem;
   // border: 2px solid var(--dark1);
   margin: 0 auto;
 }
@@ -12,11 +12,11 @@
 .postEl {
   margin-right: 1rem;
   text-align: left;
+  border: 1px solid red;
 }
 
 .postTitle {
   width: 350px;
-  text-align: left;
 }
 
 .postType {
