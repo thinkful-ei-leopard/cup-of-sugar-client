@@ -30,3 +30,4 @@ class RegistrationRoute extends Component {
 }
 
 export default RegistrationRoute;
+
