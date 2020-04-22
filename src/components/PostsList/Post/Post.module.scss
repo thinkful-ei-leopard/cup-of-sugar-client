@@ -4,30 +4,88 @@
 .Post {
   display: flex;
   justify-content: space-between;
-  padding: .5rem 1rem;
-  // border: 2px solid var(--dark1);
+  padding: 0.5rem 1rem;
   margin: 0 auto;
 }
 
 .postEl {
   margin-right: 1rem;
-  text-align: left;
   border: 1px solid red;
+  text-align: center;
 }
 
 .postTitle {
   width: 350px;
-}
-
-.postType {
-  width: 70px;
-}
-
-.postUserName {
-  margin-right: 2rem;
+  min-width: 315px;
   text-align: left;
 }
 
-// .postDate {
-//   margin-right: 2rem;
+@media (max-width: 600px) {
+  .postTitle {
+    min-width: 150px;
+  }
+}
+
+.postType {
+  min-width: 70px;
+  display: none;
+}
+
+@media (min-width: 810px) {
+  .postType {
+    display: inline-block;
+  }
+}
+
+.postComments {
+  width: 120px;
+  display: none;
+}
+
+@include tabletLandscape {
+  .postComments {
+    display: inline;
+  }
+}
+
+.postUserName {
+  min-width: 90px;
+  display: none;
+}
+
+@include tabletPortrait {
+  .postUserName {
+    display: inline-block;
+  }
+}
+
+.postDateFull {
+  width: 120px;
+  display: none;
+  margin-right: 0;
+}
+
+.postDateTrim {
+  width: 120px;
+  min-width: 52px;
+  display: inline-block;
+  margin-right: 0;
+}
+
+// @media (min-width: 600px) {
+//   .postDateTrim {
+//     display: inline-block;
+//   }
 // }
+
+// hide or show formatted date based on screen size
+
+@include tabletLandscape {
+  .postDateFull {
+    display: inline-block;
+  }
+
+  .postDateTrim {
+    display: none;
+  }
+}

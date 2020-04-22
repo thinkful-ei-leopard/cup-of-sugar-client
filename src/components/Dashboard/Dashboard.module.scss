@@ -43,16 +43,22 @@
 }
 
 .bulletinHeader {
-  margin: 0.5rem;
+  margin: 0.5rem auto 1rem;
   color: var(--black);
 }
 
 .bulletinContainer {
   border: 2px solid var(--dark1);
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   height: 100%;
   // background-color:var(--neutral);
+}
+
+@include mobilePortrait {
+  .bulletinContainer {
+    width: 80%;
+  }
 }
 
 .bulletinColumnHeaders {
@@ -63,25 +69,77 @@
 }
 
 .columnHeader {
-  font-weight: 600;
+  font-weight: 800;
   color: var(--black);
   margin: 0 1rem 0 0;
-  text-align: left;
+  text-align: center;
   border: 1px solid red;
 }
 
 .titleHeader {
   width: 350px;
+  min-width: 315px;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .titleHeader {
+    min-width: 150px;
+  }
 }
 
 .typeHeader {
-  width: 70px;
+  min-width: 70px;
+  display: none;
+}
+
+@media (min-width: 810px) {
+  .typeHeader {
+    display: inline-block;
+  }
+}
+
+.commentsHeader {
+  width: 120px;
+  display: none;
+}
+
+@include tabletLandscape {
+  .commentsHeader {
+    display: inline;
+  }
 }
 
 .postedByHeader {
-  // margin-left: 2rem;
+  min-width: 90px;
+  display: none;
+}
+
+@include tabletPortrait {
+  .postedByHeader {
+    display: inline-block;
+  }
 }
 
 .datePostedHeader {
-  // margin-right: 1rem;
+  width: 120px;
+  min-width: 52px;
+  margin-right: 0;
+  display: inline-block;
+}
+
+// @media (min-width: 600px) {
+//   .datePostedHeader {
+//     display: inline-block;
+//   }
+// }
+
+.posted {
+  display: none;
+}
+
+@include tabletLandscape {
+  .posted {
+    display: inline-block;
+  }
 }

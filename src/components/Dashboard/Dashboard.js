@@ -30,12 +30,12 @@ export class Dashboard extends Component {
             <span className={cx(styles.columnHeader, styles.typeHeader)}>
               Type
             </span>
-            <span className={cx(styles.columnHeader)}>#</span>
+            <span className={cx(styles.columnHeader, styles.commentsHeader)}># Comments</span>
             <span className={cx(styles.columnHeader, styles.postedByHeader)}>
               Posted By
             </span>
             <span className={cx(styles.columnHeader, styles.datePostedHeader)}>
-              Date Posted
+              Date <span className={styles.posted}>Posted</span>
             </span>
           </header>
           <PostsList />
