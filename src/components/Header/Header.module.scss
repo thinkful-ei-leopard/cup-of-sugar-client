@@ -26,6 +26,14 @@
   }
 }
 
+.logoutLink,
+.homeLink {
+  transition: color 0.2s;
+  &:hover {
+    color: var(--dark1);
+  }
+}
+
 @include mobileLandscape {
   .signUpLink,
   .loginLink {

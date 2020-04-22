@@ -14,6 +14,14 @@
   text-align: center;
 }
 
+.typeCircle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0.5rem;
+  border-radius: 50%;
+}
+
 .postTitle {
   width: 350px;
   min-width: 315px;
@@ -35,6 +43,20 @@
   .postType {
     display: inline-block;
   }
+}
+
+.offerStyle {
+  color: var(--dark1);
+}
+
+.requestStyle {
+  color: var(--dark2);
+}
+
+.offerStyle:hover,
+.requestStyle:hover {
+  color: var(--black);
+  // font-weight: bold;
 }
 
 .postComments {
