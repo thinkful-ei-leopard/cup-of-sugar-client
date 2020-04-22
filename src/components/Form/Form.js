@@ -17,7 +17,7 @@ export const Input =  React.forwardRef(({ className, ...props }, ref) => {
 export function Required({ className, ...props }) {
   return (
     <span className={cx('Required', className)} {...props}>
-      &#42;
+      {/* &#42; */}
     </span>
   )
 }

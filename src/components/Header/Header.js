@@ -5,6 +5,11 @@ import UserContext from '../../contexts/UserContext';
 import styles from './Header.module.scss';
 
 class Header extends Component {
+  static defaultProps = {
+    match: {},
+    location: {},
+  };
+
   static contextType = UserContext;
 
   handleLogoutClick = () => {
@@ -13,19 +18,19 @@ class Header extends Component {
 
   renderLogoutLink() {
     return (
-      <div className="logoutDiv">
-        <Link to="/" className="homeLink">
+      <div className={styles.logoutDiv}>
+        <Link to="/" className={styles.homeLink}>
           Cup of Sugar
         </Link>
-        <p>
+        <p className={styles.welcomeMessage}>
           Welcome to the neighborhood,
-          <span className="userSpan">{this.context.user.name}</span>!
+          <span className={styles.userSpan}>{this.context.user.name}</span>!
         </p>
         <nav className="logoutNav">
           <Link
             onClick={this.handleLogoutClick}
             to="/login"
-            className="logoutLink">
+            className={styles.logoutLink}>
             Logout
           </Link>
         </nav>
@@ -34,14 +39,15 @@ class Header extends Component {
   }
 
   renderLoginLink() {
+    const { location } = this.props;
     return (
-      <nav>
-        <Link to="/login" className={styles.loginLink}>
+      <nav className={styles.loginDiv}>
+        {location.pathname === '/register' ? <Link to="/login" className={styles.loginLink}>
           Login
-        </Link>{' '}
+        </Link> :
         <Link to="/register" className={styles.signUpLink}>
           Sign up
-        </Link>
+        </Link>}
       </nav>
     );
   }

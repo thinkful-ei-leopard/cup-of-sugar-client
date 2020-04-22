@@ -1,0 +1,88 @@
+@import '../../styles/_variables';
+@import '../../styles/_breakpoints';
+
+.RegForm {
+  border: 2px solid var(--black);
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+  background-color: white;
+  opacity: 100%;
+}
+
+@include mobilePortrait {
+  .RegForm {
+    padding: 0.5rem 1.5rem 1rem;
+    width: 70%;
+    max-width: 450px;
+  }
+}
+
+.regHeader {
+  font-size: 1.5rem;
+  color: var(--black);
+}
+
+@include mobilePortrait {
+  .regHeader {
+    margin-bottom: 2rem;
+  }
+}
+
+.regLabel,
+.regInput {
+  margin-bottom: 0.5rem;
+}
+
+.regInput {
+  width: 175px;
+}
+
+.regLabel {
+  font-size: 0.9rem;
+  margin: 0 auto 0.3rem;
+}
+
+.regDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.regDiv:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.regButton {
+  margin-bottom: 2rem;
+}
+
+@include mobileLandscape {
+  .regLabel {
+    font-size: 1rem;
+  }
+
+  .regDiv {
+    flex-direction: row;
+    margin: 0 2rem 1rem 0;
+    justify-content: flex-end;
+  }
+}
+
+.fullInputPhrase {
+  display: none;
+}
+
+@include mobileLandscape {
+  .fullInputPhrase {
+    display: inline;
+  }
+}
+
+.inputContainer {
+  padding: 0;
+  margin-bottom: 1.5rem;
+}

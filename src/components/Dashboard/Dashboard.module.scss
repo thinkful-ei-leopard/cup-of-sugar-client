@@ -8,10 +8,10 @@
   align-items: center;
 }
 
-.addPostButton {
+.Button {
   text-align: center;
   padding: 1rem 2rem;
-  margin: 4rem;
+  margin: 6rem auto 4rem;
   border: 2px solid var(--black);
   background-color: var(--light1);
   transition: background-color 0.2s;
@@ -32,7 +32,7 @@
   border: 2px solid var(--dark1);
   width: 80%;
   margin: 0 auto;
-  height: 500px;
+  height: 100%;
 }
 
 .bulletinColumnHeaders {
@@ -45,13 +45,24 @@
 .columnHeader {
   font-weight: 600;
   color: var(--black);
+  margin-right: 1rem;
+  text-align: left;
 }
 
 .titleHeader {
-  margin: 0 2rem;
-  width: 250px;
+  width: 350px;
+}
+
+.typeHeader {
+  width: 70px;
+  text-align: left;
+  margin: 0;
+}
+
+.postedByHeader {
+  margin-left: 2rem;
 }
 
 .datePostedHeader {
-  margin-right: 2rem;
+  margin-right: 1rem;
 }

@@ -1,0 +1,44 @@
+@import '../../styles/_variables';
+@import '../../styles/_breakpoints';
+
+.LoginForm {
+  border: 2px solid var(--black);
+  width: 70%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+  background-color: white;
+  opacity: 100%;
+}
+
+@include mobilePortrait {
+  .LoginForm {
+    padding: 0.5rem 2rem 2.5rem;
+  }
+}
+
+.loginHeader {
+  font-size: 1.5rem;
+  color: var(--black);
+}
+
+.loginLabel {
+  margin-bottom: 0.5rem;
+}
+
+.loginInput {
+  margin-bottom: 0.5rem;
+  width: 150px;
+}
+
+.userNameDiv,
+.passwordDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.passwordDiv {
+  margin-bottom: 2rem;
+}
