@@ -22,10 +22,6 @@ class Header extends Component {
         <Link to="/" className={styles.homeLink}>
           Cup of Sugar
         </Link>
-        <p className={styles.welcomeMessage}>
-          Welcome to the neighborhood,
-          <span className={styles.userSpan}>{this.context.user.name}</span>!
-        </p>
         <nav className="logoutNav">
           <Link
             onClick={this.handleLogoutClick}
@@ -42,12 +38,15 @@ class Header extends Component {
     const { location } = this.props;
     return (
       <nav className={styles.loginDiv}>
-        {location.pathname === '/register' ? <Link to="/login" className={styles.loginLink}>
-          Login
-        </Link> :
-        <Link to="/register" className={styles.signUpLink}>
-          Sign up
-        </Link>}
+        {location.pathname === '/register' ? (
+          <Link to="/login" className={styles.loginLink}>
+            Login
+          </Link>
+        ) : (
+          <Link to="/register" className={styles.signUpLink}>
+            Sign up
+          </Link>
+        )}
       </nav>
     );
   }

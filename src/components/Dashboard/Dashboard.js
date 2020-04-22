@@ -3,28 +3,55 @@ import cx from 'classnames';
 import Button from '../Button/Button';
 import PostsList from '../PostsList/PostsList';
 import styles from './Dashboard.module.scss';
+import UserContext from '../../contexts/UserContext';
 
 // TODO --> wrap button in Link to add-post view
 
 export class Dashboard extends Component {
+  static contextType = UserContext;
+
   render() {
     return (
       <section className={styles.Dashboard}>
-        {/* <h2>Cup of Sugar</h2> */}
+        <p className={styles.welcomeMessage}>
+          Welcome to the neighborhood,
+          <span className={styles.userSpan}> {this.context.user.name}</span>!
+        </p>
 
-        <Button className={styles.Button}>
+        <Button className={cx(styles.Button, styles.addPostButton)}>
           <span className={styles.buttonText}>Add Post</span>
         </Button>
+
+        <div className={styles.bulletinHeaderContainer}>
+          <div className={styles.legendContainer}>
+            <div className={styles.legendUnit}>
+              <div className={styles.offerSquare}></div>
+              <p className={styles.legendText}>- offers</p>
+            </div>
+            <div className={styles.legendUnit}>
+              <div className={styles.requestSquare}></div>
+              <p className={styles.legendText}>- requests</p>
+            </div>
+          </div>
+
+          <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
+        </div>
         <div className={styles.bulletinContainer}>
           <header className={styles.bulletinColumnHeaders}>
             <span className={cx(styles.columnHeader, styles.titleHeader)}>
               Title
             </span>
-            <span className={cx(styles.columnHeader, styles.typeHeader)}>Type</span>
-            {/* <span className={cx(styles.columnHeader)}># Comments</span> */}
-            <span className={cx(styles.columnHeader, styles.postedByHeader)}>Posted By</span>
+            <span className={cx(styles.columnHeader, styles.typeHeader)}>
+              Type
+            </span>
+            <span className={cx(styles.columnHeader, styles.commentsHeader)}>
+              # Comments
+            </span>
+            <span className={cx(styles.columnHeader, styles.postedByHeader)}>
+              Posted By
+            </span>
             <span className={cx(styles.columnHeader, styles.datePostedHeader)}>
-              Date Posted
+              Date <span className={styles.posted}>Posted</span>
             </span>
           </header>
           <PostsList />

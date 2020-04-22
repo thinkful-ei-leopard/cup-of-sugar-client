@@ -8,7 +8,7 @@ export default class PostsList extends React.Component {
   render() {
     const { posts } = this.context;
     return (
-      <ul>
+      <ul className={styles.postsList}>
         {posts.map((post) => (
           <Post key={post.id} post={post} className={styles.Post} />
         ))}
