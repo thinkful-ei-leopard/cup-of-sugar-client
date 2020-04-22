@@ -135,7 +135,7 @@ class RegistrationForm extends Component {
             <span className="buttonText">Submit</span>
           </Button>{' '}
         </footer>
-        <Link to="/login" className="regLink">
+        <Link to="/login" className={styles.regLink}>
           Already have an account?
         </Link>
       </form>

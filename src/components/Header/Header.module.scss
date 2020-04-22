@@ -7,15 +7,6 @@
   position: fixed;
 }
 
-.HeaderWithUnderline {
-  width: 100%;
-  height: 50px;
-  font-size: 1.2rem;
-  position: fixed;
-  border-bottom: 2px solid var(--dark2);
-  padding-bottom: 3.5rem;
-}
-
 .loginLink,
 .signUpLink {
   display: block;
@@ -27,9 +18,15 @@
 .loginLink {
   font-size: 1rem;
   font-weight: 600;
+  color: var(--black);
+  text-decoration: none;
+  transition: color 0.2s;
+  &:hover {
+    color: var(--dark1);
+  }
 }
 
-@include mobilePortrait {
+@include mobileLandscape {
   .signUpLink,
   .loginLink {
     font-size: 1.5rem;
@@ -52,8 +49,6 @@
 .homeLink {
   font-weight: 800;
   font-size: 1.2rem;
-  // padding-right: 1rem;
-  // margin-right: 1rem;
   position: relative;
   top: 0;
 }
@@ -61,8 +56,4 @@
 a {
   color: var(--black);
   text-decoration: none;
-  transition: color 0.2s;
-  &:hover {
-    color: var(--dark1);
-  }
 }

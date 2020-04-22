@@ -22,10 +22,6 @@ class Header extends Component {
         <Link to="/" className={styles.homeLink}>
           Cup of Sugar
         </Link>
-        {/* <p className={styles.welcomeMessage}>
-          Welcome to the neighborhood,
-          <span className={styles.userSpan}> {this.context.user.name}</span>!
-        </p> */}
         <nav className="logoutNav">
           <Link
             onClick={this.handleLogoutClick}

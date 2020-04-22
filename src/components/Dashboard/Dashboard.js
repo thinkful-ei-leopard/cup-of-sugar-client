@@ -21,7 +21,21 @@ export class Dashboard extends Component {
         <Button className={cx(styles.Button, styles.addPostButton)}>
           <span className={styles.buttonText}>Add Post</span>
         </Button>
-        <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
+
+        <div className={styles.bulletinHeaderContainer}>
+          <div className={styles.legendContainer}>
+            <div className={styles.legendUnit}>
+              <div className={styles.offerSquare}></div>
+              <p className={styles.legendText}>- offers</p>
+            </div>
+            <div className={styles.legendUnit}>
+              <div className={styles.requestSquare}></div>
+              <p className={styles.legendText}>- requests</p>
+            </div>
+          </div>
+
+          <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
+        </div>
         <div className={styles.bulletinContainer}>
           <header className={styles.bulletinColumnHeaders}>
             <span className={cx(styles.columnHeader, styles.titleHeader)}>
@@ -30,7 +44,9 @@ export class Dashboard extends Component {
             <span className={cx(styles.columnHeader, styles.typeHeader)}>
               Type
             </span>
-            <span className={cx(styles.columnHeader, styles.commentsHeader)}># Comments</span>
+            <span className={cx(styles.columnHeader, styles.commentsHeader)}>
+              # Comments
+            </span>
             <span className={cx(styles.columnHeader, styles.postedByHeader)}>
               Posted By
             </span>
