@@ -36,9 +36,9 @@ class Header extends Component {
   renderLoginLink() {
     return (
       <nav className={styles.loginDiv}>
-        <Link to="/login" className={styles.loginLink}>
+        {/* <Link to="/login" className={styles.loginLink}>
           Login
-        </Link>{' '}
+        </Link>{' '} */}
         <Link to="/register" className={styles.signUpLink}>
           Sign up
         </Link>

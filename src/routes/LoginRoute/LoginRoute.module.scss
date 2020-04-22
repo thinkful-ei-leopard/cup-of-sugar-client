@@ -6,14 +6,47 @@
   text-align: center;
   background-image: linear-gradient(#fff 0%, var(--light2) 100%);
   height: 100vh;
+  overflow-y: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.loginContainer {
+  padding-top: 60px;
+}
+
+svg {
+  fill: var(--black);
+  width: 80px;
 }
 
 .cupOfSugarHeader {
-  font-size: 3rem;
-  margin: 0;
+  font-size: 2.5rem;
+  margin: 0 0 -0.5rem;
   color: var(--black);
 }
 
 .tagline {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+@include mobilePortrait {
+  .loginContainer {
+    padding-top: 50px;
+  }
+
+  svg {
+    width: 150px;
+  }
+  .cupOfSugarHeader {
+    font-size: 3rem;
+    margin: 0;
+  }
+
+  .tagline {
+    margin-bottom: 2.5rem;
+  }
 }
