@@ -12,11 +12,5 @@
 }
 
 .registrationContainer {
-  padding-top: 60px;
-}
-
-@include mobilePortrait {
-  .registrationContainer {
-    padding-top: 30px;
-  }
+  padding-top: 40px;
 }

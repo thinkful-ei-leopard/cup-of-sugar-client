@@ -5,6 +5,11 @@ import UserContext from '../../contexts/UserContext';
 import styles from './Header.module.scss';
 
 class Header extends Component {
+  static defaultProps = {
+    match: {},
+    location: {},
+  };
+
   static contextType = UserContext;
 
   handleLogoutClick = () => {
@@ -34,14 +39,15 @@ class Header extends Component {
   }
 
   renderLoginLink() {
+    const { location } = this.props;
     return (
       <nav className={styles.loginDiv}>
-        <Link to="/login" className={styles.loginLink}>
+        {location.pathname === '/register' ? <Link to="/login" className={styles.loginLink}>
           Login
-        </Link>{' '}
+        </Link> :
         <Link to="/register" className={styles.signUpLink}>
           Sign up
-        </Link>
+        </Link>}
       </nav>
     );
   }

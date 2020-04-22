@@ -23,17 +23,16 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <Header />
+        <Route component={Header} />
         <main>
           {hasError && <p>There was an error! Oh no!</p>}
           <Switch>
-
-            <PrivateRoute exact path='/post/:post_id' component={PostRoute} />
+            {/* <Route component={Header}/> */}
+            <PrivateRoute exact path="/post/:post_id" component={PostRoute} />
             <PrivateRoute exact path={'/'} component={DashboardRoute} />
             <PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
             <PublicOnlyRoute path={'/login'} component={LoginRoute} />
             <Route component={NotFoundRoute} />
-
           </Switch>
         </main>
       </div>
