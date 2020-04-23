@@ -2,6 +2,7 @@ import React from 'react'
 import PostsContext from '../../contexts/PostsContext'
 import Comment from '../Comment/Comment'
 import styles from './PostView.module.scss';
+import cx from 'classnames';
 
 export default class PostView extends React.Component {
     static contextType = PostsContext
@@ -15,15 +16,25 @@ export default class PostView extends React.Component {
                 <></>
             )
         }
+        let type;
+        console.log(post.type)
+        if(post.type === 'request') {
+            type = 'styles.request'
+        }
+        if(post.type === 'offer') {
+            type = 'styles.offer'
+        }
+        console.log(type)
         return (
-            <section className={styles.PostView}>
-                <h1 className='postType'>{post.type}</h1>
-                <h2 className='postName'>{post.name} ({post.user_name})</h2>
-                <p className='postDate'>{post.date_modified}</p>
-                <p className='postTitle'>{post.title}</p>
-                <p className='postDescription'>{post.description}</p>
-                <ul>
-                    <h3>Comments</h3>
+            <section className={styles.section}>
+                <h1 className={cx(styles.h1, post.type === 'offer' ? styles.offerStyle : styles.requestStyle)}>{post.type}</h1>
+                <span className={styles.span}>From</span>
+                <h2 className={styles.name}> {post.name} ({post.user_name})</h2>
+                <p className={styles.date}>{post.date_modified.slice(0, 10)}</p>
+                <h3 className={cx (post.type === 'offer' ? styles.offerStyle : styles.requestStyle, styles.title)}>{post.title}</h3>
+                <p className={styles.description}>{post.description}</p>
+                <h3 className={styles.h3}>Comments</h3>
+                <ul className={styles.ul}>
                     {commentsForPost.map(comment => <Comment key={comment.id} comment={comment}/>)}
                 </ul>
             </section>

@@ -1,0 +1,27 @@
+@import '../../styles/_variables';
+@import '../../styles/_breakpoints';
+
+.name {
+    display: inline-flex;
+    margin-left: 0%;
+    margin-right: 10%;
+    margin-bottom: -1em;
+}
+
+.commentDelete {
+    color: red;
+    width: 0em;
+    height: 0;
+}
+
+#delete {
+    padding-right: 1.15em;
+    padding-top: .25em;
+    padding-left: .5em;
+    padding-bottom: 1.15em;
+}
+
+.commentLi {
+    margin-bottom: -.5em;
+    border-bottom: solid black 2px;
+}

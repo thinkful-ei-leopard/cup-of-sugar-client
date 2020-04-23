@@ -1,2 +1,55 @@
-@import '../../styles/_variables';
+@import '../../styles/variables';
 @import '../../styles/_breakpoints';
+
+.section h1 {
+    text-align: center;
+    padding-top: 3em;
+}
+
+.ul {
+    list-style: none;
+    border-top: solid 1px black;
+}
+
+.requestStyle {
+    color: var(--dark2);
+}
+
+.offerStyle {
+    color: var(--dark1);
+}
+
+.span {
+    margin-left: 15%;
+    text-align: center;
+}
+
+.title {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.description {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: .5em;
+    border-bottom: 1px solid black;
+}
+
+.name {
+    margin-top: -1em;
+    display: inline-flex;
+    margin-left: 10%
+}
+
+.date {
+    margin-top: -.5em;
+    text-align: center;
+}
+
+.h3 {
+    text-align: center;
+    background-color: var(--light1);
+    margin-top: -.85em;
+    margin-bottom: 0em;
+}
