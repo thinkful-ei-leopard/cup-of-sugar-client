@@ -52,8 +52,8 @@ export class AddPost extends Component {
     this.addPost(data);
   }
 
-  async addPost(data) {
-    const postReturn = await PostsApiService.addPost(data);
+  addPost(data) {
+    const postReturn = PostsApiService.addPost(data);
     if (postReturn.error) {
       this.setState({ error: postReturn.error.message });
     } else {

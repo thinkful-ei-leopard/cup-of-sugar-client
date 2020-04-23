@@ -10,13 +10,10 @@ export default class Post extends React.Component {
     let title =
       post.title.length < 42 ? post.title : post.title.slice(0, 35) + '...';
 
-    let postStyleType =
-      post.type === 'offer' ? 'styles.offerStyle' : 'styles.requestStyle';
-
     return (
       <Link to={`/post/${post.id}`}>
         <li className={styles.Post}>
-        {/* <div className={styles.typeCircle}></div> */}
+          {/* <div className={styles.typeCircle}></div> */}
           <span
             className={cx(
               styles.postTitle,
