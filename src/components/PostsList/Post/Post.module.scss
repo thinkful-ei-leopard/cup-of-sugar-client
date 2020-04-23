@@ -6,6 +6,9 @@
   justify-content: space-between;
   padding: 0.5rem 1rem;
   margin: 0 auto;
+  &:hover {
+    background-color: var(--light1);
+  }
 }
 
 .postEl {
