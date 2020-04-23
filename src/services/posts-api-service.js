@@ -12,6 +12,19 @@ const PostsApiService = {
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
+
+  addPost(data) {
+    return fetch(`${config.API_ENDPOINT}/posts`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .catch((err) => err);
+  },
 };
 
 export default PostsApiService;

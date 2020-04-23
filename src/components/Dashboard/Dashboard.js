@@ -6,8 +6,6 @@ import PostsList from '../PostsList/PostsList';
 import styles from './Dashboard.module.scss';
 import UserContext from '../../contexts/UserContext';
 
-// TODO --> wrap button in Link to add-post view
-
 export class Dashboard extends Component {
   static contextType = UserContext;
 
@@ -19,7 +17,7 @@ export class Dashboard extends Component {
           <span className={styles.userSpan}> {this.context.user.name}</span>!
         </p>
 
-        <Link to='/add-post'>
+        <Link to="/add-post">
           <Button className={cx(styles.Button, styles.addPostButton)}>
             <span className={styles.buttonText}>Add Post</span>
           </Button>

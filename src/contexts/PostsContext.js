@@ -5,6 +5,7 @@ const PostsContext = React.createContext({
   comments: [],
   setPosts: () => {},
   setComments: () => {},
+  addPost: () => {},
 });
 
 export default PostsContext;
@@ -12,7 +13,7 @@ export default PostsContext;
 export class PostsProvider extends Component {
   state = {
     posts: [],
-    comments:[]
+    comments: [],
   };
 
   setComments = (comments) => {
@@ -23,11 +24,17 @@ export class PostsProvider extends Component {
     this.setState({ posts });
   };
 
+  addPost = (post) => {
+    const { posts } = this.state;
+    this.setState({ posts: [...posts, post] });
+  };
+
   render() {
     const value = {
       posts: this.state.posts,
       setPosts: this.setPosts,
-      setComments: this.setComments
+      setComments: this.setComments,
+      addPost: this.addPost,
     };
 
     return (

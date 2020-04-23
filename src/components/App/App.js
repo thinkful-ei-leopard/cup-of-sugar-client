@@ -8,6 +8,7 @@ import LoginRoute from '../../routes/LoginRoute/LoginRoute';
 import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute';
 import PostRoute from '../../routes/PostRoute/PostRoute';
 import AddPostRoute from '../../routes/AddPostRoute/AddPostRoute';
+import AddPost from '../AddPostForm/AddPostForm';
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 import './App.scss';
 
