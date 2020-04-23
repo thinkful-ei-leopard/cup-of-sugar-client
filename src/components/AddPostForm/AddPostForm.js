@@ -37,7 +37,7 @@ export class AddPost extends Component {
     });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit(e) {
     e.preventDefault();
     const { title, description, type, error } = this.state;
 
@@ -47,7 +47,7 @@ export class AddPost extends Component {
       type,
     };
 
-    this.addPost(data)
+    this.addPost(data);
 
     //  const addPost = async (data) => {
     //   const postReturn = await PostsApiService.addPost(data);
@@ -58,23 +58,27 @@ export class AddPost extends Component {
     //   } else {
     //     this.setState({ error: null });
     //   }
-    
+
     // addPost(data);
 
-   
-  };
+    if (error === null) {
+      const { location, history } = this.props;
+      const destination = (location.state || {}).from || '/';
+      history.push(destination);
+    }
+  }
 
-  // async addPost (data) {
-  //   const { error } = this.state;
-  //   const postReturn = await PostsApiService.addPost(data);
-  //   console.log(postReturn)
+  async addPost(data) {
+    const postReturn = await PostsApiService.addPost(data);
 
-  //   if (postReturn.error) {
-  //     this.setState({ error: postReturn.error.message });
-  //   } else {
-  //     this.setState({ error: null });
-  //   }
-  // }
+    if (postReturn.error) {
+      this.setState({ error: postReturn.error.message });
+    } else {
+      this.setState({ error: null });
+    }
+
+    console.log(this.state);
+  }
 
   firstInput = React.createRef();
 
