@@ -7,6 +7,8 @@ import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute'
 import LoginRoute from '../../routes/LoginRoute/LoginRoute';
 import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute';
 import PostRoute from '../../routes/PostRoute/PostRoute';
+import AddPostRoute from '../../routes/AddPostRoute/AddPostRoute';
+import AddPost from '../AddPostForm/AddPostForm';
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 import './App.scss';
 
@@ -30,6 +32,7 @@ export default class App extends Component {
             {/* <Route component={Header}/> */}
             <PrivateRoute exact path="/post/:post_id" component={PostRoute} />
             <PrivateRoute exact path={'/'} component={DashboardRoute} />
+            <PrivateRoute exact path={'/add-post'} component={AddPostRoute} />
             <PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
             <PublicOnlyRoute path={'/login'} component={LoginRoute} />
             <Route component={NotFoundRoute} />

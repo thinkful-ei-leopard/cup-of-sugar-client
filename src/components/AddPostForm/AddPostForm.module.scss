@@ -1,0 +1,90 @@
+@import '../../styles/_variables';
+@import '../../styles/_breakpoints';
+
+.AddPost {
+  padding-top: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.addPostForm {
+  border: 2px solid var(--black);
+  width: 85%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+  background-color: white;
+  opacity: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@include mobileLandscape {
+  .addPostForm {
+    width: 70%;
+  }
+}
+
+.addLabel {
+  margin-bottom: 0.5rem;
+}
+
+.addInput {
+  margin-bottom: 1.5rem;
+}
+
+.typeGroup {
+  margin-bottom: 1rem;
+}
+
+.titleInput {
+  width: 200px;
+}
+
+.descriptionInput {
+  width: 220px;
+  margin-bottom: 2.5rem;
+}
+
+@include mobilePortrait {
+  .descriptionInput {
+    width: 300px;
+  }
+}
+
+.typeGroup {
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+}
+
+.typeContainer {
+  display: flex;
+  align-items: center;
+}
+
+.radioLabel {
+  margin-left: 5px;
+}
+
+.offerText {
+  color: var(--dark1);
+}
+
+.requestText {
+  color: var(--dark2);
+}
+
+.errorMessage {
+  color: red;
+}
+
+.dashboardLink {
+  transition: color 0.2s;
+  &:hover {
+    color: var(--dark1);
+  }
+}
