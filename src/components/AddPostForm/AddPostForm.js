@@ -14,7 +14,6 @@ export class AddPost extends Component {
       title: '',
       description: '',
       type: '',
-      error: '',
     };
   }
 
@@ -39,7 +38,10 @@ export class AddPost extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { title, description, type, error } = this.state;
+    const { title, description, type } = this.state;
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || '/';
+    history.push(destination);
 
     const data = {
       title,
@@ -48,36 +50,15 @@ export class AddPost extends Component {
     };
 
     this.addPost(data);
-
-    //  const addPost = async (data) => {
-    //   const postReturn = await PostsApiService.addPost(data);
-    //   console.log(postReturn);
-
-    //   if (postReturn.error) {
-    //     this.setState({ error: postReturn.error.message });
-    //   } else {
-    //     this.setState({ error: null });
-    //   }
-
-    // addPost(data);
-
-    if (error === null) {
-      const { location, history } = this.props;
-      const destination = (location.state || {}).from || '/';
-      history.push(destination);
-    }
   }
 
   async addPost(data) {
     const postReturn = await PostsApiService.addPost(data);
-
     if (postReturn.error) {
       this.setState({ error: postReturn.error.message });
     } else {
       this.setState({ error: null });
     }
-
-    console.log(this.state);
   }
 
   firstInput = React.createRef();
