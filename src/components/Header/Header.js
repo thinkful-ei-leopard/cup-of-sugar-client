@@ -5,12 +5,18 @@ import UserContext from '../../contexts/UserContext';
 import styles from './Header.module.scss';
 
 class Header extends Component {
+  state = { loading: true };
+
   static defaultProps = {
     match: {},
     location: {},
   };
 
   static contextType = UserContext;
+
+  componentDidMount() {
+    this.setState({ loading: false });
+  }
 
   handleLogoutClick = () => {
     this.context.processLogout();
@@ -52,8 +58,19 @@ class Header extends Component {
   }
 
   render() {
+    const { location } = this.props;
+    console.log(location);
+    if (this.state.loading === true) {
+      return <></>;
+    }
+
     return (
-      <header className={styles.Header}>
+      <header
+        className={
+          location.pathname === '/register' || location.pathname === '/login'
+            ? styles.Header
+            : styles.HeaderWithUnderline
+        }>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
