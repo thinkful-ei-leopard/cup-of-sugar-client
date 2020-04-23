@@ -1,8 +1,15 @@
 import React from 'react';
 import PostsContext from '../../contexts/PostsContext';
-import Comment from '../../components/Comment/Comment'
+import PostsApiService from '../../services/posts-api-service';
+import CommentsApiService from '../../services/comments-api-service';
+import PostView from '../../components/PostView/PostView'
 
 export default class PostRoute extends React.Component {
+    state = {
+        comments: [],
+        posts: [],
+        loading: true
+    }
     static defaultProps = {
         history: {
             goBack: () => {}
@@ -11,26 +18,57 @@ export default class PostRoute extends React.Component {
             params: {}
         }
     }
+    static contextType = PostsContext
+
+    componentDidMount() {
+        console.log('mounted')
+        this.getPosts();
+        this.getComments();
+      }
+    
+    // componentDidUpdate() {
+    //     console.log('updating', this.state.posts.length)
+    //     console.log(this.context)
+    //     if(this.state.posts.length < 1) {
+    //         console.log('setting')
+    //         let comments = this.context.comments
+    //         let posts = this.context.posts
+    //         this.setState({comments: comments,
+    //         posts: posts})
+    //     }
+    //     console.log(this.state)
+    // }
+    
+      async getComments() {
+        const comments = await CommentsApiService.getComments();
+        this.context.setComments(comments);
+      }
+    
+      async getPosts() {
+        const posts = await PostsApiService.getPosts();
+        this.context.setPosts(posts);
+      }
+
+      //save context in componentWillUnmount or componentDidUpdate
+
     render () {
+        // let posts = this.state.posts
+        // let comments = this.state.comments
+        // console.log(this.context.posts.length)
+        // // console.log(this.state)
+        // // if(this.context.posts.length > 0) {
+        // //     posts = this.context.posts
+        // //     comments = this.context.comments
+        // // }
+        let id = this.props.match.params.post_id
+        // console.log(this.state.loading)
+        // if(this.state.loading === true) {
+        //     return (
+        //         <></>
+        //     )
+        // }
         return (
-          <PostsContext.Consumer>
-              {value => {
-                  const post = value.posts.find(post => post.id === this.props.match.params.post_id);
-                  const comments = value.comments.filter(comment => comment.post_id === this.props.match.params.post_id)
-              return (
-            <section className='postSection'>
-                <h1 className='postType'>{post.type}</h1>
-                <h2 className='postName'>{post.name} ({post.user_name})</h2>
-                <p className='postDate'>{post.date_modified}</p>
-                <p className='postTitle'>{post.title}</p>
-                <p className='postDescription'>{post.description}</p>
-                <ul>
-                    <h3>Comments</h3>
-                    {comments.map(comment => <Comment key={comment.id} comment={comment}/>)}
-                </ul>
-            </section>
-            )}}
-          </PostsContext.Consumer>
+            <PostView id={id}/>
         )
     }
 }
