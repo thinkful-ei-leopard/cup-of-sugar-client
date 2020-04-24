@@ -3,6 +3,8 @@ import PostsContext from '../../contexts/PostsContext'
 import Comment from '../Comment/Comment'
 import styles from './PostView.module.scss';
 import cx from 'classnames';
+import Button from '../Button/Button'
+import { Link } from 'react-router-dom'
 
 export default class PostView extends React.Component {
     static contextType = PostsContext
@@ -34,8 +36,11 @@ export default class PostView extends React.Component {
                 <h3 className={cx (post.type === 'offer' ? styles.offerStyle : styles.requestStyle, styles.title)}>{post.title}</h3>
                 <p className={styles.description}>{post.description}</p>
                 <h3 className={styles.h3}>Comments</h3>
+                <Link to='/add-comment'>
+                <Button type='submit' className={styles.addCommentButton}>Add Comment</Button>
+                </Link>
                 <ul className={styles.ul}>
-                    {commentsForPost.map(comment => <Comment key={comment.id} comment={comment}/>)}
+                    {commentsForPost.map(comment => <Comment key={comment.id} comment={comment} />)}
                 </ul>
             </section>
         )
