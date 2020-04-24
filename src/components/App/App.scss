@@ -5,7 +5,7 @@
   text-align: center;
   padding: 1rem 2rem;
   border: 2px solid var(--black);
-  background-color: var(--light1);
+  background-color: var(--bright);
   transition: background-color 0.2s;
   &:hover {
     cursor: pointer;
@@ -30,4 +30,3 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
-

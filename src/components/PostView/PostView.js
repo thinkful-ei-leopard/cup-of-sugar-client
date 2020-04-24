@@ -64,7 +64,7 @@ export default class PostView extends React.Component {
           </p>
         </div>
         <div className={styles.Comments}>
-          <h2 className={styles.h3}>Comments</h2>
+          <h2 className={styles.commentsHeader}>Comments</h2>
           <ul className={styles.ul}>
             {commentsForPost.map((comment) => (
               <Comment key={comment.id} comment={comment} deleteComment={this.props.deleteComment} />

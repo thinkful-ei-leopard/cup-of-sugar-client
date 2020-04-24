@@ -2,30 +2,38 @@
 @import '../../styles/_breakpoints';
 
 .addCommentForm {
-    border: solid 2px var(--black);
-    text-align: center;
-    margin-top: 3rem;
-    margin-right: 10%;
-    margin-left: 10%;
+  border: solid 2px var(--black);
+  text-align: center;
+  width: 500px;
+  padding: 1rem;
+  position: relative;
+  top: 150px;
+  margin: 0 auto;
 }
 
-.addCommentLabel, .contentInput {
-    display: block;
-    margin-top: 1rem;
+.addCommentLabel,
+.contentInput {
+  display: block;
+  margin-top: 1rem;
 }
 
 .contentInput {
-    margin-left: auto;
-    margin-right: auto;
-    width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
 }
 
 .dashboardLink {
-    text-align: center;
+  text-align: center;
+  position: relative;
+  top: 150px;
+  transition: color 0.2s;
+  &:hover {
+    color: var(--dark1);
+  }
 }
 
 .submitAddComment {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
-

@@ -66,8 +66,11 @@ export class AddCommentForm extends Component {
               this.updateField('description', e.target.value)
             }></textarea>
         <Button className={styles.submitAddComment} type="submit">
-            Submit
+            <div className="buttonText">
+              Submit
+            </div>
           </Button>
+          
       </form>
       <Link to="/">
       <p className={styles.dashboardLink}>Back to dashboard</p>

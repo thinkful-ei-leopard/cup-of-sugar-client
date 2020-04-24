@@ -7,7 +7,14 @@ import Button from '../../Button/Button';
 import PostsApiService from '../../../services/posts-api-service';
 
 export default class Post extends React.Component {
+  state = {
+    hover: false,
+  };
+
   static contextType = UserContext;
+
+  handleListHoverOn = () => this.setState({ hover: true });
+  handleListHoverOff = () => this.setState({ hover: false });
 
   render() {
     const { post } = this.props;
@@ -41,7 +48,10 @@ export default class Post extends React.Component {
 
     return (
       <Link to={`/post/${post.id}`}>
-        <li className={styles.Post}>
+        <li
+          className={styles.Post}
+          onMouseEnter={this.handleListHoverOn}
+          onMouseLeave={this.handleListHoverOff}>
           {/* <div className={styles.typeCircle}></div> */}
           <span
             className={cx(
@@ -50,7 +60,9 @@ export default class Post extends React.Component {
               post.type === 'offer' ? styles.offerStyle : styles.requestStyle
             )}>
             {title}
+            {this.state.hover && deleteButton}
           </span>
+
           <span className={cx(styles.postType, styles.postEl)}>
             {post.type}
           </span>
@@ -66,7 +78,6 @@ export default class Post extends React.Component {
           <span className={cx(styles.postDateTrim, styles.postEl)}>
             {post.date_modified.slice(5, 10)}
           </span>
-          {deleteButton}
         </li>
       </Link>
     );
