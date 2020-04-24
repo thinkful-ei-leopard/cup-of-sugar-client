@@ -10,10 +10,10 @@ export default class PostsList extends React.Component {
 
   static contextType = PostsContext;
 
-  refreshPage = () => {
-    console.log(this.state)
-    this.setState({refresh: true}, console.log(this.state))
-  }
+  deletePost = (id) => {
+    this.context.deletePost(id);
+  };
+
 
   render() {
     const { posts } = this.context;
@@ -31,7 +31,7 @@ export default class PostsList extends React.Component {
     return (
       <ul className={styles.postsList}>
         {posts.map((post) => (
-          <Post key={post.id} post={post} className={styles.Post} refreshPage={this.refreshPage}/>
+          <Post key={post.id} post={post} className={styles.Post} deletePost={this.deletePost} />
         ))}
       </ul>
     );
