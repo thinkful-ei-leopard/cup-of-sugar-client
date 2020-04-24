@@ -3,25 +3,33 @@
 
 .section {
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  height: 100vh;
+  background-image: linear-gradient(
+    rgba(88, 57, 154, 0),
+    rgba(73, 57, 154, 0.3)
+  );
 }
 
 .postDetail {
   border: 2px solid var(--black);
   width: 80%;
   max-width: 500px;
-  margin: 120px auto 0;
-  padding: 0 2rem 2rem;
+  margin: 50px auto 0;
+  padding: 0 2rem 1rem;
   background-color: white;
   opacity: 100%;
-  top: 100px;
+  // top: 50px;
 }
 
 .Comments {
   margin: 0 auto;
   width: 80%;
   max-width: 500px;
-  border: 2px solid var(--black);
+  // border: 2px solid var(--black);
 }
 
 .ul {
@@ -49,7 +57,7 @@
 .postedBy {
   text-align: center;
   font-style: italic;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .description {
@@ -65,23 +73,22 @@
   text-align: center;
 }
 
-.h3 {
+.commentsHeader {
   text-align: center;
-  background-color: var(--light1);
-  margin-top: -0.85em;
+  margin: 2rem auto 0;
 }
 
 .addCommentButton {
   display: block;
-  margin: .5rem auto 2rem;
+  margin: 0.5rem auto 2rem;
 }
 
 .dashboardLink {
-    text-align: center;
-    display: inline-block;
-    width: 100%;
-    transition: color .2s;
-    &:hover {
-        color: var(--dark1);
-    }
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  transition: color 0.2s;
+  &:hover {
+    color: var(--dark1);
+  }
 }

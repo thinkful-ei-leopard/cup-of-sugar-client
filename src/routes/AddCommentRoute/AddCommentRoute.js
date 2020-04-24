@@ -8,7 +8,6 @@ export class AddCommentRoute extends Component {
     const { history, location } = this.props;
     return (
       <div>
-          <h1>LALALALA</h1>
         <AddCommentForm history={history} location={location} />
       </div>
     );

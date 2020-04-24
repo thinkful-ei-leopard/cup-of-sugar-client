@@ -2,26 +2,34 @@
 @import '../../styles/_breakpoints';
 
 .name {
-    display: inline-flex;
-    margin-left: 0%;
-    margin-right: 10%;
-    margin-bottom: -1em;
+  display: inline-flex;
+  margin-left: 0%;
+  margin-right: 10%;
+  margin-bottom: -1em;
 }
 
-.commentDelete {
+#deleteCommentButton {
+  padding: 0.25rem 0.5rem;
+  color: var(--black);
+  margin-left: 0.1rem;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 0.7rem;
+  transition: color .2s;
+  &:hover {
     color: red;
-    width: 0em;
-    height: 0;
+  }
 }
 
-#delete {
-    padding-right: 1.15em;
-    padding-top: .25em;
-    padding-left: .5em;
-    padding-bottom: 1.15em;
+.commenterName {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1rem;
+  font-style: italic;
 }
 
-.commentLi {
-    margin-bottom: -.5em;
-    // border-bottom: solid black 2px;
+.commentDeleteContainer {
+  display: flex;
+  flex-direction: column;
 }
