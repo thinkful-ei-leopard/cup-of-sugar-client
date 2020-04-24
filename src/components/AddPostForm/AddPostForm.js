@@ -39,9 +39,6 @@ export class AddPost extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { title, description, type } = this.state;
-    const { location, history } = this.props;
-    const destination = (location.state || {}).from || '/';
-    history.push(destination);
 
     const data = {
       title,
@@ -52,13 +49,16 @@ export class AddPost extends Component {
     this.addPost(data);
   }
 
-  addPost(data) {
-    const postReturn = PostsApiService.addPost(data);
+  async addPost(data) {
+    const postReturn = await PostsApiService.addPost(data);
     if (postReturn.error) {
       this.setState({ error: postReturn.error.message });
     } else {
       this.setState({ error: null });
     }
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || '/';
+    history.push(destination);
   }
 
   firstInput = React.createRef();
@@ -93,7 +93,7 @@ export class AddPost extends Component {
                 id="typeChoice1"
                 className={styles.radioSelect}
                 name="contact"
-                value="email"
+                value="offer"
                 onChange={(e) => this.updateField('type', e.target.value)}
                 required
               />
@@ -126,6 +126,7 @@ export class AddPost extends Component {
             className={cx(styles.addInput, styles.descriptionInput)}
             rows="10"
             maxLength="500"
+            required
             onChange={(e) =>
               this.updateField('description', e.target.value)
             }></textarea>
