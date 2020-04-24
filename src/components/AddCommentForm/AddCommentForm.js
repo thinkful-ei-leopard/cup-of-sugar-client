@@ -6,6 +6,8 @@ import CommentsApiService from '../../services/comments-api-service'
 export class AddCommentForm extends Component {
   handleSubmit = (ev) => {
     ev.preventDefault()
+    const { history } = this.props;
+    history.goBack();
     //post_ID needs to be inputted instead of the 1
     //need update state with response
     const { content } = ev.target
