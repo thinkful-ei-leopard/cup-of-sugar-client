@@ -5,11 +5,6 @@ import CommentsApiService from '../../services/comments-api-service';
 import PostView from '../../components/PostView/PostView';
 
 export default class PostRoute extends React.Component {
-  state = {
-    comments: [],
-    posts: [],
-    loading: true,
-  };
   static defaultProps = {
     history: {
       goBack: () => {},

@@ -55,7 +55,7 @@ export class Dashboard extends Component {
               Date <span className={styles.posted}>Posted</span>
             </span>
           </header>
-          <PostsList />
+          <PostsList deletePost={this.props.deletePost} />
         </div>
       </section>
     );
