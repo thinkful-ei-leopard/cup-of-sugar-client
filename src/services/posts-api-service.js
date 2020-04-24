@@ -25,6 +25,20 @@ const PostsApiService = {
       .then((res) => res.json())
       .catch((err) => err);
   },
+  deletePost(id) {
+    return (
+        fetch(`${config.API_ENDPOINT}/posts/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'authorization': `bearer ${TokenService.getAuthToken()}`,
+                'Content-type': 'application/json'
+            }
+        })
+            .then(res => {
+                return
+            })
+    )
+  }
 };
 
 export default PostsApiService;
