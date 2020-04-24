@@ -32,6 +32,7 @@ export default class Post extends React.Component {
       ) : (
         <Button
           type="delete"
+          aria-hidden="true"
           className={styles.deletePostButton}
           id={styles.placeholderInvisibleButton}>
           X
