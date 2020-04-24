@@ -46,7 +46,9 @@ export default class Post extends React.Component {
             </span>
             <Button onClick={(e) => {
               e.preventDefault()
-              PostsApiService.deletePost(post.id)}
+              PostsApiService.deletePost(post.id)
+              this.props.refreshPage()
+            }
               }type='delete' title='Delete' className={styles.deletePostButton} id={styles.deletePostButton}>X</Button>
           </li>
         </Link>
