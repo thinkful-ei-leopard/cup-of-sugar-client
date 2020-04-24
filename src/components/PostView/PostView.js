@@ -1,6 +1,6 @@
-import React from 'react'
-import PostsContext from '../../contexts/PostsContext'
-import Comment from '../Comment/Comment'
+import React from 'react';
+import PostsContext from '../../contexts/PostsContext';
+import Comment from '../Comment/Comment';
 import styles from './PostView.module.scss';
 import cx from 'classnames';
 import Button from '../Button/Button'
@@ -45,22 +45,45 @@ export default class PostView extends React.Component {
         if(post.type === 'offer') {
             type = 'styles.offer'
         }
-        return (
-            <section className={styles.section}>
-                <h1 className={cx(styles.h1, post.type === 'offer' ? styles.offerStyle : styles.requestStyle)}>{post.type}</h1>
-                <span className={styles.span}>From</span>
-                <h2 className={styles.name}> {post.name} ({post.user_name})</h2>
-                <p className={styles.date}>{post.date_modified.slice(0, 10)}</p>
-                <h3 className={cx (post.type === 'offer' ? styles.offerStyle : styles.requestStyle, styles.title)}>{post.title}</h3>
-                <p className={styles.description}>{post.description}</p>
-                <h3 className={styles.h3}>Comments</h3>
+
+    }
+    return (
+      <section className={styles.section}>
+        <div className={styles.postDetail}>
+          <h1
+            className={cx(
+              post.type === 'offer' ? styles.offerStyle : styles.requestStyle,
+              styles.title
+            )}>
+            {post.title}
+          </h1>
+          <p className={styles.description}>{post.description}</p>
+          <p className={styles.postedBy}>
+            {post.type === 'offer' ? 'Offered' : 'Requested'} by{' '}
+            <span className={styles.nameHeader}>
+              {post.name} ({post.user_name})
+            </span>{' '}
+            on{' '}
+            <span className={styles.date}>
+              {post.date_modified.slice(0, 10)}
+            </span>
+          </p>
+        </div>
+        <div className={styles.Comments}>
+          <h2 className={styles.h3}>Comments</h2>
                 <Link to='/add-comment'>
                 <Button type='submit' className={styles.addCommentButton}>Add Comment</Button>
                 </Link>
-                <ul className={styles.ul}>
-                    {this.state.comments.map(comment => <Comment key={comment.id} comment={comment} />)}
-                </ul>
-            </section>
-        )
-    }
+          <ul className={styles.ul}>
+            {commentsForPost.map((comment) => (
+              <Comment key={comment.id} comment={comment} />
+            ))}
+          </ul>
+        </div>
+        <Link to="/">
+          <p className={styles.dashboardLink}>Back to dashboard</p>
+        </Link>
+      </section>
+    );
+  }
 }

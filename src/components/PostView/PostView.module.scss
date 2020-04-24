@@ -1,57 +1,74 @@
 @import '../../styles/variables';
 @import '../../styles/_breakpoints';
 
-.section h1 {
-    text-align: center;
-    padding-top: 3em;
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.postDetail {
+  border: 2px solid var(--black);
+  width: 80%;
+  max-width: 500px;
+  margin: 120px auto 0;
+  padding: 0 2rem 2rem;
+  background-color: white;
+  opacity: 100%;
+  top: 100px;
+}
+
+.Comments {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 500px;
+  border: 2px solid var(--black);
 }
 
 .ul {
-    list-style: none;
-    border-top: solid 1px black;
-}
-
-.requestStyle {
-    color: var(--dark2);
-}
-
-.offerStyle {
-    color: var(--dark1);
-}
-
-.span {
-    margin-left: 15%;
-    text-align: center;
+  list-style: none;
 }
 
 .title {
-    margin-left: 5%;
-    margin-right: 5%;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.typeHeader {
+  font-size: 1.25rem;
+}
+
+.requestStyle {
+  color: var(--dark2);
+}
+
+.offerStyle {
+  color: var(--dark1);
+}
+
+.postedBy {
+  text-align: center;
 }
 
 .description {
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-bottom: .5em;
-    border-bottom: 1px solid black;
+//   padding-left: 5%;
+//   padding-right: 5%;
+//   padding-bottom: 0.5rem;
+  padding: 0 1rem 1rem .5rem;
+  text-align: center;
 }
 
-.name {
-    margin-top: -1em;
-    display: inline-flex;
-    margin-left: 10%
+.nameHeader {
 }
 
 .date {
-    margin-top: -.5em;
-    text-align: center;
+  margin-top: -0.5em;
+  text-align: center;
 }
 
 .h3 {
-    text-align: center;
-    background-color: var(--light1);
-    margin-top: -.85em;
-    margin-bottom: 0em;
+  text-align: center;
+  background-color: var(--light1);
+  margin-top: -0.85em;
 }
 
 .addCommentButton {
