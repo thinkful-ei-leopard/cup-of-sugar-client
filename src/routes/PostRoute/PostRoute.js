@@ -24,6 +24,7 @@ export default class PostRoute extends React.Component {
         console.log('mounted')
         this.getPosts();
         this.getComments();
+        this.getPostId()
       }
     
     // componentDidUpdate() {
@@ -47,6 +48,10 @@ export default class PostRoute extends React.Component {
       async getPosts() {
         const posts = await PostsApiService.getPosts();
         this.context.setPosts(posts);
+      }
+
+      getPostId = () => {
+        this.context.setPostId(this.props.match.params.post_id)
       }
 
       //save context in componentWillUnmount or componentDidUpdate
