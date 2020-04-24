@@ -56,6 +56,7 @@ export default class Post extends React.Component {
       <Link to={`/post/${post.id}`}>
         <li className={styles.Post}>
           {/* <div className={styles.typeCircle}></div> */}
+
           <span
             className={cx(
               styles.postTitle,
