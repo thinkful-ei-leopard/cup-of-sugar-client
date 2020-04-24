@@ -8,10 +8,10 @@
 
 .postDetail {
   border: 2px solid var(--black);
-  width: 70%;
-  max-width: 400px;
-  margin: 150px auto 0;
-  padding: 0 1.5rem 2rem;
+  width: 80%;
+  max-width: 500px;
+  margin: 120px auto 0;
+  padding: 0 2rem 2rem;
   background-color: white;
   opacity: 100%;
   top: 100px;
@@ -19,19 +19,22 @@
 
 .Comments {
   margin: 0 auto;
-  width: 70%;
-  max-width: 400px;
+  width: 80%;
+  max-width: 500px;
   border: 2px solid var(--black);
-}
-
-.section h1 {
-  text-align: center;
-  padding-top: 3em;
 }
 
 .ul {
   list-style: none;
-  //   border: solid 2px var(--black);
+}
+
+.title {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.typeHeader {
+  font-size: 1.25rem;
 }
 
 .requestStyle {
@@ -42,27 +45,19 @@
   color: var(--dark1);
 }
 
-.span {
-  margin-left: 15%;
+.postedBy {
   text-align: center;
 }
 
-.title {
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
 .description {
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-bottom: 0.5em;
-  // border-bottom: 1px solid black;
+//   padding-left: 5%;
+//   padding-right: 5%;
+//   padding-bottom: 0.5rem;
+  padding: 0 1rem 1rem .5rem;
+  text-align: center;
 }
 
-.name {
-  margin-top: -1em;
-  display: inline-flex;
-  margin-left: 10%;
+.nameHeader {
 }
 
 .date {
