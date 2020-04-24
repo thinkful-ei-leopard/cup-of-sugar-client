@@ -7,6 +7,7 @@ const PostsContext = React.createContext({
   setPosts: () => {},
   setComments: () => {},
   addPost: () => {},
+  addComment: () => {},
   setPostId: () => {}
 });
 
@@ -32,6 +33,11 @@ export class PostsProvider extends Component {
     this.setState({ posts: [...posts, post] });
   };
 
+  addComment = (comment) => {
+    const { comments } = this.state;
+    this.setState({ comments: [...comments, comment] })
+  }
+
   setPostId = (postId) => {
     this.setState({ currentPostId: postId })
   }
@@ -44,6 +50,7 @@ export class PostsProvider extends Component {
       setPosts: this.setPosts,
       setComments: this.setComments,
       addPost: this.addPost,
+      addComment: this.addComment,
       setPostId: this.setPostId
     };
 

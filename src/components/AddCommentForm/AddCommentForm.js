@@ -11,13 +11,12 @@ export class AddCommentForm extends Component {
     ev.preventDefault()
     const { history } = this.props;
     history.goBack();
-    //post_ID needs to be inputted instead of the 1
     //need update state with response
     const { content } = ev.target
     CommentsApiService.postComment(this.context.currentPostId, content.value)
       .then((res) => {
         content.value = ''
-        console.log(res)
+        this.context.addComment(res)
       })
       .catch(res => {console.log(res.error)})
   }
