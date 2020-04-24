@@ -92,7 +92,7 @@ export class AddPost extends Component {
                 type="radio"
                 id="typeChoice1"
                 className={styles.radioSelect}
-                name="contact"
+                name="type"
                 value="offer"
                 onChange={(e) => this.updateField('type', e.target.value)}
                 required
@@ -106,7 +106,7 @@ export class AddPost extends Component {
                 type="radio"
                 id="typeChoice2"
                 className={styles.radioSelect}
-                name="contact"
+                name="type"
                 value="request"
                 onChange={(e) => this.updateField('type', e.target.value)}
                 required
