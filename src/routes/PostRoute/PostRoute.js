@@ -23,6 +23,7 @@ export default class PostRoute extends React.Component {
     componentDidMount() {
         this.getPosts();
         this.getComments();
+        this.getPostId()
       }
     
       async getComments() {
@@ -35,6 +36,11 @@ export default class PostRoute extends React.Component {
         this.context.setPosts(posts);
       }
 
+      getPostId = () => {
+        this.context.setPostId(this.props.match.params.post_id)
+      }
+
+      //save context in componentWillUnmount or componentDidUpdate
     render () {
         let id = this.props.match.params.post_id
         return (
