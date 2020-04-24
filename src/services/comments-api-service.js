@@ -18,33 +18,27 @@ const CommentsApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Bearer ${TokenService.getAuthToken()}`,
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({
-        content
+        content,
       }),
-    })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
   },
 
   handleCommentDelete(id) {
-    return (
-        fetch(`${config.API_ENDPOINT}/comments/comment/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'authorization': `bearer ${TokenService.getAuthToken()}`,
-                'Content-type': 'application/json'
-            }
-        })
-            .then(res => {
-                return
-            })
-    )
-  }
+    return fetch(`${config.API_ENDPOINT}/comments/comment/${id}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+        'Content-type': 'application/json',
+      },
+    }).then((res) => {
+      return;
+    });
+  },
 };
 
 export default CommentsApiService;

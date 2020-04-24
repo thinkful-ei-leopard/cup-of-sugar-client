@@ -8,7 +8,9 @@ const PostsContext = React.createContext({
   setComments: () => {},
   addPost: () => {},
   addComment: () => {},
-  setPostId: () => {}
+  setPostId: () => {},
+  deletePost: () => {},
+  deleteComment: () => {},
 });
 
 export default PostsContext;
@@ -17,7 +19,7 @@ export class PostsProvider extends Component {
   state = {
     posts: [],
     comments: [],
-    currentPostId: null
+    currentPostId: null,
   };
 
   setComments = (comments) => {
@@ -33,14 +35,28 @@ export class PostsProvider extends Component {
     this.setState({ posts: [...posts, post] });
   };
 
+  deletePost = (postId) => {
+    this.setState({
+      posts: this.state.posts.filter((post) => post.id !== postId),
+    });
+  };
+
   addComment = (comment) => {
     const { comments } = this.state;
-    this.setState({ comments: [...comments, comment] })
-  }
+    this.setState({ comments: [...comments, comment] });
+  };
 
   setPostId = (postId) => {
-    this.setState({ currentPostId: postId })
-  }
+    this.setState({ currentPostId: postId });
+  };
+
+  deleteComment = (commentId) => {
+    this.setState({
+      comments: this.state.comments.filter(
+        (comment) => comment.id !== commentId
+      ),
+    });
+  };
 
   render() {
     const value = {
@@ -51,7 +67,9 @@ export class PostsProvider extends Component {
       setComments: this.setComments,
       addPost: this.addPost,
       addComment: this.addComment,
-      setPostId: this.setPostId
+      setPostId: this.setPostId,
+      deletePost: this.deletePost,
+      deleteComment: this.deleteComment,
     };
 
     return (
