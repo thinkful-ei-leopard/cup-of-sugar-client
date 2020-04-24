@@ -7,7 +7,7 @@
   padding: 0.5rem 1rem;
   margin: 0 auto;
   &:hover {
-    background-color: var(--light1);
+    background-color: var(--highlight);
   }
 }
 
@@ -26,7 +26,7 @@
 }
 
 .postTitle {
-  width: 350px;
+  width: 360px;
   min-width: 315px;
   text-align: left;
 }
@@ -58,7 +58,7 @@
 
 .offerStyle:hover,
 .requestStyle:hover {
-  color: var(--black);
+  // color: var(--black);
   // font-weight: bold;
 }
 
@@ -97,29 +97,31 @@
 }
 
 #deletePostButton {
-  padding-right: .5rem;
-  padding-top: .25rem;
-  padding-left: .5rem;
-  padding-bottom: .25rem;
-  color: red;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-left: 0.5rem;
+  padding-bottom: 0.25rem;
+  color: var(--black);
+  margin-left: 0.1rem;
+  background-color: var(--highlight);
+  border: none;
+  font-weight: bold;
+  font-size: 0.7rem;
+  &:hover {
+    color: red;
+  }
 }
 
 #placeholderInvisibleButton {
-  padding-right: .5rem;
-  padding-top: .25rem;
-  padding-left: .5rem;
-  padding-bottom: .25rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-left: 0.5rem;
+  padding-bottom: 0.25rem;
   border: none;
   color: white;
   background-color: white;
   opacity: 0;
 }
-
-// @media (min-width: 600px) {
-//   .postDateTrim {
-//     display: inline-block;
-//   }
-// }
 
 // hide or show formatted date based on screen size
 
