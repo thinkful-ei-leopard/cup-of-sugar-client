@@ -59,7 +59,6 @@ class Header extends Component {
 
   render() {
     const { location } = this.props;
-    console.log(location);
     if (this.state.loading === true) {
       return <></>;
     }

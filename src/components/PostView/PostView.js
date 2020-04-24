@@ -3,23 +3,49 @@ import PostsContext from '../../contexts/PostsContext';
 import Comment from '../Comment/Comment';
 import styles from './PostView.module.scss';
 import cx from 'classnames';
-import { Link } from 'react-router-dom';
+import Button from '../Button/Button'
+import { Link } from 'react-router-dom'
 
 export default class PostView extends React.Component {
-  static contextType = PostsContext;
+    state = {
+        comments: null
+    }
+    static contextType = PostsContext
 
-  render() {
-    const { posts, comments } = this.context;
-    const post = posts.find((post) => post.id.toString() === this.props.id);
-    const commentsForPost = comments.filter(
-      (comment) => comment.post_id.toString() === this.props.id
-    );
+    componentDidMount () {
+        
+    }
 
-    // console.log(post.date_modified)
-    // const trimDate = post.date_modified.slice(0, 10);
+    componentDidUpdate() {
+        console.log(this.context)
+        let comments = this.context.comments.filter(comment => comment.post_id.toString() === this.props.id);
+        if (this.state.comments === null) {
+        this.setState({ comments: comments })}
+    }
 
-    if (!post) {
-      return <></>;
+    changeCommentState = () => {
+        this.setState({ comment: this.context.comments })
+    }
+
+    render() {
+        console.log(this.context)
+        console.log(this.state)
+        const { posts, comments } = this.context
+        const post = posts.find(post => post.id.toString() === this.props.id)
+        // const commentsForPost = comments.filter(comment => comment.post_id.toString() === this.props.id);
+        if(!post || !this.state.comments) {
+            return(
+                <></>
+            )
+        }
+        let type;
+        if(post.type === 'request') {
+            type = 'styles.request'
+        }
+        if(post.type === 'offer') {
+            type = 'styles.offer'
+        }
+
     }
     return (
       <section className={styles.section}>
@@ -45,6 +71,9 @@ export default class PostView extends React.Component {
         </div>
         <div className={styles.Comments}>
           <h2 className={styles.h3}>Comments</h2>
+                <Link to='/add-comment'>
+                <Button type='submit' className={styles.addCommentButton}>Add Comment</Button>
+                </Link>
           <ul className={styles.ul}>
             {commentsForPost.map((comment) => (
               <Comment key={comment.id} comment={comment} />
