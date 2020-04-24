@@ -1,55 +1,77 @@
 @import '../../styles/variables';
 @import '../../styles/_breakpoints';
 
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.postDetail {
+  border: 2px solid var(--black);
+  width: 70%;
+  max-width: 400px;
+  margin: 150px auto 0;
+  padding: 0 1.5rem 2rem;
+  background-color: white;
+  opacity: 100%;
+  top: 100px;
+}
+
+.Comments {
+  margin: 0 auto;
+  width: 70%;
+  max-width: 400px;
+  border: 2px solid var(--black);
+}
+
 .section h1 {
-    text-align: center;
-    padding-top: 3em;
+  text-align: center;
+  padding-top: 3em;
 }
 
 .ul {
-    list-style: none;
-    border-top: solid 1px black;
+  list-style: none;
+  //   border: solid 2px var(--black);
 }
 
 .requestStyle {
-    color: var(--dark2);
+  color: var(--dark2);
 }
 
 .offerStyle {
-    color: var(--dark1);
+  color: var(--dark1);
 }
 
 .span {
-    margin-left: 15%;
-    text-align: center;
+  margin-left: 15%;
+  text-align: center;
 }
 
 .title {
-    margin-left: 5%;
-    margin-right: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .description {
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-bottom: .5em;
-    border-bottom: 1px solid black;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 0.5em;
+  // border-bottom: 1px solid black;
 }
 
 .name {
-    margin-top: -1em;
-    display: inline-flex;
-    margin-left: 10%
+  margin-top: -1em;
+  display: inline-flex;
+  margin-left: 10%;
 }
 
 .date {
-    margin-top: -.5em;
-    text-align: center;
+  margin-top: -0.5em;
+  text-align: center;
 }
 
 .h3 {
-    text-align: center;
-    background-color: var(--light1);
-    margin-top: -.85em;
-    margin-bottom: 0em;
+  text-align: center;
+  background-color: var(--light1);
+  margin-top: -0.85em;
 }
