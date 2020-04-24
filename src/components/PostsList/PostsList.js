@@ -6,7 +6,6 @@ import styles from './PostsList.module.scss';
 export default class PostsList extends React.Component {
   static contextType = PostsContext;
   render() {
-    console.log(this.context)
     const { posts } = this.context;
     return (
       <ul className={styles.postsList}>

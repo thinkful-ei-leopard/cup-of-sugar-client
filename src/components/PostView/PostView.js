@@ -7,26 +7,44 @@ import Button from '../Button/Button'
 import { Link } from 'react-router-dom'
 
 export default class PostView extends React.Component {
+    state = {
+        comments: null
+    }
     static contextType = PostsContext
 
+    componentDidMount () {
+        
+    }
+
+    componentDidUpdate() {
+        console.log(this.context)
+        let comments = this.context.comments.filter(comment => comment.post_id.toString() === this.props.id);
+        if (this.state.comments === null) {
+        this.setState({ comments: comments })}
+    }
+
+    changeCommentState = () => {
+        this.setState({ comment: this.context.comments })
+    }
+
     render() {
+        console.log(this.context)
+        console.log(this.state)
         const { posts, comments } = this.context
         const post = posts.find(post => post.id.toString() === this.props.id)
-        const commentsForPost = comments.filter(comment => comment.post_id.toString() === this.props.id);
-        if(!post) {
+        // const commentsForPost = comments.filter(comment => comment.post_id.toString() === this.props.id);
+        if(!post || !this.state.comments) {
             return(
                 <></>
             )
         }
         let type;
-        console.log(post.type)
         if(post.type === 'request') {
             type = 'styles.request'
         }
         if(post.type === 'offer') {
             type = 'styles.offer'
         }
-        console.log(type)
         return (
             <section className={styles.section}>
                 <h1 className={cx(styles.h1, post.type === 'offer' ? styles.offerStyle : styles.requestStyle)}>{post.type}</h1>
@@ -40,7 +58,7 @@ export default class PostView extends React.Component {
                 <Button type='submit' className={styles.addCommentButton}>Add Comment</Button>
                 </Link>
                 <ul className={styles.ul}>
-                    {commentsForPost.map(comment => <Comment key={comment.id} comment={comment} />)}
+                    {this.state.comments.map(comment => <Comment key={comment.id} comment={comment} />)}
                 </ul>
             </section>
         )
