@@ -45,8 +45,6 @@ export default class PostView extends React.Component {
         if(post.type === 'offer') {
             type = 'styles.offer'
         }
-
-    }
     return (
       <section className={styles.section}>
         <div className={styles.postDetail}>
@@ -75,7 +73,7 @@ export default class PostView extends React.Component {
                 <Button type='submit' className={styles.addCommentButton}>Add Comment</Button>
                 </Link>
           <ul className={styles.ul}>
-            {commentsForPost.map((comment) => (
+            {this.state.comments.map((comment) => (
               <Comment key={comment.id} comment={comment} />
             ))}
           </ul>
