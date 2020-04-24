@@ -22,7 +22,7 @@ export class AddCommentForm extends Component {
   }
 
   render() {
-    console.log(this.context.currentPostId)
+    // console.log(this.context.currentPostId)
 
     return (
       <form onSubmit={this.handleSubmit}>

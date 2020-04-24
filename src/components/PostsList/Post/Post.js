@@ -13,7 +13,7 @@ export default class Post extends React.Component {
     return (
       <Link to={`/post/${post.id}`}>
         <li className={styles.Post}>
-          <div className={styles.typeCircle}></div>
+          {/* <div className={styles.typeCircle}></div> */}
 
           <span
             className={cx(
