@@ -7,18 +7,6 @@ import CommentsApiService from '../../services/comments-api-service'
 
 export default class Comment extends React.Component {
 
-    state = {
-        comment: {},
-    }
-
-    componentDidMount() {
-        this.setState({ comment: this.props.comment })
-    }
-
-    changeCommentState = () => {
-        this.setState({ comment: {} })
-    }
-
     static contextType = UserContext
 
     render() {
@@ -42,6 +30,5 @@ export default class Comment extends React.Component {
                 <p className={styles.content}>{comment.content}</p>
             </li>
         )
-        
     }
 }
