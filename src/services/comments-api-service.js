@@ -13,8 +13,8 @@ const CommentsApiService = {
     );
   },
 
-  postComment(articleId, content) {
-    return fetch(`${config.API_ENDPOINT}/comments/${articleId}`, {
+  postComment(postId, content) {
+    return fetch(`${config.API_ENDPOINT}/comments/${postId}`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -28,8 +28,8 @@ const CommentsApiService = {
     );
   },
 
-  handleCommentDelete(id) {
-    return fetch(`${config.API_ENDPOINT}/comments/comment/${id}`, {
+  handleCommentDelete(commentId, postId) {
+    return fetch(`${config.API_ENDPOINT}/comments/${postId}/${commentId}`, {
       method: 'DELETE',
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`,

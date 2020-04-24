@@ -18,7 +18,7 @@ export default class Comment extends React.Component {
           </h3>
           <Button
             onClick={(e) => {
-              CommentsApiService.handleCommentDelete(this.props.comment.id);
+              CommentsApiService.handleCommentDelete(this.props.comment.id, this.props.comment.post_id);
               this.props.deleteComment(this.props.comment.id);
             }}
             title="Delete"
