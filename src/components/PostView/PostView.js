@@ -42,7 +42,7 @@ export default class PostView extends React.Component {
     }
 
     return (
-      <section className={styles.section}>
+      <section className={styles.PostView}>
         <div className={styles.postDetail}>
           <h1
             className={cx(

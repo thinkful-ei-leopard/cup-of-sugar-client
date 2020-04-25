@@ -4,7 +4,10 @@
 .loginSection {
   margin: 0 auto;
   text-align: center;
-  background-image: linear-gradient(#fff 20%, var(--light2) 100%);
+  background-image: linear-gradient(
+    rgba(88, 57, 154, 0),
+    rgba(73, 57, 154, 0.3)
+  );
   height: 100vh;
   overflow-y: hidden;
   top: 20px;
