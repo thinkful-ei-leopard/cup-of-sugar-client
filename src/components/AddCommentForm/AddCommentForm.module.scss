@@ -1,6 +1,19 @@
 @import '../../styles/_variables';
 @import '../../styles/_breakpoints';
 
+.AddComment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(88, 57, 154, 0), rgba(73, 57, 154, 0.3))
+    no-repeat center center fixed;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .addCommentForm {
   border: solid 2px var(--black);
   text-align: center;
@@ -8,7 +21,9 @@
   padding: 1rem;
   position: relative;
   top: 150px;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem;
+  top: 0;
+//   background-color: white;
 }
 
 .addCommentLabel,
@@ -26,7 +41,7 @@
 .dashboardLink {
   text-align: center;
   position: relative;
-  top: 150px;
+  top: 0;
   transition: color 0.2s;
   &:hover {
     color: var(--dark1);

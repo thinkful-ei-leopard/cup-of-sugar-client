@@ -2,18 +2,25 @@
 @import '../../styles/_breakpoints';
 
 .AddPost {
-  padding-top: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(
+    rgba(88, 57, 154, 0),
+    rgba(73, 57, 154, 0.3)
+  )
+  no-repeat center center fixed;
+  min-height: 100%;
+  position: absolute;
+  width: 100%;
 }
 
 .addPostForm {
   border: 2px solid var(--black);
   width: 85%;
   max-width: 450px;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem;
   padding: 2rem 2rem 3rem;
   background-color: white;
   opacity: 1;

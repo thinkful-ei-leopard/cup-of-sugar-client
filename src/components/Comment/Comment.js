@@ -32,12 +32,16 @@ export default class Comment extends React.Component {
       <li className={styles.commentLi}>
         <div className={styles.commentDeleteContainer}>
           <p className={styles.content}>
-            {comment.content} --{' '}
+            {comment.content} <br />
+            --{' '}
             <span className={styles.commenterName}>
               {comment.name} ({comment.user_name})
-            </span>{deleteButton}
+            </span>{' '}
+            <span className={styles.datePosted}>
+              {comment.date_modified.slice(0, 10)}
+            </span>
           </p>
-          
+          {deleteButton}
         </div>
       </li>
     );
