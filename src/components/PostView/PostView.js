@@ -40,30 +40,6 @@ export default class PostView extends React.Component {
       type = 'styles.offer';
     }
 
-    let deleteButton =
-      this.context.user.id === post.user_id ? (
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            PostsApiService.deletePost(post.id);
-            this.props.deletePost(post.id);
-          }}
-          type="delete"
-          title="Delete"
-          className={styles.deletePostButton}
-          id={styles.deletePostButton}>
-          X
-        </Button>
-      ) : (
-        <Button
-          type="delete"
-          aria-hidden="true"
-          className={styles.deletePostButton}
-          id={styles.placeholderInvisibleButton}>
-          X
-        </Button>
-      );
-
     return (
       <section className={styles.PostView}>
         <div className={styles.postDetail}>
