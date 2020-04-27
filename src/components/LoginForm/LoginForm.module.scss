@@ -20,6 +20,7 @@
 .loginHeader {
   font-size: 1.5rem;
   color: var(--black);
+  margin: 1.5rem auto;
 }
 
 .loginLabel {
@@ -29,6 +30,10 @@
 .loginInput {
   margin-bottom: 0.5rem;
   width: 150px;
+}
+
+.loginButton {
+  margin-bottom: .5rem;
 }
 
 .userNameDiv,

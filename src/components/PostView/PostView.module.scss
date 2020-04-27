@@ -9,7 +9,7 @@
   min-height: 100%;
   position: absolute;
   width: 100%;
-  z-index: -1;
+  // z-index: -1;
 }
 
 .postDetail {
@@ -101,6 +101,7 @@
     color: var(--dark1);
   }
   position: relative;
+  margin-bottom: 75px;
 }
 
 #placeholderInvisibleButton {

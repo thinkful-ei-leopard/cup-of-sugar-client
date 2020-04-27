@@ -67,7 +67,7 @@ export default class PostView extends React.Component {
           X
         </Button>
       );
-
+    
     return (
       <section className={styles.PostView}>
         <div className={styles.postDetail}>
