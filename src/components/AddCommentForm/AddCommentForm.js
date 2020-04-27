@@ -35,7 +35,7 @@ export class AddCommentForm extends Component {
     CommentsApiService.postComment(this.context.currentPostId, content.value)
       .then((res) => {
         content.value = '';
-        this.context.addComment(res);
+        // this.context.addComment(res);
       })
       .catch((res) => {
         console.log(res.error);
