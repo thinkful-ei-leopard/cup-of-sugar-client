@@ -1,5 +1,5 @@
 import React from 'react';
-import PostsContext from '../../contexts/PostsContext';
+import UserContext from '../../contexts/UserContext';
 import Comment from '../Comment/Comment';
 import styles from './PostView.module.scss';
 import cx from 'classnames';
@@ -8,23 +8,27 @@ import { Link } from 'react-router-dom';
 import PostsApiService from '../../services/posts-api-service'
 
 export default class PostView extends React.Component {
+
   state = {
     comments: null,
   };
 
-  static contextType = PostsContext;
-
+  static contextType = UserContext;
   componentDidUpdate() {
-    let comments = this.context.comments.filter(
-      (comment) => comment.post_id.toString() === this.props.id
-    );
     if (this.state.comments === null) {
-      this.setState({ comments: comments });
+      this.setState({ comments: this.props.comments });
     }
   }
 
+  handleDelete = () => {
+    const history = this.props.history;
+    console.log(history)
+    history.goBack()
+  }
+
   render() {
-    const { posts, comments } = this.context;
+    const user = this.context.user;
+    const { posts, comments } = this.props;
     const post = posts.find((post) => post.id.toString() === this.props.id);
     const commentsForPost = comments.filter(
       (comment) => comment.post_id.toString() === this.props.id
@@ -40,6 +44,30 @@ export default class PostView extends React.Component {
       type = 'styles.offer';
     }
 
+    let deleteButton =
+      user.id === post.user_id ? (
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            PostsApiService.deletePost(post.id);
+            this.handleDelete();
+          }}
+          type="delete"
+          title="Delete"
+          className={styles.deletePostButton}
+          id={styles.deletePostButton}>
+          delete
+        </Button>
+      ) : (
+        <Button
+          type="delete"
+          aria-hidden="true"
+          className={styles.deletePostButton}
+          id={styles.placeholderInvisibleButton}>
+          X
+        </Button>
+      );
+    
     return (
       <section className={styles.PostView}>
         <div className={styles.postDetail}>
@@ -61,6 +89,7 @@ export default class PostView extends React.Component {
               {post.date_modified.slice(0, 10)}
             </span>
           </p>
+          {deleteButton}
         </div>
         <div className={styles.Comments}>
           <h2 className={styles.commentsHeader}>Comments</h2>
