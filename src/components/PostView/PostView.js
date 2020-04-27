@@ -5,6 +5,7 @@ import styles from './PostView.module.scss';
 import cx from 'classnames';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
+import PostsApiService from '../../services/posts-api-service'
 
 export default class PostView extends React.Component {
   state = {
@@ -12,8 +13,6 @@ export default class PostView extends React.Component {
   };
 
   static contextType = PostsContext;
-
-//   componentDidMount() {}
 
   componentDidUpdate() {
     let comments = this.context.comments.filter(
@@ -40,6 +39,30 @@ export default class PostView extends React.Component {
     if (post.type === 'offer') {
       type = 'styles.offer';
     }
+
+    let deleteButton =
+      this.context.user.id === post.user_id ? (
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            PostsApiService.deletePost(post.id);
+            this.props.deletePost(post.id);
+          }}
+          type="delete"
+          title="Delete"
+          className={styles.deletePostButton}
+          id={styles.deletePostButton}>
+          X
+        </Button>
+      ) : (
+        <Button
+          type="delete"
+          aria-hidden="true"
+          className={styles.deletePostButton}
+          id={styles.placeholderInvisibleButton}>
+          X
+        </Button>
+      );
 
     return (
       <section className={styles.PostView}>
