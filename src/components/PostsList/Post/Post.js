@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import UserContext from '../../../contexts/UserContext';
 import Button from '../../Button/Button';
 import PostsApiService from '../../../services/posts-api-service';
+import DeleteConfirmation from '../../DeleteConfirmation/DeleteConfirmation'
 
 export default class Post extends React.Component {
   state = {
@@ -62,6 +63,8 @@ export default class Post extends React.Component {
             {title}
             {this.state.hover && deleteButton}
           </span>
+          {/* <DeleteConfirmation>  <p>you want to delete???</p>         </DeleteConfirmation> */}
+
 
           <span className={cx(styles.postType, styles.postEl)}>
             {post.type}
