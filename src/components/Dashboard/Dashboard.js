@@ -5,18 +5,22 @@ import Button from '../Button/Button';
 import PostsList from '../PostsList/PostsList';
 import styles from './Dashboard.module.scss';
 import UserContext from '../../contexts/UserContext';
+import PostsContext from '../../contexts/PostsContext';
 
 export class Dashboard extends Component {
-  static contextType = UserContext;
 
   render() {
     return (
       <section className={styles.Dashboard}>
         {/* <div className={styles.contentWrapper}> */}
-          <p className={styles.welcomeMessage}>
+        <UserContext.Consumer>
+          {({user}) => (
+            <p className={styles.welcomeMessage}>
             Welcome to the neighborhood,
-            <span className={styles.userSpan}> {this.context.user.name}</span>!
+            <span className={styles.userSpan}> {user.name}</span>!
           </p>
+          )}
+        </UserContext.Consumer>
   
           <Link to="/add-post">
             <Button className={cx(styles.addPostButton)}>
@@ -38,26 +42,45 @@ export class Dashboard extends Component {
   
             <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
           </div>
-          <div className={styles.bulletinContainer}>
-            <header className={styles.bulletinColumnHeaders}>
-              <span className={cx(styles.columnHeader, styles.titleHeader)}>
-                Title
-              </span>
-              <span className={cx(styles.columnHeader, styles.typeHeader)}>
-                Type
-              </span>
-              <span className={cx(styles.columnHeader, styles.commentsHeader)}>
-                # Comments
-              </span>
-              <span className={cx(styles.columnHeader, styles.postedByHeader)}>
-                Posted By
-              </span>
-              <span className={cx(styles.columnHeader, styles.datePostedHeader)}>
-                Date <span className={styles.posted}>Posted</span>
-              </span>
-            </header>
-            <PostsList deletePost={this.props.deletePost} />
-          </div>
+          <PostsContext.Consumer>
+            {({sortPostsByTitle, sortPostsByType, sortPostsByName, sortPostsByComments, sortPostsByDate}) => (
+              <div className={styles.bulletinContainer}>
+              <header className={styles.bulletinColumnHeaders}>
+                <span 
+                  className={cx(styles.columnHeader, styles.titleHeader)}
+                  onClick={sortPostsByTitle}
+                >
+                  Title
+                </span>
+                <span 
+                  className={cx(styles.columnHeader, styles.typeHeader)}
+                  onClick= {sortPostsByType}
+                >
+                  Type
+                </span>
+                <span 
+                  className={cx(styles.columnHeader, styles.commentsHeader)}
+                  onClick={sortPostsByComments}
+                >
+                  # Comments
+                </span>
+                <span 
+                  className={cx(styles.columnHeader, styles.postedByHeader)}
+                  onClick={sortPostsByName}  
+                >
+                  Posted By
+                </span>
+                <span 
+                  className={cx(styles.columnHeader, styles.datePostedHeader)}
+                  onClick={sortPostsByDate}  
+                >
+                  Date <span className={styles.posted}>Posted</span>
+                </span>
+              </header>
+              <PostsList deletePost={this.props.deletePost} />
+            </div>
+            )}
+          </PostsContext.Consumer>
         {/* </div> */}
       </section>
     );
