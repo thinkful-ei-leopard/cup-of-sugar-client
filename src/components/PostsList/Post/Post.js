@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import UserContext from '../../../contexts/UserContext';
 import Button from '../../Button/Button';
 import PostsApiService from '../../../services/posts-api-service';
+import Confirm from '../../Confirm/Confirm';
+import '@reach/dialog/styles.css';
 
 export default class Post extends React.Component {
   state = {
@@ -24,18 +26,21 @@ export default class Post extends React.Component {
 
     let deleteButton =
       this.context.user.id === post.user_id ? (
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            PostsApiService.deletePost(post.id);
-            this.props.deletePost(post.id);
-          }}
-          type="delete"
-          title="Delete"
-          className={styles.deletePostButton}
-          id={styles.deletePostButton}>
-          X
-        </Button>
+        <Confirm title="Confirm" description="Are you sure?">
+          {(confirm) => (
+            <Button
+              type="delete"
+              title="Delete"
+              onClick={confirm(() => {
+                PostsApiService.deletePost(post.id);
+                this.props.deletePost(post.id);
+              })}
+              className={styles.deletePostButton}
+              id={styles.deletePostButton}>
+              X
+            </Button>
+          )}
+        </Confirm>
       ) : (
         <Button
           type="delete"
@@ -47,39 +52,36 @@ export default class Post extends React.Component {
       );
 
     return (
-      <Link to={`/post/${post.id}`}>
-        <li
-          className={styles.Post}
-          onMouseEnter={this.handleListHoverOn}
-          onMouseLeave={this.handleListHoverOff}>
-          {/* <div className={styles.typeCircle}></div> */}
-          <span
+      <li
+        className={styles.Post}
+        onMouseEnter={this.handleListHoverOn}
+        onMouseLeave={this.handleListHoverOff}>
+        {/* <div className={styles.typeCircle}></div> */}
+        <span className={cx(styles.postTitle, styles.postEl)}>
+          <Link
             className={cx(
-              styles.postTitle,
-              styles.postEl,
               post.type === 'offer' ? styles.offerStyle : styles.requestStyle
-            )}>
+            )}
+            to={`/post/${post.id}`}>
             {title}
-            {this.state.hover && deleteButton}
-          </span>
+          </Link>
+          {this.state.hover && deleteButton}
+        </span>
 
-          <span className={cx(styles.postType, styles.postEl)}>
-            {post.type}
-          </span>
-          <span className={cx(styles.postComments, styles.postEl)}>
-            {post.comments}
-          </span>
-          <span className={cx(styles.postUserName, styles.postEl)}>
-            {post.name}
-          </span>
-          <span className={cx(styles.postDateFull, styles.postEl)}>
-            {post.date_modified.slice(0, 10)}
-          </span>
-          <span className={cx(styles.postDateTrim, styles.postEl)}>
-            {post.date_modified.slice(5, 10)}
-          </span>
-        </li>
-      </Link>
+        <span className={cx(styles.postType, styles.postEl)}>{post.type}</span>
+        <span className={cx(styles.postComments, styles.postEl)}>
+          {post.comments}
+        </span>
+        <span className={cx(styles.postUserName, styles.postEl)}>
+          {post.name}
+        </span>
+        <span className={cx(styles.postDateFull, styles.postEl)}>
+          {post.date_modified.slice(0, 10)}
+        </span>
+        <span className={cx(styles.postDateTrim, styles.postEl)}>
+          {post.date_modified.slice(5, 10)}
+        </span>
+      </li>
     );
   }
 }

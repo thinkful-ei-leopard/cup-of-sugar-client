@@ -9,7 +9,10 @@ import PostsContext from '../../contexts/PostsContext';
 
 export class Dashboard extends Component {
 
+  static contextType = UserContext;
+
   render() {
+
     return (
       <section className={styles.Dashboard}>
         {/* <div className={styles.contentWrapper}> */}
