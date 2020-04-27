@@ -7,6 +7,8 @@ const PostsContext = React.createContext({
   titleSort: null,
   typeSort: null,
   nameSort: null,
+  commentsSort: null,
+  dateSort: null,
   setPosts: () => {},
   setComments: () => {},
   addPost: () => {},
@@ -26,6 +28,8 @@ export class PostsProvider extends Component {
     titleSort: null,
     typeSort: null,
     nameSort: null,
+    commentsSort: null,
+    dateSort: null,
   };
 
   setComments = (comments) => {
@@ -70,11 +74,11 @@ export class PostsProvider extends Component {
       this.setState({
         titleSort: true,
         typeSort: null,
-        nameSort: null
+        nameSort: null,
+        commentsSort: null,
+        dateSort: null,
       })
-    }
-
-    if(this.state.titleSort) {
+    } else if(this.state.titleSort) {
       this.setState({
         posts: this.state.posts.sort((a,b) => {
           if (a.title.toLowerCase() < b.title.toLowerCase()) {
@@ -87,9 +91,7 @@ export class PostsProvider extends Component {
         }),
         titleSort: !this.state.titleSort
       })
-    }
-
-    if(!this.state.titleSort) {
+    } else if(!this.state.titleSort) {
       this.setState({
         posts: this.state.posts.reverse(),
         titleSort: !this.state.titleSort
@@ -102,11 +104,11 @@ export class PostsProvider extends Component {
       this.setState({
         typeSort: true,
         titleSort: null,
-        nameSort: null
+        nameSort: null,
+        commentsSort: null,
+        dateSort: null,
       })
-    }
-
-    if(this.state.typeSort) {
+    } else if(this.state.typeSort) {
       this.setState({
         posts: this.state.posts.sort((a,b) => {
           if (a.type.toLowerCase() < b.type.toLowerCase()) {
@@ -119,9 +121,7 @@ export class PostsProvider extends Component {
         }),
         typeSort: !this.state.typeSort
       })
-    }
-
-    if(!this.state.typeSort) {
+    } else if(!this.state.typeSort) {
       this.setState({
         posts: this.state.posts.reverse(),
         typeSort: !this.state.typeSort
@@ -134,11 +134,11 @@ export class PostsProvider extends Component {
       this.setState({
         nameSort: true,
         titleSort: null,
-        typeSort: null
+        typeSort: null,
+        commentsSort: null,
+        dateSort: null,
       })
-    }
-
-    if(this.state.nameSort) {
+    } else if(this.state.nameSort) {
       this.setState({
         posts: this.state.posts.sort((a,b) => {
           if (a.name.toLowerCase() < b.name.toLowerCase()) {
@@ -151,12 +151,57 @@ export class PostsProvider extends Component {
         }),
         nameSort: !this.state.nameSort
       })
-    }
-
-    if(!this.state.nameSort) {
+    } else if(!this.state.nameSort) {
       this.setState({
         posts: this.state.posts.reverse(),
         nameSort: !this.state.nameSort
+      })
+    }
+  }
+
+  sortPostsByComments = () => {
+    if(this.state.commentsSort === null) {
+      this.setState({
+        nameSort: null,
+        titleSort: null,
+        typeSort: null,
+        commentsSort: true,
+        dateSort: null,
+      })
+    } else if(this.state.commentsSort) {
+      this.setState({
+        posts: this.state.posts.sort((a,b) => {
+          return a.comments - b.comments
+        }),
+        commentsSort: !this.state.commentsSort
+      })
+    } else if(!this.state.commentsSort) {
+      this.setState({
+        posts: this.state.posts.reverse(),
+        commentsSort: !this.state.commentsSort
+      })
+    }
+  }
+
+  sortPostsByDate = () => {
+    if(this.state.dateSort === null) {
+      this.setState({
+        nameSort: null,
+        titleSort: null,
+        typeSort: null,
+        dateSort: true
+      })
+    } else if(this.state.dateSort) {
+      this.setState({
+        posts: this.state.posts.sort((a,b) => {
+          return new Date(a.date) - new Date(b.date)
+        }),
+        dateSort: !this.state.dateSort
+      })
+    } else if(!this.state.dateSort) {
+      this.setState({
+        posts: this.state.posts.reverse(),
+        dateSort: !this.state.dateSort
       })
     }
   }
@@ -176,6 +221,8 @@ export class PostsProvider extends Component {
       sortPostsByTitle: this.sortPostsByTitle,
       sortPostsByType: this.sortPostsByType,
       sortPostsByName: this.sortPostsByName,
+      sortPostsByComments: this.sortPostsByComments,
+      sortPostsByDate: this.sortPostsByDate,
     };
 
     return (
