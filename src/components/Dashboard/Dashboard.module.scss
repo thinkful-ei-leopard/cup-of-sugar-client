@@ -186,12 +186,14 @@
   margin: 0 1rem 0 0;
   text-align: center;
   // border: 1px solid red;
+  display: inline-block;
 }
 
 .titleHeader {
   width: 360px;
   min-width: 315px;
   text-align: left;
+  display: inline-block;
 }
 
 @media (max-width: 600px) {

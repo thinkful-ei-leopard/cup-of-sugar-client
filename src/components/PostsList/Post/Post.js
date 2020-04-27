@@ -28,19 +28,17 @@ export default class Post extends React.Component {
       this.context.user.id === post.user_id ? (
         <Confirm title="Confirm" description="Are you sure?">
           {(confirm) => (
-            <form
-              onSubmit={confirm(() => {
+            <Button
+              type="delete"
+              title="Delete"
+              onClick={confirm(() => {
                 PostsApiService.deletePost(post.id);
                 this.props.deletePost(post.id);
-              })}>
-              <Button
-                type="delete"
-                title="Delete"
-                className={styles.deletePostButton}
-                id={styles.deletePostButton}>
-                X
-              </Button>
-            </form>
+              })}
+              className={styles.deletePostButton}
+              id={styles.deletePostButton}>
+              X
+            </Button>
           )}
         </Confirm>
       ) : (
@@ -59,11 +57,11 @@ export default class Post extends React.Component {
         onMouseEnter={this.handleListHoverOn}
         onMouseLeave={this.handleListHoverOff}>
         {/* <div className={styles.typeCircle}></div> */}
-        <span className={cx(styles.PostTitle, styles.postEl)}>
+        <span className={cx(styles.postTitle, styles.postEl)}>
           <Link
-            className={
+            className={cx(
               post.type === 'offer' ? styles.offerStyle : styles.requestStyle
-            }
+            )}
             to={`/post/${post.id}`}>
             {title}
           </Link>

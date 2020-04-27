@@ -39,7 +39,7 @@ export default class Confirm extends React.Component {
         {this.state.open && (
           <Dialog
             aria-label="delete confirmation"
-            className={styles.ConfirmDialog}>
+             id={styles.ConfirmDialog}>
             <h1>{this.props.title}</h1>
             <p>{this.props.description}</p>
 

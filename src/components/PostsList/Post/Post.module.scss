@@ -16,6 +16,7 @@
   margin-right: 1rem;
   // border: 1px solid red;
   text-align: center;
+  display: inline-block;
 }
 
 .typeCircle {
@@ -30,10 +31,10 @@
   width: 360px;
   min-width: 315px;
   text-align: left;
-  border: 2px solid red;
+  display: flex;
+  // border: 2px solid red;
+  // display: inline-block;
 }
-
-
 
 .postType {
   min-width: 70px;
@@ -48,17 +49,12 @@
 
 .offerStyle,
 .requestStyle {
-  width: 360px;
-  min-width: 315px;
-  text-align: left;
-  display: inline-block;
-  border: 2px solid red;
+  display: flex;
+  justify-content: flex-start;
 }
 
 @media (max-width: 600px) {
-  .postTitle,
-  .offerStyle,
-  .requestStyle {
+  .postTitle {
     min-width: 150px;
   }
 }
@@ -125,6 +121,7 @@
   &:hover {
     color: red;
   }
+  // display: inline-block;
 }
 
 #placeholderInvisibleButton {

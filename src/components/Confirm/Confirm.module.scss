@@ -1,10 +1,11 @@
 @import '../../styles/_variables';
 @import '../../styles/_breakpoints';
 
-.ConfirmDialog {
+#ConfirmDialog {
   padding: 1rem;
   background-color: white;
-  margin: 0 auto;
+  margin: 100px auto 0;
+  width: 90%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -12,12 +13,29 @@
   border: 2px solid var(--black);
 }
 
+@include mobilePortrait {
+  #ConfirmDialog {
+    width: 80%;
+    max-width: 450px;
+    padding: 2rem;
+  }
+}
+
 .buttonGroup {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   justify-content: space-between;
-  width: 280px;
+  align-items: center;
+  width: 250px;
   margin: 2rem auto 1rem;
+}
+
+@include mobilePortrait {
+  .buttonGroup {
+    flex-direction: row;
+    margin: 2rem auto 1rem;
+    width: 280px;
+  }
 }
 
 .cancelButton,
@@ -37,10 +55,17 @@
 }
 
 .confirmButton {
+  margin-bottom: 1.5rem;
   background-color: var(--light2);
   transition: background-color 0.2s;
   &:hover {
     background-color: var(--warning);
+  }
+}
+
+@include mobilePortrait {
+  .confirmButton {
+    margin: 0;
   }
 }
 
@@ -50,4 +75,10 @@
   &:hover {
     color: white;
   }
+}
+
+form {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }
