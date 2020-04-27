@@ -4,7 +4,7 @@ const PostsContext = React.createContext({
   posts: [],
   comments: [],
   currentPostId: null,
-  titleSorted: false,
+  titleSort: null,
   setPosts: () => {},
   setComments: () => {},
   addPost: () => {},
@@ -22,7 +22,7 @@ export class PostsProvider extends Component {
     posts: [],
     comments: [],
     currentPostId: null,
-    titleSorted: false,
+    titleSort: null,
   };
 
   setComments = (comments) => {
@@ -63,11 +63,13 @@ export class PostsProvider extends Component {
   };
 
   sortPostsByTitle = () => {
-    this.setState({
-      titleSorted: !this.state.titleSorted
-    })
+    if(this.state.titleSort === null) {
+      this.setState({
+        titleSort: true
+      })
+    }
 
-    if(this.state.titleSorted) {
+    if(this.state.titleSort) {
       this.setState({
         posts: this.state.posts.sort((a,b) => {
           if (a.title.toLowerCase() < b.title.toLowerCase()) {
@@ -77,13 +79,17 @@ export class PostsProvider extends Component {
             return 1;
           }
           return 0;
-        })
+        }),
+        titleSort: !this.state.titleSort
       })
     }
 
-    this.setState({
-      posts: this.state.posts.reverse()
-    })
+    if(!this.state.titleSort) {
+      this.setState({
+        posts: this.state.posts.reverse(),
+        titleSort: !this.state.titleSort
+      })
+    }
   }
 
   render() {
