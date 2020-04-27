@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { Dialog } from '@reach/dialog';
+import cx from 'classnames';
 
-export default class DeleteConfirmation extends React.Component {
+import styles from './Confirm.module.scss';
+
+export default class Confirm extends React.Component {
   state = {
     open: false,
     callback: null,
@@ -30,19 +33,27 @@ export default class DeleteConfirmation extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         {this.props.children(this.show)}
 
         {this.state.open && (
-          <Dialog>
+          <Dialog
+            aria-label="delete confirmation"
+            className={styles.ConfirmDialog}>
             <h1>{this.props.title}</h1>
             <p>{this.props.description}</p>
 
-            <button onClick={this.hide}>Cancel</button>
-            <button onClick={this.confirm}>OK</button>
+            <div className={styles.buttonGroup}>
+              <button className={styles.cancelButton} onClick={this.hide}>
+                <p className="buttonText">Cancel</p>
+              </button>
+              <button className={styles.confirmButton} onClick={this.confirm}>
+                <p className={cx(styles.deleteText, "buttonText")}>Delete</p>
+              </button>
+            </div>
           </Dialog>
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

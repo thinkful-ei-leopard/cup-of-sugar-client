@@ -7,9 +7,11 @@ import styles from './Dashboard.module.scss';
 import UserContext from '../../contexts/UserContext';
 
 export class Dashboard extends Component {
+
   static contextType = UserContext;
 
   render() {
+
     return (
       <section className={styles.Dashboard}>
         {/* <div className={styles.contentWrapper}> */}
