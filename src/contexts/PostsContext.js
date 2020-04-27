@@ -5,6 +5,8 @@ const PostsContext = React.createContext({
   comments: [],
   currentPostId: null,
   titleSort: null,
+  typeSort: null,
+  nameSort: null,
   setPosts: () => {},
   setComments: () => {},
   addPost: () => {},
@@ -12,7 +14,6 @@ const PostsContext = React.createContext({
   setPostId: () => {},
   deletePost: () => {},
   deleteComment: () => {},
-  sortPostsByKey: () => {}
 });
 
 export default PostsContext;
@@ -23,6 +24,8 @@ export class PostsProvider extends Component {
     comments: [],
     currentPostId: null,
     titleSort: null,
+    typeSort: null,
+    nameSort: null,
   };
 
   setComments = (comments) => {
@@ -65,7 +68,9 @@ export class PostsProvider extends Component {
   sortPostsByTitle = () => {
     if(this.state.titleSort === null) {
       this.setState({
-        titleSort: true
+        titleSort: true,
+        typeSort: null,
+        nameSort: null
       })
     }
 
@@ -92,6 +97,70 @@ export class PostsProvider extends Component {
     }
   }
 
+  sortPostsByType = () => {
+    if(this.state.typeSort === null) {
+      this.setState({
+        typeSort: true,
+        titleSort: null,
+        nameSort: null
+      })
+    }
+
+    if(this.state.typeSort) {
+      this.setState({
+        posts: this.state.posts.sort((a,b) => {
+          if (a.type.toLowerCase() < b.type.toLowerCase()) {
+            return -1;
+          }
+          if (a.type.toLowerCase() > b.type.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        }),
+        typeSort: !this.state.typeSort
+      })
+    }
+
+    if(!this.state.typeSort) {
+      this.setState({
+        posts: this.state.posts.reverse(),
+        typeSort: !this.state.typeSort
+      })
+    }
+  }
+
+  sortPostsByName = () => {
+    if(this.state.nameSort === null) {
+      this.setState({
+        nameSort: true,
+        titleSort: null,
+        typeSort: null
+      })
+    }
+
+    if(this.state.nameSort) {
+      this.setState({
+        posts: this.state.posts.sort((a,b) => {
+          if (a.name.toLowerCase() < b.name.toLowerCase()) {
+            return -1;
+          }
+          if (a.name.toLowerCase() > b.name.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        }),
+        nameSort: !this.state.nameSort
+      })
+    }
+
+    if(!this.state.nameSort) {
+      this.setState({
+        posts: this.state.posts.reverse(),
+        nameSort: !this.state.nameSort
+      })
+    }
+  }
+
   render() {
     const value = {
       posts: this.state.posts,
@@ -105,6 +174,8 @@ export class PostsProvider extends Component {
       deletePost: this.deletePost,
       deleteComment: this.deleteComment,
       sortPostsByTitle: this.sortPostsByTitle,
+      sortPostsByType: this.sortPostsByType,
+      sortPostsByName: this.sortPostsByName,
     };
 
     return (

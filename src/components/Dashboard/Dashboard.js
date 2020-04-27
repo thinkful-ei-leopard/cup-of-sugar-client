@@ -43,7 +43,7 @@ export class Dashboard extends Component {
             <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
           </div>
           <PostsContext.Consumer>
-            {({sortPostsByTitle}) => (
+            {({sortPostsByTitle, sortPostsByType, sortPostsByName}) => (
               <div className={styles.bulletinContainer}>
               <header className={styles.bulletinColumnHeaders}>
                 <span 
@@ -52,13 +52,19 @@ export class Dashboard extends Component {
                 >
                   Title
                 </span>
-                <span className={cx(styles.columnHeader, styles.typeHeader)}>
+                <span 
+                  className={cx(styles.columnHeader, styles.typeHeader)}
+                  onClick= {sortPostsByType}
+                >
                   Type
                 </span>
                 <span className={cx(styles.columnHeader, styles.commentsHeader)}>
                   # Comments
                 </span>
-                <span className={cx(styles.columnHeader, styles.postedByHeader)}>
+                <span 
+                  className={cx(styles.columnHeader, styles.postedByHeader)}
+                  onClick={sortPostsByName}  
+                >
                   Posted By
                 </span>
                 <span className={cx(styles.columnHeader, styles.datePostedHeader)}>
