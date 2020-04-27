@@ -43,7 +43,9 @@ export default class PostRoute extends React.Component {
   //save context in componentWillUnmount or componentDidUpdate
 
   render() {
+    let posts = this.context.posts
+    let comments = this.context.comments
     let id = this.props.match.params.post_id;
-    return <PostView id={id} deleteComment={this.deleteComment} />;
+    return <PostView id={id} history={this.props.history} deleteComment={this.deleteComment} comments={comments} posts={posts}/>;
   }
 }
