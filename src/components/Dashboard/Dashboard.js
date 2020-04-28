@@ -7,6 +7,7 @@ import PostsList from '../PostsList/PostsList';
 import styles from './Dashboard.module.scss';
 import UserContext from '../../contexts/UserContext';
 import PostsContext from '../../contexts/PostsContext';
+import SearchPosts from '../SearchPosts/SearchPosts'
 
 export class Dashboard extends Component {
   // removing display arrow until it can be properly styled
