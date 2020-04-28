@@ -37,23 +37,6 @@ export default class PostView extends React.Component {
     if (!post || !this.state.comments) {
       return <></>;
     }
-    let type;
-    if (post.type === 'request') {
-      type = 'styles.request';
-    }
-    if (post.type === 'offer') {
-      type = 'styles.offer';
-    }
-
-    // onClick={confirm(() => {
-    //   PostsApiService.deletePost(post.id);
-    //   this.props.deletePost(post.id);
-    // })}
-
-    // onClick={confirm() => {
-    //   PostsApiService.deletePost(post.id);
-    //   this.handleDelete();
-    // }}
 
     let deleteButton =
       user.id === post.user_id ? (

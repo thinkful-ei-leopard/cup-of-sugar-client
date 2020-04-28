@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Label } from '../Form/Form';
+import { Label } from '../Form/Form';
 import Button from '../Button/Button';
 import CommentsApiService from '../../services/comments-api-service';
 import PostsContext from '../../contexts/PostsContext';
@@ -11,9 +11,9 @@ export class AddCommentForm extends Component {
     super(props);
 
     this.state = {
-      title: '',
       description: '',
-      type: '',
+      loading: true,
+      error: null,
     };
   }
 
@@ -24,27 +24,37 @@ export class AddCommentForm extends Component {
     },
   };
 
-  goBack = () => {
-    this.props.history.goBack();
-  }
-
   static contextType = PostsContext;
 
-   handleSubmit = async (ev) => {
-    ev.preventDefault();
+  componentDidMount() {
+    this.setState({ loading: false });
+  }
+
+  goBack = () => {
+    this.props.history.goBack();
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    //need update state with response
+
+    const { description } = this.state;
+    const { currentPostId } = this.context;
+
+    this.addComment(currentPostId, description);
     const { history } = this.props;
     history.goBack();
-    //need update state with response
-    const { content } = ev.target;
-    await CommentsApiService.postComment(this.context.currentPostId, content.value)
-      .then((res) => {
-        content.value = '';
-        // this.context.addComment(res);
-      })
-      .catch((res) => {
-        console.log(res.error);
-      });
   };
+
+  async addComment(id, description) {
+    const commentReturn = await CommentsApiService.postComment(id, description);
+    if (commentReturn.error) {
+      this.setState({ error: commentReturn.error.message });
+    } else {
+      this.setState({ error: null });
+    }
+  }
 
   updateField(field, value) {
     this.setState({
@@ -53,6 +63,10 @@ export class AddCommentForm extends Component {
   }
 
   render() {
+    if (this.state.loading === true) {
+      return <></>;
+    }
+
     return (
       <section className={styles.AddComment}>
         <form className={styles.addCommentForm} onSubmit={this.handleSubmit}>
