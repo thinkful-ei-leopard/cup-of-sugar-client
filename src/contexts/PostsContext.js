@@ -1,6 +1,7 @@
 /* eslint-disable no-fallthrough */
 /* eslint-disable default-case */
 import React, { Component } from 'react';
+import PostsApiService from '../services/posts-api-service'
 
 const PostsContext = React.createContext({
   posts: [],
@@ -18,6 +19,7 @@ const PostsContext = React.createContext({
   setPostId: () => {},
   deletePost: () => {},
   deleteComment: () => {},
+  filterPostsByTitle: () => {},
 });
 
 export default PostsContext;
@@ -223,6 +225,21 @@ export class PostsProvider extends Component {
     }
   }
 
+  filterPostsByTitle = async (searchInput) => {
+    const filteredPosts = this.state.posts.filter(post => {
+      return post.title.toLowerCase().includes(searchInput.toLowerCase())
+    })
+    if (!searchInput) {
+      this.setState({
+        posts: await PostsApiService.getPosts()
+      })
+    } else {
+      this.setState({
+        posts: filteredPosts
+      })
+    }
+  }
+
   render() {
     const value = {
       posts: this.state.posts,
@@ -245,6 +262,7 @@ export class PostsProvider extends Component {
       sortPostsByName: this.sortPostsByName,
       sortPostsByComments: this.sortPostsByComments,
       sortPostsByDate: this.sortPostsByDate,
+      filterPostsByTitle: this.filterPostsByTitle,
     };
 
     return (
