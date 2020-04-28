@@ -52,15 +52,15 @@
 }
 
 #deletePostButton {
-  color:black;
-  margin-top: 1rem;
-  padding: .4rem;
+  color: var(--black);
+  margin: 1.5rem auto 0;
+  font-weight: bold;
+  padding: 0;
   &:hover {
-    color: red;
+    color: var(--warning);
   }
   border: none;
-  background-color: white;
-}
+background-color: #fff;}
 
 .postedBy {
   text-align: center;

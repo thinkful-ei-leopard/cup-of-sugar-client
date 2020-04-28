@@ -3,6 +3,8 @@ import Button from '../Button/Button';
 import UserContext from '../../contexts/UserContext';
 import styles from './Comment.module.scss';
 import CommentsApiService from '../../services/comments-api-service';
+import Confirm from '../Confirm/Confirm';
+import '@reach/dialog/styles.css';
 
 export default class Comment extends React.Component {
   static contextType = UserContext;
@@ -13,19 +15,24 @@ export default class Comment extends React.Component {
 
     let deleteButton =
       user.id === comment.user_id ? (
-        <Button
-          onClick={(e) => {
-            CommentsApiService.handleCommentDelete(
-              this.props.comment.id,
-              this.props.comment.post_id
-            );
-            this.props.deleteComment(this.props.comment.id);
-          }}
-          title="Delete"
-          type="delete"
-          id={styles.deleteCommentButton}>
-          delete
-        </Button>
+        <Confirm title="Confirm" description="Are you sure?">
+          {(confirm) => (
+            <Button
+              onClick={confirm(() => {
+                CommentsApiService.handleCommentDelete(
+                  this.props.comment.id,
+                  this.props.comment.post_id
+                );
+                this.props.deleteComment(this.props.comment.id);
+              })}
+              type="delete"
+              title="Delete"
+              className={styles.deletePostButton}
+              id={styles.deleteCommentButton}>
+              delete
+            </Button>
+          )}
+        </Confirm>
       ) : null;
 
     return (
