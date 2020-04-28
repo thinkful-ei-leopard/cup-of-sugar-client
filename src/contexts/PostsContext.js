@@ -42,7 +42,6 @@ export class PostsProvider extends Component {
   };
 
   addComment = (comment) => {
-    console.log('adding comment')
     const { comments } = this.state;
     this.setState({ comments: [...comments, comment] });
   };
