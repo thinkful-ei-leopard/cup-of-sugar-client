@@ -1,3 +1,5 @@
+/* eslint-disable no-fallthrough */
+/* eslint-disable default-case */
 import React, { Component } from 'react';
 
 const PostsContext = React.createContext({
@@ -70,139 +72,155 @@ export class PostsProvider extends Component {
   };
 
   sortPostsByTitle = () => {
-    if(this.state.titleSort === null) {
-      this.setState({
-        titleSort: true,
-        typeSort: null,
-        nameSort: null,
-        commentsSort: null,
-        dateSort: null,
-      })
-    } else if(this.state.titleSort) {
-      this.setState({
-        posts: this.state.posts.sort((a,b) => {
-          if (a.title.toLowerCase() < b.title.toLowerCase()) {
-            return -1;
-          }
-          if (a.title.toLowerCase() > b.title.toLowerCase()) {
-            return 1;
-          }
-          return 0;
-        }),
-        titleSort: !this.state.titleSort
-      })
-    } else if(!this.state.titleSort) {
-      this.setState({
-        posts: this.state.posts.reverse(),
-        titleSort: !this.state.titleSort
-      })
+    switch(this.state.titleSort) {
+      case null:
+        this.setState({
+          titleSort: true,
+          typeSort: null,
+          nameSort: null,
+          commentsSort: null,
+          dateSort: null,
+        })
+      case true:
+        this.setState({
+          posts: this.state.posts.sort((a,b) => {
+            if (a.title.toLowerCase() < b.title.toLowerCase()) {
+              return -1;
+            }
+            if (a.title.toLowerCase() > b.title.toLowerCase()) {
+              return 1;
+            }
+            return 0;
+          }),
+          titleSort: false
+        })
+        break;
+      case false:
+        this.setState({
+          posts: this.state.posts.reverse(),
+          titleSort: true
+        })
+        break;
     }
   }
 
   sortPostsByType = () => {
-    if(this.state.typeSort === null) {
-      this.setState({
-        typeSort: true,
-        titleSort: null,
-        nameSort: null,
-        commentsSort: null,
-        dateSort: null,
-      })
-    } else if(this.state.typeSort) {
-      this.setState({
-        posts: this.state.posts.sort((a,b) => {
-          if (a.type.toLowerCase() < b.type.toLowerCase()) {
-            return -1;
-          }
-          if (a.type.toLowerCase() > b.type.toLowerCase()) {
-            return 1;
-          }
-          return 0;
-        }),
-        typeSort: !this.state.typeSort
-      })
-    } else if(!this.state.typeSort) {
-      this.setState({
-        posts: this.state.posts.reverse(),
-        typeSort: !this.state.typeSort
-      })
+    switch(this.state.typeSort) {
+      case null:
+        this.setState({
+          typeSort: true,
+          titleSort: null,
+          nameSort: null,
+          commentsSort: null,
+          dateSort: null,
+        })
+      case true:
+        this.setState({
+          posts: this.state.posts.sort((a,b) => {
+            if (a.type.toLowerCase() < b.type.toLowerCase()) {
+              return -1;
+            }
+            if (a.type.toLowerCase() > b.type.toLowerCase()) {
+              return 1;
+            }
+            return 0;
+          }),
+          typeSort: false
+        })
+        break;
+      case false:
+        this.setState({
+          posts: this.state.posts.reverse(),
+          typeSort: true
+        })
+        break;
     }
   }
 
   sortPostsByName = () => {
-    if(this.state.nameSort === null) {
-      this.setState({
-        nameSort: true,
-        titleSort: null,
-        typeSort: null,
-        commentsSort: null,
-        dateSort: null,
-      })
-    } else if(this.state.nameSort) {
-      this.setState({
-        posts: this.state.posts.sort((a,b) => {
-          if (a.name.toLowerCase() < b.name.toLowerCase()) {
-            return -1;
-          }
-          if (a.name.toLowerCase() > b.name.toLowerCase()) {
-            return 1;
-          }
-          return 0;
-        }),
-        nameSort: !this.state.nameSort
-      })
-    } else if(!this.state.nameSort) {
-      this.setState({
-        posts: this.state.posts.reverse(),
-        nameSort: !this.state.nameSort
-      })
+    switch(this.state.nameSort) {
+      case null:
+        this.setState({
+          nameSort: true,
+          typeSort: null,
+          titleSort: null,
+          commentsSort: null,
+          dateSort: null,
+        })
+      case true:
+        this.setState({
+          posts: this.state.posts.sort((a,b) => {
+            if (a.name.toLowerCase() < b.name.toLowerCase()) {
+              return -1;
+            }
+            if (a.name.toLowerCase() > b.name.toLowerCase()) {
+              return 1;
+            }
+            return 0;
+          }),
+          nameSort: false
+        })
+        break;
+      case false:
+        this.setState({
+          posts: this.state.posts.reverse(),
+          nameSort: true
+        })
+        break;
     }
   }
 
-  sortPostsByComments = () => {
-    if(this.state.commentsSort === null) {
-      this.setState({
-        nameSort: null,
-        titleSort: null,
-        typeSort: null,
-        commentsSort: true,
-        dateSort: null,
-      })
-    } else if(this.state.commentsSort) {
-      this.setState({
-        posts: this.state.posts.sort((a,b) => {
-          return a.comments - b.comments
-        }),
-        commentsSort: !this.state.commentsSort
-      })
-    } else if(!this.state.commentsSort) {
-      this.setState({
-        posts: this.state.posts.reverse(),
-        commentsSort: !this.state.commentsSort
-      })
+  sortPostsByComments = () =>{
+    switch(this.state.commentsSort) {
+      case null:
+        this.setState({
+          nameSort: null,
+          typeSort: null,
+          titleSort: null,
+          commentsSort: true,
+          dateSort: null,
+        })
+      case true:
+        this.setState({
+          posts: this.state.posts.sort((a,b) => {
+            return a.comments - b.comments
+          }),
+          commentsSort: false
+        })
+        break;
+      case false:
+        this.setState({
+          posts: this.state.posts.reverse(),
+          commentsSort: true
+        })
+        break;
     }
   }
 
   sortPostsByDate = () => {
-    if(this.state.dateSort === null) {
-      this.setState({
-        nameSort: null,
-        titleSort: null,
-        typeSort: null,
-        dateSort: true
-      })
-    } else if(this.state.dateSort) {
-      this.setState({
-        posts: this.state.posts.sort((a,b) => {
-          return new Date(a.date) - new Date(b.date)
-        }),
-        dateSort: !this.state.dateSort
-      })
-    } else if(!this.state.dateSort) {
-      this.setState({
-        posts: this.state.posts.reverse(),
-        dateSort: !this.state.dateSort
-      })
+    switch(this.state.dateSort) {
+      case null:
+        this.setState({
+          nameSort: null,
+          typeSort: null,
+          titleSort: null,
+          dateSort: true,
+          dateSort: null,
+        })
+      case true:
+        this.setState({
+          posts: this.state.posts.sort((a,b) => {
+            return new Date(a.date_modified) - new Date( b.date_modified)
+          }),
+          dateSort: false
+        })
+        break;
+      case false:
+        this.setState({
+          posts: this.state.posts.reverse(),
+          dateSort: true
+        })
+        break;
     }
   }
 
@@ -211,6 +229,11 @@ export class PostsProvider extends Component {
       posts: this.state.posts,
       comments: this.state.comments,
       currentPostId: this.state.currentPostId,
+      titleSort: this.state.titleSort,
+      typeSort: this.state.typeSort,
+      commentsSort: this.state.commentsSort,
+      nameSort: this.state.nameSort,
+      dateSort:this.state.dateSort,
       setPosts: this.setPosts,
       setComments: this.setComments,
       addPost: this.addPost,
