@@ -26,13 +26,13 @@ export class AddCommentForm extends Component {
 
   static contextType = PostsContext;
 
-  handleSubmit = (ev) => {
+   handleSubmit = async (ev) => {
     ev.preventDefault();
     const { history } = this.props;
     history.goBack();
     //need update state with response
     const { content } = ev.target;
-    CommentsApiService.postComment(this.context.currentPostId, content.value)
+    await CommentsApiService.postComment(this.context.currentPostId, content.value)
       .then((res) => {
         content.value = '';
         // this.context.addComment(res);

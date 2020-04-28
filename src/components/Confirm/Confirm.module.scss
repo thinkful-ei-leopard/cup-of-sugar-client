@@ -69,9 +69,14 @@
   }
 }
 
+.deleteButton {
+  display: flex;
+  justify-content: center;
+}
+
 .deleteText {
   transition: color 0.2s;
-  width: 100%;
+  text-align: center;
   &:hover {
     color: white;
   }
