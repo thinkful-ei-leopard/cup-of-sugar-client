@@ -19,6 +19,7 @@ export class DashboardRoute extends Component {
 
   async getPosts() {
     const posts = await PostsApiService.getPosts();
+    console.log(this.context)
     this.context.setPosts(posts);
   }
 

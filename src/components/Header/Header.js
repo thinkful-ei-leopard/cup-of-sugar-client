@@ -70,6 +70,7 @@ class Header extends Component {
             ? styles.Header
             : styles.HeaderWithUnderline
         }>
+          <Link to='/threads'>Threads</Link>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}

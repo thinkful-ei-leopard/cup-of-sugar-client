@@ -10,6 +10,8 @@ import PostRoute from '../../routes/PostRoute/PostRoute';
 import AddPostRoute from '../../routes/AddPostRoute/AddPostRoute';
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 import AddCommentRoute from '../../routes/AddCommentRoute/AddCommentRoute'
+import ThreadRoute from '../../routes/ThreadRoute/ThreadRoute'
+import ThreadsRoute from '../../routes/ThreadsRoute/ThreadsRoute'
 import './App.scss';
 
 export default class App extends Component {
@@ -31,6 +33,8 @@ export default class App extends Component {
           <Switch>
             {/* <Route component={Header}/> */}
             <PrivateRoute exact path="/post/:post_id" component={PostRoute} />
+            <PrivateRoute exact path="/threads" component={ThreadsRoute} />
+            <PrivateRoute exact path="/thread/:thread_id" component={ThreadRoute} />
             <PrivateRoute exact path={'/'} component={DashboardRoute} />
             <PrivateRoute exact path={'/add-post'} component={AddPostRoute} />
             <PrivateRoute exact path={'/add-comment'} component={AddCommentRoute} />
