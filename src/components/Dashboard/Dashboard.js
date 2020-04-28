@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
@@ -8,8 +9,15 @@ import UserContext from '../../contexts/UserContext';
 import PostsContext from '../../contexts/PostsContext';
 
 export class Dashboard extends Component {
-
-  static contextType = UserContext;
+  // removing display arrow until it can be properly styled
+  // displayArrow = (sortType) => {
+  //   switch(sortType) {
+  //     case false:
+  //       return('d')
+  //     case true:
+  //       return('u')
+  //   }
+  // }
 
   render() {
 
@@ -46,7 +54,18 @@ export class Dashboard extends Component {
             <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
           </div>
           <PostsContext.Consumer>
-            {({sortPostsByTitle, sortPostsByType, sortPostsByName, sortPostsByComments, sortPostsByDate}) => (
+            {({
+                sortPostsByTitle, 
+                sortPostsByType, 
+                sortPostsByName, 
+                sortPostsByComments, 
+                sortPostsByDate,
+                titleSort,
+                typeSort,
+                commentsSort,
+                nameSort,
+                dateSort
+              }) => (
               <div className={styles.bulletinContainer}>
               <header className={styles.bulletinColumnHeaders}>
                 <span 
@@ -55,30 +74,35 @@ export class Dashboard extends Component {
                 >
                   Title
                 </span>
+                {/* {this.displayArrow(titleSort)} */}
                 <span 
                   className={cx(styles.columnHeader, styles.typeHeader)}
                   onClick= {sortPostsByType}
                 >
                   Type
                 </span>
+                {/* {this.displayArrow(typeSort)} */}
                 <span 
                   className={cx(styles.columnHeader, styles.commentsHeader)}
                   onClick={sortPostsByComments}
                 >
                   # Comments
                 </span>
+                {/* {this.displayArrow(commentsSort)} */}
                 <span 
                   className={cx(styles.columnHeader, styles.postedByHeader)}
                   onClick={sortPostsByName}  
                 >
                   Posted By
                 </span>
+                {/* {this.displayArrow(nameSort)} */}
                 <span 
                   className={cx(styles.columnHeader, styles.datePostedHeader)}
                   onClick={sortPostsByDate}  
                 >
                   Date <span className={styles.posted}>Posted</span>
                 </span>
+                {/* {this.displayArrow(dateSort)} */}
               </header>
               <PostsList deletePost={this.props.deletePost} />
             </div>
