@@ -24,6 +24,10 @@ export class AddCommentForm extends Component {
     },
   };
 
+  goBack = () => {
+    this.props.history.goBack();
+  }
+
   static contextType = PostsContext;
 
    handleSubmit = async (ev) => {
@@ -71,6 +75,9 @@ export class AddCommentForm extends Component {
             <div className="buttonText">Submit</div>
           </Button>
         </form>
+        <Button id={styles.backToPostButton}>
+          <p onClick={this.goBack}>Back to post</p>
+        </Button>
         <Link to="/">
           <p className={styles.dashboardLink}>Back to dashboard</p>
         </Link>
