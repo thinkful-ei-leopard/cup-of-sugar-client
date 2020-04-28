@@ -20,8 +20,6 @@ export default class ThreadsRoute extends React.Component {
     
       async getThreads() {
         const threads = await ThreadsApiService.getThreads();
-        console.log(threads)
-        console.log(this.context)
         this.context.setThreads(threads);
       }
 

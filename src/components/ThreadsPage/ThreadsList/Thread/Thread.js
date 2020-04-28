@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom' 
+import styles from './Thread.module.scss'
 
 export default class Thread extends React.Component {
     render() {
@@ -15,9 +16,9 @@ export default class Thread extends React.Component {
         user_name = thread.user_name1
 
         return (
-            <li>
+            <li className={styles.threadLi}>
                 <Link to={`/thread/${thread.id}`}>
-                <h3>Thread with {name}({user_name})</h3>
+                    <h3>Thread with {name}({user_name})</h3>
                 </Link>
             </li>
         )
