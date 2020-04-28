@@ -5,10 +5,11 @@ import styles from './PostView.module.scss';
 import cx from 'classnames';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
-import PostsApiService from '../../services/posts-api-service'
+import PostsApiService from '../../services/posts-api-service';
+import Confirm from '../Confirm/Confirm';
+import '@reach/dialog/styles.css';
 
 export default class PostView extends React.Component {
-
   state = {
     comments: null,
   };
@@ -22,9 +23,9 @@ export default class PostView extends React.Component {
 
   handleDelete = () => {
     const history = this.props.history;
-    console.log(history)
-    history.goBack()
-  }
+    console.log(history);
+    history.goBack();
+  };
 
   render() {
     const user = this.context.user;
@@ -44,20 +45,33 @@ export default class PostView extends React.Component {
       type = 'styles.offer';
     }
 
+    // onClick={confirm(() => {
+    //   PostsApiService.deletePost(post.id);
+    //   this.props.deletePost(post.id);
+    // })}
+
+    // onClick={confirm() => {
+    //   PostsApiService.deletePost(post.id);
+    //   this.handleDelete();
+    // }}
+
     let deleteButton =
       user.id === post.user_id ? (
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            PostsApiService.deletePost(post.id);
-            this.handleDelete();
-          }}
-          type="delete"
-          title="Delete"
-          className={styles.deletePostButton}
-          id={styles.deletePostButton}>
-          delete
-        </Button>
+        <Confirm title="Confirm" description="Are you sure?">
+          {(confirm) => (
+            <Button
+              onClick={confirm(() => {
+                PostsApiService.deletePost(post.id);
+                this.handleDelete();
+              })}
+              type="delete"
+              title="Delete"
+              className={styles.deletePostButton}
+              id={styles.deletePostButton}>
+              delete
+            </Button>
+          )}
+        </Confirm>
       ) : (
         <Button
           type="delete"
@@ -67,7 +81,7 @@ export default class PostView extends React.Component {
           X
         </Button>
       );
-    
+
     return (
       <section className={styles.PostView}>
         <div className={styles.postDetail}>
@@ -95,7 +109,11 @@ export default class PostView extends React.Component {
           <h2 className={styles.commentsHeader}>Comments</h2>
           <ul className={styles.ul}>
             {commentsForPost.map((comment) => (
-              <Comment key={comment.id} comment={comment} deleteComment={this.props.deleteComment} />
+              <Comment
+                key={comment.id}
+                comment={comment}
+                deleteComment={this.props.deleteComment}
+              />
             ))}
           </ul>
           <Link to="/add-comment">
