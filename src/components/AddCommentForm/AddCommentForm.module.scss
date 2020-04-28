@@ -47,6 +47,7 @@
 
 .addCommentLabel {
   margin-bottom: 1.5rem;
+  color: var(--black);
 }
 
 .contentInput {
@@ -75,4 +76,21 @@
 .submitAddComment {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+#backToPostButton {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--black);
+  font-family: 'Nunito', sans-serif;
+}
+
+#backToPostButton p {
+  transition: .2s color;
+  &:hover {
+    color: var(--dark1);
+  }
 }
