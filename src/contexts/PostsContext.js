@@ -1,10 +1,12 @@
 /* eslint-disable no-fallthrough */
 /* eslint-disable default-case */
 import React, { Component } from 'react';
-import PostsApiService from '../services/posts-api-service'
+import PostsApiService from '../services/posts-api-service';
 
 const PostsContext = React.createContext({
   posts: [],
+  filteredPosts: [],
+  filterTouched: false,
   comments: [],
   currentPostId: null,
   titleSort: null,
@@ -12,6 +14,7 @@ const PostsContext = React.createContext({
   nameSort: null,
   commentsSort: null,
   dateSort: null,
+  searchInput: '',
   setPosts: () => {},
   setComments: () => {},
   addPost: () => {},
@@ -27,13 +30,11 @@ export default PostsContext;
 export class PostsProvider extends Component {
   state = {
     posts: [],
+    filteredPosts: [],
+    filterTouched: false,
     comments: [],
     currentPostId: null,
-    titleSort: null,
-    typeSort: null,
-    nameSort: null,
-    commentsSort: null,
-    dateSort: null,
+    sort: null,
   };
 
   setComments = (comments) => {
@@ -125,22 +126,16 @@ export class PostsProvider extends Component {
         })
         break;
     }
-  }
+  };
 
   filterPostsByTitle = async (searchInput) => {
-    const filteredPosts = this.state.posts.filter(post => {
-      return post.title.toLowerCase().includes(searchInput.toLowerCase())
-    })
-    if (!searchInput) {
-      this.setState({
-        posts: await PostsApiService.getPosts()
-      })
-    } else {
-      this.setState({
-        posts: filteredPosts
-      })
-    }
-  }
+    const { posts } = this.state;
+    const filteredPosts = posts.filter((post) => {
+      return post.title.toLowerCase().includes(searchInput.toLowerCase());
+    });
+
+    this.setState({ filteredPosts, filterTouched: true });
+  };
 
   filterPostsByUserId = (userId) => {
     this.setState({
@@ -153,13 +148,15 @@ export class PostsProvider extends Component {
   render() {
     const value = {
       posts: this.state.posts,
+      filteredPosts: this.state.filteredPosts,
+      filterTouched: this.state.filterTouched,
       comments: this.state.comments,
       currentPostId: this.state.currentPostId,
       titleSort: this.state.titleSort,
       typeSort: this.state.typeSort,
       commentsSort: this.state.commentsSort,
       nameSort: this.state.nameSort,
-      dateSort:this.state.dateSort,
+      dateSort: this.state.dateSort,
       setPosts: this.setPosts,
       setComments: this.setComments,
       addPost: this.addPost,

@@ -7,6 +7,8 @@ import PostsList from '../PostsList/PostsList';
 import styles from './Dashboard.module.scss';
 import UserContext from '../../contexts/UserContext';
 import PostsContext from '../../contexts/PostsContext';
+import SearchPosts from '../SearchPosts/SearchPosts';
+
 import UserPostsButton from '../UserPostsButton/UserPostsButton'
 
 export class Dashboard extends Component {
@@ -19,38 +21,42 @@ export class Dashboard extends Component {
   //       return('u')
   //   }
   // }
+  static contextType = PostsContext;
+
+  
 
   render() {
-
     return (
       <section className={styles.Dashboard}>
         {/* <div className={styles.contentWrapper}> */}
         <UserContext.Consumer>
-          {({user}) => (
+          {({ user }) => (
             <p className={styles.welcomeMessage}>
-            Welcome to the neighborhood,
-            <span className={styles.userSpan}> {user.name}</span>!
-          </p>
+              Welcome to the neighborhood,
+              <span className={styles.userSpan}> {user.name}</span>!
+            </p>
           )}
         </UserContext.Consumer>
-  
-          <Link to="/add-post">
-            <Button className={cx(styles.addPostButton)}>
-              <span className={styles.buttonText}>Add Post</span>
-            </Button>
-          </Link>
-  
-          <div className={styles.bulletinHeaderContainer}>
-            <div className={styles.legendContainer}>
-              <div className={styles.legendUnit}>
-                <div className={styles.offerSquare}></div>
-                <p className={styles.legendText}>- offers</p>
-              </div>
-              <div className={styles.legendUnit}>
-                <div className={styles.requestSquare}></div>
-                <p className={styles.legendText}>- requests</p>
-              </div>
+
+        <Link to="/add-post">
+          <Button className={cx(styles.addPostButton)}>
+            <span className={styles.buttonText}>Add Post</span>
+          </Button>
+        </Link>
+
+        <SearchPosts />
+
+        <div className={styles.bulletinHeaderContainer}>
+          <div className={styles.legendContainer}>
+            <div className={styles.legendUnit}>
+              <div className={styles.offerSquare}></div>
+              <p className={styles.legendText}>- offers</p>
             </div>
+            <div className={styles.legendUnit}>
+              <div className={styles.requestSquare}></div>
+              <p className={styles.legendText}>- requests</p>
+            </div>
+
   
             <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
             <UserContext.Consumer>
@@ -63,7 +69,7 @@ export class Dashboard extends Component {
             {(context) => (
               <div className={styles.bulletinContainer}>
               <header className={styles.bulletinColumnHeaders}>
-                <span 
+                <span
                   className={cx(styles.columnHeader, styles.titleHeader)}
                   onClick={() => context.sortPostsByKey('title')}
                 >
@@ -101,8 +107,8 @@ export class Dashboard extends Component {
               </header>
               <PostsList deletePost={this.props.deletePost} />
             </div>
-            )}
-          </PostsContext.Consumer>
+          )}
+        </PostsContext.Consumer>
         {/* </div> */}
       </section>
     );

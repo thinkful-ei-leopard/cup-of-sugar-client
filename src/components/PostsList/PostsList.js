@@ -11,10 +11,21 @@ export default class PostsList extends React.Component {
   };
 
   render() {
-    const { posts } = this.context;
+    let { posts, filteredPosts, filterTouched } = this.context;
+
+    if (filterTouched && !filteredPosts.length) {
+      posts = [];
+    }
+
+    let listPosts =
+      posts.length <= filteredPosts.length ||
+      (!filteredPosts.length && !filterTouched)
+        ? posts
+        : filteredPosts;
+
     return (
       <ul className={styles.postsList}>
-        {posts.map((post) => (
+        {listPosts.map((post) => (
           <Post
             key={post.id}
             post={post}
