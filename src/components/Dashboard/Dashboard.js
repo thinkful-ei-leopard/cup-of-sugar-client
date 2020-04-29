@@ -7,7 +7,7 @@ import PostsList from '../PostsList/PostsList';
 import styles from './Dashboard.module.scss';
 import UserContext from '../../contexts/UserContext';
 import PostsContext from '../../contexts/PostsContext';
-import SearchPosts from '../SearchPosts/SearchPosts'
+import SearchPosts from '../SearchPosts/SearchPosts';
 
 export class Dashboard extends Component {
   // removing display arrow until it can be properly styled
@@ -19,96 +19,95 @@ export class Dashboard extends Component {
   //       return('u')
   //   }
   // }
+  static contextType = PostsContext;
+
+  
 
   render() {
-
     return (
       <section className={styles.Dashboard}>
         {/* <div className={styles.contentWrapper}> */}
         <UserContext.Consumer>
-          {({user}) => (
+          {({ user }) => (
             <p className={styles.welcomeMessage}>
-            Welcome to the neighborhood,
-            <span className={styles.userSpan}> {user.name}</span>!
-          </p>
+              Welcome to the neighborhood,
+              <span className={styles.userSpan}> {user.name}</span>!
+            </p>
           )}
         </UserContext.Consumer>
-  
-          <Link to="/add-post">
-            <Button className={cx(styles.addPostButton)}>
-              <span className={styles.buttonText}>Add Post</span>
-            </Button>
-          </Link>
-  
-          <div className={styles.bulletinHeaderContainer}>
-            <div className={styles.legendContainer}>
-              <div className={styles.legendUnit}>
-                <div className={styles.offerSquare}></div>
-                <p className={styles.legendText}>- offers</p>
-              </div>
-              <div className={styles.legendUnit}>
-                <div className={styles.requestSquare}></div>
-                <p className={styles.legendText}>- requests</p>
-              </div>
+
+        <Link to="/add-post">
+          <Button className={cx(styles.addPostButton)}>
+            <span className={styles.buttonText}>Add Post</span>
+          </Button>
+        </Link>
+
+        <SearchPosts />
+
+        <div className={styles.bulletinHeaderContainer}>
+          <div className={styles.legendContainer}>
+            <div className={styles.legendUnit}>
+              <div className={styles.offerSquare}></div>
+              <p className={styles.legendText}>- offers</p>
             </div>
-  
-            <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
+            <div className={styles.legendUnit}>
+              <div className={styles.requestSquare}></div>
+              <p className={styles.legendText}>- requests</p>
+            </div>
           </div>
-          <PostsContext.Consumer>
-            {({
-                sortPostsByTitle, 
-                sortPostsByType, 
-                sortPostsByName, 
-                sortPostsByComments, 
-                sortPostsByDate,
-                titleSort,
-                typeSort,
-                commentsSort,
-                nameSort,
-                dateSort
-              }) => (
-              <div className={styles.bulletinContainer}>
+
+          <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
+        </div>
+        <PostsContext.Consumer>
+          {({
+            sortPostsByTitle,
+            sortPostsByType,
+            sortPostsByName,
+            sortPostsByComments,
+            sortPostsByDate,
+            titleSort,
+            typeSort,
+            commentsSort,
+            nameSort,
+            dateSort,
+          }) => (
+            <div className={styles.bulletinContainer}>
               <header className={styles.bulletinColumnHeaders}>
-                <span 
+                <span
                   className={cx(styles.columnHeader, styles.titleHeader)}
-                  onClick={sortPostsByTitle}
-                >
+                  onClick={sortPostsByTitle}>
                   Title
                 </span>
                 {/* {this.displayArrow(titleSort)} */}
-                <span 
+                <span
                   className={cx(styles.columnHeader, styles.typeHeader)}
-                  onClick= {sortPostsByType}
-                >
+                  onClick={sortPostsByType}>
                   Type
                 </span>
                 {/* {this.displayArrow(typeSort)} */}
-                <span 
+                <span
                   className={cx(styles.columnHeader, styles.commentsHeader)}
-                  onClick={sortPostsByComments}
-                >
+                  onClick={sortPostsByComments}>
                   # Comments
                 </span>
                 {/* {this.displayArrow(commentsSort)} */}
-                <span 
+                <span
                   className={cx(styles.columnHeader, styles.postedByHeader)}
-                  onClick={sortPostsByName}  
-                >
+                  onClick={sortPostsByName}>
                   Posted By
                 </span>
                 {/* {this.displayArrow(nameSort)} */}
-                <span 
+                <span
                   className={cx(styles.columnHeader, styles.datePostedHeader)}
-                  onClick={sortPostsByDate}  
-                >
+                  onClick={sortPostsByDate}>
                   Date <span className={styles.posted}>Posted</span>
                 </span>
                 {/* {this.displayArrow(dateSort)} */}
               </header>
               <PostsList deletePost={this.props.deletePost} />
             </div>
-            )}
-          </PostsContext.Consumer>
+          )}
+        </PostsContext.Consumer>
         {/* </div> */}
       </section>
     );
