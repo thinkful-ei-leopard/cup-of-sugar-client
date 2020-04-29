@@ -74,7 +74,7 @@ export class Dashboard extends Component {
                 {/* {this.displayArrow(context.typeSort)} */}
                 <span 
                   className={cx(styles.columnHeader, styles.commentsHeader)}
-                  onClick={context.sortPostsByComments}
+                  onClick={() => context.sortPostsByKey('comments')}
                 >
                   # Comments
                 </span>
@@ -88,7 +88,7 @@ export class Dashboard extends Component {
                 {/* {this.displayArrow(context.nameSort)} */}
                 <span 
                   className={cx(styles.columnHeader, styles.datePostedHeader)}
-                  onClick={context.sortPostsByDate}  
+                  onClick={() => context.sortPostsByKey('date')}  
                 >
                   Date <span className={styles.posted}>Posted</span>
                 </span>

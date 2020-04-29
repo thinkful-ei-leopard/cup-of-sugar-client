@@ -87,6 +87,24 @@ export class PostsProvider extends Component {
       case null:
         setStateValues()
       case true:
+        if(key === 'comments') {
+          this.setState({
+            posts: this.state.posts.sort((a,b) => {
+              return a.comments - b.comments
+            }),
+            commentsSort: false
+          })
+          break;
+        }
+        if(key === 'date') {
+          this.setState({
+            posts: this.state.posts.sort((a,b) => {
+              return new Date(a.date_modified) - new Date( b.date_modified)
+            }),
+            dateSort: false
+          })
+          break;
+        }
         this.setState({
           posts: this.state.posts.sort((a,b) => {
             if (a[key].toLowerCase() < b[key].toLowerCase()) {
@@ -104,60 +122,6 @@ export class PostsProvider extends Component {
         this.setState({
           posts: this.state.posts.reverse(),
           [`${key}Sort`]: true
-        })
-        break;
-    }
-  }
-
-  sortPostsByComments = () =>{
-    switch(this.state.commentsSort) {
-      case null:
-        this.setState({
-          nameSort: null,
-          typeSort: null,
-          titleSort: null,
-          commentsSort: true,
-          dateSort: null,
-        })
-      case true:
-        this.setState({
-          posts: this.state.posts.sort((a,b) => {
-            return a.comments - b.comments
-          }),
-          commentsSort: false
-        })
-        break;
-      case false:
-        this.setState({
-          posts: this.state.posts.reverse(),
-          commentsSort: true
-        })
-        break;
-    }
-  }
-
-  sortPostsByDate = () => {
-    switch(this.state.dateSort) {
-      case null:
-        this.setState({
-          nameSort: null,
-          typeSort: null,
-          titleSort: null,
-          dateSort: true,
-          commentsSort: null,
-        })
-      case true:
-        this.setState({
-          posts: this.state.posts.sort((a,b) => {
-            return new Date(a.date_modified) - new Date( b.date_modified)
-          }),
-          dateSort: false
-        })
-        break;
-      case false:
-        this.setState({
-          posts: this.state.posts.reverse(),
-          dateSort: true
         })
         break;
     }
@@ -195,8 +159,6 @@ export class PostsProvider extends Component {
       setPostId: this.setPostId,
       deletePost: this.deletePost,
       deleteComment: this.deleteComment,
-      sortPostsByComments: this.sortPostsByComments,
-      sortPostsByDate: this.sortPostsByDate,
       filterPostsByTitle: this.filterPostsByTitle,
       sortPostsByKey:this.sortPostsByKey,
     };
