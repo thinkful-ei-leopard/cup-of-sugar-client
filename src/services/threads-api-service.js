@@ -13,6 +13,17 @@ const ThreadsApiService = {
     );
   },
 
+  getThreadById(threadId) {
+    return fetch(`${config.API_ENDPOINT}/threads/${threadId}`, {
+      headers: {
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+        'Content-Type': 'application/json',
+      },
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
+
   addThread(data) {
     return fetch(`${config.API_ENDPOINT}/threads`, {
       method: 'thread',
