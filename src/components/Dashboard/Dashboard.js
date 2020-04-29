@@ -55,55 +55,44 @@ export class Dashboard extends Component {
             <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
           </div>
           <PostsContext.Consumer>
-            {({
-                sortPostsByTitle, 
-                sortPostsByType, 
-                sortPostsByName, 
-                sortPostsByComments, 
-                sortPostsByDate,
-                titleSort,
-                typeSort,
-                commentsSort,
-                nameSort,
-                dateSort
-              }) => (
+            {(context) => (
               <div className={styles.bulletinContainer}>
               <header className={styles.bulletinColumnHeaders}>
                 <span 
                   className={cx(styles.columnHeader, styles.titleHeader)}
-                  onClick={sortPostsByTitle}
+                  onClick={context.sortPostsByTitle}
                 >
                   Title
                 </span>
-                {/* {this.displayArrow(titleSort)} */}
+                {/* {this.displayArrow(context.titleSort)} */}
                 <span 
                   className={cx(styles.columnHeader, styles.typeHeader)}
-                  onClick= {sortPostsByType}
+                  onClick= {context.sortPostsByType}
                 >
                   Type
                 </span>
-                {/* {this.displayArrow(typeSort)} */}
+                {/* {this.displayArrow(context.typeSort)} */}
                 <span 
                   className={cx(styles.columnHeader, styles.commentsHeader)}
-                  onClick={sortPostsByComments}
+                  onClick={context.sortPostsByComments}
                 >
                   # Comments
                 </span>
-                {/* {this.displayArrow(commentsSort)} */}
+                {/* {this.displayArrow(context.commentsSort)} */}
                 <span 
                   className={cx(styles.columnHeader, styles.postedByHeader)}
-                  onClick={sortPostsByName}  
+                  onClick={context.sortPostsByName}  
                 >
                   Posted By
                 </span>
-                {/* {this.displayArrow(nameSort)} */}
+                {/* {this.displayArrow(context.nameSort)} */}
                 <span 
                   className={cx(styles.columnHeader, styles.datePostedHeader)}
-                  onClick={sortPostsByDate}  
+                  onClick={context.sortPostsByDate}  
                 >
                   Date <span className={styles.posted}>Posted</span>
                 </span>
-                {/* {this.displayArrow(dateSort)} */}
+                {/* {this.displayArrow(context.dateSort)} */}
               </header>
               <PostsList deletePost={this.props.deletePost} />
             </div>
