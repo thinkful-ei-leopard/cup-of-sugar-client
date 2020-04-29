@@ -56,22 +56,14 @@ export class Dashboard extends Component {
           </div>
           <PostsContext.Consumer>
             {({
-                sortPostsByTitle, 
-                sortPostsByType, 
-                sortPostsByName, 
-                sortPostsByComments, 
-                sortPostsByDate,
-                titleSort,
-                typeSort,
-                commentsSort,
-                nameSort,
-                dateSort
+                sortPosts,
+                sort
               }) => (
               <div className={styles.bulletinContainer}>
               <header className={styles.bulletinColumnHeaders}>
                 <span 
                   className={cx(styles.columnHeader, styles.titleHeader)}
-                  onClick={sortPostsByTitle}
+                  onClick={() => sortPosts(title)}
                 >
                   Title
                 </span>
