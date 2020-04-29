@@ -23,8 +23,6 @@ export default class PostsList extends React.Component {
         ? posts
         : filteredPosts;
 
-    console.log(listPosts, 'posts', posts, 'filtered', filteredPosts);
-
     return (
       <ul className={styles.postsList}>
         {listPosts.map((post) => (

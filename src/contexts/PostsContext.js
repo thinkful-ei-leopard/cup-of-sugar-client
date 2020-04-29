@@ -236,18 +236,7 @@ export class PostsProvider extends Component {
       return post.title.toLowerCase().includes(searchInput.toLowerCase());
     });
 
-    this.setState({filteredPosts, filterTouched: true})
-
-
-    // if (!searchInput) {
-    //   this.setState({
-    //     posts: await PostsApiService.getPosts(),
-    //   });
-    // } else {
-    //   this.setState({
-    //     filteredPosts,
-    //   });
-    // }
+    this.setState({ filteredPosts, filterTouched: true });
   };
 
   render() {
