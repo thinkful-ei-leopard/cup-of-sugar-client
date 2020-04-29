@@ -9,11 +9,11 @@ export default class MessageList extends React.Component {
 
     render() {
         const messages = this.context.messages
-    
+        const currentThread = this.context.currentThread
         return (
             <ul className={styles.messageListUl}>
                 <h2>Message List</h2>
-                {messages.map(message => <Message key={message.id} message={message} />)}
+                {messages.map(message => <Message key={message.id} message={message} currentThread={currentThread} />)}
             </ul>
         )
     }

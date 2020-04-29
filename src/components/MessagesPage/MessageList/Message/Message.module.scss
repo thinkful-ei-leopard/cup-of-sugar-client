@@ -3,4 +3,17 @@
 
 .messageLi {
     margin-top: 1rem;
+    list-style: none;
+    width: 30rem;
+    border-radius: 1rem;;
+}
+
+.sentMessage {
+    background-color: var(--light1);
+    margin-left: 40%;
+}
+
+.receivedMessage {
+    background-color: var(--light2);
+    margin-left: 10%;
 }
