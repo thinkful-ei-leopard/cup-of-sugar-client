@@ -72,100 +72,38 @@ export class PostsProvider extends Component {
     });
   };
 
-  sortPostsByTitle = () => {
-    switch(this.state.titleSort) {
-      case null:
-        this.setState({
-          titleSort: true,
-          typeSort: null,
-          nameSort: null,
-          commentsSort: null,
-          dateSort: null,
-        })
-      case true:
-        this.setState({
-          posts: this.state.posts.sort((a,b) => {
-            if (a.title.toLowerCase() < b.title.toLowerCase()) {
-              return -1;
-            }
-            if (a.title.toLowerCase() > b.title.toLowerCase()) {
-              return 1;
-            }
-            return 0;
-          }),
-          titleSort: false
-        })
-        break;
-      case false:
-        this.setState({
-          posts: this.state.posts.reverse(),
-          titleSort: true
-        })
-        break;
-    }
-  }
+  sortPostsByKey = (key) => {
+    const setStateValues = () => {
+      return ['title','type','name','comments','date'].map(arrayKey => {
+        if (arrayKey === key){
+          this.setState({[`${arrayKey}Sort`]: true})
+        }
 
-  sortPostsByType = () => {
-    switch(this.state.typeSort) {
-      case null:
-        this.setState({
-          typeSort: true,
-          titleSort: null,
-          nameSort: null,
-          commentsSort: null,
-          dateSort: null,
-        })
-      case true:
-        this.setState({
-          posts: this.state.posts.sort((a,b) => {
-            if (a.type.toLowerCase() < b.type.toLowerCase()) {
-              return -1;
-            }
-            if (a.type.toLowerCase() > b.type.toLowerCase()) {
-              return 1;
-            }
-            return 0;
-          }),
-          typeSort: false
-        })
-        break;
-      case false:
-        this.setState({
-          posts: this.state.posts.reverse(),
-          typeSort: true
-        })
-        break;
+        this.setState({[`${arrayKey}Sort`]: null})
+      })
     }
-  }
 
-  sortPostsByName = () => {
-    switch(this.state.nameSort) {
+    switch(this.state[`${key}Sort`]) {
       case null:
-        this.setState({
-          nameSort: true,
-          typeSort: null,
-          titleSort: null,
-          commentsSort: null,
-          dateSort: null,
-        })
+        setStateValues()
       case true:
         this.setState({
           posts: this.state.posts.sort((a,b) => {
-            if (a.name.toLowerCase() < b.name.toLowerCase()) {
+            if (a[key].toLowerCase() < b[key].toLowerCase()) {
               return -1;
             }
-            if (a.name.toLowerCase() > b.name.toLowerCase()) {
+            if (a[key].toLowerCase() > b[key].toLowerCase()) {
               return 1;
             }
             return 0;
           }),
-          nameSort: false
+          [`${key}Sort`]: false
         })
         break;
       case false:
         this.setState({
           posts: this.state.posts.reverse(),
-          nameSort: true
+          [`${key}Sort`]: true
         })
         break;
     }
@@ -206,7 +144,7 @@ export class PostsProvider extends Component {
           typeSort: null,
           titleSort: null,
           dateSort: true,
-          dateSort: null,
+          commentsSort: null,
         })
       case true:
         this.setState({
@@ -257,12 +195,10 @@ export class PostsProvider extends Component {
       setPostId: this.setPostId,
       deletePost: this.deletePost,
       deleteComment: this.deleteComment,
-      sortPostsByTitle: this.sortPostsByTitle,
-      sortPostsByType: this.sortPostsByType,
-      sortPostsByName: this.sortPostsByName,
       sortPostsByComments: this.sortPostsByComments,
       sortPostsByDate: this.sortPostsByDate,
       filterPostsByTitle: this.filterPostsByTitle,
+      sortPostsByKey:this.sortPostsByKey,
     };
 
     return (

@@ -60,14 +60,14 @@ export class Dashboard extends Component {
               <header className={styles.bulletinColumnHeaders}>
                 <span 
                   className={cx(styles.columnHeader, styles.titleHeader)}
-                  onClick={context.sortPostsByTitle}
+                  onClick={() => context.sortPostsByKey('title')}
                 >
                   Title
                 </span>
                 {/* {this.displayArrow(context.titleSort)} */}
                 <span 
                   className={cx(styles.columnHeader, styles.typeHeader)}
-                  onClick= {context.sortPostsByType}
+                  onClick= {() => context.sortPostsByKey('type')}
                 >
                   Type
                 </span>
@@ -81,7 +81,7 @@ export class Dashboard extends Component {
                 {/* {this.displayArrow(context.commentsSort)} */}
                 <span 
                   className={cx(styles.columnHeader, styles.postedByHeader)}
-                  onClick={context.sortPostsByName}  
+                  onClick={() => context.sortPostsByKey('name')}  
                 >
                   Posted By
                 </span>
