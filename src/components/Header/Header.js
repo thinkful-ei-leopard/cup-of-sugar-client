@@ -28,7 +28,13 @@ class Header extends Component {
         <Link to="/" className={styles.homeLink}>
           Cup of Sugar
         </Link>
-        <nav className="logoutNav">
+        <nav className={styles.linksContainer}>
+          <Link className={styles.threadsLink} to="/threads">
+            My Messages
+          </Link>
+          <Link className={styles.threadsLinkIcon} to="/threads">
+            <img src={require('../../images/mail.svg')} alt="my messages" />
+          </Link>
           <Link
             onClick={this.handleLogoutClick}
             to="/login"
@@ -63,14 +69,15 @@ class Header extends Component {
       return <></>;
     }
 
+    const { pathname } = location;
+
     return (
       <header
         className={
-          location.pathname === '/register' || location.pathname === '/login'
+          pathname === '/register' || pathname === '/login'
             ? styles.Header
             : styles.HeaderWithUnderline
         }>
-          <Link to='/threads'>Threads</Link>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}

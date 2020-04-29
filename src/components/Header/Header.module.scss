@@ -36,7 +36,8 @@
 }
 
 .logoutLink,
-.homeLink {
+.homeLink,
+.threadsLink {
   transition: color 0.2s;
   &:hover {
     color: var(--dark1);
@@ -60,7 +61,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
+}
+
+@include mobilePortrait {
+  .logoutDiv {
+    padding: 1rem 2rem;
+  }
 }
 
 .homeLink {
@@ -73,4 +80,49 @@
 a {
   color: var(--black);
   text-decoration: none;
+}
+
+.threadsLink {
+  margin-bottom: 0.5rem;
+  position: absolute;
+  display: none;
+}
+
+.threadsLinkIcon {
+  width: 20px;
+  display: inline-block;
+  margin-top: 0.4rem;
+  margin-right: 0.5rem;
+}
+
+@include mobilePortrait {
+  .threadsLink {
+    display: inline-block;
+  }
+
+  .threadsLinkIcon {
+    display: none;
+  }
+}
+
+.linksContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: right;
+  position: absolute;
+  top: 13px;
+  right: 1rem;
+  width: 85px;
+}
+
+@include mobilePortrait {
+  .linksContainer {
+    width: 175px;
+    top: 20px;
+  }
+
+  .logoutLink {
+margin-left: auto;  }
 }
