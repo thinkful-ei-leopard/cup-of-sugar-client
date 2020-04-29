@@ -7,7 +7,7 @@ import PostsList from '../PostsList/PostsList';
 import styles from './Dashboard.module.scss';
 import UserContext from '../../contexts/UserContext';
 import PostsContext from '../../contexts/PostsContext';
-import SearchPosts from '../SearchPosts/SearchPosts'
+import UserPostsButton from '../UserPostsButton/UserPostsButton'
 
 export class Dashboard extends Component {
   // removing display arrow until it can be properly styled
@@ -53,6 +53,11 @@ export class Dashboard extends Component {
             </div>
   
             <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
+            <UserContext.Consumer>
+              {({user}) => (
+                <UserPostsButton user={user} />
+              )}
+            </UserContext.Consumer>
           </div>
           <PostsContext.Consumer>
             {(context) => (

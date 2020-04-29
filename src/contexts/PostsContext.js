@@ -142,6 +142,14 @@ export class PostsProvider extends Component {
     }
   }
 
+  filterPostsByUserId = (userId) => {
+    this.setState({
+      posts: this.state.posts.filter(post => {
+        return post.user_id === userId
+      })
+    })
+  }
+
   render() {
     const value = {
       posts: this.state.posts,
@@ -161,6 +169,7 @@ export class PostsProvider extends Component {
       deleteComment: this.deleteComment,
       filterPostsByTitle: this.filterPostsByTitle,
       sortPostsByKey:this.sortPostsByKey,
+      filterPostsByUserId: this.filterPostsByUserId,
     };
 
     return (
