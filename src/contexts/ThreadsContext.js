@@ -4,7 +4,6 @@ const ThreadsContext = React.createContext({
   threads: [],
   messages: [],
   currentThread: null,
-  users: null,
   setThreads: () => {},
   setMessages: () => {},
   addThread: () => {},
@@ -12,7 +11,6 @@ const ThreadsContext = React.createContext({
   setCurrentThread: () => {},
   deleteThread: () => {},
   deleteMessage: () => {},
-  setUsers: () => {},
 });
 
 export default ThreadsContext;
@@ -22,7 +20,6 @@ export class ThreadsProvider extends Component {
     threads: [],
     messages: [],
     currentThread: null,
-    users: [],
   };
 
   setMessages = (messages) => {
@@ -31,10 +28,6 @@ export class ThreadsProvider extends Component {
 
   setThreads = (threads) => {
     this.setState({ threads });
-  };
-
-  setUsers = (users) => {
-    this.setState({ users });
   };
 
   addThread = (thread) => {
@@ -70,7 +63,6 @@ export class ThreadsProvider extends Component {
       threads: this.state.threads,
       messages: this.state.messages,
       currentThread: this.state.currentThread,
-      users: this.state.users,
       setThreads: this.setThreads,
       setMessages: this.setMessages,
       addThread: this.addThread,
@@ -78,7 +70,6 @@ export class ThreadsProvider extends Component {
       setCurrentThread: this.setCurrentThread,
       deleteThread: this.deleteThread,
       deleteMessage: this.deleteMessage,
-      setUsers: this.setUsers,
     };
 
     return (
