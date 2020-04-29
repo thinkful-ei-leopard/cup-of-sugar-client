@@ -9,7 +9,7 @@ import UserContext from '../../contexts/UserContext';
 import PostsContext from '../../contexts/PostsContext';
 import SearchPosts from '../SearchPosts/SearchPosts';
 
-import UserPostsButton from '../UserPostsButton/UserPostsButton'
+import UserPostsButton from '../UserPostsButton/UserPostsButton';
 
 export class Dashboard extends Component {
   // removing display arrow until it can be properly styled
@@ -22,8 +22,6 @@ export class Dashboard extends Component {
   //   }
   // }
   static contextType = PostsContext;
-
-  
 
   render() {
     return (
@@ -44,7 +42,6 @@ export class Dashboard extends Component {
           </Button>
         </Link>
 
-        <SearchPosts />
 
         <div className={styles.bulletinHeaderContainer}>
           <div className={styles.legendContainer}>
@@ -56,51 +53,45 @@ export class Dashboard extends Component {
               <div className={styles.requestSquare}></div>
               <p className={styles.legendText}>- requests</p>
             </div>
-
-  
-            <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
-            <UserContext.Consumer>
-              {({user}) => (
-                <UserPostsButton user={user} />
-              )}
-            </UserContext.Consumer>
           </div>
-          <PostsContext.Consumer>
-            {(context) => (
-              <div className={styles.bulletinContainer}>
+
+          <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
+          <div className={styles.searchPostsContainer}>
+            <SearchPosts className={styles.SearchPosts}/>
+          </div>
+
+        </div>
+        <PostsContext.Consumer>
+          {(context) => (
+            <div className={styles.bulletinContainer}>
               <header className={styles.bulletinColumnHeaders}>
                 <span
                   className={cx(styles.columnHeader, styles.titleHeader)}
-                  onClick={() => context.sortPostsByKey('title')}
-                >
+                  onClick={() => context.sortPostsByKey('title')}>
                   Title
                 </span>
                 {/* {this.displayArrow(context.titleSort)} */}
-                <span 
+                <span
                   className={cx(styles.columnHeader, styles.typeHeader)}
-                  onClick= {() => context.sortPostsByKey('type')}
-                >
+                  onClick={() => context.sortPostsByKey('type')}>
                   Type
                 </span>
                 {/* {this.displayArrow(context.typeSort)} */}
-                <span 
+                <span
                   className={cx(styles.columnHeader, styles.commentsHeader)}
-                  onClick={() => context.sortPostsByKey('comments')}
-                >
+                  onClick={() => context.sortPostsByKey('comments')}>
                   # Comments
                 </span>
                 {/* {this.displayArrow(context.commentsSort)} */}
-                <span 
+                <span
                   className={cx(styles.columnHeader, styles.postedByHeader)}
-                  onClick={() => context.sortPostsByKey('name')}  
-                >
+                  onClick={() => context.sortPostsByKey('name')}>
                   Posted By
                 </span>
                 {/* {this.displayArrow(context.nameSort)} */}
-                <span 
+                <span
                   className={cx(styles.columnHeader, styles.datePostedHeader)}
-                  onClick={() => context.sortPostsByKey('date')}  
-                >
+                  onClick={() => context.sortPostsByKey('date')}>
                   Date <span className={styles.posted}>Posted</span>
                 </span>
                 {/* {this.displayArrow(context.dateSort)} */}
@@ -109,6 +100,9 @@ export class Dashboard extends Component {
             </div>
           )}
         </PostsContext.Consumer>
+        <UserContext.Consumer>
+          {({ user }) => <UserPostsButton user={user} />}
+        </UserContext.Consumer>
         {/* </div> */}
       </section>
     );

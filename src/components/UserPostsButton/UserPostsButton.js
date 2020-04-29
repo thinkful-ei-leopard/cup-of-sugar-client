@@ -1,40 +1,52 @@
-import React, { Component } from 'react'
-import Button from '../Button/Button'
-import PostsContext from '../../contexts/PostsContext'
-import PostsApiService from '../../services/posts-api-service'
+import React, { Component } from 'react';
+import PostsContext from '../../contexts/PostsContext';
+import PostsApiService from '../../services/posts-api-service';
+import styles from './UserPostsButton.module.scss';
 
 export class UserPostsButton extends Component {
-  static contextType = PostsContext
+  static contextType = PostsContext;
   state = {
-    buttonClicked: false
-  }
+    buttonClicked: false,
+  };
 
   handleClick = async () => {
-    if(!this.state.buttonClicked) {
-      this.context.filterPostsByUserId(this.props.user.id)
+    if (!this.state.buttonClicked) {
+      this.context.filterPostsByUserId(this.props.user.id);
       this.setState({
-        buttonClicked: true
-      })
+        buttonClicked: true,
+      });
     }
 
-    if(this.state.buttonClicked) {
+    if (this.state.buttonClicked) {
       const posts = await PostsApiService.getPosts();
       this.context.setPosts(posts);
       this.setState({
-        buttonClicked: false
-      })
+        buttonClicked: false,
+      });
     }
-  } 
+  };
 
   render() {
+    let buttonStyle = this.state.buttonClicked
+      ? styles.checked
+      : styles.unchecked;
+
     return (
-      <Button
-        onClick={this.handleClick}
-      >
-        My posts
-      </Button>
-    )
+      <button
+        id={styles.userPostsButton}
+        onClick={() => {
+          this.handleClick();
+        }}>
+        <span className={styles.buttonText}>View my posts</span>
+
+        <img
+          className={buttonStyle}
+          src={require('../../images/checkmark.svg')}
+          alt="checkmark"
+        />
+      </button>
+    );
   }
 }
 
-export default UserPostsButton
+export default UserPostsButton;
