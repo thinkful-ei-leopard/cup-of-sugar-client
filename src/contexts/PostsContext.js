@@ -34,11 +34,7 @@ export class PostsProvider extends Component {
     filterTouched: false,
     comments: [],
     currentPostId: null,
-    titleSort: null,
-    typeSort: null,
-    nameSort: null,
-    commentsSort: null,
-    dateSort: null,
+    sort: null,
   };
 
   setComments = (comments) => {
@@ -93,7 +89,7 @@ export class PostsProvider extends Component {
             if (a.title.toLowerCase() < b.title.toLowerCase()) {
               return -1;
             }
-            if (a.title.toLowerCase() > b.title.toLowerCase()) {
+            if (a.attribute.toLowerCase() > b.attribute.toLowerCase()) {
               return 1;
             }
             return 0;
@@ -211,7 +207,6 @@ export class PostsProvider extends Component {
           typeSort: null,
           titleSort: null,
           dateSort: true,
-          dateSort: null,
         });
       case true:
         this.setState({
@@ -258,11 +253,7 @@ export class PostsProvider extends Component {
       setPostId: this.setPostId,
       deletePost: this.deletePost,
       deleteComment: this.deleteComment,
-      sortPostsByTitle: this.sortPostsByTitle,
-      sortPostsByType: this.sortPostsByType,
-      sortPostsByName: this.sortPostsByName,
-      sortPostsByComments: this.sortPostsByComments,
-      sortPostsByDate: this.sortPostsByDate,
+      sortPostsByTitle: this.sortPosts,
       filterPostsByTitle: this.filterPostsByTitle,
     };
 
