@@ -26,7 +26,7 @@ const ThreadsApiService = {
 
   addThread(data) {
     return fetch(`${config.API_ENDPOINT}/threads`, {
-      method: 'thread',
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${TokenService.getAuthToken()}`,
         'content-type': 'application/json',
