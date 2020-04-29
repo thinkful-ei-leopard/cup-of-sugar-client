@@ -3,14 +3,16 @@ import React, { Component } from 'react';
 const ThreadsContext = React.createContext({
   threads: [],
   messages: [],
-  currentThreadId: null,
+  currentThread: null,
+  users: null,
   setThreads: () => {},
   setMessages: () => {},
   addThread: () => {},
   addMessage: () => {},
-  setThreadId: () => {},
+  setCurrentThread: () => {},
   deleteThread: () => {},
   deleteMessage: () => {},
+  setUsers: () => {},
 });
 
 export default ThreadsContext;
@@ -19,7 +21,8 @@ export class ThreadsProvider extends Component {
   state = {
     threads: [],
     messages: [],
-    currentThreadId: null,
+    currentThread: null,
+    users: [],
   };
 
   setMessages = (messages) => {
@@ -27,9 +30,11 @@ export class ThreadsProvider extends Component {
   };
 
   setThreads = (threads) => {
-      console.log('setting')
     this.setState({ threads });
-    console.log(this.state.threads)
+  };
+
+  setUsers = (users) => {
+    this.setState({ users });
   };
 
   addThread = (thread) => {
@@ -48,8 +53,8 @@ export class ThreadsProvider extends Component {
     this.setState({ messages: [...messages, message] });
   };
 
-  setThreadId = (threadId) => {
-    this.setState({ currentThreadId: threadId });
+  setCurrentThread = (thread) => {
+    this.setState({ currentThread: thread });
   };
 
   deleteMessage = (messageId) => {
@@ -64,14 +69,16 @@ export class ThreadsProvider extends Component {
     const value = {
       threads: this.state.threads,
       messages: this.state.messages,
-      currentThreadId: this.state.currentThreadId,
+      currentThread: this.state.currentThread,
+      users: this.state.users,
       setThreads: this.setThreads,
       setMessages: this.setMessages,
       addThread: this.addThread,
       addMessage: this.addMessage,
-      setThreadId: this.setThreadId,
+      setCurrentThread: this.setCurrentThread,
       deleteThread: this.deleteThread,
       deleteMessage: this.deleteMessage,
+      setUsers: this.setUsers,
     };
 
     return (
