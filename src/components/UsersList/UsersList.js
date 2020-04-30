@@ -11,10 +11,12 @@ export default class UsersList extends React.Component {
     );
     return (
       <ul className={styles.UsersList}>
-        <h2>Start a new Thread</h2>
-        {users.map(user => (
-          <User user={this.context.user} neighbor={user} key={user.id} />
-        ))}
+        <div className={styles.usersGroup}>
+          <h2 className={styles.newThreadHeader}>Start a new Thread</h2>
+          {users.map(user => (
+            <User user={this.context.user} neighbor={user} key={user.id} />
+          ))}
+        </div>
       </ul>
     );
   }

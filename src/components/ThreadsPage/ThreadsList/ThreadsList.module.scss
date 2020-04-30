@@ -2,12 +2,5 @@
 @import '../../../styles/_breakpoints';
 
 .threadsListUl {
-  list-style: none;
-  text-align: center;
-  border-bottom: 2px solid var(--black);
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: var(--light2);
+    padding: 0;
 }

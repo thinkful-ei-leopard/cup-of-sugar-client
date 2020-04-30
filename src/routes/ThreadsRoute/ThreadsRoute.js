@@ -1,36 +1,35 @@
-import React from 'react'
-import ThreadsPage from '../../components/ThreadsPage/ThreadsPage'
-import ThreadsContext from '../../contexts/ThreadsContext'
-import ThreadsApiService from '../../services/threads-api-service'
-import MessagesApiService from '../../services/messages-api-service'
-import UsersList from '../../components/UsersList/UsersList'
-import styles from './ThreadsRoute.module.scss'
+import React from 'react';
+import ThreadsPage from '../../components/ThreadsPage/ThreadsPage';
+import ThreadsContext from '../../contexts/ThreadsContext';
+import ThreadsApiService from '../../services/threads-api-service';
+import MessagesApiService from '../../services/messages-api-service';
+import UsersList from '../../components/UsersList/UsersList';
+import styles from './ThreadsRoute.module.scss';
 
 export default class ThreadsRoute extends React.Component {
+  static contextType = ThreadsContext;
 
-    static contextType = ThreadsContext
+  componentDidMount() {
+    this.getThreads();
+    this.getMessages();
+  }
 
-    componentDidMount() {
-        this.getThreads();
-        this.getMessages();
-      }
-    
-      async getMessages() {
-        const messages = await MessagesApiService.getMessages();
-        this.context.setMessages(messages);
-      }
-    
-      async getThreads() {
-        const threads = await ThreadsApiService.getThreads();
-        this.context.setThreads(threads);
-      }
+  async getMessages() {
+    const messages = await MessagesApiService.getMessages();
+    this.context.setMessages(messages);
+  }
 
-    render() {
-        return (
-            <div className={styles.threadsRouteContainer}>
-                <ThreadsPage getUsers={this.getUsers}/>
-                <UsersList />
-            </div>
-        )
-    }
+  async getThreads() {
+    const threads = await ThreadsApiService.getThreads();
+    this.context.setThreads(threads);
+  }
+
+  render() {
+    return (
+      <div className={styles.threadsRouteContainer}>
+        <ThreadsPage getUsers={this.getUsers} />
+        <UsersList />
+      </div>
+    );
+  }
 }

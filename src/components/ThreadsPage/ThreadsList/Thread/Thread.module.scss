@@ -2,8 +2,16 @@
 @import '../../../../styles/_breakpoints';
 
 .Thread {
-  //   margin-top: 1rem;
-  margin: 0 auto;
+  list-style: none;
+  text-align: center;
+  border-bottom: 2px solid var(--black);
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--light2);
+  padding: 1rem;
   &:hover {
     background-color: var(--light2);
   }
@@ -20,7 +28,7 @@
 
 .deleteThreadButton {
   position: absolute;
-  top: 0.5rem;
+//   top: 0.5rem;
   right: 1.5rem;
   font-size: 1rem;
   font-weight: bold;
@@ -46,6 +54,6 @@
 }
 
 .lastMessage {
-    color: var(--black);
-    opacity: .8;
+  color: var(--black);
+  opacity: 0.8;
 }
