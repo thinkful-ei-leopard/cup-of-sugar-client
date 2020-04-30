@@ -18,17 +18,17 @@
 .threadsContainer {
   border: 2px solid var(--black);
   width: 90%;
-  max-width: 1000px;
-  margin: 150px auto 2rem;
-  min-height: 300px;
+  max-width: 600px;
+  margin: 275px auto 2rem;
+  min-height: 264px;
   height: 100%;
-  background-color: white;
+  // background-color: white;
 }
 
 .threadsHeader {
   color: var(--black);
   position: relative;
-  top: 100px;
+  top: 225px;
   // border: 2px solid red;
   margin: 0 auto -1.5rem;
   width: 100px;

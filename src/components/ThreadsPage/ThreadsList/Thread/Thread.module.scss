@@ -10,25 +10,31 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: var(--light2);
+  background-color: white;
   padding: 1rem;
+  transition: background-color .2s;
   &:hover {
-    background-color: var(--light2);
+    background-color: var(--neutral);
+    cursor: pointer;
   }
+}
+
+.Thread:last-of-type {
+    border-bottom: none;
 }
 
 .threadTitle {
   margin-bottom: 0.5rem;
   transition: color 0.2s;
-  &:hover,
-  &:focus {
-    color: var(--dark1);
-  }
+//   &:hover,
+//   &:focus {
+//     color: var(--dark1);
+//   }
 }
 
 .deleteThreadButton {
   position: absolute;
-//   top: 0.5rem;
+  top: 0.5rem;
   right: 1.5rem;
   font-size: 1rem;
   font-weight: bold;
@@ -36,7 +42,7 @@
   transition: color 0.2s;
   background-color: transparent;
   outline: none;
-  padding: 0.5rem;
+//   padding: 0.5rem;
   border: none;
   &:hover {
     color: var(--warning);

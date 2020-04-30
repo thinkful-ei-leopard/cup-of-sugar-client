@@ -1,5 +1,28 @@
 .threadsRouteContainer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  // height: 100vh;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  border: 1px solid red;
 }
 
+.directoryLink {
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative;
+  top: 125px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem 2rem;
+  border: 2px solid var(--black);
+  background-color: var(--bright);
+  transition: background-color 0.2s;
+  &:hover {
+    cursor: pointer;
+    background-color: var(--neutral);
+  }
+  z-index: 2;
+}

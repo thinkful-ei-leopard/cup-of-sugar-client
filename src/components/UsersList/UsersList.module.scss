@@ -1,19 +1,25 @@
 .UsersList {
-  // margin-top: 100px;
   position: relative;
-  top: 60px;
+  top: 125px;
   border: 2px solid red;
   width: 90%;
-  max-width: 1000px;
+  max-width: 600px;
   margin: 0;
-  height: 120px;
+  height: 220px;
 }
 
-.usersGroup {
-  position: absolute;
-  right: 0;
+.usersContainer {
+  position: relative;
+  // right: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  border: 2px solid blue;
+}
+
+.directoryHeader {
+  text-align: center;
+  margin-bottom: 1rem;
 }
