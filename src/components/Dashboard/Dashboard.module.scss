@@ -202,9 +202,12 @@
   color: var(--black);
   margin: 0 1rem 0 0;
   text-align: center;
-  border: 1px solid red;
+  // border: 1px solid red;
   display: inline-block;
   position: relative;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .upArrow, .downArrow {
