@@ -21,6 +21,7 @@ export class Dashboard extends Component {
   //       return('u')
   //   }
   // }
+
   static contextType = PostsContext;
 
   render() {

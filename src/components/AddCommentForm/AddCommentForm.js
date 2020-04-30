@@ -25,23 +25,12 @@ export class AddCommentForm extends Component {
 
   static contextType = PostsContext;
 
-  // componentDidMount() {
-  //   this._isMounted = true;
-  //   this.setState({ loading: false });
-  // }
-
-  // componentWillUnmount() {
-  //   this._isMounted = false;
-  // }
-
   goBack = () => {
     this.props.history.goBack();
   };
 
   handleSubmit = e => {
     e.preventDefault();
-
-    //need update state with response
 
     const { description } = this.state;
     const { currentPostId } = this.context;

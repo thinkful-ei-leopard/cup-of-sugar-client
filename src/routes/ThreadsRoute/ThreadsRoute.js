@@ -4,6 +4,7 @@ import ThreadsContext from '../../contexts/ThreadsContext'
 import ThreadsApiService from '../../services/threads-api-service'
 import MessagesApiService from '../../services/messages-api-service'
 import UsersList from '../../components/UsersList/UsersList'
+import styles from './ThreadsRoute.module.scss'
 
 export default class ThreadsRoute extends React.Component {
 
@@ -26,7 +27,7 @@ export default class ThreadsRoute extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={styles.threadsRouteContainer}>
                 <ThreadsPage getUsers={this.getUsers}/>
                 <UsersList />
             </div>
