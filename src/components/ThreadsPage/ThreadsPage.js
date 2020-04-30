@@ -20,6 +20,8 @@ export default class ThreadsPage extends React.Component {
   render() {
     return (
       <section className={styles.ThreadsPage}>
+        <h2 className={styles.threadsHeader}>Threads</h2>
+
         <div className={styles.threadsContainer}>
           <ThreadsList user={this.context.user} />
         </div>
