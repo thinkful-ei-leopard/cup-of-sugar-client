@@ -3,10 +3,12 @@
 
 ul {
   margin: 0;
-  padding: 1rem;
+  padding: .75rem;
   position: relative;
 }
 
-.postsList {
-  // position: relative;
+@include mobilePortrait {
+  ul {
+    padding: 1rem;
+  }
 }

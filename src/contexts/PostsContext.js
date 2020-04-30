@@ -1,7 +1,7 @@
 /* eslint-disable no-fallthrough */
 /* eslint-disable default-case */
 import React, { Component } from 'react';
-import PostsApiService from '../services/posts-api-service';
+// import PostsApiService from '../services/posts-api-service';
 
 const PostsContext = React.createContext({
   posts: [],
@@ -17,12 +17,10 @@ const PostsContext = React.createContext({
   searchInput: '',
   setPosts: () => {},
   setComments: () => {},
-  // addPost: () => {},
-  addComment: () => {},
   setPostId: () => {},
   deletePost: () => {},
   deleteComment: () => {},
-  filterPostsByTitle: () => {},
+  filterPostsByTitle: () => {}
 });
 
 export default PostsContext;
@@ -39,81 +37,68 @@ export class PostsProvider extends Component {
     typeSort: null,
     nameSort: null,
     commentsSort: null,
-    dateSort: null,
+    dateSort: null
   };
 
-  setComments = (comments) => {
+  setComments = comments => {
     this.setState({ comments });
   };
 
-  setPosts = (posts) => {
+  setPosts = posts => {
     this.setState({ posts });
   };
 
-  // addPost = (post) => {
-  //   const { posts } = this.state;
-  //   this.setState({ posts: [...posts, post] });
-  // };
-
-  deletePost = (postId) => {
+  deletePost = postId => {
     this.setState({
-      posts: this.state.posts.filter((post) => post.id !== postId),
+      posts: this.state.posts.filter(post => post.id !== postId)
     });
   };
 
-  addComment = (comment) => {
-    const { comments } = this.state;
-    this.setState({ comments: [...comments, comment] });
-  };
-
-  setPostId = (postId) => {
+  setPostId = postId => {
     this.setState({ currentPostId: postId });
   };
 
-  deleteComment = (commentId) => {
+  deleteComment = commentId => {
     this.setState({
-      comments: this.state.comments.filter(
-        (comment) => comment.id !== commentId
-      ),
+      comments: this.state.comments.filter(comment => comment.id !== commentId)
     });
   };
 
-  sortPostsByKey = (key) => {
-    console.log('clicked')
+  sortPostsByKey = key => {
+    console.log('clicked');
     const setStateValues = () => {
-      return ['title','type','name','comments','date'].map(arrayKey => {
-        if (arrayKey === key){
-          this.setState({[`${arrayKey}Sort`]: true})
+      return ['title', 'type', 'name', 'comments', 'date'].map(arrayKey => {
+        if (arrayKey === key) {
+          this.setState({ [`${arrayKey}Sort`]: true });
         }
+        this.setState({ [`${arrayKey}Sort`]: null });
+      });
+    };
 
-        this.setState({[`${arrayKey}Sort`]: null})
-      })
-    }
-
-    switch(this.state[`${key}Sort`]) {
+    switch (this.state[`${key}Sort`]) {
       case null:
-        setStateValues()
+        setStateValues();
       case true:
-        if(key === 'comments') {
+        if (key === 'comments') {
           this.setState({
-            posts: this.state.posts.sort((a,b) => {
-              return a.comments - b.comments
+            posts: this.state.posts.sort((a, b) => {
+              return a.comments - b.comments;
             }),
             commentsSort: false
-          })
+          });
           break;
         }
-        if(key === 'date') {
+        if (key === 'date') {
           this.setState({
-            posts: this.state.posts.sort((a,b) => {
-              return new Date(a.date_modified) - new Date( b.date_modified)
+            posts: this.state.posts.sort((a, b) => {
+              return new Date(a.date_modified) - new Date(b.date_modified);
             }),
             dateSort: false
-          })
+          });
           break;
         }
         this.setState({
-          posts: this.state.posts.sort((a,b) => {
+          posts: this.state.posts.sort((a, b) => {
             if (a[key].toLowerCase() < b[key].toLowerCase()) {
               return -1;
             }
@@ -123,33 +108,33 @@ export class PostsProvider extends Component {
             return 0;
           }),
           [`${key}Sort`]: false
-        })
+        });
         break;
       case false:
         this.setState({
           posts: this.state.posts.reverse(),
           [`${key}Sort`]: true
-        })
+        });
         break;
     }
   };
 
-  filterPostsByTitle = async (searchInput) => {
+  filterPostsByTitle = async searchInput => {
     const { posts } = this.state;
-    const filteredPosts = posts.filter((post) => {
+    const filteredPosts = posts.filter(post => {
       return post.title.toLowerCase().includes(searchInput.toLowerCase());
     });
 
     this.setState({ filteredPosts, filterTouched: true });
   };
 
-  filterPostsByUserId = (userId) => {
+  filterPostsByUserId = userId => {
     this.setState({
       posts: this.state.posts.filter(post => {
-        return post.user_id === userId
+        return post.user_id === userId;
       })
-    })
-  }
+    });
+  };
 
   render() {
     const value = {
@@ -165,14 +150,12 @@ export class PostsProvider extends Component {
       dateSort: this.state.dateSort,
       setPosts: this.setPosts,
       setComments: this.setComments,
-      // addPost: this.addPost,
-      addComment: this.addComment,
       setPostId: this.setPostId,
       deletePost: this.deletePost,
       deleteComment: this.deleteComment,
       filterPostsByTitle: this.filterPostsByTitle,
-      sortPostsByKey:this.sortPostsByKey,
-      filterPostsByUserId: this.filterPostsByUserId,
+      sortPostsByKey: this.sortPostsByKey,
+      filterPostsByUserId: this.filterPostsByUserId
     };
 
     return (

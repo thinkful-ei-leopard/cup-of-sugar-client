@@ -13,14 +13,26 @@ import UserPostsButton from '../UserPostsButton/UserPostsButton';
 
 export class Dashboard extends Component {
   // removing display arrow until it can be properly styled
-  displayArrow = (sortType) => {
-    switch(sortType) {
+  displayArrow = sortType => {
+    switch (sortType) {
       case false:
-        return('d')
+        return (
+          <img
+            src={require('../../images/arrow.svg')}
+            className={styles.upArrow}
+            alt="up arrow"
+          />
+        );
       case true:
-        return('u')
+        return (
+          <img
+            src={require('../../images/arrow.svg')}
+            className={styles.downArrow}
+            alt="down arrow"
+          />
+        );
     }
-  }
+  };
 
   static contextType = PostsContext;
 
@@ -43,7 +55,6 @@ export class Dashboard extends Component {
           </Button>
         </Link>
 
-
         <div className={styles.bulletinHeaderContainer}>
           <div className={styles.legendContainer}>
             <div className={styles.legendUnit}>
@@ -58,44 +69,43 @@ export class Dashboard extends Component {
 
           <h2 className={styles.bulletinHeader}>Community Bulletin</h2>
           <div className={styles.searchPostsContainer}>
-            <SearchPosts className={styles.SearchPosts}/>
+            <SearchPosts className={styles.SearchPosts} />
           </div>
-
         </div>
         <PostsContext.Consumer>
-          {(context) => (
+          {context => (
             <div className={styles.bulletinContainer}>
               <header className={styles.bulletinColumnHeaders}>
                 <span
                   className={cx(styles.columnHeader, styles.titleHeader)}
                   onClick={() => context.sortPostsByKey('title')}>
                   Title
+                  {this.displayArrow(context.titleSort)}
                 </span>
-                {this.displayArrow(context.titleSort)}
                 <span
                   className={cx(styles.columnHeader, styles.typeHeader)}
                   onClick={() => context.sortPostsByKey('type')}>
                   Type
+                  {this.displayArrow(context.typeSort)}
                 </span>
-                {this.displayArrow(context.typeSort)}
                 <span
                   className={cx(styles.columnHeader, styles.commentsHeader)}
                   onClick={() => context.sortPostsByKey('comments')}>
-                  # Comments
+                  Comments
+                  {this.displayArrow(context.commentsSort)}
                 </span>
-                {this.displayArrow(context.commentsSort)}
                 <span
                   className={cx(styles.columnHeader, styles.postedByHeader)}
                   onClick={() => context.sortPostsByKey('name')}>
                   Posted By
+                  {this.displayArrow(context.nameSort)}
                 </span>
-                {this.displayArrow(context.nameSort)}
                 <span
                   className={cx(styles.columnHeader, styles.datePostedHeader)}
                   onClick={() => context.sortPostsByKey('date')}>
                   Date <span className={styles.posted}>Posted</span>
+                  {this.displayArrow(context.dateSort)}
                 </span>
-                {this.displayArrow(context.dateSort)}
               </header>
               <PostsList deletePost={this.props.deletePost} />
             </div>

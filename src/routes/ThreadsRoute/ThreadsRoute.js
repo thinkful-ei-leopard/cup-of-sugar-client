@@ -29,7 +29,7 @@ export default class ThreadsRoute extends React.Component {
         return (
             <div className={styles.threadsRouteContainer}>
                 <ThreadsPage getUsers={this.getUsers}/>
-                {/* <UsersList /> */}
+                <UsersList />
             </div>
         )
     }

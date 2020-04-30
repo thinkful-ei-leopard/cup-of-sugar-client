@@ -4,11 +4,17 @@
 .Post {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   margin: 0 auto;
   transition: background-color 0.2s;
   &:hover {
     background-color: var(--highlight);
+  }
+}
+
+@include mobilePortrait {
+  .Post {
+    padding: .5rem 1rem;
   }
 }
 
@@ -37,11 +43,11 @@
 }
 
 .postType {
-  min-width: 70px;
+  min-width: 90px;
   display: none;
 }
 
-@media (min-width: 810px) {
+@include laptop {
   .postType {
     display: inline-block;
   }
@@ -74,37 +80,47 @@
 }
 
 .postComments {
-  width: 120px;
+  width: 170px;
   display: none;
 }
 
 @include tabletLandscape {
   .postComments {
-    display: inline;
+    display: inline-block;
   }
 }
 
 .postUserName {
-  min-width: 90px;
+  min-width: 140px;
   display: none;
 }
 
-@include tabletPortrait {
+@media (min-width: 800px) {
   .postUserName {
     display: inline-block;
   }
 }
 
 .postDateFull {
-  width: 120px;
+  width: 160px;
   display: none;
 }
 
 .postDateTrim {
-  width: 120px;
+  width: 160px;
   min-width: 52px;
   display: inline-block;
   margin-right: 0;
+}
+
+@include tabletLandscape {
+  .postDateFull {
+    display: inline-block;
+  }
+
+  .postDateTrim {
+    display: none;
+  }
 }
 
 #deletePostButton {
@@ -135,14 +151,4 @@
   opacity: 0;
 }
 
-// hide or show formatted date based on screen size
 
-@include tabletLandscape {
-  .postDateFull {
-    display: inline-block;
-  }
-
-  .postDateTrim {
-    display: none;
-  }
-}

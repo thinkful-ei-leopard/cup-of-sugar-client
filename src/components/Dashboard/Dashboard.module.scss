@@ -187,8 +187,14 @@
 .bulletinColumnHeaders {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 1rem .75rem;
   border-bottom: 2px solid var(--black);
+}
+
+@include mobilePortrait {
+  .bulletinColumnHeaders {
+    padding: 1rem 2rem;
+  }
 }
 
 .columnHeader {
@@ -196,8 +202,20 @@
   color: var(--black);
   margin: 0 1rem 0 0;
   text-align: center;
-  // border: 1px solid red;
+  border: 1px solid red;
   display: inline-block;
+  position: relative;
+}
+
+.upArrow, .downArrow {
+  width: 16px;
+  right: 0;
+  top: 2px;
+  position: absolute;
+}
+
+.downArrow {
+  transform: rotate(180deg);
 }
 
 .titleHeader {
@@ -214,18 +232,18 @@
 }
 
 .typeHeader {
-  min-width: 70px;
+  min-width: 90px;
   display: none;
 }
 
-@media (min-width: 810px) {
+@include laptop {
   .typeHeader {
     display: inline-block;
   }
 }
 
 .commentsHeader {
-  width: 120px;
+  width: 170px;
   display: none;
 }
 
@@ -236,19 +254,19 @@
 }
 
 .postedByHeader {
-  min-width: 90px;
+  min-width: 140px;
   display: none;
   margin-right: 1rem;
 }
 
-@include tabletPortrait {
+@media (min-width: 800px) {
   .postedByHeader {
     display: inline-block;
   }
 }
 
 .datePostedHeader {
-  width: 120px;
+  width: 160px;
   min-width: 52px;
   display: inline-block;
   margin-right: 0;
@@ -271,17 +289,9 @@
 }
 
 .searchPostsContainer {
-  // position: absolute;
-  // right: 0;
-  // margin-left: auto;
   display: flex;
   justify-content: center;
-  // position: relative;
   margin-bottom: 1rem;
-  // padding-bottom: 4rem;
-  // margin-bottom: 4rem;
-  // position: relative;
-  // bottom: 50px;
 }
 
 @include tabletPortrait {
@@ -296,3 +306,5 @@
     margin-bottom: 0;
   }
 }
+
+
