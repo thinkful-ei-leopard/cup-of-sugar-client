@@ -1,0 +1,12 @@
+@import '../../../styles/_variables';
+@import '../../../styles/breakpoints';
+
+.addMessageForm {
+    display: block;
+    padding-top: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40rem;
+    text-align: center;
+    border: solid 2px var(--black);
+}

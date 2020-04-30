@@ -13,23 +13,23 @@ const MessagesApiService = {
     );
   },
 
-  postMessage(threadId, content) {
+  postMessage(threadId, newMessage) {
     return fetch(`${config.API_ENDPOINT}/messages/${threadId}`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+        'Authorization': `Bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({
-        content,
+        newMessage,
       }),
     }).then((res) =>
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
 
-  handleMessageDelete(messageId, threadId) {
-    return fetch(`${config.API_ENDPOINT}/messages/${threadId}/${messageId}`, {
+  handleMessageDelete(messageId) {
+    return fetch(`${config.API_ENDPOINT}/messages/message/${messageId}`, {
       method: 'DELETE',
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`,
