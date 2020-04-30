@@ -4,38 +4,63 @@ import { Input, Required, Label } from '../Form/Form';
 import AuthApiService from '../../services/auth-api-service';
 import Button from '../Button/Button';
 import styles from './RegistrationForm.module.scss';
+import { fetchPhotos, openUploadWidget } from "../../services/CloudinaryService";
 
 class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => {},
   };
 
-  state = { error: null };
+  state = { 
+    error: null, 
+    images: [],
+  };
 
   firstInput = React.createRef();
 
+  beginUpload = (tag) => {
+    const uploadOptions = {
+      cloudName: "mmpr",
+      tags: [tag],
+      uploadPreset: "upload"
+    };
+  
+    openUploadWidget(uploadOptions, (error, photos) => {
+      if (!error) {
+        console.log(photos);
+        if(photos.event === 'success'){
+          this.setState({
+            images: [...this.state.images, photos.info.url]
+          })
+        }
+      } else {
+        console.log(error);
+      }
+    })
+  }
+
   handleSubmit = (ev) => {
     ev.preventDefault();
-    const { name, username, password, zip, email } = ev.target;
-    console.log(name, username, password, zip, email)
-    AuthApiService.postUser({
-      name: name.value,
-      username: username.value,
-      password: password.value,
-      zip: zip.value,
-      email: email.value,
-    })
-      .then((user) => {
-        name.value = '';
-        username.value = '';
-        password.value = '';
-        zip.value = '';
-        email.value = '';
-        this.props.onRegistrationSuccess();
-      })
-      .catch((res) => {
-        this.setState({ error: res.error });
-      });
+    const { name, username, password, zip, email, image } = ev.target;
+    
+    // AuthApiService.postUser({
+    //   name: name.value,
+    //   username: username.value,
+    //   password: password.value,
+    //   zip: zip.value,
+    //   email: email.value,
+    // })
+    //   .then((user) => {
+    //     name.value = '';
+    //     username.value = '';
+    //     password.value = '';
+    //     zip.value = '';
+    //     email.value = '';
+    //     this.props.onRegistrationSuccess();
+    //   })
+    //   .catch((res) => {
+    //     this.setState({ error: res.error });
+    //   });
   };
 
   componentDidMount() {
@@ -57,14 +82,14 @@ class RegistrationForm extends Component {
               htmlFor="registration-name-input"
               className={styles.regLabel}>
               <span className={styles.fullInputPhrase}>Enter your</span> name:
-              <Required />
+              {/* <Required /> */}
             </Label>
             <Input
               ref={this.firstInput}
               id="registration-name-input"
               name="name"
               className={styles.regInput}
-              required
+              // required
               autoComplete="off"
             />
           </div>
@@ -73,13 +98,13 @@ class RegistrationForm extends Component {
               htmlFor="registration-username-input"
               className={styles.regLabel}>
               <span className={styles.fullInputPhrase}>Create a</span> username:
-              <Required />
+              {/* <Required /> */}
             </Label>
             <Input
               id="registration-username-input"
               name="username"
               className={styles.regInput}
-              required
+              // required
               autoComplete="off"
             />
           </div>
@@ -88,14 +113,14 @@ class RegistrationForm extends Component {
               htmlFor="registration-email-input"
               className={styles.regLabel}>
               <span className={styles.fullInputPhrase}>Enter your</span> email:
-              <Required />
+              {/* <Required /> */}
             </Label>
             <Input
               id="registration-email-input"
               name="email"
               type="email"
               className={styles.regInput}
-              required
+              // required
               autoComplete="new-off"
             />
           </div>
@@ -104,14 +129,14 @@ class RegistrationForm extends Component {
               htmlFor="registration-password-input"
               className={styles.regLabel}>
               <span className={styles.fullInputPhrase}>Choose a</span> password:
-              <Required />
+              {/* <Required /> */}
             </Label>
             <Input
               id="registration-password-input"
               name="password"
               type="password"
               className={styles.regInput}
-              required
+              // required
               autoComplete="off"
             />
           </div>
@@ -119,16 +144,28 @@ class RegistrationForm extends Component {
             <Label htmlFor="registration-zip-input" className={styles.regLabel}>
               <span className={styles.fullInputPhrase}>Enter your</span>{' '}
               zipcode:
-              <Required />
+              {/* <Required /> */}
             </Label>
             <Input
               id="registration-zip-input"
               name="zip"
               type="number"
               className={styles.regInput}
-              required
+              // required
               autoComplete="new-off"
             />
+          </div>
+          <div className={styles.regDiv}>
+          {/* <Label htmlFor='registration-image-upload'>
+              Upload image
+            </Label>
+            <Input 
+              id='registration-image-upload'
+              type='file'
+              name='image'
+              onChange={this.fileSelecedHandler}
+            /> */}
+            <button onClick={() => this.beginUpload()}>Upload Image</button>
           </div>
         </div>
         <footer className="reg-footer">

@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
 import { PostsProvider } from './contexts/PostsContext';
 import { ThreadsProvider } from './contexts/ThreadsContext'
+import { CloudinaryContext } from "cloudinary-react";
 // import { }
 
 import './index.css';
@@ -14,7 +15,9 @@ ReactDOM.render(
     <UserProvider>
       <PostsProvider>
         <ThreadsProvider>
-          <App />
+          <CloudinaryContext cloudName='mmpr'>
+            <App />
+          </CloudinaryContext>
         </ThreadsProvider>
       </PostsProvider>
     </UserProvider>
