@@ -35,6 +35,11 @@ export class PostsProvider extends Component {
     comments: [],
     currentPostId: null,
     sort: null,
+    titleSort: null,
+    typeSort: null,
+    nameSort: null,
+    commentsSort: null,
+    dateSort: null,
   };
 
   setComments = (comments) => {
@@ -74,6 +79,7 @@ export class PostsProvider extends Component {
   };
 
   sortPostsByKey = (key) => {
+    console.log('clicked')
     const setStateValues = () => {
       return ['title','type','name','comments','date'].map(arrayKey => {
         if (arrayKey === key){

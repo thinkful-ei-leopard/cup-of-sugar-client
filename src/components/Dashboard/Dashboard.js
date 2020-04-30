@@ -13,14 +13,14 @@ import UserPostsButton from '../UserPostsButton/UserPostsButton';
 
 export class Dashboard extends Component {
   // removing display arrow until it can be properly styled
-  // displayArrow = (sortType) => {
-  //   switch(sortType) {
-  //     case false:
-  //       return('d')
-  //     case true:
-  //       return('u')
-  //   }
-  // }
+  displayArrow = (sortType) => {
+    switch(sortType) {
+      case false:
+        return('d')
+      case true:
+        return('u')
+    }
+  }
 
   static contextType = PostsContext;
 
@@ -71,31 +71,31 @@ export class Dashboard extends Component {
                   onClick={() => context.sortPostsByKey('title')}>
                   Title
                 </span>
-                {/* {this.displayArrow(context.titleSort)} */}
+                {this.displayArrow(context.titleSort)}
                 <span
                   className={cx(styles.columnHeader, styles.typeHeader)}
                   onClick={() => context.sortPostsByKey('type')}>
                   Type
                 </span>
-                {/* {this.displayArrow(context.typeSort)} */}
+                {this.displayArrow(context.typeSort)}
                 <span
                   className={cx(styles.columnHeader, styles.commentsHeader)}
                   onClick={() => context.sortPostsByKey('comments')}>
                   # Comments
                 </span>
-                {/* {this.displayArrow(context.commentsSort)} */}
+                {this.displayArrow(context.commentsSort)}
                 <span
                   className={cx(styles.columnHeader, styles.postedByHeader)}
                   onClick={() => context.sortPostsByKey('name')}>
                   Posted By
                 </span>
-                {/* {this.displayArrow(context.nameSort)} */}
+                {this.displayArrow(context.nameSort)}
                 <span
                   className={cx(styles.columnHeader, styles.datePostedHeader)}
                   onClick={() => context.sortPostsByKey('date')}>
                   Date <span className={styles.posted}>Posted</span>
                 </span>
-                {/* {this.displayArrow(context.dateSort)} */}
+                {this.displayArrow(context.dateSort)}
               </header>
               <PostsList deletePost={this.props.deletePost} />
             </div>
