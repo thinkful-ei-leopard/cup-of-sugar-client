@@ -12,29 +12,33 @@ export class AddCommentForm extends Component {
 
     this.state = {
       description: '',
-      loading: true,
-      error: null,
+      loading: true
     };
   }
 
   static defaultProps = {
     location: {},
     history: {
-      push: () => {},
-    },
+      push: () => {}
+    }
   };
 
   static contextType = PostsContext;
 
-  componentDidMount() {
-    this.setState({ loading: false });
-  }
+  // componentDidMount() {
+  //   this._isMounted = true;
+  //   this.setState({ loading: false });
+  // }
+
+  // componentWillUnmount() {
+  //   this._isMounted = false;
+  // }
 
   goBack = () => {
     this.props.history.goBack();
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
 
     //need update state with response
@@ -49,23 +53,18 @@ export class AddCommentForm extends Component {
 
   async addComment(id, description) {
     const commentReturn = await CommentsApiService.postComment(id, description);
-    if (commentReturn.error) {
-      this.setState({ error: commentReturn.error.message });
-    } else {
-      this.setState({ error: null });
-    }
   }
 
   updateField(field, value) {
     this.setState({
-      [field]: value,
+      [field]: value
     });
   }
 
   render() {
-    if (this.state.loading === true) {
-      return <></>;
-    }
+    // if (this.state.loading === true) {
+    //   return <></>;
+    // }
 
     return (
       <section className={styles.AddComment}>
@@ -82,7 +81,7 @@ export class AddCommentForm extends Component {
             rows="10"
             maxLength="500"
             required
-            onChange={(e) =>
+            onChange={e =>
               this.updateField('description', e.target.value)
             }></textarea>
           <Button className={styles.submitAddComment} type="submit">

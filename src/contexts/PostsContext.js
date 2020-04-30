@@ -17,7 +17,7 @@ const PostsContext = React.createContext({
   searchInput: '',
   setPosts: () => {},
   setComments: () => {},
-  addPost: () => {},
+  // addPost: () => {},
   addComment: () => {},
   setPostId: () => {},
   deletePost: () => {},
@@ -45,10 +45,10 @@ export class PostsProvider extends Component {
     this.setState({ posts });
   };
 
-  addPost = (post) => {
-    const { posts } = this.state;
-    this.setState({ posts: [...posts, post] });
-  };
+  // addPost = (post) => {
+  //   const { posts } = this.state;
+  //   this.setState({ posts: [...posts, post] });
+  // };
 
   deletePost = (postId) => {
     this.setState({
@@ -159,7 +159,7 @@ export class PostsProvider extends Component {
       dateSort: this.state.dateSort,
       setPosts: this.setPosts,
       setComments: this.setComments,
-      addPost: this.addPost,
+      // addPost: this.addPost,
       addComment: this.addComment,
       setPostId: this.setPostId,
       deletePost: this.deletePost,
