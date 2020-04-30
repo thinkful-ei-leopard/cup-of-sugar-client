@@ -1,2 +1,18 @@
 @import '../../styles/_variables';
 @import '../../styles/breakpoints';
+
+.MessagesPage {
+  top: 60px;
+  text-align: center;
+  background: linear-gradient(rgba(88, 57, 154, 0), rgba(73, 57, 154, 0.3))
+    no-repeat center center fixed;
+  min-height: 100%;
+  top: 20px;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 200px;
+}
+
+

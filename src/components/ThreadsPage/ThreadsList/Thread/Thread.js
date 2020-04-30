@@ -22,7 +22,7 @@ export default class Thread extends React.Component {
     if (thread.user_id1 === user.id) {
       name = thread.name2;
       user_name = thread.user_name2;
-    } else if (thread.user_id1 === user.id) {
+    } else if (thread.user_id1 !== user.id) {
       name = thread.name1;
       user_name = thread.user_name1;
     }

@@ -10,9 +10,9 @@ export default class MessagesPage extends React.Component {
 
     render() {
         return (
-            <section className={styles.messagesPageSection}>
-                <MessageForm user={this.context.user}/>
+            <section className={styles.MessagesPage}>
                 <MessageList />
+                <MessageForm user={this.context.user}/>
             </section>
         )
     }

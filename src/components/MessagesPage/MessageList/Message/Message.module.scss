@@ -2,45 +2,50 @@
 @import '../../../../styles/breakpoints';
 
 .messageLi {
-    margin-top: 1rem;
-    list-style: none;
-    width: 30rem;
-    border-radius: 1rem;
-    position: relative;
+  margin-top: 1rem;
+  list-style: none;
+  // width: 100px;
+//   max-width: 40%;
+  border-radius: 1rem;
+  position: relative;
+  padding: .5rem;
 }
 
 .sentMessage {
-    background-color: var(--light1);
-    margin-left: 40%;
+  background-color: var(--light1);
+  position: relative;
+  right: 0;
+  margin-left: 50%;
 }
 
 .receivedMessage {
-    background-color: var(--light2);
-    margin-left: 10%;
-}
-
-.deleteMessageButton {
-    border: 0px;
-    color: red;
-}
-
-.receivedMessage .deleteMessageButton {
-    background-color: var(--light2);
-    position: absolute;
-    right: 1rem;
-    top: .2rem;
-}
-
-.sentMessage .deleteMessageButton {
-    background-color: var(--light1);
-    position: absolute;
-    top: .2rem;
-    right: 1rem;
+  background-color: var(--light2);
+  position: relative;
+  left: 0;
+  margin-right: 50%;
 }
 
 .messageContent {
-    margin-left: 2rem;
-    margin-right: 2rem;
+  // margin: 0;
+}
+
+.deleteMessageButton {
+  border: 0px;
+  color: red;
+}
+
+.receivedMessage .deleteMessageButton {
+  background-color: var(--light2);
+  position: absolute;
+  right: 1rem;
+  top: 0.2rem;
+}
+
+.sentMessage .deleteMessageButton {
+  background-color: var(--light1);
+  position: absolute;
+  top: 0.2rem;
+  right: 1rem;
 }
 
 // .messageContent {

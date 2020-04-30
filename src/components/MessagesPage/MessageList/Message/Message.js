@@ -35,7 +35,7 @@ export default class Message extends React.Component {
         
         return (
             <li className={cx(styles.messageLi, user.id === this.props.message.user_id ? styles.sentMessage : styles.receivedMessage)}>
-                <h3>{messageHeader}</h3>
+                {/* <h3>{messageHeader}</h3> */}
                 <p className={styles.messageContent}>{this.props.message.content}</p>
                 {/* <button type='delete' className={styles.deleteMessageButton} onClick={(e) => {
                     e.preventDefault()
