@@ -9,9 +9,10 @@ import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute';
 import PostRoute from '../../routes/PostRoute/PostRoute';
 import AddPostRoute from '../../routes/AddPostRoute/AddPostRoute';
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
-import AddCommentRoute from '../../routes/AddCommentRoute/AddCommentRoute'
-import MessagesRoute from '../../routes/MessagesRoute/MessagesRoute'
-import ThreadsRoute from '../../routes/ThreadsRoute/ThreadsRoute'
+import AddCommentRoute from '../../routes/AddCommentRoute/AddCommentRoute';
+import MessagesRoute from '../../routes/MessagesRoute/MessagesRoute';
+import ThreadsRoute from '../../routes/ThreadsRoute/ThreadsRoute';
+import UsersRoute from '../../routes/UsersRoute/UsersRoute';
 import './App.scss';
 
 export default class App extends Component {
@@ -31,13 +32,21 @@ export default class App extends Component {
         <main>
           {hasError && <p>There was an error! Oh no!</p>}
           <Switch>
-            {/* <Route component={Header}/> */}
             <PrivateRoute exact path="/post/:post_id" component={PostRoute} />
             <PrivateRoute exact path="/threads" component={ThreadsRoute} />
-            <PrivateRoute exact path="/thread/:thread_id" component={MessagesRoute} />
+            <PrivateRoute
+              exact
+              path="/thread/:thread_id"
+              component={MessagesRoute}
+            />
             <PrivateRoute exact path={'/'} component={DashboardRoute} />
             <PrivateRoute exact path={'/add-post'} component={AddPostRoute} />
-            <PrivateRoute exact path={'/add-comment'} component={AddCommentRoute} />
+            <PrivateRoute
+              exact
+              path={'/add-comment'}
+              component={AddCommentRoute}
+            />
+            <PrivateRoute exact path={'/neighbor-directory'} component={UsersRoute} />
             <PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
             <PublicOnlyRoute path={'/login'} component={LoginRoute} />
             <Route component={NotFoundRoute} />

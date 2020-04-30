@@ -5,16 +5,19 @@ import styles from './UsersList.module.scss';
 
 export default class UsersList extends React.Component {
   static contextType = UserContext;
+
   render() {
     const users = this.context.users.filter(
       user => user.id !== this.context.user.id
     );
     return (
       <ul className={styles.UsersList}>
-        <h2>Start a new Thread</h2>
-        {users.map(user => (
-          <User user={this.context.user} neighbor={user} key={user.id} />
-        ))}
+        <h2 className={styles.directoryHeader}>Neighbor Directory</h2>
+        <div className={styles.usersContainer}>
+          {users.map(user => (
+            <User user={this.context.user} neighbor={user} key={user.id} />
+          ))}
+        </div>
       </ul>
     );
   }

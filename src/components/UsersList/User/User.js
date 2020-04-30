@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ThreadsContext from '../../../contexts/ThreadsContext';
 import ThreadsApiService from '../../../services/threads-api-service';
 import styles from './User.module.scss';
+import Button from '../../Button/Button';
 
 export default class User extends React.Component {
   static contextType = ThreadsContext;
@@ -23,17 +24,20 @@ export default class User extends React.Component {
   render() {
     const neighbor = this.props.neighbor;
     return (
-      <li className={styles.userListItem}>
-        <p>
+      <li className={styles.userListItem} onClick={e => {
+        e.preventDefault();
+        this.handleThreadCreate();
+      }}>
+        <p className={styles.neighbor}>
           {neighbor.name} ({neighbor.user_name})
         </p>
-        <button
+        {/* <Button
           onClick={e => {
             e.preventDefault();
             this.handleThreadCreate();
           }}>
-          Start Thread
-        </button>
+          Lookup Neighbor
+        </Button> */}
       </li>
     );
   }
