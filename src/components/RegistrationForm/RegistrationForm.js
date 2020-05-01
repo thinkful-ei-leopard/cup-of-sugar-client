@@ -4,7 +4,7 @@ import { Input, Required, Label } from '../Form/Form';
 import AuthApiService from '../../services/auth-api-service';
 import Button from '../Button/Button';
 import styles from './RegistrationForm.module.scss';
-import { fetchPhotos, openUploadWidget } from "../../services/CloudinaryService";
+import { openUploadWidget } from "../../services/CloudinaryService";
 
 class RegistrationForm extends Component {
   static defaultProps = {
@@ -13,16 +13,21 @@ class RegistrationForm extends Component {
 
   state = { 
     error: null, 
-    images: [],
+    imgSrc: null,
   };
 
   firstInput = React.createRef();
 
-  beginUpload = (tag) => {
+  beginUpload = (e) => {
+    e.preventDefault()
+
     const uploadOptions = {
       cloudName: "mmpr",
-      tags: [tag],
-      uploadPreset: "upload"
+      uploadPreset: "upload",
+      resourceType: 'image',
+      multiple: false,
+      theme: 'minimal',
+      maxImageFileSize: 1500000, //1.5MB
     };
   
     openUploadWidget(uploadOptions, (error, photos) => {
@@ -30,7 +35,7 @@ class RegistrationForm extends Component {
         console.log(photos);
         if(photos.event === 'success'){
           this.setState({
-            images: [...this.state.images, photos.info.url]
+            imgSrc: photos.info.secure_url
           })
         }
       } else {
@@ -39,28 +44,41 @@ class RegistrationForm extends Component {
     })
   }
 
+  displayPreview() {
+    let image;
+
+    if(this.state.imgSrc === null) {
+      image = (<img src='https://image.flaticon.com/icons/svg/166/166277.svg' alt='default' />)
+    } else if (this.state.imgSrc) {
+      image = (<img src={this.state.imgSrc} alt='Selected Profile Picture' />)
+    }
+    return image
+  }
+
   handleSubmit = (ev) => {
     ev.preventDefault();
-    const { name, username, password, zip, email, image } = ev.target;
+    const { name, username, password, zip, email } = ev.target;
     
-    // AuthApiService.postUser({
-    //   name: name.value,
-    //   username: username.value,
-    //   password: password.value,
-    //   zip: zip.value,
-    //   email: email.value,
-    // })
-    //   .then((user) => {
-    //     name.value = '';
-    //     username.value = '';
-    //     password.value = '';
-    //     zip.value = '';
-    //     email.value = '';
-    //     this.props.onRegistrationSuccess();
-    //   })
-    //   .catch((res) => {
-    //     this.setState({ error: res.error });
-    //   });
+    AuthApiService.postUser({
+      name: name.value,
+      username: username.value,
+      password: password.value,
+      zip: zip.value,
+      email: email.value,
+      img_src: this.state.imgSrc,
+      img_alt: `${username.value} Profile Picture`
+    })
+      .then((user) => {
+        name.value = '';
+        username.value = '';
+        password.value = '';
+        zip.value = '';
+        email.value = '';
+        this.props.onRegistrationSuccess();
+      })
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
   };
 
   componentDidMount() {
@@ -82,14 +100,14 @@ class RegistrationForm extends Component {
               htmlFor="registration-name-input"
               className={styles.regLabel}>
               <span className={styles.fullInputPhrase}>Enter your</span> name:
-              {/* <Required /> */}
+              <Required />
             </Label>
             <Input
               ref={this.firstInput}
               id="registration-name-input"
               name="name"
               className={styles.regInput}
-              // required
+              required
               autoComplete="off"
             />
           </div>
@@ -98,13 +116,13 @@ class RegistrationForm extends Component {
               htmlFor="registration-username-input"
               className={styles.regLabel}>
               <span className={styles.fullInputPhrase}>Create a</span> username:
-              {/* <Required /> */}
+              <Required />
             </Label>
             <Input
               id="registration-username-input"
               name="username"
               className={styles.regInput}
-              // required
+              required
               autoComplete="off"
             />
           </div>
@@ -113,14 +131,14 @@ class RegistrationForm extends Component {
               htmlFor="registration-email-input"
               className={styles.regLabel}>
               <span className={styles.fullInputPhrase}>Enter your</span> email:
-              {/* <Required /> */}
+              <Required />
             </Label>
             <Input
               id="registration-email-input"
               name="email"
               type="email"
               className={styles.regInput}
-              // required
+              required
               autoComplete="new-off"
             />
           </div>
@@ -129,14 +147,14 @@ class RegistrationForm extends Component {
               htmlFor="registration-password-input"
               className={styles.regLabel}>
               <span className={styles.fullInputPhrase}>Choose a</span> password:
-              {/* <Required /> */}
+              <Required />
             </Label>
             <Input
               id="registration-password-input"
               name="password"
               type="password"
               className={styles.regInput}
-              // required
+              required
               autoComplete="off"
             />
           </div>
@@ -144,28 +162,20 @@ class RegistrationForm extends Component {
             <Label htmlFor="registration-zip-input" className={styles.regLabel}>
               <span className={styles.fullInputPhrase}>Enter your</span>{' '}
               zipcode:
-              {/* <Required /> */}
+              <Required />
             </Label>
             <Input
               id="registration-zip-input"
               name="zip"
               type="number"
               className={styles.regInput}
-              // required
+              required
               autoComplete="new-off"
             />
           </div>
           <div className={styles.regDiv}>
-          {/* <Label htmlFor='registration-image-upload'>
-              Upload image
-            </Label>
-            <Input 
-              id='registration-image-upload'
-              type='file'
-              name='image'
-              onChange={this.fileSelecedHandler}
-            /> */}
-            <button onClick={() => this.beginUpload()}>Upload Image</button>
+            <Button onClick={(e) => this.beginUpload(e)}>Upload Image</Button>
+            {this.displayPreview()}
           </div>
         </div>
         <footer className="reg-footer">
