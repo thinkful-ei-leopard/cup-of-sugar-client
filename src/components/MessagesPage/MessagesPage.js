@@ -12,7 +12,7 @@ export default class MessagesPage extends React.Component {
         return (
             <section className={styles.messagesPageSection}>
                 <MessageForm user={this.context.user}/>
-                <MessageList />
+                <MessageList user={this.context.user}/>
             </section>
         )
     }

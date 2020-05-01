@@ -1,5 +1,8 @@
 .userListItem {
   list-style-type: none;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .neighbor {

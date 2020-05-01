@@ -9,6 +9,7 @@ export default class MessagesRoute extends React.Component {
     static contextType = ThreadsContext
 
     componentDidMount() {
+        this.getThreads()
         this.getMessages(this.props.match.params.thread_id);
         this.getCurrentThread(this.props.match.params.thread_id);
       }
@@ -21,6 +22,11 @@ export default class MessagesRoute extends React.Component {
       async getCurrentThread(threadId) {
         const currentThread = await ThreadsApiService.getThreadById(threadId);
         this.context.setCurrentThread(currentThread);
+      }
+
+      async getThreads() {
+        const threads = await ThreadsApiService.getThreads();
+        this.context.setThreads(threads);
       }
 
     render() {
