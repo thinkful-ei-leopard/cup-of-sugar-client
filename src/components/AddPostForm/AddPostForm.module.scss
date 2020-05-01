@@ -6,22 +6,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(
-    rgba(88, 57, 154, 0),
-    rgba(73, 57, 154, 0.3)
-  )
-  no-repeat center center fixed;
+  background: linear-gradient(rgba(88, 57, 154, 0), rgba(73, 57, 154, 0.3))
+    no-repeat center center fixed;
   min-height: 100%;
   position: absolute;
   width: 100%;
-  padding: 1rem;
 }
 
 .addPostForm {
   border: 2px solid var(--black);
   width: 85%;
-  max-width: 450px;
   margin: 0 auto 1.5rem;
+  max-width: 450px;
   padding: 2rem 2rem 3rem;
   background-color: white;
   opacity: 1;
@@ -32,6 +28,7 @@
 
 @include mobileLandscape {
   .addPostForm {
+    margin: 0 auto 1.5rem;
     width: 70%;
   }
 }
@@ -95,4 +92,18 @@
   &:hover {
     color: var(--dark1);
   }
+}
+
+.addPostHeader {
+  margin-bottom: 1rem;
+}
+
+.addPostContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -60px;
+  width: 100%;
 }
