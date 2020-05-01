@@ -31,9 +31,9 @@ export default class MessagesRoute extends React.Component {
   render() {
     const { currentThread } = this.context;
     return (
-      <div>
+      <>
         <MessagesPage currentThread={currentThread} />
-      </div>
+      </>
     );
   }
 }
