@@ -8,6 +8,7 @@ const UserContext = React.createContext({
   error: null,
   users: [],
   isLoading: null,
+  filterTouched: false,
   setError: () => {},
   clearError: () => {},
   setUser: () => {},
@@ -76,6 +77,15 @@ export class UserProvider extends Component {
   clearLoading = () => {
     this.setState({ setLoading: null })
   }
+
+  filterUsersByName = async searchInput => {
+    const { users } = this.state;
+    const filteredUsers = users.filter(user => {
+      return (user.name.toLowerCase().includes(searchInput.toLowerCase()) || user.user_name.toLowerCase().includes(searchInput.toLowerCase()))
+    });
+
+    this.setState({ filteredUsers, filterTouched: true });
+  };
 
   processLogin = authToken => {
     TokenService.saveAuthToken(authToken)
