@@ -17,8 +17,9 @@ class User extends React.Component {
     const user = this.props.user;
     const neighbor = this.props.neighbor;
     let threads = this.context.threads;
-    let thread = threads.find((thread) => thread.user_id1 === user.id || thread.user_id2 === user.id)
+    let thread = threads.find((thread) => (thread.user_id1 === user.id || thread.user_id2 === user.id) && (thread.user_id1 === neighbor.id || thread.user_id2 === neighbor.id))
     if (thread) {
+      console.log('redirecting')
       this.redirectToThread(thread.id)
       return
     }

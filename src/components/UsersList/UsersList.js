@@ -11,14 +11,16 @@ export default class UsersList extends React.Component {
       user => user.id !== this.context.user.id
     );
     return (
+      <section className={styles.userListSection}>
+      <h2 className={styles.directoryHeader}>Neighbor Directory</h2>
       <ul className={styles.UsersList}>
-        <h2 className={styles.directoryHeader}>Neighbor Directory</h2>
         <div className={styles.usersContainer}>
           {users.map(user => (
             <User user={this.context.user} neighbor={user} key={user.id} />
           ))}
         </div>
       </ul>
+      </section>
     );
   }
 }
