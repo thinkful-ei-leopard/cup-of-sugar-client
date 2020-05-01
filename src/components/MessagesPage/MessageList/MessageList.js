@@ -26,8 +26,6 @@ export default class MessageList extends React.Component {
     const { messages, currentThread } = this.context;
     let name = ''
     let user_name = ''
-    console.log(currentThread)
-    console.log(this.props.user)
     if (currentThread) {
         if(currentThread.user_id1 === this.props.user.id) {
             name = currentThread.name2
