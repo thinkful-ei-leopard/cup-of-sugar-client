@@ -8,11 +8,17 @@ export class UsersRoute extends Component {
   static contextType = UserContext;
 
   componentDidMount() {
-    const user = this.context.user;
-    this.getUsers(user.zip);
+    this.getUsers()
   }
 
-  async getUsers(zip) {
+  async getZip(userId) {
+    const user = await UsersApiService.getUserById(userId);
+    let zip = user[0].zip
+    return zip
+  }
+
+  async getUsers() {
+    const zip = await this.getZip(this.context.user.id)
     const users = await UsersApiService.getUsersByZip(zip);
     this.context.setUsers(users);
   }
