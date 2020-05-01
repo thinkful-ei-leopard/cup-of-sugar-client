@@ -11,7 +11,7 @@ export default class UsersList extends React.Component {
       user => user.id !== this.context.user.id
     );
     return (
-      <section className={styles.userListSection}>
+      <section className={styles.usersListSection}>
       <h2 className={styles.directoryHeader}>Neighbor Directory</h2>
       <ul className={styles.UsersList}>
         <div className={styles.usersContainer}>

@@ -3,7 +3,7 @@
 
 .cupOfSugarHeader {
   font-size: 2.5rem;
-  margin: 0 0 -0.5rem;
+  margin: 0;
   color: var(--black);
 }
 
@@ -15,7 +15,8 @@
 
 svg {
   fill: var(--black);
-  width: 80px;
+  width: 90px;
+  // margin-bottom: 20px;
 }
 
 @include mobileLandscape {

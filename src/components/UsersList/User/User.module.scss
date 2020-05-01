@@ -1,14 +1,18 @@
+// @import '';
+// @import '.';
+
 .userListItem {
   list-style-type: none;
   padding: .5rem 2rem;
   border-radius: 1rem;
+  transition: background-color .2s;
   &:hover {
     cursor: pointer;
-    background-color: var(--light1);
+    background-color: var(--light2);
   }
 }
 
 .neighbor {
-font-size: 1rem;
-color: var(--black);
+font-size: 1.2rem;
+color: var(--dark2);
 }
