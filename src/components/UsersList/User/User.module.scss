@@ -1,7 +1,10 @@
 .userListItem {
   list-style-type: none;
+  padding: .5rem 2rem;
+  border-radius: 1rem;
   &:hover {
     cursor: pointer;
+    background-color: var(--light1);
   }
 }
 
