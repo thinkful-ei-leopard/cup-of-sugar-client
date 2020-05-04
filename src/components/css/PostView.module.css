@@ -1,0 +1,135 @@
+:root {
+  --black: #444;
+  --dark1: #248271;
+  --dark1b: #042b24;
+  --light1: #d7faf3;
+  --neutral: #fae7c3;
+  --dark2: #6b559a;
+  --dark2b: rgb(88, 57, 154);
+  --light2: #dcd0f7;
+  --white: #fff;
+  --bright: #65fadd;
+  --highlight: #fee3ff;
+  --warning: #ff5e5e;
+}
+
+.PostView {
+  top: 75px;
+  text-align: center;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #fff), to(var(--light2))) no-repeat center center fixed;
+  background: linear-gradient(#fff 20%, var(--light2) 100%) no-repeat center center fixed;
+  min-height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.postDetail {
+  border: 2px solid var(--black);
+  width: 80%;
+  max-width: 500px;
+  margin: 25px auto 0;
+  padding: 0 1.5rem .5rem;
+  background-color: white;
+  opacity: 1;
+  padding: 1.5rem;
+}
+
+@media (min-width: 480px) {
+  .postDetail {
+    margin: 50px auto 0;
+    padding: 2rem;
+  }
+}
+
+.Comments {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 500px;
+}
+
+.ul {
+  list-style: none;
+}
+
+.title {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+.typeHeader {
+  font-size: 1.25rem;
+}
+
+.requestStyle {
+  color: var(--dark2);
+}
+
+.offerStyle {
+  color: var(--dark1);
+}
+
+#deletePostButton {
+  color: var(--black);
+  margin: 1.5rem auto 0;
+  font-weight: bold;
+  padding: 0;
+  border: none;
+  background-color: #fff;
+}
+
+#deletePostButton:hover {
+  color: var(--warning);
+}
+
+.postedBy {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.description {
+  padding: 0 1rem 1.5rem;
+  text-align: center;
+}
+
+.date {
+  margin-top: -0.5em;
+  text-align: center;
+}
+
+.commentsHeader {
+  text-align: center;
+  margin: 2rem auto .5rem;
+}
+
+.addCommentButton {
+  display: block;
+  margin: 0.5rem auto 1.5rem;
+  position: relative;
+}
+
+.dashboardLink {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+  position: relative;
+  margin-bottom: 75px;
+}
+
+.dashboardLink:hover {
+  color: var(--dark1);
+}
+
+#placeholderInvisibleButton {
+  display: none;
+}
+/*# sourceMappingURL=PostView.module.css.map */

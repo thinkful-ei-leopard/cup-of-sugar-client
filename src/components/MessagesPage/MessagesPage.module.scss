@@ -23,4 +23,20 @@
   max-height: 70vh;
 }
 
+.backButton {
+  width: 50px;
+  margin: 1.5rem auto 0;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  color: var(--black);
+  transition: color .2s;
+  &:hover {
+    color: var(--dark1);
+    cursor: pointer;
+  }
+  // opacity: 0;
+}
+
 

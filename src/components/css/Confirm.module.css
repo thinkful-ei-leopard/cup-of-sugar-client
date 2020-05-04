@@ -1,0 +1,136 @@
+:root {
+  --black: #444;
+  --dark1: #248271;
+  --dark1b: #042b24;
+  --light1: #d7faf3;
+  --neutral: #fae7c3;
+  --dark2: #6b559a;
+  --dark2b: rgb(88, 57, 154);
+  --light2: #dcd0f7;
+  --white: #fff;
+  --bright: #65fadd;
+  --highlight: #fee3ff;
+  --warning: #ff5e5e;
+}
+
+#ConfirmDialog {
+  padding: 1rem;
+  background-color: white;
+  margin: 100px auto 0;
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid var(--black);
+  z-index: 200;
+}
+
+@media (min-width: 480px) {
+  #ConfirmDialog {
+    width: 80%;
+    max-width: 450px;
+    padding: 2rem;
+  }
+}
+
+.buttonGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 250px;
+  margin: 2rem auto 1rem;
+}
+
+@media (min-width: 480px) {
+  .buttonGroup {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin: 2rem auto 1rem;
+    width: 280px;
+  }
+}
+
+.cancelButton,
+.confirmButton {
+  text-align: center;
+  width: 120px;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid var(--black);
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
+.cancelButton:hover,
+.confirmButton:hover {
+  cursor: pointer;
+}
+
+.cancelButton:hover {
+  background-color: var(--neutral);
+}
+
+.confirmButton {
+  margin-bottom: 1.5rem;
+  background-color: var(--light2);
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
+.confirmButton:hover {
+  background-color: var(--warning);
+}
+
+@media (min-width: 480px) {
+  .confirmButton {
+    margin: 0;
+  }
+}
+
+.deleteButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.deleteText {
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+  text-align: center;
+}
+
+.deleteText:hover {
+  color: white;
+}
+
+form {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+}
+/*# sourceMappingURL=Confirm.module.css.map */

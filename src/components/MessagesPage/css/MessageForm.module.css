@@ -1,0 +1,61 @@
+:root {
+  --black: #444;
+  --dark1: #248271;
+  --dark1b: #042b24;
+  --light1: #d7faf3;
+  --neutral: #fae7c3;
+  --dark2: #6b559a;
+  --dark2b: rgb(88, 57, 154);
+  --light2: #dcd0f7;
+  --white: #fff;
+  --bright: #65fadd;
+  --highlight: #fee3ff;
+  --warning: #ff5e5e;
+}
+
+.addMessageForm {
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  z-index: 5;
+}
+
+.newMessageGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.inputGroup {
+  margin-bottom: 1rem;
+}
+
+.messageFormInput {
+  width: 80%;
+  height: 20px;
+}
+
+.sendButton {
+  width: 100px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sendText {
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--black);
+}
+/*# sourceMappingURL=MessageForm.module.css.map */

@@ -4,32 +4,65 @@
 .ThreadsPage {
   top: 60px;
   text-align: center;
-  background: linear-gradient(
-      rgba(88, 57, 154, 0),
-      rgba(73, 57, 154, 0.3)
-    )
+  background: linear-gradient(rgba(88, 57, 154, 0), rgba(73, 57, 154, 0.3))
     no-repeat center center fixed;
   min-height: 100%;
   top: 20px;
   position: absolute;
-  width: 100%;  
+  width: 100%;
 }
 
 .threadsContainer {
   border: 2px solid var(--black);
   width: 90%;
   max-width: 600px;
-  margin: 275px auto 2rem;
+  margin: 180px auto 2rem;
   min-height: 88px;
   height: 100%;
-  // background-color: white;
+}
+
+@include mobilePortrait {
+  .threadsContainer {
+    margin: 225px auto 2rem;
+  }
 }
 
 .threadsHeader {
   color: var(--black);
   position: relative;
-  top: 225px;
+  top: 140px;
   // border: 2px solid red;
   margin: 0 auto -1.5rem;
   width: 100px;
+}
+
+@include mobilePortrait {
+  .threadsHeader {
+    top: 175px;
+  }
+}
+
+.directoryLink {
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative;
+  width: 200px;
+  top: 90px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem;
+  border: 2px solid var(--black);
+  background-color: var(--bright);
+  transition: background-color 0.2s;
+  &:hover {
+    cursor: pointer;
+    background-color: var(--neutral);
+  }
+  // z-index: 1;
+}
+
+@include mobilePortrait {
+  .directoryLink {
+    top: 115px;
+  }
 }

@@ -1,0 +1,46 @@
+:root {
+  --black: #444;
+  --dark1: #248271;
+  --dark1b: #042b24;
+  --light1: #d7faf3;
+  --neutral: #fae7c3;
+  --dark2: #6b559a;
+  --dark2b: rgb(88, 57, 154);
+  --light2: #dcd0f7;
+  --white: #fff;
+  --bright: #65fadd;
+  --highlight: #fee3ff;
+  --warning: #ff5e5e;
+}
+
+.cupOfSugarHeader {
+  font-size: 2.5rem;
+  margin: 0;
+  color: var(--black);
+}
+
+.tagline {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+svg {
+  fill: var(--black);
+  width: 90px;
+}
+
+@media (min-width: 640px) {
+  svg {
+    width: 150px;
+  }
+  .cupOfSugarHeader {
+    font-size: 3rem;
+    margin: 0;
+  }
+  .tagline {
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+  }
+}
+/*# sourceMappingURL=WelcomeDisplay.module.css.map */

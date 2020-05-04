@@ -19,6 +19,12 @@
   padding: 0 1rem;
 }
 
+.noMessages {
+  font-size: 1.2rem;
+  margin: 2rem auto 3rem;
+  padding: 0 1rem;
+}
+
 @include mobilePortrait {
     .messagesWithHeader {
         font-size: 1.5rem

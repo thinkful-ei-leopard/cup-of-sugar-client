@@ -1,11 +1,13 @@
-// @import '';
-// @import '.';
+@import '../../../styles/_breakpoints.scss';
+@import '../../../styles/_variables.scss';
 
 .userListItem {
   list-style-type: none;
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
   border-radius: 1rem;
-  transition: background-color .2s;
+  // max-width: 100%;
+  transition: background-color 0.2s;
+  margin: 0 auto;
   &:hover {
     cursor: pointer;
     background-color: var(--light2);
@@ -13,6 +15,7 @@
 }
 
 .neighbor {
-font-size: 1.2rem;
-color: var(--dark2);
+  font-size: 1.2rem;
+  color: var(--dark2);  
+  // width: 100%;
 }

@@ -27,9 +27,9 @@ export default class ThreadsRoute extends React.Component {
   render() {
     return (
       <div className={styles.threadsRouteContainer}>
-        <Link to="/neighbor-directory">
+        {/* <Link to="/neighbor-directory">
           <h2 className={styles.directoryLink}> Neighbor Lookup </h2>
-        </Link>
+        </Link> */}
         <ThreadsPage getUsers={this.getUsers} />
       </div>
     );

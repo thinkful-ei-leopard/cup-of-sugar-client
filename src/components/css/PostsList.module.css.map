@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "ACAA,AAAA,KAAK,CAAC;EACJ,OAAO,CAAA,KAAC;EACR,OAAO,CAAA,QAAC;EACR,QAAQ,CAAA,QAAC;EACT,QAAQ,CAAA,QAAC;EACT,SAAS,CAAA,QAAC;EACV,OAAO,CAAA,QAAC;EACR,QAAQ,CAAA,iBAAC;EACT,QAAQ,CAAA,QAAC;EACT,OAAO,CAAA,KAAC;EACR,QAAQ,CAAA,QAAC;EACT,WAAW,CAAA,QAAC;EACZ,SAAS,CAAA,QAAC;CACX;;ADVD,AAAA,EAAE,CAAC;EACD,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,MAAM;EACf,QAAQ,EAAE,QAAQ;CACnB;;AENC,MAAM,EAAE,SAAS,EAAE,KAAK;EFSxB,AAAA,EAAE,CAAC;IACD,OAAO,EAAE,IAAI;GACd",
+    "sources": [
+        "../PostsList/PostsList.module.scss",
+        "../../styles/_variables.scss",
+        "../../styles/_breakpoints.scss"
+    ],
+    "names": [],
+    "file": "PostsList.module.css"
+}

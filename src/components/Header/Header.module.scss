@@ -37,7 +37,8 @@
 
 .logoutLink,
 .homeLink,
-.threadsLink {
+.threadsLink,
+.directoryLink {
   transition: color 0.2s;
   &:hover {
     color: var(--dark1);
@@ -86,16 +87,37 @@ a {
   margin-bottom: 0.5rem;
   position: absolute;
   display: none;
+  margin-left: 0.5rem;
+  // width: 200px;
+}
+
+.directoryLink {
+  display: none;
+  margin-right: auto;
+}
+.directoryLinkIcon {
+  width: 22px;
+  top: 2px;
+  position: relative;
+  opacity: .75;
 }
 
 .threadsLinkIcon {
   width: 20px;
   display: inline-block;
   margin-top: 0.4rem;
-  margin-right: 0.5rem;
+  // margin-right: 1rem;
 }
 
-@include mobilePortrait {
+@include mobileLandscape {
+  .directoryLink {
+    display: inline-block;
+  }
+
+  .directoryLinkIcon {
+    display: none;
+  }
+
   .threadsLink {
     display: inline-block;
   }
@@ -109,20 +131,27 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  text-align: right;
+  justify-content: space-around;
   position: absolute;
   top: 13px;
-  right: 1rem;
-  width: 85px;
+  right: 2rem;
+  width: 140px;
+  // border: 1px solid red;
 }
 
 @include mobilePortrait {
   .linksContainer {
-    width: 175px;
+    width: 160px;
+  }
+}
+
+@include mobileLandscape {
+  .linksContainer {
+    width: 280px;
     top: 20px;
   }
 
   .logoutLink {
-margin-left: auto;  }
+    margin-left: auto;
+  }
 }

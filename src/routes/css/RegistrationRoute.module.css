@@ -1,0 +1,30 @@
+:root {
+  --black: #444;
+  --dark1: #248271;
+  --dark1b: #042b24;
+  --light1: #d7faf3;
+  --neutral: #fae7c3;
+  --dark2: #6b559a;
+  --dark2b: rgb(88, 57, 154);
+  --light2: #dcd0f7;
+  --white: #fff;
+  --bright: #65fadd;
+  --highlight: #fee3ff;
+  --warning: #ff5e5e;
+}
+
+.registrationSection {
+  top: 60px;
+  text-align: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(88, 57, 154, 0)), to(rgba(73, 57, 154, 0.3))) no-repeat center center fixed;
+  background: linear-gradient(rgba(88, 57, 154, 0), rgba(73, 57, 154, 0.3)) no-repeat center center fixed;
+  min-height: 100%;
+  top: 20px;
+  position: absolute;
+  width: 100%;
+}
+
+.registrationContainer {
+  padding: 40px 0;
+}
+/*# sourceMappingURL=RegistrationRoute.module.css.map */

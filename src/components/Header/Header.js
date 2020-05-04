@@ -9,7 +9,7 @@ class Header extends Component {
 
   static defaultProps = {
     match: {},
-    location: {},
+    location: {}
   };
 
   static contextType = UserContext;
@@ -29,6 +29,12 @@ class Header extends Component {
           Cup of Sugar
         </Link>
         <nav className={styles.linksContainer}>
+          <Link className={styles.directoryLink} to="/neighbor-directory">
+            Directory
+          </Link>
+          <Link className={styles.directoryLinkIcon} to="/neighbor-directory">
+            <img src={require('../../images/users.svg')} alt="users icon" />
+          </Link>
           <Link className={styles.threadsLink} to="/threads">
             My Messages
           </Link>
