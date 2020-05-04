@@ -28,12 +28,11 @@ export default class Thread extends React.Component {
   };
 
   render() {
-    const thread = this.props.thread;
-    const user = this.props.user;
-    let name = '';
-    let user_name = '';
-    let img_src = '';
-    let img_alt = '';
+    const { thread, user } = this.props;
+    let name,
+      user_name,
+      img_src,
+      img_alt = '';
     if (thread.user_id1 === user.id) {
       name = thread.name2;
       user_name = thread.user_name2;
@@ -47,8 +46,8 @@ export default class Thread extends React.Component {
     }
 
     let currentMessage = this.findCurrentMessage();
-    let content = '';
-    let date_modifiedMessage = '';
+    let content,
+      date_modifiedMessage = '';
     if (currentMessage) {
       content = currentMessage.content;
       if (currentMessage.user_id === user.id)

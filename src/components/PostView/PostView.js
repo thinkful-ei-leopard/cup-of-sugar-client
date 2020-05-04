@@ -23,7 +23,6 @@ export default class PostView extends React.Component {
 
   handleDelete = () => {
     const history = this.props.history;
-    console.log(history);
     history.goBack();
   };
 

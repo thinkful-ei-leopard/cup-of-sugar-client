@@ -7,20 +7,20 @@ import styles from './Confirm.module.scss';
 export default class Confirm extends React.Component {
   state = {
     open: false,
-    callback: null,
+    callback: null
   };
 
-  show = (callback) => (event) => {
+  show = callback => event => {
     event.preventDefault();
 
     event = {
       ...event,
-      target: { ...event.target, value: event.target.value },
+      target: { ...event.target, value: event.target.value }
     };
 
     this.setState({
       open: true,
-      callback: () => callback(event),
+      callback: () => callback(event)
     });
   };
 
@@ -37,9 +37,7 @@ export default class Confirm extends React.Component {
         {this.props.children(this.show)}
 
         {this.state.open && (
-          <Dialog
-            aria-label="delete confirmation"
-             id={styles.ConfirmDialog}>
+          <Dialog aria-label="delete confirmation" id={styles.ConfirmDialog}>
             <h1>{this.props.title}</h1>
             <p>{this.props.description}</p>
 
@@ -48,7 +46,7 @@ export default class Confirm extends React.Component {
                 <p className="buttonText">Cancel</p>
               </button>
               <button className={styles.confirmButton} onClick={this.confirm}>
-                <p className={cx(styles.deleteText, "buttonText")}>Delete</p>
+                <p className={cx(styles.deleteText, 'buttonText')}>Delete</p>
               </button>
             </div>
           </Dialog>

@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { MemoryRouter as Router } from 'react-router-dom';
-import Dashboard from './Dashboard';
+import PostView from './PostView';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
 
   ReactDOM.render(
     <Router>
-      <Dashboard />
+      <PostView comments={[]} deleteComment={() => {}} history={{}} posts={[]} />
     </Router>,
     div
   );

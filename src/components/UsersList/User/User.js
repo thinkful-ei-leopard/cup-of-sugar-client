@@ -5,22 +5,24 @@ import ThreadsApiService from '../../../services/threads-api-service';
 import styles from './User.module.scss';
 
 class User extends React.Component {
-
   static contextType = ThreadsContext;
 
-  redirectToThread = (threadId) => {
-    this.props.history.push(`/thread/${threadId}`)
-  }
+  redirectToThread = threadId => {
+    this.props.history.push(`/thread/${threadId}`);
+  };
 
   async handleThreadCreate() {
     const user = this.props.user;
     const neighbor = this.props.neighbor;
-    console.log(user)
     let threads = this.context.threads;
-    let thread = threads.find((thread) => (thread.user_id1 === user.id || thread.user_id2 === user.id) && (thread.user_id1 === neighbor.id || thread.user_id2 === neighbor.id))
+    let thread = threads.find(
+      thread =>
+        (thread.user_id1 === user.id || thread.user_id2 === user.id) &&
+        (thread.user_id1 === neighbor.id || thread.user_id2 === neighbor.id)
+    );
     if (thread) {
-      this.redirectToThread(thread.id)
-      return
+      this.redirectToThread(thread.id);
+      return;
     }
     let newThread = {
       user_id2: neighbor.id,
@@ -31,20 +33,23 @@ class User extends React.Component {
       img_src1: user.img_src,
       img_alt1: user.img_alt,
       img_src2: neighbor.img_src,
-      img_alt2: neighbor.img_alt,
+      img_alt2: neighbor.img_alt
     };
-    console.log(newThread)
-    thread = await ThreadsApiService.addThread(newThread)
-    this.redirectToThread(thread.id)
-  };
+    console.log(newThread);
+    thread = await ThreadsApiService.addThread(newThread);
+    this.redirectToThread(thread.id);
+  }
 
   render() {
-    const neighbor = this.props.neighbor;
+    const { neighbor } = this.props;
     return (
-      <li title='Start a Thread' className={styles.userListItem} onClick={e => {
-        e.preventDefault();
-        this.handleThreadCreate();
-      }}>
+      <li
+        title="Start a Thread"
+        className={styles.userListItem}
+        onClick={e => {
+          e.preventDefault();
+          this.handleThreadCreate();
+        }}>
         {/* <Link to={`/thread/${this.state.threadId}`}> */}
         <p className={styles.neighbor}>
           {neighbor.name} ({neighbor.user_name})
@@ -62,4 +67,4 @@ class User extends React.Component {
   }
 }
 
-export default withRouter(User)
+export default withRouter(User);
