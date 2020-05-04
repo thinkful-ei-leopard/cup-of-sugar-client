@@ -4,26 +4,69 @@ import { Input, Required, Label } from '../Form/Form';
 import AuthApiService from '../../services/auth-api-service';
 import Button from '../Button/Button';
 import styles from './RegistrationForm.module.scss';
+import { openUploadWidget } from "../../services/CloudinaryService";
 
 class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => {},
   };
 
-  state = { error: null };
+  state = { 
+    error: null, 
+    imgSrc: null,
+  };
 
   firstInput = React.createRef();
+
+  beginUpload = (e) => {
+    e.preventDefault()
+
+    const uploadOptions = {
+      cloudName: "mmpr",
+      uploadPreset: "upload",
+      resourceType: 'image',
+      multiple: false,
+      theme: 'minimal',
+      maxImageFileSize: 1500000, //1.5MB
+    };
+  
+    openUploadWidget(uploadOptions, (error, photos) => {
+      if (!error) {
+        console.log(photos);
+        if(photos.event === 'success'){
+          this.setState({
+            imgSrc: photos.info.secure_url
+          })
+        }
+      } else {
+        console.log(error);
+      }
+    })
+  }
+
+  displayPreview() {
+    let image;
+
+    if(this.state.imgSrc === null) {
+      image = (<img src='https://image.flaticon.com/icons/svg/166/166277.svg' alt='default' />)
+    } else if (this.state.imgSrc) {
+      image = (<img src={this.state.imgSrc} alt='Selected Profile Picture' />)
+    }
+    return image
+  }
 
   handleSubmit = (ev) => {
     ev.preventDefault();
     const { name, username, password, zip, email } = ev.target;
-    console.log(name, username, password, zip, email)
+    
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
       password: password.value,
       zip: zip.value,
       email: email.value,
+      img_src: this.state.imgSrc,
+      img_alt: `${username.value} Profile Picture`
     })
       .then((user) => {
         name.value = '';
@@ -129,6 +172,10 @@ class RegistrationForm extends Component {
               required
               autoComplete="new-off"
             />
+          </div>
+          <div className={styles.regDiv}>
+            <Button onClick={(e) => this.beginUpload(e)}>Upload Image</Button>
+            {this.displayPreview()}
           </div>
         </div>
         <footer className="reg-footer">

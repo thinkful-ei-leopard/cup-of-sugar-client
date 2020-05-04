@@ -7,6 +7,7 @@ const UserContext = React.createContext({
   user: {},
   error: null,
   users: [],
+  filteredUsers: [],
   isLoading: null,
   filterTouched: false,
   setError: () => {},
@@ -17,6 +18,7 @@ const UserContext = React.createContext({
   setLoading: () => {},
   clearLoading: () => {},
   setUsers: () => {},
+  filterUsersByName: () => {},
 })
 
 export default UserContext
@@ -78,12 +80,11 @@ export class UserProvider extends Component {
     this.setState({ setLoading: null })
   }
 
-  filterUsersByName = async searchInput => {
+  filterUsersByName = (searchInput) => {
     const { users } = this.state;
     const filteredUsers = users.filter(user => {
       return (user.name.toLowerCase().includes(searchInput.toLowerCase()) || user.user_name.toLowerCase().includes(searchInput.toLowerCase()))
     });
-
     this.setState({ filteredUsers, filterTouched: true });
   };
 
@@ -133,6 +134,8 @@ export class UserProvider extends Component {
       user: this.state.user,
       error: this.state.error,
       users: this.state.users,
+      filterTouched: this.state.filterTouched,
+      filteredUsers: this.state.filteredUsers,
       setError: this.setError,
       clearError: this.clearError,
       setUser: this.setUser,
@@ -142,6 +145,7 @@ export class UserProvider extends Component {
       clearLoading: this.clearLoading,
       isLoading: this.state.isLoading,
       setUsers: this.setUsers,
+      filterUsersByName: this.filterUsersByName,
     }
     return (
       <UserContext.Provider value={value}>

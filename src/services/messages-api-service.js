@@ -13,6 +13,17 @@ const MessagesApiService = {
     );
   },
 
+  getAllMessages() {
+    return fetch(`${config.API_ENDPOINT}/messages`, {
+      headers: {
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+        'Content-Type': 'application/json',
+      },
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
+
   postMessage(threadId, newMessage) {
     return fetch(`${config.API_ENDPOINT}/messages/${threadId}`, {
       method: 'POST',

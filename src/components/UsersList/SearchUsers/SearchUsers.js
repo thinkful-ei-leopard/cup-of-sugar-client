@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserContext from '../../contexts/UserContext';
+import UserContext from '../../../contexts/UserContext'
 import { Input, Label } from '../../Form/Form';
 
 export class SearchPosts extends Component {

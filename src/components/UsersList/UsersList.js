@@ -3,14 +3,24 @@ import { Link } from 'react-router-dom';
 import User from './User/User';
 import UserContext from '../../contexts/UserContext';
 import styles from './UsersList.module.scss';
+import SearchUsers from './SearchUsers/SearchUsers'
 
 export default class UsersList extends React.Component {
   static contextType = UserContext;
 
   render() {
-    const users = this.context.users.filter(
+    let users = [];
+    if (this.context.filterTouched) {
+      users = this.context.filteredUsers.filter(
+        user => user.id !== this.context.user.id
+      );
+    }
+    else {
+      users = this.context.users.filter(
       user => user.id !== this.context.user.id
     );
+    }
+    console.log(users)
     return (
       <section className={styles.usersListSection}>
         <h2 className={styles.directoryHeader}>Neighbor Directory</h2>
