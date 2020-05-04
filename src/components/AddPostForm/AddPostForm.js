@@ -13,15 +13,15 @@ export class AddPost extends Component {
     this.state = {
       title: '',
       description: '',
-      type: '',
+      type: ''
     };
   }
 
   static defaultProps = {
     location: {},
     history: {
-      push: () => {},
-    },
+      push: () => {}
+    }
   };
 
   static contextType = PostsContext;
@@ -32,7 +32,7 @@ export class AddPost extends Component {
 
   updateField(field, value) {
     this.setState({
-      [field]: value,
+      [field]: value
     });
   }
 
@@ -43,7 +43,7 @@ export class AddPost extends Component {
     const data = {
       title,
       description,
-      type,
+      type
     };
 
     this.addPost(data);
@@ -67,76 +67,78 @@ export class AddPost extends Component {
     const { error } = this.state;
     return (
       <section className={styles.AddPost}>
-        <h2>Add Post</h2>
-        {error ? <h3 className={styles.errorMessage}>{error}</h3> : null}
-        <form
-          className={styles.addPostForm}
-          onSubmit={(e) => this.handleSubmit(e)}>
-          {/* <Input ref={this.firstInput} /> */}
-          <Label htmlFor="title" className={styles.addLabel}>
-            Title:
-          </Label>
-          <Input
-            ref={this.firstInput}
-            type="text"
-            name="title"
-            className={cx(styles.addInput, styles.titleInput)}
-            autoComplete="off"
-            maxLength="60"
-            onChange={(e) => this.updateField('title', e.target.value)}
-            required
-          />
-          <div className={styles.typeGroup}>
-            <div className={styles.typeContainer}>
-              <Input
-                type="radio"
-                id="typeChoice1"
-                className={styles.radioSelect}
-                name="type"
-                value="offer"
-                onChange={(e) => this.updateField('type', e.target.value)}
-                required
-              />
-              <Label htmlFor="typeChoice1" className={styles.radioLabel}>
-                <span className={styles.offerText}>Offer</span>
-              </Label>
+        <div className={styles.addPostContainer}>
+          <h2 className={styles.addPostHeader}>Add Post</h2>
+          {error ? <h3 className={styles.errorMessage}>{error}</h3> : null}
+          <form
+            className={styles.addPostForm}
+            onSubmit={e => this.handleSubmit(e)}>
+            {/* <Input ref={this.firstInput} /> */}
+            <Label htmlFor="title" className={styles.addLabel}>
+              Title:
+            </Label>
+            <Input
+              ref={this.firstInput}
+              type="text"
+              name="title"
+              className={cx(styles.addInput, styles.titleInput)}
+              autoComplete="off"
+              maxLength="60"
+              onChange={e => this.updateField('title', e.target.value)}
+              required
+            />
+            <div className={styles.typeGroup}>
+              <div className={styles.typeContainer}>
+                <Input
+                  type="radio"
+                  id="typeChoice1"
+                  className={styles.radioSelect}
+                  name="type"
+                  value="offer"
+                  onChange={e => this.updateField('type', e.target.value)}
+                  required
+                />
+                <Label htmlFor="typeChoice1" className={styles.radioLabel}>
+                  <span className={styles.offerText}>Offer</span>
+                </Label>
+              </div>
+              <div className={styles.typeContainer}>
+                <Input
+                  type="radio"
+                  id="typeChoice2"
+                  className={styles.radioSelect}
+                  name="type"
+                  value="request"
+                  onChange={e => this.updateField('type', e.target.value)}
+                  required
+                />
+                <Label htmlFor="typeChoice2" className={styles.radioLabel}>
+                  <span className={styles.requestText}>Request</span>
+                </Label>
+              </div>
             </div>
-            <div className={styles.typeContainer}>
-              <Input
-                type="radio"
-                id="typeChoice2"
-                className={styles.radioSelect}
-                name="type"
-                value="request"
-                onChange={(e) => this.updateField('type', e.target.value)}
-                required
-              />
-              <Label htmlFor="typeChoice2" className={styles.radioLabel}>
-                <span className={styles.requestText}>Request</span>
-              </Label>
-            </div>
-          </div>
 
-          <Label htmlFor="description" className={styles.addLabel}>
-            Description:
-          </Label>
-          <textarea
-            name="description"
-            id="post-description"
-            className={cx(styles.addInput, styles.descriptionInput)}
-            rows="10"
-            maxLength="500"
-            required
-            onChange={(e) =>
-              this.updateField('description', e.target.value)
-            }></textarea>
-          <button type="submit" className="Button">
-            <span className="buttonText">Submit</span>
-          </button>
-        </form>
-        <Link to="/">
-          <p className={styles.dashboardLink}>Back to dashboard</p>
-        </Link>
+            <Label htmlFor="description" className={styles.addLabel}>
+              Description:
+            </Label>
+            <textarea
+              name="description"
+              id="post-description"
+              className={cx(styles.addInput, styles.descriptionInput)}
+              rows="10"
+              maxLength="500"
+              required
+              onChange={e =>
+                this.updateField('description', e.target.value)
+              }></textarea>
+            <button type="submit" className="Button">
+              <span className="buttonText">Submit</span>
+            </button>
+          </form>
+          <Link to="/">
+            <p className={styles.dashboardLink}>Back to dashboard</p>
+          </Link>
+        </div>
       </section>
     );
   }

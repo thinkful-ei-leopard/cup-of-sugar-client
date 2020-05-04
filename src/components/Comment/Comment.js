@@ -40,7 +40,7 @@ export default class Comment extends React.Component {
         <div className={styles.commentDeleteContainer}>
           <p className={styles.content}>
             {comment.content} <br />
-            --{' '}
+            {' '}
             <span className={styles.commenterName}>
               {comment.name} ({comment.user_name})
             </span>{' '}
