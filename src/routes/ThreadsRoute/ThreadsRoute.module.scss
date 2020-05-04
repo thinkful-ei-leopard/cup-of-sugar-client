@@ -7,6 +7,7 @@
   width: 100%;
   height: 100vh;
   // border: 1px solid red;
+  // z-index: -1;
 }
 
 .directoryLink {
@@ -24,5 +25,5 @@
     cursor: pointer;
     background-color: var(--neutral);
   }
-  z-index: 2;
+  // z-index: 1;
 }

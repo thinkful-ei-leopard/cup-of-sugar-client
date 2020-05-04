@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import styles from './Thread.module.scss';
 import ThreadsApiService from '../../../../services/threads-api-service';
 import ThreadsContext from '../../../../contexts/ThreadsContext';
+import Confirm from '../../../Confirm/Confirm';
+import '@reach/dialog/styles.css';
 
 export default class Thread extends React.Component {
   static contextType = ThreadsContext;
@@ -40,15 +42,18 @@ export default class Thread extends React.Component {
             Thread with {name}({user_name})
           </h3>
         </Link>
-        <button
-          type="delete"
-          className={styles.deleteThreadButton}
-          onClick={e => {
-            e.preventDefault();
-            this.handleThreadDelete();
-          }}>
-          <span className={styles.deleteX}>X</span>
-        </button>
+        <Confirm title="Confirm" description="Are you sure?">
+          {confirm => (
+            <button
+              type="delete"
+              className={styles.deleteThreadButton}
+              onClick={confirm(() => {
+                this.handleThreadDelete();
+              })}>
+              <span className={styles.deleteX}>X</span>
+            </button>
+          )}
+        </Confirm>
         <p className={styles.lastMessage}>
           last message: {thread.date_modified.slice(0, 10)}
         </p>
