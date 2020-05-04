@@ -1,64 +1,77 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Input, Required, Label } from '../Form/Form';
+import cx from 'classnames';
 import AuthApiService from '../../services/auth-api-service';
 import Button from '../Button/Button';
 import styles from './RegistrationForm.module.scss';
-import { openUploadWidget } from "../../services/CloudinaryService";
+import { openUploadWidget } from '../../services/CloudinaryService';
 
 class RegistrationForm extends Component {
   static defaultProps = {
-    onRegistrationSuccess: () => {},
+    onRegistrationSuccess: () => {}
   };
 
-  state = { 
-    error: null, 
-    imgSrc: null,
+  state = {
+    error: null,
+    imgSrc: null
   };
 
   firstInput = React.createRef();
 
-  beginUpload = (e) => {
-    e.preventDefault()
+  beginUpload = e => {
+    e.preventDefault();
 
     const uploadOptions = {
-      cloudName: "mmpr",
-      uploadPreset: "upload",
+      cloudName: 'mmpr',
+      uploadPreset: 'upload',
       resourceType: 'image',
       multiple: false,
       theme: 'minimal',
-      maxImageFileSize: 1500000, //1.5MB
+      maxImageFileSize: 1500000 //1.5MB
     };
-  
+
     openUploadWidget(uploadOptions, (error, photos) => {
       if (!error) {
         console.log(photos);
-        if(photos.event === 'success'){
+        if (photos.event === 'success') {
           this.setState({
             imgSrc: photos.info.secure_url
-          })
+          });
         }
       } else {
         console.log(error);
       }
-    })
-  }
+    });
+  };
 
   displayPreview() {
     let image;
 
-    if(this.state.imgSrc === null) {
-      image = (<img src='https://image.flaticon.com/icons/svg/166/166277.svg' alt='default' />)
+    if (this.state.imgSrc === null) {
+      image = (
+        <img
+          className={styles.defaultImage}
+          src="https://image.flaticon.com/icons/svg/166/166277.svg"
+          alt="default"
+        />
+      );
     } else if (this.state.imgSrc) {
-      image = (<img src={this.state.imgSrc} alt='Selected Profile Picture' />)
+      image = (
+        <img
+          className={styles.uploadedImage}
+          src={this.state.imgSrc}
+          alt="Uploaded Avatar"
+        />
+      );
     }
-    return image
+    return image;
   }
 
-  handleSubmit = (ev) => {
+  handleSubmit = ev => {
     ev.preventDefault();
     const { name, username, password, zip, email } = ev.target;
-    
+
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
@@ -68,7 +81,7 @@ class RegistrationForm extends Component {
       img_src: this.state.imgSrc,
       img_alt: `${username.value} Profile Picture`
     })
-      .then((user) => {
+      .then(user => {
         name.value = '';
         username.value = '';
         password.value = '';
@@ -76,7 +89,7 @@ class RegistrationForm extends Component {
         email.value = '';
         this.props.onRegistrationSuccess();
       })
-      .catch((res) => {
+      .catch(res => {
         this.setState({ error: res.error });
       });
   };
@@ -92,7 +105,9 @@ class RegistrationForm extends Component {
         onSubmit={this.handleSubmit}
         className={styles.RegForm}
         autoComplete="off">
-        <div role="alert"><p>{error && {error}}</p></div>
+        <div role="alert">
+          <p>{error && { error }}</p>
+        </div>
         <h3 className={styles.regHeader}>Sign Up</h3>
         <div className={styles.inputContainer}>
           <div className={styles.regDiv}>
@@ -173,8 +188,12 @@ class RegistrationForm extends Component {
               autoComplete="new-off"
             />
           </div>
-          <div className={styles.regDiv}>
-            <Button onClick={(e) => this.beginUpload(e)}>Upload Image</Button>
+          <div className={styles.uploadContainer}>
+            <button
+              className={styles.uploadButton}
+              onClick={e => this.beginUpload(e)}>
+              <span className={styles.uploadText}>Upload Avatar</span>
+            </button>
             {this.displayPreview()}
           </div>
         </div>
