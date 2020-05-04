@@ -6,14 +6,14 @@ import styles from './UserPostsButton.module.scss';
 export class UserPostsButton extends Component {
   static contextType = PostsContext;
   state = {
-    buttonClicked: false,
+    buttonClicked: false
   };
 
   handleClick = async () => {
     if (!this.state.buttonClicked) {
       this.context.filterPostsByUserId(this.props.user.id);
       this.setState({
-        buttonClicked: true,
+        buttonClicked: true
       });
     }
 
@@ -21,7 +21,7 @@ export class UserPostsButton extends Component {
       const posts = await PostsApiService.getPosts();
       this.context.setPosts(posts);
       this.setState({
-        buttonClicked: false,
+        buttonClicked: false
       });
     }
   };

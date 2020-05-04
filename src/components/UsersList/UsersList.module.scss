@@ -33,4 +33,12 @@
   }
 }
 
+.dashboardLink {
+  color: var(--black);
+  transition: color .2s;
+  &:hover {
+    color: var(--dark1);
+  }
+}
+
 

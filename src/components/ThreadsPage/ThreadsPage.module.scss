@@ -17,7 +17,7 @@
   width: 90%;
   max-width: 600px;
   margin: 180px auto 2rem;
-  min-height: 88px;
+  min-height: 96px;
   height: 100%;
 }
 
@@ -58,11 +58,19 @@
     cursor: pointer;
     background-color: var(--neutral);
   }
-  // z-index: 1;
 }
 
 @include mobilePortrait {
   .directoryLink {
     top: 115px;
+  }
+}
+
+.dashboardLink {
+  transition: color 0.2s;
+  color: var(--black);
+  &:hover {
+    color: var(--dark1);
+    cursor: pointer;
   }
 }
