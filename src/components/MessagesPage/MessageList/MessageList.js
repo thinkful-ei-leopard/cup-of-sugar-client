@@ -30,13 +30,19 @@ export default class MessageList extends React.Component {
     const { messages, currentThread } = this.context;
     let name = '';
     let user_name = '';
+    let img_src = '';
+    let img_alt = '';
     if (currentThread) {
       if (currentThread.user_id1 === this.props.user.id) {
         name = currentThread.name2;
         user_name = currentThread.user_name2;
+        img_src = currentThread.img_src2;
+        img_alt = currentThread.img_alt2;
       } else if (currentThread.user_id1 !== this.props.user.id) {
         name = currentThread.name1;
         user_name = currentThread.user_name1;
+        img_src = currentThread.img_src1;
+        img_alt = currentThread.img_alt1;
       }
     }
 
@@ -47,6 +53,7 @@ export default class MessageList extends React.Component {
     return (
       <>
         <h2 className={styles.messagesWithHeader}>
+        <img className={styles.messagesAvatarImg} src={img_src} alt={img_alt}></img>
           Thread with {name} ({user_name})
         </h2>
         {messages.length ? (
