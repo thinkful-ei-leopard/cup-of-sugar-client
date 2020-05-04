@@ -11,18 +11,22 @@ export const openUploadWidget = (options, callback) => {
   window.cloudinary.openUploadWidget(scOptions, callback);
 };
 
-export async function  fetchPhotos  (imageTag, setter)  {
+export async function fetchPhotos(imageTag, setter) {
   const options = {
-  cloudName: 'mmpr',
-  format: 'json',
-  type: 'list',
-  version: Math.ceil(new Date().getTime() / 1000),
-};
+    cloudName: 'mmpr',
+    format: 'json',
+    type: 'list',
+    version: Math.ceil(new Date().getTime() / 1000)
+  };
 
-const urlPath = url(imageTag.toString(), options);
+  const urlPath = url(imageTag.toString(), options);
 
-fetch(urlPath)
-.then(res => res.text())
-.then(text => (text ? setter(JSON.parse(text).resources.map(image => image.public_id)) : []))
-.catch(err => console.log(err));
-};
+  fetch(urlPath)
+    .then(res => res.text())
+    .then(text =>
+      text
+        ? setter(JSON.parse(text).resources.map(image => image.public_id))
+        : []
+    )
+    .catch(err => console.log(err));
+}
