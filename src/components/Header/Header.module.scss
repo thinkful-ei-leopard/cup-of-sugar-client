@@ -62,13 +62,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1rem;
-}
-
-@include mobilePortrait {
-  .logoutDiv {
-    padding: 1rem 2rem;
-  }
+  padding: 10px 1rem;
 }
 
 .homeLink {
@@ -76,6 +70,32 @@
   font-size: 1.2rem;
   position: relative;
   top: 0;
+  display: none;
+}
+
+@include mobilePortrait {
+  .homeLink {
+    display: inline-block;
+  }
+}
+
+.headerIcon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  top: 0;
+}
+
+@include mobilePortrait {
+  .headerIcon {
+    display: none;
+  }
+}
+
+@include mobilePortrait {
+  .headerIcon {
+    display: none;
+  }
 }
 
 a {
@@ -84,29 +104,24 @@ a {
 }
 
 .threadsLink {
-  margin-bottom: 0.5rem;
-  position: absolute;
   display: none;
-  margin-left: 0.5rem;
-  // width: 200px;
 }
 
 .directoryLink {
   display: none;
-  margin-right: auto;
 }
+
 .directoryLinkIcon {
   width: 22px;
   top: 2px;
   position: relative;
-  opacity: .75;
+  opacity: 0.75;
 }
 
 .threadsLinkIcon {
   width: 20px;
   display: inline-block;
   margin-top: 0.4rem;
-  // margin-right: 1rem;
 }
 
 @include mobileLandscape {
@@ -132,31 +147,36 @@ a {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  position: absolute;
-  top: 13px;
-  right: 2rem;
-  width: 140px;
-  // border: 1px solid red;
+  position: relative;
+  top: 3px;
+  width: 180px;
 }
 
 @include mobilePortrait {
   .linksContainer {
-    width: 160px;
+    width: 210px;
+    top: 0;
   }
 }
 
 @include mobileLandscape {
   .linksContainer {
-    width: 280px;
-    top: 20px;
-  }
-
-  .logoutLink {
-    margin-left: auto;
+    width: 350px;
   }
 }
 
 .avatarImg {
-  height: 2.5rem;
+  height: 32px;
+  width: 32px;
+  outline: none;
+  border: none;
   border-radius: 50%;
+  display: inline-block;
+}
+
+@include mobilePortrait {
+  .avatarImg {
+    height: 40px;
+    width: 40px;
+  }
 }

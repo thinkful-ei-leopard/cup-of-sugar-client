@@ -66,6 +66,7 @@ export class PostsProvider extends Component {
 
   sortPostsByKey = key => {
     const setStateValues = () => {
+      // eslint-disable-next-line array-callback-return
       return ['title', 'type', 'name', 'comments', 'date'].map(arrayKey => {
         if (arrayKey === key) {
           this.setState({ [`${arrayKey}Sort`]: true });

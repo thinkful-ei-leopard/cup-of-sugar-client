@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Input, Required, Label } from '../Form/Form';
-import cx from 'classnames';
 import AuthApiService from '../../services/auth-api-service';
 import Button from '../Button/Button';
 import styles from './RegistrationForm.module.scss';
@@ -100,14 +99,13 @@ class RegistrationForm extends Component {
 
   render() {
     const { error } = this.state;
+    console.log(error);
     return (
       <form
         onSubmit={this.handleSubmit}
         className={styles.RegForm}
         autoComplete="off">
-        <div role="alert">
-          <p>{error && { error }}</p>
-        </div>
+        {/* <div role="alert">{error ? <p>{error}</p> : null}</div> */}
         <h3 className={styles.regHeader}>Sign Up</h3>
         <div className={styles.inputContainer}>
           <div className={styles.regDiv}>

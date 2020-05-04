@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ThreadsPage from '../../components/ThreadsPage/ThreadsPage';
 import ThreadsContext from '../../contexts/ThreadsContext';
 import ThreadsApiService from '../../services/threads-api-service';
@@ -27,9 +26,6 @@ export default class ThreadsRoute extends React.Component {
   render() {
     return (
       <div className={styles.threadsRouteContainer}>
-        {/* <Link to="/neighbor-directory">
-          <h2 className={styles.directoryLink}> Neighbor Lookup </h2>
-        </Link> */}
         <ThreadsPage getUsers={this.getUsers} />
       </div>
     );

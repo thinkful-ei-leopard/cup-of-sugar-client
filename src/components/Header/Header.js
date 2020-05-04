@@ -6,9 +6,9 @@ import styles from './Header.module.scss';
 import UsersApiService from '../../services/users-api-service';
 
 class Header extends Component {
-  state = { 
+  state = {
     loading: true,
-    user: {},
+    user: {}
   };
 
   static defaultProps = {
@@ -20,12 +20,12 @@ class Header extends Component {
 
   componentDidMount() {
     this.setState({ loading: false });
-    this.getUser()
+    this.getUser();
   }
 
   async getUser() {
-    let user = await UsersApiService.getUserById(this.context.user.id)
-    this.setState({ user: user[0] })
+    let user = await UsersApiService.getUserById(this.context.user.id);
+    this.setState({ user: user[0] });
   }
 
   handleLogoutClick = () => {
@@ -38,7 +38,11 @@ class Header extends Component {
         <Link to="/" className={styles.homeLink}>
           Cup of Sugar
         </Link>
-        <img className={styles.avatarImg} src={this.state.user.img_src} alt={this.state.user.img_alt}></img>
+        <img
+          className={styles.headerIcon}
+          src={require('../../images/give.svg')}
+          alt="cup of sugar icon"
+        />
         <nav className={styles.linksContainer}>
           <Link className={styles.directoryLink} to="/neighbor-directory">
             Directory
@@ -52,6 +56,10 @@ class Header extends Component {
           <Link className={styles.threadsLinkIcon} to="/threads">
             <img src={require('../../images/mail.svg')} alt="my messages" />
           </Link>
+          <img
+            className={styles.avatarImg}
+            src={this.state.user.img_src}
+            alt={this.state.user.img_alt}></img>
           <Link
             onClick={this.handleLogoutClick}
             to="/login"
