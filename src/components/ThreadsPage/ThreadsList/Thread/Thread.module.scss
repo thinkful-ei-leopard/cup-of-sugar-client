@@ -32,6 +32,13 @@
 //   }
 }
 
+.threadAvatarImg {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: absolute;
+}
+
 .deleteThreadButton {
   position: absolute;
   top: 0.5rem;

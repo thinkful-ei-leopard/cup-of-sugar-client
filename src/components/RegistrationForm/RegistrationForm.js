@@ -50,7 +50,7 @@ class RegistrationForm extends Component {
     if(this.state.imgSrc === null) {
       image = (<img src='https://image.flaticon.com/icons/svg/166/166277.svg' alt='default' />)
     } else if (this.state.imgSrc) {
-      image = (<img src={this.state.imgSrc} alt='Selected Profile Picture' />)
+      image = (<img src={this.state.imgSrc} alt='Selected Profile' />)
     }
     return image
   }

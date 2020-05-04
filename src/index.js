@@ -6,7 +6,6 @@ import { UserProvider } from './contexts/UserContext';
 import { PostsProvider } from './contexts/PostsContext';
 import { ThreadsProvider } from './contexts/ThreadsContext'
 import { CloudinaryContext } from "cloudinary-react";
-// import { }
 
 import './index.css';
 
