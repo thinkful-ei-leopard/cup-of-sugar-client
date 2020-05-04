@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "../AddCommentRoute/AddCommentRoute.module.scss"
-    ],
-    "names": [],
-    "file": "AddCommentRoute.module.css"
-}

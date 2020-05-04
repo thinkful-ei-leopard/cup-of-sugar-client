@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "../NotFoundRoute/NotFoundRoute.modules.scss"
-    ],
-    "names": [],
-    "file": "NotFoundRoute.modules.css"
-}
