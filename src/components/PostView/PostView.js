@@ -1,12 +1,13 @@
 import React from 'react';
 import UserContext from '../../contexts/UserContext';
-import Comment from '../Comment/Comment';
+import Comment from '../CommentList/Comment/Comment';
 import styles from './PostView.module.scss';
 import cx from 'classnames';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
 import PostsApiService from '../../services/posts-api-service';
 import Confirm from '../Confirm/Confirm';
+import CommentList from '../CommentList/CommentList'
 import '@reach/dialog/styles.css';
 
 export default class PostView extends React.Component {
@@ -37,7 +38,6 @@ export default class PostView extends React.Component {
     if (!post || !this.state.comments) {
       return <></>;
     }
-
     let deleteButton =
       user.id === post.user_id ? (
         <Confirm title="Confirm" description="Are you sure?">
@@ -90,15 +90,7 @@ export default class PostView extends React.Component {
         </div>
         <div className={styles.Comments}>
           <h2 className={styles.commentsHeader}>Comments</h2>
-          <ul className={styles.ul}>
-            {commentsForPost.map((comment) => (
-              <Comment
-                key={comment.id}
-                comment={comment}
-                deleteComment={this.props.deleteComment}
-              />
-            ))}
-          </ul>
+          <CommentList deleteComment={this.props.deleteComment} commentsForPost={commentsForPost} zip={post.zip}/>
           <Link to="/add-comment">
             <Button type="submit" className={styles.addCommentButton}>
               <span className="buttonText">Add Comment</span>

@@ -1,11 +1,26 @@
-@import '../../styles/_variables';
-@import '../../styles/_breakpoints';
+@import '../../../styles/_variables';
+@import '../../../styles/_breakpoints';
 
 .name {
   display: inline-flex;
   margin-left: 0%;
   margin-right: 10%;
   margin-bottom: -1em;
+}
+
+.messageNeighborButton {
+  padding: 0.25rem 0.5rem;
+  color: var(--black);
+  margin-left: 0.1rem;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 0.7rem;
+  transition: color 0.2s;
+  &:hover {
+    color: red;
+    cursor: pointer;
+  }
 }
 
 #deleteCommentButton {
@@ -19,6 +34,7 @@
   transition: color 0.2s;
   &:hover {
     color: red;
+    cursor: pointer;
   }
 }
 
