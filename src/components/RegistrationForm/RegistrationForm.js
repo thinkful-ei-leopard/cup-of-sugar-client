@@ -121,7 +121,7 @@ class RegistrationForm extends Component {
               name="name"
               className={styles.regInput}
               required
-              maxlength='20'
+              maxLength="20"
               autoComplete="off"
             />
           </div>
@@ -137,7 +137,7 @@ class RegistrationForm extends Component {
               name="username"
               className={styles.regInput}
               required
-              maxlength='20'
+              maxLength="20"
               autoComplete="off"
             />
           </div>
