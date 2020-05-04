@@ -48,6 +48,12 @@ export class PostsProvider extends Component {
     this.setState({ posts });
   };
 
+  editPost = (postId, newPost) => {
+    this.setState({
+      posts: this.state.posts.map(() => {})
+    })
+  }
+
   deletePost = postId => {
     this.setState({
       posts: this.state.posts.filter(post => post.id !== postId)
@@ -150,6 +156,7 @@ export class PostsProvider extends Component {
       setPosts: this.setPosts,
       setComments: this.setComments,
       setPostId: this.setPostId,
+      editPost: this.editPost,
       deletePost: this.deletePost,
       deleteComment: this.deleteComment,
       filterPostsByTitle: this.filterPostsByTitle,
