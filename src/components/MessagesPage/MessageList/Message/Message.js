@@ -2,8 +2,7 @@ import React from 'react';
 import styles from './Message.module.scss';
 import UserContext from '../../../../contexts/UserContext';
 import cx from 'classnames';
-import Button from '../../../Button/Button';
-import MessagesApiService from '../../../../services/messages-api-service';
+import MessagesApiService from '../../../../services/messages-api-service'
 
 export default class Message extends React.Component {
   static contextType = UserContext;

@@ -65,7 +65,6 @@ export class PostsProvider extends Component {
   };
 
   sortPostsByKey = key => {
-    console.log('clicked');
     const setStateValues = () => {
       return ['title', 'type', 'name', 'comments', 'date'].map(arrayKey => {
         if (arrayKey === key) {

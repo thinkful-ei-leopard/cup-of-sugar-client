@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
 import UserContext from '../../contexts/UserContext';
 import styles from './Header.module.scss';
+import UsersApiService from '../../services/users-api-service';
 
 class Header extends Component {
-  state = { loading: true };
+  state = { 
+    loading: true,
+    user: {},
+  };
 
   static defaultProps = {
     match: {},
@@ -16,6 +20,12 @@ class Header extends Component {
 
   componentDidMount() {
     this.setState({ loading: false });
+    this.getUser()
+  }
+
+  async getUser() {
+    let user = await UsersApiService.getUserById(this.context.user.id)
+    this.setState({ user: user[0] })
   }
 
   handleLogoutClick = () => {
@@ -28,6 +38,7 @@ class Header extends Component {
         <Link to="/" className={styles.homeLink}>
           Cup of Sugar
         </Link>
+        <img className={styles.avatarImg} src={this.state.user.img_src} alt={this.state.user.img_alt}></img>
         <nav className={styles.linksContainer}>
           <Link className={styles.directoryLink} to="/neighbor-directory">
             Directory

@@ -3,10 +3,25 @@ import { Link } from 'react-router-dom';
 import User from './User/User';
 import UserContext from '../../contexts/UserContext';
 import styles from './UsersList.module.scss';
-import SearchUsers from './SearchUsers/SearchUsers'
+import SearchUsers from './SearchUsers/SearchUsers';
+import UsersApiService from '../../services/users-api-service';
 
 export default class UsersList extends React.Component {
+
+  state = {
+    user: {}
+  }
+
   static contextType = UserContext;
+
+  componentDidMount() {
+    this.getUser()
+  }
+
+  async getUser() {
+    let user = await UsersApiService.getUserById(this.context.user.id)
+    this.setState({ user: user[0] })
+  }
 
   render() {
     let users = [];
@@ -20,18 +35,17 @@ export default class UsersList extends React.Component {
       user => user.id !== this.context.user.id
     );
     }
-    console.log(users)
     return (
-      <section className={styles.usersListSection}>
-        <h2 className={styles.directoryHeader}>Neighbor Directory</h2>
-        <ul className={styles.UsersList}>
-            {users.map(user => (
-              <User user={this.context.user} neighbor={user} key={user.id} />
-            ))}
-        </ul>
-        <Link to="/threads">
-          <span className={styles.messagesLink}>Back to messages</span>
-        </Link>
+      <section className={styles.userListSection}>
+      <h2 className={styles.directoryHeader}>Neighbor Directory</h2>
+      <SearchUsers />
+      <ul className={styles.UsersList}>
+        <div className={styles.usersContainer}>
+          {users.map(user => (
+            <User user={this.state.user} neighbor={user} key={user.id} />
+          ))}
+        </div>
+      </ul>
       </section>
     );
   }
