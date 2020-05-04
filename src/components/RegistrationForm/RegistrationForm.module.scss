@@ -94,3 +94,36 @@
     color: var(--dark1);
   }
 }
+
+.defaultImage,
+.uploadedImage {
+  width: 50px;
+  height: 50px;
+  margin-left: 1.2rem;
+}
+
+.uploadedImage {
+  border-radius: 50%;
+}
+
+.uploadContainer {
+  margin: 2rem auto 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploadText {
+  font-size: 1rem;
+}
+
+.uploadButton {
+  padding-bottom: 2px;
+  border: none;
+  border-bottom: 2px solid var(--black);
+  transition: all 0.2s;
+  &:hover {
+    cursor: pointer;
+    color: var(--dark1);
+  }
+}
