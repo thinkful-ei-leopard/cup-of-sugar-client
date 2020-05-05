@@ -4,6 +4,7 @@ import PostsContext from '../../contexts/PostsContext';
 import styles from './PostsList.module.scss';
 
 export default class PostsList extends React.Component {
+
   static contextType = PostsContext;
 
   deletePost = (id) => {

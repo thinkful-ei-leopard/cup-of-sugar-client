@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+@import '../../styles/_breakpoints';
+
+.messageUserButton {
+    padding: 0.25rem 0.5rem;
+    color: var(--black);
+    margin-left: 0.1rem;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 0.7rem;
+    transition: color 0.2s;
+    &:hover {
+      color: red;
+      cursor: pointer;
+    }
+  }

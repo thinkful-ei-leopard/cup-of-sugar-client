@@ -11,14 +11,8 @@ export class UsersRoute extends Component {
     this.getUsers()
   }
 
-  async getZip(userId) {
-    const user = await UsersApiService.getUserById(userId);
-    let zip = user[0].zip
-    return zip
-  }
-
   async getUsers() {
-    const zip = await this.getZip(this.context.user.id)
+    const zip = this.context.user.zip
     const users = await UsersApiService.getUsersByZip(zip);
     this.context.setUsers(users);
   }

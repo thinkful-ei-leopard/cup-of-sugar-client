@@ -8,7 +8,8 @@ import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
 import PostsApiService from '../../services/posts-api-service';
 import Confirm from '../Confirm/Confirm';
-import CommentList from '../CommentList/CommentList'
+import CommentList from '../CommentList/CommentList';
+import MessageUser from '../../components/MessageUser/MessageUser'
 import '@reach/dialog/styles.css';
 
 export default class PostView extends React.Component {
@@ -16,6 +17,8 @@ export default class PostView extends React.Component {
     comments: null,
     edit: false
   };
+
+  static contextType = UserContext
 
   componentDidUpdate() {
     if (this.state.comments === null) {
@@ -60,6 +63,7 @@ export default class PostView extends React.Component {
   }
 
   displayPost(post, deleteButton, pContext) {
+
     if(this.state.edit){
       return (
         <form
@@ -118,6 +122,7 @@ export default class PostView extends React.Component {
         <span className={styles.date}>
           {post.date_modified.slice(0, 10)}
         </span>
+        <MessageUser user={this.context.user} neighborId={post.user_id} text={'message'}/>
       </p>
       {deleteButton}
       </>
