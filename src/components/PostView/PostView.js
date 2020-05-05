@@ -5,6 +5,7 @@ import Comment from '../CommentList/Comment/Comment';
 import styles from './PostView.module.scss';
 import cx from 'classnames';
 import Button from '../Button/Button';
+import Checkmark from '../Icons/Checkmark';
 import { Link } from 'react-router-dom';
 import PostsApiService from '../../services/posts-api-service';
 import Confirm from '../Confirm/Confirm';
@@ -148,7 +149,7 @@ export default class PostView extends React.Component {
           on{' '}
           <span className={styles.date}>{post.date_modified.slice(0, 10)}</span>
         </p>
-        <button className={styles.editButton} onClick={this.handleEdit}>
+        <button title="Edit post" className={styles.editButton} onClick={this.handleEdit}>
           <img
             className={styles.editPostIcon}
             src={require('../../images/pencil.svg')}
@@ -156,24 +157,6 @@ export default class PostView extends React.Component {
           />
         </button>
         {deleteButton}
-        {/* <Confirm title="Mark Resolved" description="Are you sure?">
-                {confirm => (
-                  <Button
-                    onClick={confirm(() => {
-                      PostsApiService.editPost(post.id, {
-                        title: post.title,
-                        description: post.description,
-                        resolved: true
-                      });
-                      this.handleDelete();
-                    })}
-                    title="Resolved"
-                    className={styles.deletePostButton}
-                    id={styles.deletePostButton}>
-                    resolve
-                  </Button>
-                )}
-              </Confirm> */}
       </>
     );
   }
@@ -209,7 +192,7 @@ export default class PostView extends React.Component {
                   </Button>
                 )}
               </Confirm>
-              <Confirm title="Mark Resolved" description="Are you sure?">
+              <Confirm title="Mark Resolved" description="Are you sure?" type="resolve">
                 {confirm => (
                   <button
                     onClick={confirm(() => {
@@ -220,18 +203,13 @@ export default class PostView extends React.Component {
                       });
                       this.handleDelete();
                     })}
-                    title="Resolved"
+                    title="Mark as resolved"
                     className={styles.resolvePostButton}
                     id={styles.resolvePostButton}>
-                    Mark as resolved
+                    <Checkmark className={styles.resolvePostButton} />
                   </button>
                 )}
               </Confirm>
-              {/* <Button
-                onClick={this.handleEdit}
-              >
-                Edit
-              </Button> */}
             </div>
           ) : (
             <Button
