@@ -99,7 +99,6 @@ class RegistrationForm extends Component {
 
   render() {
     const { error } = this.state;
-    console.log(error);
     return (
       <form
         onSubmit={this.handleSubmit}

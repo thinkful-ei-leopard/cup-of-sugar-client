@@ -4,11 +4,9 @@
 .messageLi {
   margin-top: 1rem;
   list-style: none;
-  // width: 100px;
-//   max-width: 40%;
   border-radius: 1rem;
   position: relative;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .sentMessage {
@@ -31,7 +29,7 @@
 
 .deleteMessageButton {
   border: 0px;
-  color: red;
+  color: var(--warning);
 }
 
 .receivedMessage .deleteMessageButton {
