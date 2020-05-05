@@ -1,5 +1,6 @@
 import React from 'react';
 import UserContext from '../../contexts/UserContext';
+import PostsContext from '../../contexts/PostsContext'
 import Comment from '../CommentList/Comment/Comment';
 import styles from './PostView.module.scss';
 import cx from 'classnames';
@@ -13,10 +14,9 @@ import '@reach/dialog/styles.css';
 export default class PostView extends React.Component {
   state = {
     comments: null,
+    edit: false
   };
 
-  static contextType = UserContext;
-  
   componentDidUpdate() {
     if (this.state.comments === null) {
       this.setState({ comments: this.props.comments });
@@ -25,13 +25,107 @@ export default class PostView extends React.Component {
 
   handleDelete = () => {
     const history = this.props.history;
-    console.log(history);
     history.goBack();
   };
 
+  handleEdit = () => {
+    this.setState({
+      edit: true
+    })
+  }
+
+  handleSubmit = async (e, id, pContext) => {
+    e.preventDefault()
+
+    const { newTitle, newDescription } = e.target
+    const edits = {
+      title: newTitle.value,
+      description: newDescription.value
+    }
+    try{
+      let editedPost = await PostsApiService.editPost(
+        id,
+        edits
+      )
+
+      pContext.editPost(id, editedPost)
+
+    } catch(error) {
+      console.error(error.message)
+    }
+
+    this.setState({
+      edit: false
+    })
+  }
+
+  displayPost(post, deleteButton, pContext) {
+    if(this.state.edit){
+      return (
+        <form
+          onSubmit={(e) => this.handleSubmit(e, post.id, pContext)}
+        >
+          <h1
+            className={cx(
+              post.type === 'offer' ? styles.offerStyle : styles.requestStyle,
+              styles.title
+            )}>
+            <input
+              name='newTitle'
+              defaultValue={post.title}
+            />
+          </h1>
+          <p className={styles.description}>
+            <input 
+              name='newDescription'
+              defaultValue={post.description}
+            />
+          </p>
+          <p className={styles.postedBy}>
+          {post.type === 'offer' ? 'Offered' : 'Requested'} by{' '}
+          <span className={styles.nameHeader}>
+            {post.name} ({post.user_name})
+          </span>{' '}
+          on{' '}
+          <span className={styles.date}>
+            {post.date_modified.slice(0, 10)}
+          </span>
+          </p>
+          <Button
+            type='submit'
+          >
+            Submit
+          </Button>
+        </ form>
+      )
+    }
+    return (
+      <>
+      <h1
+        className={cx(
+          post.type === 'offer' ? styles.offerStyle : styles.requestStyle,
+          styles.title
+        )}>
+        {post.title}
+      </h1>
+      <p className={styles.description}>{post.description}</p>
+      <p className={styles.postedBy}>
+        {post.type === 'offer' ? 'Offered' : 'Requested'} by{' '}
+        <span className={styles.nameHeader}>
+          {post.name} ({post.user_name})
+        </span>{' '}
+        on{' '}
+        <span className={styles.date}>
+          {post.date_modified.slice(0, 10)}
+        </span>
+      </p>
+      {deleteButton}
+      </>
+    )
+  }
+
   render() {
-    const user = this.context.user;
-    const { posts, comments } = this.props;
+    const { posts, comments} = this.props;
     const post = posts.find((post) => post.id.toString() === this.props.id);
     const commentsForPost = comments.filter(
       (comment) => comment.post_id.toString() === this.props.id
@@ -40,55 +134,52 @@ export default class PostView extends React.Component {
       return <></>;
     }
     let deleteButton =
-      user.id === post.user_id ? (
-        <Confirm title="Confirm" description="Are you sure?">
-          {(confirm) => (
+      <UserContext.Consumer>
+        {({user}) => (
+          user.id === post.user_id ? (
+            <div>
+              <Confirm title="Confirm" description="Are you sure?">
+              {(confirm) => (
+                <Button
+                  onClick={confirm(() => {
+                    PostsApiService.deletePost(post.id);
+                    this.handleDelete();
+                  })}
+                  type="delete"
+                  title="Delete"
+                  className={styles.deletePostButton}
+                  id={styles.deletePostButton}>
+                  delete
+                </Button>
+              )}
+              </Confirm>
+              <Button
+                onClick={this.handleEdit}
+              >
+                Edit
+              </Button>
+            </div>
+          ) : (
             <Button
-              onClick={confirm(() => {
-                PostsApiService.deletePost(post.id);
-                this.handleDelete();
-              })}
               type="delete"
-              title="Delete"
+              aria-hidden="true"
               className={styles.deletePostButton}
-              id={styles.deletePostButton}>
-              delete
+              id={styles.placeholderInvisibleButton}>
+              X
             </Button>
-          )}
-        </Confirm>
-      ) : (
-        <Button
-          type="delete"
-          aria-hidden="true"
-          className={styles.deletePostButton}
-          id={styles.placeholderInvisibleButton}>
-          X
-        </Button>
-      );
+          )
+        )}
+      </UserContext.Consumer>
 
     return (
       <section className={styles.PostView}>
-        <div className={styles.postDetail}>
-          <h1
-            className={cx(
-              post.type === 'offer' ? styles.offerStyle : styles.requestStyle,
-              styles.title
-            )}>
-            {post.title}
-          </h1>
-          <p className={styles.description}>{post.description}</p>
-          <p className={styles.postedBy}>
-            {post.type === 'offer' ? 'Offered' : 'Requested'} by{' '}
-            <span className={styles.nameHeader}>
-              {post.name} ({post.user_name})
-            </span>{' '}
-            on{' '}
-            <span className={styles.date}>
-              {post.date_modified.slice(0, 10)}
-            </span>
-          </p>
-          {deleteButton}
-        </div>
+        <PostsContext.Consumer>
+          {(pContext) => (
+            <div className={styles.postDetail}>
+              {this.displayPost(post, deleteButton, pContext)}
+            </div>
+          )}
+        </PostsContext.Consumer>
         <div className={styles.Comments}>
           <h2 className={styles.commentsHeader}>Comments</h2>
           <CommentList deleteComment={this.props.deleteComment} commentsForPost={commentsForPost} zip={post.zip}/>

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<li
+  className="Post"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <span
+    className="postTitle postEl"
+  >
+    <a
+      className="requestStyle"
+      href="/post/undefined"
+      onClick={[Function]}
+    >
+      
+    </a>
+  </span>
+  <span
+    className="postType postEl"
+  />
+  <span
+    className="postComments postEl"
+  />
+  <span
+    className="postUserName postEl"
+  />
+  <span
+    className="postDateFull postEl"
+  >
+    2020-05-04
+  </span>
+  <span
+    className="postDateTrim postEl"
+  >
+    05-04
+  </span>
+</li>
+`;
