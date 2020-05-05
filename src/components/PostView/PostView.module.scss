@@ -4,8 +4,8 @@
 .PostView {
   top: 75px;
   text-align: center;
-  background: linear-gradient(#fff 20%, var(--light2) 100%) no-repeat center
-    center fixed;
+  background: linear-gradient(rgba(88, 57, 154, 0), rgba(73, 57, 154, 0.3))
+    no-repeat center center fixed;
   min-height: 100%;
   position: absolute;
   width: 100%;
@@ -16,10 +16,11 @@
   width: 80%;
   max-width: 500px;
   margin: 25px auto 0;
-  padding: 0 1.5rem .5rem;
+  padding: 0 1.5rem 0.5rem;
   background-color: white;
   opacity: 1;
   padding: 1.5rem;
+  position: relative;
 }
 
 @include mobilePortrait {
@@ -35,16 +36,97 @@
   max-width: 500px;
 }
 
-.title {
+.editForm {
+  margin: 0 auto;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+}
+
+textarea {
+  font-family: 'Nunito', arial;
+}
+
+.title,
+.titleInput {
+  display: inline-block;
   font-size: 1.2rem;
   text-align: center;
-  margin-bottom: 2rem;
+  max-width: 270px;
+  margin: 1rem auto 0;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  padding: 5px;
+}
+
+.titleInput {
+  font-size: 1.2rem;
+  font-weight: bold;
+  height: 60px;
+  outline: none;
+  border: 1px solid var(--black);
+  font-family: 'Nunito', arial;
+  margin-bottom: -1rem;
+  margin-top: 0;
 }
 
 @include mobilePortrait {
-  .title {
+  .title,
+  .titleInput {
+    margin: 0 auto 1rem;
     font-size: 1.5rem;
   }
+
+  .title {
+    margin-bottom: 2rem;
+  }
+
+  .titleInput {
+    margin-bottom: -1rem;
+    height: 80px;
+  }
+}
+
+.description,
+.descriptionInput {
+  display: inline-block;
+  text-align: center;
+  max-width: 200px;
+  // height: 100px;
+  margin: 0 auto 1.5rem;
+  color: var(--black);
+}
+
+.descriptionInput {
+  padding: 5px; 
+}
+
+.descriptionInput {
+  margin-bottom: 0;
+}
+
+@include mobilePortrait {
+  .descriptionInput,
+  .description {
+    // height: 100px;
+    max-width: 270px;
+    margin: 0 auto 2rem;
+  }
+
+  .descriptionInput {
+    height: 100px;
+    margin-bottom: 0;
+  }
+}
+
+.descriptionInput {
+  width: 270px;
+  font-size: 1rem;
+  color: var(--black);
+  border: 1px solid var(--black);
 }
 
 .typeHeader {
@@ -59,26 +141,10 @@
   color: var(--dark1);
 }
 
-#deletePostButton {
-  color: var(--black);
-  margin: 1.5rem auto 0;
-  font-weight: bold;
-  padding: 0;
-  &:hover {
-    color: var(--warning);
-  }
-  border: none;
-background-color: #fff;}
-
 .postedBy {
   text-align: center;
   font-style: italic;
   font-size: 0.9rem;
-}
-
-.description {
-  padding: 0 1rem 1.5rem;
-  text-align: center;
 }
 
 .date {
@@ -88,7 +154,7 @@ background-color: #fff;}
 
 .commentsHeader {
   text-align: center;
-  margin: 2rem auto .5rem;
+  margin: 2rem auto 0.5rem;
 }
 
 .addCommentButton {
@@ -111,4 +177,92 @@ background-color: #fff;}
 
 #placeholderInvisibleButton {
   display: none;
+}
+
+#deletePostButton {
+  color: var(--black);
+  // margin: 1.5rem auto 0;
+  font-weight: bold;
+  padding: 0;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 1rem;
+  transition: color 0.2s;
+  &:hover {
+    color: var(--warning);
+  }
+  border: none;
+  background-color: #fff;
+}
+
+@include mobileLandscape {
+  #deletePostButton {
+    top: 14px;
+    right: 1rem;
+    font-size: 1.4rem;
+  }
+}
+
+.editPostIcon {
+  width: 18px;
+  height: 18px;
+}
+
+@include mobileLandscape {
+  .editPostIcon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.editButton {
+  outline: none;
+  border: none;
+  position: absolute;
+  top: 8px;
+  right: 2.5rem;
+  transition: transform 0.5s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+}
+
+@include mobileLandscape {
+  .editButton {
+    top: 1rem;
+    right: 3rem;
+  }
+}
+
+.cancelEditButton {
+  color: var(--black);
+  margin: 1.25rem auto 0;
+  font-weight: bold;
+  padding: 0;
+  font-size: 0.9rem;
+  transition: al 0.2s;
+  &:hover {
+    color: var(--warning);
+    cursor: pointer;
+  }
+  border: none;
+  background-color: #fff;
+}
+
+.editConfirmGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.submitEditButton {
+  width: 150px;
+  margin: 1.5rem auto 0;
+}
+
+.submitEditText {
+  font-size: 1.2rem;
+  color: var(--black);
+  font-family: 'Nunito', arial;
 }

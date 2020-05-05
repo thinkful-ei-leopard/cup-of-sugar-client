@@ -4,18 +4,18 @@ exports[`renders the UI as expected 1`] = `
 <li
   className="Thread"
 >
-  <div
-    className="threadFlexDiv"
+  <a
+    href="/thread/undefined"
+    onClick={[Function]}
   >
-    <img
-      className="threadAvatarImg"
-    />
     <div
-      className="threadBlockDiv"
+      className="threadFlexDiv"
     >
-      <a
-        href="/thread/undefined"
-        onClick={[Function]}
+      <img
+        className="threadAvatarImg"
+      />
+      <div
+        className="threadBlockDiv"
       >
         <h3
           className="threadTitle"
@@ -32,33 +32,33 @@ exports[`renders the UI as expected 1`] = `
             )
           </span>
         </h3>
-      </a>
-      <p
-        className="lastMessage"
+        <p
+          className="lastMessage"
+        >
+          last message:
+           
+          <span
+            className="lastMessageContent"
+          />
+        </p>
+        <p
+          className="lastMessageSent"
+        >
+          
+        </p>
+      </div>
+      <button
+        className="deleteThreadButton"
+        onClick={[Function]}
+        type="delete"
       >
-        last message:
-         
         <span
-          className="lastMessageContent"
-        />
-      </p>
-      <p
-        className="lastMessageSent"
-      >
-        
-      </p>
+          className="deleteX"
+        >
+          X
+        </span>
+      </button>
     </div>
-    <button
-      className="deleteThreadButton"
-      onClick={[Function]}
-      type="delete"
-    >
-      <span
-        className="deleteX"
-      >
-        X
-      </span>
-    </button>
-  </div>
+  </a>
 </li>
 `;
