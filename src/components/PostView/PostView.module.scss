@@ -101,7 +101,7 @@ textarea {
 }
 
 .descriptionInput {
-  padding: 5px; 
+  padding: 5px;
 }
 
 .descriptionInput {
@@ -112,7 +112,7 @@ textarea {
   .descriptionInput,
   .description {
     // height: 100px;
-    max-width: 270px;
+    max-width: 350px;
     margin: 0 auto 2rem;
   }
 
@@ -123,7 +123,7 @@ textarea {
 }
 
 .descriptionInput {
-  width: 270px;
+  width: 350px;
   font-size: 1rem;
   color: var(--black);
   border: 1px solid var(--black);
@@ -265,4 +265,18 @@ textarea {
   font-size: 1.2rem;
   color: var(--black);
   font-family: 'Nunito', arial;
+}
+
+.nameHeader {
+  transition: color 0.2s;
+  &:hover {
+    color: var(--black);
+  }
+}
+
+.resolvePostButton {
+  margin-top: 1rem;
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
 }
