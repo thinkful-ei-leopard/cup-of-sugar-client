@@ -20,7 +20,9 @@
   color: var(--black);
 }
 
-
+p, span, label {
+  color: var(--black);
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
