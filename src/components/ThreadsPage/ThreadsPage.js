@@ -17,6 +17,9 @@ export default class ThreadsPage extends React.Component {
         <div className={styles.threadsContainer}>
           <ThreadsList user={this.context.user} />
         </div>
+        <Link to="/">
+          <span className={styles.dashboardLink}>Back to dashboard</span>
+        </Link>
       </section>
     );
   }

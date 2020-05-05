@@ -41,6 +41,7 @@ export class AddCommentForm extends Component {
   };
 
   async addComment(id, description) {
+    // eslint-disable-next-line no-unused-vars
     const commentReturn = await CommentsApiService.postComment(id, description);
   }
 
@@ -51,10 +52,6 @@ export class AddCommentForm extends Component {
   }
 
   render() {
-    // if (this.state.loading === true) {
-    //   return <></>;
-    // }
-
     return (
       <section className={styles.AddComment}>
         <form className={styles.addCommentForm} onSubmit={this.handleSubmit}>

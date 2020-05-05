@@ -25,6 +25,7 @@ const ThreadsApiService = {
   },
 
   addThread(data) {
+    console.log(data)
     return fetch(`${config.API_ENDPOINT}/threads`, {
       method: 'POST',
       headers: {

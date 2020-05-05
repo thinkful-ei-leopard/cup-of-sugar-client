@@ -14,9 +14,21 @@ export default class Thread extends React.Component {
     this.context.deleteThread(this.props.thread.id);
   };
 
+  findCurrentMessage = () => {
+    let messagesForThread = this.context.messages.filter(
+      message => message.thread_id === this.props.thread.id
+    );
+    let currentMessage = messagesForThread[0];
+    messagesForThread.forEach(message => {
+      if (message.date_modified > currentMessage.date_modified) {
+        currentMessage = message;
+      }
+    });
+    return currentMessage;
+  };
+
   render() {
     const thread = this.props.thread;
-    console.log(thread)
     const user = this.props.user;
     let name = '';
     let user_name = '';
@@ -34,29 +46,58 @@ export default class Thread extends React.Component {
       img_alt = thread.img_alt1;
     }
 
+    let currentMessage = this.findCurrentMessage();
+    let content = '';
+    let date_modifiedMessage = '';
+    if (currentMessage) {
+      content = currentMessage.content;
+      if (currentMessage.user_id === user.id)
+        date_modifiedMessage = `Sent on: ${currentMessage.date_modified.slice(
+          0,
+          10
+        )}`;
+      else if (currentMessage.use_id !== user.id) {
+        date_modifiedMessage = `Received on: ${currentMessage.date_modified.slice(
+          0,
+          10
+        )}`;
+      }
+    }
+
     return (
       <li className={styles.Thread}>
-        <img className={styles.threadAvatarImg} src={img_src} alt={img_alt}></img>
-        <Link to={`/thread/${thread.id}`}>
-          <h3 className={styles.threadTitle}>
-            Thread with {name}({user_name})
-          </h3>
-        </Link>
-        <Confirm title="Confirm" description="Are you sure?">
-          {confirm => (
-            <button
-              type="delete"
-              className={styles.deleteThreadButton}
-              onClick={confirm(() => {
-                this.handleThreadDelete();
-              })}>
-              <span className={styles.deleteX}>X</span>
-            </button>
-          )}
-        </Confirm>
-        <p className={styles.lastMessage}>
-          last message: {thread.date_modified.slice(0, 10)}
-        </p>
+        <div className={styles.threadFlexDiv}>
+          <img
+            className={styles.threadAvatarImg}
+            src={img_src}
+            alt={img_alt}></img>
+          <div className={styles.threadBlockDiv}>
+            <Link to={`/thread/${thread.id}`}>
+              <h3 className={styles.threadTitle}>
+                <span className={styles.userRealName}>{name} </span>
+                <span className={styles.userUserName}>({user_name})</span>
+              </h3>
+            </Link>
+
+            <p className={styles.lastMessage}>
+              last message:{' '}
+              <span className={styles.lastMessageContent}>{content}</span>
+            </p>
+            <p className={styles.lastMessageSent}>{date_modifiedMessage}</p>
+          </div>
+          <Confirm title="Confirm" description="Are you sure?">
+            {confirm => (
+              <button
+                type="delete"
+                className={styles.deleteThreadButton}
+                onClick={confirm(() => {
+                  this.handleThreadDelete();
+                })}>
+                <span className={styles.deleteX}>X</span>
+              </button>
+            )}
+          </Confirm>
+        </div>
       </li>
     );
   }

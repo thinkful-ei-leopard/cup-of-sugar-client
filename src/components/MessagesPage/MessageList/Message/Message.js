@@ -14,20 +14,20 @@ export default class Message extends React.Component {
 
   render() {
     const { user } = this.context;
-    const { currentThread, message } = this.props;
+    const { message } = this.props;
 
-    let messageHeader = '';
-    if (currentThread) {
-      if (user.id === this.props.message.user_id) {
-        messageHeader = ``;
-      } else if (user.id !== this.props.message.user_id) {
-        if (user.id === currentThread.user_id1) {
-          messageHeader = `--${currentThread.name2} (${currentThread.user_name2})`;
-        } else if (user.id === currentThread.user_id2) {
-          messageHeader = `--${currentThread.name1} (${currentThread.user_name1})`;
-        }
-      }
-    }
+    // let messageHeader = '';
+    // if (currentThread) {
+    //   if (user.id === this.props.message.user_id) {
+    //     messageHeader = ``;
+    //   } else if (user.id !== this.props.message.user_id) {
+    //     if (user.id === currentThread.user_id1) {
+    //       messageHeader = `--${currentThread.name2} (${currentThread.user_name2})`;
+    //     } else if (user.id === currentThread.user_id2) {
+    //       messageHeader = `--${currentThread.name1} (${currentThread.user_name1})`;
+    //     }
+    //   }
+    // }
 
     return (
       <li

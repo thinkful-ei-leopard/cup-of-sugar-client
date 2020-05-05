@@ -7,26 +7,27 @@
   border-bottom: 2px solid var(--black);
   position: relative;
   width: 100%;
-  height: 88px;
+  height: 96px;
   display: flex;
+  padding: 1rem;
   justify-content: center;
   flex-direction: column;
   background-color: white;
-  transition: background-color .2s;
+  transition: background-color 0.2s;
   &:hover {
     background-color: var(--neutral);
     cursor: pointer;
   }
 }
 
-@include mobilePortrait {
-  .Thread {
-    padding: 1rem;
-  }
+.Thread:last-of-type {
+  border-bottom: none;
 }
 
-.Thread:last-of-type {
-    border-bottom: none;
+.threadBlockDiv {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .threadTitle {
@@ -34,22 +35,41 @@
   transition: color 0.2s;
   font-size: 1rem;
   width: 240px;
-  margin: 0 auto .2rem;
-  // border: 1px solid red;
+  margin: 0 auto 0.2rem;
 }
 
 @include mobilePortrait {
   .threadTitle {
-    width: 100%;
-    font-size: 1.3rem;
+    width: 350px;
+    font-size: 1.1rem;
+  }
+}
+
+@include mobileLandscape {
+  .threadTitle {
+    font-size: 1.2rem;
+    width: 600px;
   }
 }
 
 .threadAvatarImg {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
-  position: absolute;
+  margin-right: 1.5rem;
+}
+
+@include mobilePortrait {
+  .threadAvatarImg {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.threadFlexDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .deleteThreadButton {
@@ -62,7 +82,6 @@
   transition: color 0.2s;
   background-color: transparent;
   outline: none;
-//   padding: 0.5rem;
   border: none;
   &:hover {
     color: var(--warning);
@@ -87,12 +106,34 @@
 
 .lastMessage {
   color: var(--black);
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+.lastMessageContent {
+  color: var(--dark2);
+  margin-bottom: 0.25rem;
+  display: inline-block;
+}
+
+.lastMessageSent {
+  color: var(--dark1);
   opacity: 0.8;
-  font-size: .9rem;
+  font-size: 0.8rem;
 }
 
 @include mobilePortrait {
   .lastMessage {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+.userUserName {
+  display: none;
+}
+
+@include mobileLandscape {
+  .userUserName {
+    display: inline-block;
   }
 }

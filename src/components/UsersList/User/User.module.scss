@@ -6,16 +6,16 @@
   padding: 0.5rem 2rem;
   border-radius: 1rem;
   // max-width: 100%;
-  transition: background-color 0.2s;
   margin: 0 auto;
-  &:hover {
-    cursor: pointer;
-    background-color: var(--light2);
-  }
+  // background-color: var(--light2);
 }
 
 .neighbor {
   font-size: 1.2rem;
-  color: var(--dark2);  
-  // width: 100%;
+  color: var(--dark2);
+  transition: color 0.2s;
+  &:hover {
+    color: var(--dark1);
+    cursor: pointer;
+  }
 }
