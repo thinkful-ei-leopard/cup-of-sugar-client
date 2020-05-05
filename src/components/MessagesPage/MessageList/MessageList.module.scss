@@ -9,17 +9,18 @@
   width: 90%;
 //   max-height: 60vh;
   height: 550px;
+
   overflow-y: auto;
   margin: 0 auto 1rem;
 }
 
 .messagesAvatarImg {
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
   position: relative;
   left: -1rem;
-  top: 1rem;
+  top: .5rem;
 }
 
 .messagesWithHeader {
@@ -37,6 +38,10 @@
 @include mobilePortrait {
     .messagesWithHeader {
         font-size: 1.5rem
+    }
+    .messagesAvatarImg {
+      height: 50px;
+      width: 50px;
     }
 }
 

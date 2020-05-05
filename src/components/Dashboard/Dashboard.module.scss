@@ -50,21 +50,9 @@
   }
 }
 
-// #placeholderInvisibleButton {
-//   padding-right: .5rem;
-//   padding-top: .25rem;
-//   padding-left: .5rem;
-//   padding-bottom: .25rem;
-//   border: none;
-//   color: white;
-//   background-color: white;
-//   opacity: 0;
-// }
-
 .addPostButton {
   margin-top: 2rem;
   margin-bottom: 3rem;
-  // background-color: red;
 }
 
 .buttonText {
@@ -101,8 +89,6 @@
   padding: 0.5rem;
   position: relative;
   margin-bottom: 1.5rem;
-  // background-color: white;
-  // border: 2px solid var(--black);
 }
 
 @include tabletPortrait {
@@ -173,11 +159,8 @@
 .bulletinContainer {
   border: 2px solid var(--black);
   width: 90%;
-  // width: 70%;
-  // max-width: 1000px;
   margin: 0 auto 2rem;
   min-height: 300px;
-  // max-height: 100%;
   height: 100%;
   background-color: white;
 }
@@ -208,7 +191,6 @@
   color: var(--black);
   margin: 0 1rem 0 0;
   text-align: center;
-  // border: 1px solid red;
   display: inline-block;
   position: relative;
   &:hover {

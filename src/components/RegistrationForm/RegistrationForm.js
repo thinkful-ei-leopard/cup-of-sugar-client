@@ -32,7 +32,6 @@ class RegistrationForm extends Component {
 
     openUploadWidget(uploadOptions, (error, photos) => {
       if (!error) {
-        console.log(photos);
         if (photos.event === 'success') {
           this.setState({
             imgSrc: photos.info.secure_url

@@ -2,12 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  // height: 100vh;
   position: absolute;
   width: 100%;
   height: 100vh;
-  // border: 1px solid red;
-  // z-index: -1;
 }
 
 .directoryLink {
@@ -25,5 +22,4 @@
     cursor: pointer;
     background-color: var(--neutral);
   }
-  // z-index: 1;
 }

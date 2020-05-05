@@ -20,7 +20,6 @@
 
 .postEl {
   margin-right: 1rem;
-  // border: 1px solid red;
   text-align: center;
   display: inline-block;
 }
@@ -38,8 +37,6 @@
   min-width: 315px;
   text-align: left;
   display: flex;
-  // border: 2px solid red;
-  // display: inline-block;
 }
 
 .postType {
@@ -71,12 +68,6 @@
 
 .requestStyle {
   color: var(--dark2);
-}
-
-.offerStyle:hover,
-.requestStyle:hover {
-  // color: var(--black);
-  // font-weight: bold;
 }
 
 .postComments {
@@ -137,7 +128,6 @@
   &:hover {
     color: red;
   }
-  // display: inline-block;
 }
 
 #placeholderInvisibleButton {

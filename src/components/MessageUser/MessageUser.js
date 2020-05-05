@@ -1,29 +1,22 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
-import UserContext from '../../contexts/UserContext'
 import ThreadsContext from '../../contexts/ThreadsContext'
 import ThreadsApiService from '../../services/threads-api-service'
 import UsersApiService from '../../services/users-api-service'
+import styles from './MessageUser.module.scss'
 
 class MessageUser extends React.Component {
 
-    state = {
-        threads: [],
-        neighbor: {}
-    }
-
     static contextType = ThreadsContext
 
-    componentDidMount() {
-        let threads = ThreadsApiService.getThreads()
-        let neighbor = UsersApiService.getUserById(this.props.neighborId)
-        this.setState({threads, neighbor})
+    redirectToThread = (threadId) => {
+      this.props.history.push(`/thread/${threadId}`)
     }
 
     async handleThreadCreate() {
         const user = this.props.user;
-        let neighbor = this.state.neighbor;
-        let threads = this.state.threads;
+        let neighbor = await UsersApiService.getUserById(this.props.neighborId);
+        let threads = await ThreadsApiService.getThreads();
         let thread = {};
         if(user && neighbor) {
           thread = threads.find((thread) => (thread.user_id1 === user.id || thread.user_id2 === user.id) && (thread.user_id1 === neighbor.id || thread.user_id2 === neighbor.id))
@@ -48,12 +41,16 @@ class MessageUser extends React.Component {
       };
 
     render() {
-
+      if(this.props.neighborId === this.props.user.id) {
         return (
-            <button onClick={(e) => {
+          <></>
+        )
+      }
+        return (
+            <button className={styles.messageUserButton}onClick={(e) => {
               this.handleThreadCreate()
               }}>
-                message
+                {this.props.text}
             </button>
         )
     }
