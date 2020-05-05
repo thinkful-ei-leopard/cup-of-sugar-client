@@ -27,7 +27,7 @@ class User extends React.Component {
     let newThread = {
       user_id2: neighbor.id,
       name1: user.name,
-      user_name1: user.user_name,
+      user_name1: user.username,
       name2: neighbor.name,
       user_name2: neighbor.user_name,
       img_src1: user.img_src,
