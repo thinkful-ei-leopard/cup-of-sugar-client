@@ -27,7 +27,7 @@ class User extends React.Component {
     let newThread = {
       user_id2: neighbor.id,
       name1: user.name,
-      user_name1: user.user_name,
+      user_name1: user.username,
       name2: neighbor.name,
       user_name2: neighbor.user_name,
       img_src1: user.img_src,
@@ -35,7 +35,6 @@ class User extends React.Component {
       img_src2: neighbor.img_src,
       img_alt2: neighbor.img_alt
     };
-    console.log(newThread);
     thread = await ThreadsApiService.addThread(newThread);
     this.redirectToThread(thread.id);
   }
@@ -50,18 +49,9 @@ class User extends React.Component {
           e.preventDefault();
           this.handleThreadCreate();
         }}>
-        {/* <Link to={`/thread/${this.state.threadId}`}> */}
         <p className={styles.neighbor}>
           {neighbor.name} ({neighbor.user_name})
         </p>
-        {/* </Link> */}
-        {/* <Button
-          onClick={e => {
-            e.preventDefault();
-            this.handleThreadCreate();
-          }}>
-          Lookup Neighbor
-        </Button> */}
       </li>
     );
   }

@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import PostsApiService from '../../services/posts-api-service';
 import Confirm from '../Confirm/Confirm';
 import CommentList from '../CommentList/CommentList';
+import MessageUser from '../../components/MessageUser/MessageUser'
+
 import '@reach/dialog/styles.css';
 
 export default class PostView extends React.Component {
@@ -16,6 +18,8 @@ export default class PostView extends React.Component {
     comments: null,
     edit: false
   };
+
+  static contextType = UserContext
 
   componentDidUpdate() {
     if (this.state.comments === null) {
@@ -153,21 +157,48 @@ export default class PostView extends React.Component {
         {({ user }) =>
           user.id === post.user_id ? (
             <div>
-              <Confirm title="Confirm" description="Are you sure?">
-                {confirm => (
-                  <Button
-                    onClick={confirm(() => {
-                      PostsApiService.deletePost(post.id);
-                      this.handleDelete();
-                    })}
-                    type="delete"
-                    title="Delete"
-                    className={styles.deletePostButton}
-                    id={styles.deletePostButton}>
-                    X
-                  </Button>
-                )}
+
+              <Confirm title="Delete" description="Are you sure?">
+              {(confirm) => (
+                <Button
+                  onClick={confirm(() => {
+                    PostsApiService.deletePost(post.id);
+                    this.handleDelete();
+                  })}
+                  type="delete"
+                  title="Delete"
+                  className={styles.deletePostButton}
+                  id={styles.deletePostButton}>
+                  delete
+                </Button>
+              )}
               </Confirm>
+              <Confirm title="Mark Resolved" description="Are you sure?">
+              {(confirm) => (
+                <Button
+                  onClick={confirm(() => {
+                    PostsApiService.editPost(
+                      post.id,
+                      {
+                        title: post.title,
+                        description: post.description,
+                        resolved: true
+                      }
+                    );
+                    this.handleDelete();
+                  })}
+                  title="Resolved"
+                  className={styles.deletePostButton}
+                  id={styles.deletePostButton}>
+                  resolve
+                </Button>
+              )}
+              </Confirm>
+              <Button
+                onClick={this.handleEdit}
+              >
+                Edit
+              </Button>
             </div>
           ) : (
             <Button

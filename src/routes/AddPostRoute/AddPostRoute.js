@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import styles from './AddPostRoute.module.scss';
 import AddPostForm from '../../components/AddPostForm/AddPostForm';
 import { withRouter } from 'react-router-dom';
 

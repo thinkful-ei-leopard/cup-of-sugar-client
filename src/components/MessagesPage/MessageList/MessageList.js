@@ -46,10 +46,6 @@ export default class MessageList extends React.Component {
       }
     }
 
-    // if (!currentThread) {
-    //   return <> </>;
-    // }
-
     return (
       <>
         <h2 className={styles.messagesWithHeader}>

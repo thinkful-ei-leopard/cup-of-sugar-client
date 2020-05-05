@@ -1,7 +1,6 @@
 /* eslint-disable no-fallthrough */
 /* eslint-disable default-case */
 import React, { Component } from 'react';
-// import PostsApiService from '../services/posts-api-service';
 
 const PostsContext = React.createContext({
   posts: [],
