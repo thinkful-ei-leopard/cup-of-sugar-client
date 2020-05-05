@@ -7,7 +7,7 @@ import styles from './LoginForm.module.scss';
 
 class LoginForm extends Component {
   static defaultProps = {
-    onLoginSuccess: () => {},
+    onLoginSuccess: () => {}
   };
 
   static contextType = UserContext;
@@ -16,22 +16,22 @@ class LoginForm extends Component {
 
   firstInput = React.createRef();
 
-  handleSubmit = (ev) => {
+  handleSubmit = ev => {
     ev.preventDefault();
     const { username, password } = ev.target;
     this.context.setLoading();
 
     AuthApiService.postLogin({
       username: username.value,
-      password: password.value,
+      password: password.value
     })
-      .then((res) => {
+      .then(res => {
         username.value = '';
         password.value = '';
         this.context.processLogin(res.authToken);
         this.props.onLoginSuccess();
       })
-      .catch((res) => {
+      .catch(res => {
         this.setState({ error: res.error });
       });
   };
@@ -47,6 +47,7 @@ class LoginForm extends Component {
 
   render() {
     const { error } = this.state;
+    console.log(error);
 
     return (
       <>
@@ -54,7 +55,11 @@ class LoginForm extends Component {
           <div id="loader"></div>
         ) : (
           <form className={styles.LoginForm} onSubmit={this.handleSubmit}>
-            <div role="alert">{error && <p>{error}</p>}</div>
+            <div role="alert">
+              {error && (
+                <p className={styles.errorMessage}>There was an error!</p>
+              )}
+            </div>
             <div className={styles.inputContainer}>
               <div className={styles.userNameDiv}>
                 <h3 className={styles.loginHeader}>Log In</h3>

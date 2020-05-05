@@ -65,38 +65,38 @@ export default class Thread extends React.Component {
 
     return (
       <li className={styles.Thread}>
-        <div className={styles.threadFlexDiv}>
-          <img
-            className={styles.threadAvatarImg}
-            src={img_src}
-            alt={img_alt}></img>
-          <div className={styles.threadBlockDiv}>
-            <Link to={`/thread/${thread.id}`}>
+        <Link to={`/thread/${thread.id}`}>
+          <div className={styles.threadFlexDiv}>
+            <img
+              className={styles.threadAvatarImg}
+              src={img_src}
+              alt={img_alt}></img>
+            <div className={styles.threadBlockDiv}>
               <h3 className={styles.threadTitle}>
                 <span className={styles.userRealName}>{name} </span>
                 <span className={styles.userUserName}>({user_name})</span>
               </h3>
-            </Link>
 
-            <p className={styles.lastMessage}>
-              last message:{' '}
-              <span className={styles.lastMessageContent}>{content}</span>
-            </p>
-            <p className={styles.lastMessageSent}>{date_modifiedMessage}</p>
+              <p className={styles.lastMessage}>
+                last message:{' '}
+                <span className={styles.lastMessageContent}>{content}</span>
+              </p>
+              <p className={styles.lastMessageSent}>{date_modifiedMessage}</p>
+            </div>
+            <Confirm title="Confirm" description="Are you sure?">
+              {confirm => (
+                <button
+                  type="delete"
+                  className={styles.deleteThreadButton}
+                  onClick={confirm(() => {
+                    this.handleThreadDelete();
+                  })}>
+                  <span className={styles.deleteX}>X</span>
+                </button>
+              )}
+            </Confirm>
           </div>
-          <Confirm title="Confirm" description="Are you sure?">
-            {confirm => (
-              <button
-                type="delete"
-                className={styles.deleteThreadButton}
-                onClick={confirm(() => {
-                  this.handleThreadDelete();
-                })}>
-                <span className={styles.deleteX}>X</span>
-              </button>
-            )}
-          </Confirm>
-        </div>
+        </Link>
       </li>
     );
   }

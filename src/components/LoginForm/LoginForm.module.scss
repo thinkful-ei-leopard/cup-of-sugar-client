@@ -33,7 +33,7 @@
 }
 
 .loginButton {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .userNameDiv,
@@ -46,4 +46,12 @@
 
 .passwordDiv {
   margin-bottom: 2rem;
+}
+
+.errorMessage {
+  position: absolute;
+  color: var(--warning);
+  font-weight: bold;
+  left: 50%;
+  transform: translateX(-50%);
 }
