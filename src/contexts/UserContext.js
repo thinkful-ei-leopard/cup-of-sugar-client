@@ -35,6 +35,9 @@ export class UserProvider extends Component {
         id: jwtPayload.user_id,
         name: jwtPayload.name,
         username: jwtPayload.sub,
+        zip: jwtPayload.zip,
+        img_src: jwtPayload.img_src,
+        img_alt: jwtPayload.img_alt
       }
 
     this.state = state;
@@ -43,7 +46,7 @@ export class UserProvider extends Component {
 
   componentDidMount() {
     if (TokenService.hasAuthToken()) {
-      IdleService.regiserIdleTimerResets()
+      IdleService.registerIdleTimerResets()
       TokenService.queueCallbackBeforeExpiry(() => {
         this.fetchRefreshToken()
       })
@@ -95,8 +98,11 @@ export class UserProvider extends Component {
       id: jwtPayload.user_id,
       name: jwtPayload.name,
       username: jwtPayload.sub,
+      zip: jwtPayload.zip,
+      img_src: jwtPayload.img_src,
+      img_alt: jwtPayload.img_alt
     })
-    IdleService.regiserIdleTimerResets()
+    IdleService.registerIdleTimerResets()
     TokenService.queueCallbackBeforeExpiry(() => {
       this.fetchRefreshToken()
     })
