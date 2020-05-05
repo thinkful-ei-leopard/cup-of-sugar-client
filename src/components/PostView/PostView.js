@@ -144,7 +144,7 @@ export default class PostView extends React.Component {
           />
         </button>
         {deleteButton}
-        <Confirm title="Mark Resolved" description="Are you sure?">
+        {/* <Confirm title="Mark Resolved" description="Are you sure?">
                 {confirm => (
                   <Button
                     onClick={confirm(() => {
@@ -161,7 +161,7 @@ export default class PostView extends React.Component {
                     resolve
                   </Button>
                 )}
-              </Confirm>
+              </Confirm> */}
       </>
     );
   }
@@ -194,7 +194,7 @@ export default class PostView extends React.Component {
                   title="Delete"
                   className={styles.deletePostButton}
                   id={styles.deletePostButton}>
-                  delete
+                  X
                 </Button>
               )}
               </Confirm>
@@ -213,17 +213,17 @@ export default class PostView extends React.Component {
                     this.handleDelete();
                   })}
                   title="Resolved"
-                  className={styles.deletePostButton}
-                  id={styles.deletePostButton}>
+                  className={styles.resolvePostButton}
+                  id={styles.resolvePostButton}>
                   resolve
                 </Button>
               )}
               </Confirm>
-              <Button
+              {/* <Button
                 onClick={this.handleEdit}
               >
                 Edit
-              </Button>
+              </Button> */}
             </div>
           ) : (
             <Button
