@@ -28,5 +28,5 @@ export async function fetchPhotos(imageTag, setter) {
         ? setter(JSON.parse(text).resources.map(image => image.public_id))
         : []
     )
-    .catch(err => console.log(err));
+    .catch(err => (err));
 }

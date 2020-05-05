@@ -12,7 +12,6 @@ import SearchPosts from '../SearchPosts/SearchPosts';
 import UserPostsButton from '../UserPostsButton/UserPostsButton';
 
 export class Dashboard extends Component {
-  // removing display arrow until it can be properly styled
   displayArrow = sortType => {
     switch (sortType) {
       case false:
@@ -39,7 +38,6 @@ export class Dashboard extends Component {
   render() {
     return (
       <section className={styles.Dashboard}>
-        {/* <div className={styles.contentWrapper}> */}
         <UserContext.Consumer>
           {({ user }) => (
             <p className={styles.welcomeMessage}>
@@ -114,7 +112,6 @@ export class Dashboard extends Component {
         <UserContext.Consumer>
           {({ user }) => <UserPostsButton user={user} />}
         </UserContext.Consumer>
-        {/* </div> */}
       </section>
     );
   }
