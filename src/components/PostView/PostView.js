@@ -24,7 +24,6 @@ export default class PostView extends React.Component {
 
   handleDelete = () => {
     const history = this.props.history;
-    console.log(history);
     history.goBack();
   };
 
@@ -48,16 +47,15 @@ export default class PostView extends React.Component {
         edits
       )
 
-      console.log(editedPost)
-      // pContext.editPost(id, editedPost)
+      pContext.editPost(id, editedPost)
 
     } catch(error) {
       console.error(error.message)
     }
 
-    // this.setState({
-    //   edit: false
-    // })
+    this.setState({
+      edit: false
+    })
   }
 
   displayPost(post, deleteButton, pContext) {
@@ -126,7 +124,7 @@ export default class PostView extends React.Component {
   }
 
   render() {
-    const { posts, comments } = this.props;
+    const { posts, comments} = this.props;
     const post = posts.find((post) => post.id.toString() === this.props.id);
     const commentsForPost = comments.filter(
       (comment) => comment.post_id.toString() === this.props.id

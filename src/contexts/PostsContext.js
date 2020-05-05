@@ -50,7 +50,14 @@ export class PostsProvider extends Component {
 
   editPost = (postId, newPost) => {
     this.setState({
-      posts: this.state.posts.map(() => {})
+      posts: this.state.posts.map(post => {
+        if(post.id === postId){
+          post.title = newPost.title
+          post.description = newPost.description
+        }
+  
+        return post
+      })
     })
   }
 
