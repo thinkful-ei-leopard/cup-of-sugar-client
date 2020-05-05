@@ -24,8 +24,8 @@ class Header extends Component {
   }
 
   async getUser() {
-    let user = await UsersApiService.getUserById(this.context.user.id);
-    this.setState({ user: user[0] });
+    let user = this.context.user;
+    this.setState({ user });
   }
 
   handleLogoutClick = () => {

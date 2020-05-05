@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<li
+  className="Thread"
+>
+  <div
+    className="threadFlexDiv"
+  >
+    <img
+      className="threadAvatarImg"
+    />
+    <div
+      className="threadBlockDiv"
+    >
+      <a
+        href="/thread/undefined"
+        onClick={[Function]}
+      >
+        <h3
+          className="threadTitle"
+        >
+          <span
+            className="userRealName"
+          >
+             
+          </span>
+          <span
+            className="userUserName"
+          >
+            (
+            )
+          </span>
+        </h3>
+      </a>
+      <p
+        className="lastMessage"
+      >
+        last message:
+         
+        <span
+          className="lastMessageContent"
+        />
+      </p>
+      <p
+        className="lastMessageSent"
+      >
+        
+      </p>
+    </div>
+    <button
+      className="deleteThreadButton"
+      onClick={[Function]}
+      type="delete"
+    >
+      <span
+        className="deleteX"
+      >
+        X
+      </span>
+    </button>
+  </div>
+</li>
+`;
