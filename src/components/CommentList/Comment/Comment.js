@@ -16,6 +16,7 @@ class Comment extends React.Component {
   componentDidMount () {
     let zip = this.props.zip
     this.getUsers(zip)
+    console.log(this.context.user)
   }
 
   async getUsers(zip) {
