@@ -4,7 +4,6 @@ import User from './User/User';
 import UserContext from '../../contexts/UserContext';
 import styles from './UsersList.module.scss';
 import SearchUsers from './SearchUsers/SearchUsers';
-import UsersApiService from '../../services/users-api-service';
 
 export default class UsersList extends React.Component {
   state = {

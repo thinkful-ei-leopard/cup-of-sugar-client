@@ -1,6 +1,5 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
-import UserContext from '../../contexts/UserContext'
 import ThreadsContext from '../../contexts/ThreadsContext'
 import ThreadsApiService from '../../services/threads-api-service'
 import UsersApiService from '../../services/users-api-service'

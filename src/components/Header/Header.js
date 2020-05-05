@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
 import UserContext from '../../contexts/UserContext';
 import styles from './Header.module.scss';
-import UsersApiService from '../../services/users-api-service';
 
 class Header extends Component {
   state = {
@@ -20,12 +19,6 @@ class Header extends Component {
 
   componentDidMount() {
     this.setState({ loading: false });
-    this.getUser();
-  }
-
-  async getUser() {
-    let user = this.context.user;
-    this.setState({ user });
   }
 
   handleLogoutClick = () => {
@@ -33,6 +26,7 @@ class Header extends Component {
   };
 
   renderLogoutLink() {
+    let user = this.context.user;
     return (
       <div className={styles.logoutDiv}>
         <Link to="/" className={styles.homeLink}>
@@ -58,8 +52,8 @@ class Header extends Component {
           </Link>
           <img
             className={styles.avatarImg}
-            src={this.state.user.img_src}
-            alt={this.state.user.img_alt}></img>
+            src={user.img_src}
+            alt={user.img_alt}></img>
           <Link
             onClick={this.handleLogoutClick}
             to="/login"

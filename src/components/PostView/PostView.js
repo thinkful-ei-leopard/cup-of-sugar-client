@@ -1,7 +1,6 @@
 import React from 'react';
 import UserContext from '../../contexts/UserContext';
 import PostsContext from '../../contexts/PostsContext'
-import Comment from '../CommentList/Comment/Comment';
 import styles from './PostView.module.scss';
 import cx from 'classnames';
 import Button from '../Button/Button';

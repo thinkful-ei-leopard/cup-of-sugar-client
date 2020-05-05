@@ -5,9 +5,7 @@ import styles from './Comment.module.scss';
 import CommentsApiService from '../../../services/comments-api-service';
 import Confirm from '../../Confirm/Confirm';
 import '@reach/dialog/styles.css';
-import ThreadsApiService from '../../../services/threads-api-service'
 import { withRouter } from 'react-router-dom'
-import UsersApiService from '../../../services/users-api-service'
 import MessageUser from '../../../components/MessageUser/MessageUser'
 
 class Comment extends React.Component {
