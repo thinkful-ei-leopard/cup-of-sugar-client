@@ -48,7 +48,7 @@ export default class Confirm extends React.Component {
                 <p className="buttonText">Cancel</p>
               </button>
               <button className={styles.confirmButton} onClick={this.confirm}>
-                <p className={cx(styles.deleteText, "buttonText")}>Delete</p>
+                <p className={cx(styles.deleteText, "buttonText")}>Confirm</p>
               </button>
             </div>
           </Dialog>

@@ -138,7 +138,7 @@ export default class PostView extends React.Component {
         {({user}) => (
           user.id === post.user_id ? (
             <div>
-              <Confirm title="Confirm" description="Are you sure?">
+              <Confirm title="Delete" description="Are you sure?">
               {(confirm) => (
                 <Button
                   onClick={confirm(() => {
@@ -150,6 +150,27 @@ export default class PostView extends React.Component {
                   className={styles.deletePostButton}
                   id={styles.deletePostButton}>
                   delete
+                </Button>
+              )}
+              </Confirm>
+              <Confirm title="Mark Resolved" description="Are you sure?">
+              {(confirm) => (
+                <Button
+                  onClick={confirm(() => {
+                    PostsApiService.editPost(
+                      post.id,
+                      {
+                        title: post.title,
+                        description: post.description,
+                        resolved: true
+                      }
+                    );
+                    this.handleDelete();
+                  })}
+                  title="Resolved"
+                  className={styles.deletePostButton}
+                  id={styles.deletePostButton}>
+                  resolve
                 </Button>
               )}
               </Confirm>
