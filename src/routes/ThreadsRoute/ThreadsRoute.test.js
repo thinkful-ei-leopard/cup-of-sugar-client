@@ -1,0 +1,17 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { MemoryRouter as Router } from 'react-router-dom';
+import ThreadsRoute from './ThreadsRoute';
+
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+
+  ReactDOM.render(
+    <Router>
+      <ThreadsRoute />
+    </Router>,
+    div
+  );
+
+  ReactDOM.unmountComponentAtNode(div);
+});

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<li
+  className="commentLi"
+>
+  <div
+    className="commentDeleteContainer"
+  >
+    <p
+      className="content"
+    >
+       
+      <br />
+       
+      <span
+        className="commenterName"
+      >
+         (
+        )
+      </span>
+       
+      <span
+        className="datePosted"
+      >
+        2020-05-04
+      </span>
+    </p>
+    <button
+      className="Button deletePostButton"
+      id="deleteCommentButton"
+      onClick={[Function]}
+      title="Delete"
+      type="delete"
+    >
+      delete
+    </button>
+  </div>
+</li>
+`;
