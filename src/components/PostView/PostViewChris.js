@@ -1,7 +1,6 @@
 import React from 'react';
 import UserContext from '../../contexts/UserContext';
 import PostsContext from '../../contexts/PostsContext';
-import Comment from '../CommentList/Comment/Comment';
 import styles from './PostView.module.scss';
 import cx from 'classnames';
 import Button from '../Button/Button';
@@ -33,7 +32,7 @@ export default class PostView extends React.Component {
 
   handleEdit = () => {
     this.setState({
-      edit: !this.state.edit ? true : false
+      edit: true
     });
   };
 
@@ -58,35 +57,19 @@ export default class PostView extends React.Component {
     });
   };
 
-  // toggle between static post or edit mode post
-
   displayPost(post, deleteButton, pContext) {
     if (this.state.edit) {
       return (
-        <form
-          className={styles.editForm}
-          onSubmit={e => this.handleSubmit(e, post.id, pContext)}>
+        <form onSubmit={e => this.handleSubmit(e, post.id, pContext)}>
           <h1
             className={cx(
               post.type === 'offer' ? styles.offerStyle : styles.requestStyle,
               styles.title
             )}>
-            <textarea
-              rows="30"
-              className={cx(
-                post.type === 'offer' ? styles.offerStyle : styles.requestStyle,
-                styles.titleInput
-              )}
-              name="newTitle"
-              defaultValue={post.title}
-            />
+            <input name="newTitle" defaultValue={post.title} />
           </h1>
           <p className={styles.description}>
-            <textarea
-              className={styles.descriptionInput}
-              name="newDescription"
-              defaultValue={post.description}
-            />
+            <input name="newDescription" defaultValue={post.description} />
           </p>
           <p className={styles.postedBy}>
             {post.type === 'offer' ? 'Offered' : 'Requested'} by{' '}
@@ -98,17 +81,7 @@ export default class PostView extends React.Component {
               {post.date_modified.slice(0, 10)}
             </span>
           </p>
-          <div className={styles.editConfirmGroup}>
-            <Button className={styles.submitEditButton} type="submit">
-              {' '}
-              <span className={styles.submitEditText}>Submit</span>
-            </Button>
-            <button
-              className={styles.cancelEditButton}
-              onClick={() => this.setState({ edit: !this.state.edit })}>
-              cancel
-            </button>
-          </div>
+          <Button type="submit">Submit</Button>
         </form>
       );
     }
@@ -135,37 +108,10 @@ export default class PostView extends React.Component {
             text={'message'}
           />
         </p>
-        <button className={styles.editButton} onClick={this.handleEdit}>
-          <img
-            className={styles.editPostIcon}
-            src={require('../../images/pencil.svg')}
-            alt="edit post icon"
-          />
-        </button>
         {deleteButton}
-        <Confirm title="Mark Resolved" description="Are you sure?">
-                {confirm => (
-                  <Button
-                    onClick={confirm(() => {
-                      PostsApiService.editPost(post.id, {
-                        title: post.title,
-                        description: post.description,
-                        resolved: true
-                      });
-                      this.handleDelete();
-                    })}
-                    title="Resolved"
-                    className={styles.deletePostButton}
-                    id={styles.deletePostButton}>
-                    resolve
-                  </Button>
-                )}
-              </Confirm>
       </>
     );
   }
-
-  // Render delete button or delete confirmation button
 
   render() {
     const { posts, comments } = this.props;
@@ -192,10 +138,29 @@ export default class PostView extends React.Component {
                     title="Delete"
                     className={styles.deletePostButton}
                     id={styles.deletePostButton}>
-                    X
+                    delete
                   </Button>
                 )}
               </Confirm>
+              <Confirm title="Mark Resolved" description="Are you sure?">
+                {confirm => (
+                  <Button
+                    onClick={confirm(() => {
+                      PostsApiService.editPost(post.id, {
+                        title: post.title,
+                        description: post.description,
+                        resolved: true
+                      });
+                      this.handleDelete();
+                    })}
+                    title="Resolved"
+                    className={styles.deletePostButton}
+                    id={styles.deletePostButton}>
+                    resolve
+                  </Button>
+                )}
+              </Confirm>
+              <Button onClick={this.handleEdit}>Edit</Button>
             </div>
           ) : (
             <Button
@@ -209,8 +174,6 @@ export default class PostView extends React.Component {
         }
       </UserContext.Consumer>
     );
-
-    // entirety of Postview
 
     return (
       <section className={styles.PostView}>
