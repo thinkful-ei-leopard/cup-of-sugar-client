@@ -4,14 +4,20 @@
 .AddComment {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   background: linear-gradient(rgba(88, 57, 154, 0), rgba(73, 57, 154, 0.3))
     no-repeat center center fixed;
   min-height: 100%;
   position: absolute;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 0;
+}
+
+@include mobilePortrait {
+  .AddComment {
+    padding: 1rem;
+  }
 }
 
 .addCommentForm {
@@ -20,16 +26,30 @@
   width: 90%;
   max-width: 450px;
   padding: 1rem;
-  top: 150px;
   margin: 0 auto 1.5rem;
   background-color: white;
 }
 
 @include mobilePortrait {
   .addCommentForm {
-    width: 85%;
+    margin: 0 auto 1.5rem;
   }
 }
+
+.addCommentContainer {
+  top: 94px;
+  position: relative;
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  align-items: center;
+}
+
+// @include mobilePortrait {
+//   .addCommentContainer {
+//     width: 85%;
+//   }
+// }
 
 @media (min-width: 600px) {
   .addCommentForm {
@@ -55,16 +75,18 @@
   margin-bottom: 1rem;
 }
 
-@include mobilePortrait {
-  .contentInput {
-    width: 80%;
-  }
-}
+// @include mobilePortrait {
+//   .contentInput {
+//     width: 80%;
+//   }
+// }
 
 .dashboardLink {
   text-align: center;
-  position: relative;
-  top: 0;
+  display: inline-block;
+  // position: relative;
+  // top: 0;
+  text-align: center;
   transition: color 0.2s;
   &:hover {
     color: var(--dark1);
@@ -87,7 +109,7 @@
 }
 
 #backToPostButton p {
-  transition: .2s color;
+  transition: 0.2s color;
   &:hover {
     color: var(--dark1);
   }

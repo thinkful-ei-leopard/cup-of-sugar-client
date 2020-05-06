@@ -47,7 +47,7 @@ class MessageUser extends React.Component {
         )
       }
         return (
-            <button className={styles.messageUserButton}onClick={(e) => {
+            <button title="message user" className={styles.messageUserButton}onClick={(e) => {
               this.handleThreadCreate()
               }}>
                 {this.props.text}

@@ -36,7 +36,7 @@ export class UserProvider extends Component {
         name: jwtPayload.name,
         username: jwtPayload.sub,
         zip: jwtPayload.zip,
-        img_src: jwtPayload.img_src,
+        img_src: jwtPayload.img_src || require('../images/user.png'),
         img_alt: jwtPayload.img_alt
       }
 
@@ -99,7 +99,7 @@ export class UserProvider extends Component {
       name: jwtPayload.name,
       username: jwtPayload.sub,
       zip: jwtPayload.zip,
-      img_src: jwtPayload.img_src,
+      img_src: jwtPayload.img_src || require('../images/user.png'),
       img_alt: jwtPayload.img_alt
     })
     IdleService.registerIdleTimerResets()

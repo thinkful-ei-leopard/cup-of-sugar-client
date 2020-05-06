@@ -27,16 +27,19 @@ class Header extends Component {
 
   renderLogoutLink() {
     let user = this.context.user;
+    console.log(user.img_src);
     return (
       <div className={styles.logoutDiv}>
         <Link to="/" className={styles.homeLink}>
           Cup of Sugar
         </Link>
-        <img
-          className={styles.headerIcon}
-          src={require('../../images/give.svg')}
-          alt="cup of sugar icon"
-        />
+        <Link to="/">
+          <img
+            className={styles.headerIcon}
+            src={require('../../images/give.svg')}
+            alt="cup of sugar icon"
+          />
+        </Link>
         <nav className={styles.linksContainer}>
           <Link className={styles.directoryLink} to="/neighbor-directory">
             Directory

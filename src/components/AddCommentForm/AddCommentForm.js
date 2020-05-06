@@ -54,32 +54,34 @@ export class AddCommentForm extends Component {
   render() {
     return (
       <section className={styles.AddComment}>
-        <form className={styles.addCommentForm} onSubmit={this.handleSubmit}>
-          <Label
-            className={styles.addCommentLabel}
-            htmlFor="add-comment-content">
-            Add Comment:
-          </Label>
-          <textarea
-            name="content"
-            id="post-description"
-            className={styles.contentInput}
-            rows="10"
-            maxLength="500"
-            required
-            onChange={e =>
-              this.updateField('description', e.target.value)
-            }></textarea>
-          <Button className={styles.submitAddComment} type="submit">
-            <div className="buttonText">Submit</div>
+        <div className={styles.addCommentContainer}>
+          <form className={styles.addCommentForm} onSubmit={this.handleSubmit}>
+            <Label
+              className={styles.addCommentLabel}
+              htmlFor="add-comment-content">
+              Add Comment:
+            </Label>
+            <textarea
+              name="content"
+              id="post-description"
+              className={styles.contentInput}
+              rows="10"
+              maxLength="500"
+              required
+              onChange={e =>
+                this.updateField('description', e.target.value)
+              }></textarea>
+            <Button className={styles.submitAddComment} type="submit">
+              <div className="buttonText">Submit</div>
+            </Button>
+          </form>
+          <Button id={styles.backToPostButton}>
+            <p onClick={this.goBack}>Back to post</p>
           </Button>
-        </form>
-        <Button id={styles.backToPostButton}>
-          <p onClick={this.goBack}>Back to post</p>
-        </Button>
-        <Link to="/">
-          <p className={styles.dashboardLink}>Back to dashboard</p>
-        </Link>
+          <Link to="/">
+            <p className={styles.dashboardLink}>Back to dashboard</p>
+          </Link>
+        </div>
       </section>
     );
   }
