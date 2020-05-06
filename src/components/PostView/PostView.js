@@ -64,6 +64,16 @@ export default class PostView extends React.Component {
 
   displayPost(post, deleteButton, pContext) {
     console.log(this.context, post);
+
+    let resolvedStamp =
+      post.resolved === true ? (
+        <img
+          className={styles.resolvedStamp}
+          src={require('../../images/resolved.png')}
+          alt="resolved stamp"
+        />
+      ) : null;
+
     if (this.state.edit) {
       return (
         <form
@@ -160,6 +170,7 @@ export default class PostView extends React.Component {
           />
         </button>
         {deleteButton}
+        {resolvedStamp}
       </>
     );
   }
