@@ -8,11 +8,12 @@
     rgba(88, 57, 154, 0),
     rgba(73, 57, 154, 0.3)
   );
-  height: 100vh;
+  min-height: 100%;
   overflow-y: hidden;
   top: 20px;
   position: absolute;
   width: 100%;
+  padding-bottom: 100px;
 }
 
 .loginContainer {

@@ -10,6 +10,7 @@
   top: 20px;
   position: absolute;
   width: 100%;
+  padding-bottom: 100px;
 }
 
 .threadsContainer {
@@ -68,6 +69,7 @@
 .dashboardLink {
   transition: color 0.2s;
   color: var(--black);
+  padding-bottom: 2rem;
   &:hover {
     color: var(--dark1);
     cursor: pointer;
