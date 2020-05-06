@@ -4,19 +4,19 @@
 .AddComment {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
+  justify-content: center;
   align-items: center;
   background: linear-gradient(rgba(88, 57, 154, 0), rgba(73, 57, 154, 0.3))
     no-repeat center center fixed;
   min-height: 100%;
   position: absolute;
   width: 100%;
-  padding: 1rem 0;
+  padding: 1rem 0 100px;
 }
 
 @include mobilePortrait {
   .AddComment {
-    padding: 1rem;
+    padding: 1rem 1rem 100px;
   }
 }
 
@@ -43,6 +43,7 @@
   width: 90%;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 200px;
 }
 
 // @include mobilePortrait {
