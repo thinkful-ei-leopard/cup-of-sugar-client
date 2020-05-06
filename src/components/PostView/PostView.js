@@ -1,7 +1,6 @@
 import React from 'react';
 import UserContext from '../../contexts/UserContext';
 import PostsContext from '../../contexts/PostsContext';
-import Comment from '../CommentList/Comment/Comment';
 import styles from './PostView.module.scss';
 import cx from 'classnames';
 import Button from '../Button/Button';
@@ -63,7 +62,6 @@ export default class PostView extends React.Component {
   // toggle between static post or edit mode post
 
   displayPost(post, deleteButton, pContext) {
-    console.log(this.context, post);
 
     let resolvedStamp =
       post.resolved === true ? (

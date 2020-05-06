@@ -46,6 +46,14 @@ export default class MessageList extends React.Component {
       }
     }
 
+    // let lead = '';
+    // let lastMessage = null;
+    // let currentMessage = {};
+    // messages.forEach((message) => {
+      
+    //   let currentMessage = message
+    // })
+
     return (
       <>
         <h2 className={styles.messagesWithHeader}>

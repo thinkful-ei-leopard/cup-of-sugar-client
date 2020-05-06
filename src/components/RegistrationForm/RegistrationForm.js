@@ -38,7 +38,6 @@ class RegistrationForm extends Component {
           });
         }
       } else {
-        console.log(error);
       }
     });
   };
