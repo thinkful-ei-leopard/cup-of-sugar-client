@@ -94,7 +94,7 @@ export class PostsProvider extends Component {
         if (key === 'comments') {
           this.setState({
             posts: this.state.posts.sort((a, b) => {
-              return a.comments - b.comments;
+              return b.comments - a.comments;
             }),
             commentsSort: false
           });
@@ -102,7 +102,7 @@ export class PostsProvider extends Component {
         } else if (key === 'date') {
           this.setState({
             posts: this.state.posts.sort((a, b) => {
-              return new Date(a.date_modified) - new Date(b.date_modified);
+              return new Date(b.date_modified) - new Date(a.date_modified);
             }),
             dateSort: false
           });
