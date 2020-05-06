@@ -74,11 +74,18 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 1rem;
+  position: relative;
 }
 
 @include mobilePortrait {
   .logoutDiv {
     margin-top: 2px;
+  }
+}
+
+@include mobileLandscape {
+  .logoutDiv {
+    margin-top: -2px;
   }
 }
 
