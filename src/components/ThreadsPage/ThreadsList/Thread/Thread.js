@@ -49,7 +49,10 @@ export default class Thread extends React.Component {
     let content,
       date_modifiedMessage = '';
     if (currentMessage) {
-      content = currentMessage.content;
+      content =
+        currentMessage.content.length < 20
+          ? currentMessage.content
+          : currentMessage.content.slice(0, 20) + '...';
       if (currentMessage.user_id === user.id)
         date_modifiedMessage = `Sent on: ${currentMessage.date_modified.slice(
           0,
@@ -77,10 +80,10 @@ export default class Thread extends React.Component {
                 <span className={styles.userUserName}>({user_name})</span>
               </h3>
 
-              <p className={styles.lastMessage}>
-                last message:{' '}
-                <span className={styles.lastMessageContent}>{content}</span>
-              </p>
+              <div className={styles.lastMessageContainer}>
+                <p className={styles.lastMessage}>last message: </p>
+                <p className={styles.lastMessageContent}>{content}</p>
+              </div>
               <p className={styles.lastMessageSent}>{date_modifiedMessage}</p>
             </div>
             <Confirm title="Confirm" description="Are you sure?">
