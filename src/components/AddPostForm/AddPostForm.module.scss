@@ -35,6 +35,7 @@
 
 .addLabel {
   margin-bottom: 0.5rem;
+  // font-weight: 600;
 }
 
 .addInput {
@@ -47,6 +48,7 @@
 
 .titleInput {
   width: 200px;
+  // font-weight: 600;
 }
 
 .descriptionInput {
@@ -96,6 +98,7 @@
 
 .addPostHeader {
   margin-bottom: 1rem;
+  color: var(--black);
 }
 
 .addPostContainer {
@@ -103,7 +106,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  top: -60px;
+  position: absolute;
+  top: 94px;
   width: 100%;
 }
