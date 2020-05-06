@@ -159,16 +159,6 @@ export default class PostView extends React.Component {
           on{' '}
           <span className={styles.date}>{post.date_modified.slice(0, 10)}</span>
         </p>
-        <button
-          title="Edit post"
-          className={styles.editButton}
-          onClick={this.handleEdit}>
-          <img
-            className={styles.editPostIcon}
-            src={require('../../images/pencil.svg')}
-            alt="edit post icon"
-          />
-        </button>
         {deleteButton}
         {resolvedStamp}
       </>
@@ -207,6 +197,7 @@ export default class PostView extends React.Component {
                 )}
               </Confirm>
               {!post.resolved ? (
+                <>
                 <Confirm
                   title="Mark Resolved"
                   description="Are you sure?"
@@ -228,6 +219,17 @@ export default class PostView extends React.Component {
                     </button>
                   )}
                 </Confirm>
+                <button
+                  title="Edit post"
+                  className={styles.editButton}
+                  onClick={this.handleEdit}>
+                  <img
+                    className={styles.editPostIcon}
+                    src={require('../../images/pencil.svg')}
+                    alt="edit post icon"
+                  />
+                </button>
+                </>
               ) : (
                 <></>
               )}
