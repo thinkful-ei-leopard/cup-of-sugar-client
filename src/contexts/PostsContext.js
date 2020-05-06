@@ -99,8 +99,7 @@ export class PostsProvider extends Component {
             commentsSort: false
           });
           break;
-        }
-        if (key === 'date') {
+        } else if (key === 'date') {
           this.setState({
             posts: this.state.posts.sort((a, b) => {
               return new Date(a.date_modified) - new Date(b.date_modified);
