@@ -40,7 +40,7 @@ export class Dashboard extends Component {
       <section className={styles.Dashboard}>
         <UserContext.Consumer>
           {({ user }) => (
-            <p className={styles.welcomeMessage}>
+            <p className={cx(styles.welcomeMessage, "animated fadeInDown delay-1s")}>
               Welcome to the neighborhood,
               <span className={styles.userSpan}> {user.name}</span>!
             </p>

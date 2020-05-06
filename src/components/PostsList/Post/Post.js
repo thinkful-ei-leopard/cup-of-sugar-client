@@ -10,7 +10,7 @@ import '@reach/dialog/styles.css';
 
 export default class Post extends React.Component {
   state = {
-    hover: false,
+    hover: false
   };
 
   static contextType = UserContext;
@@ -27,7 +27,7 @@ export default class Post extends React.Component {
     let deleteButton =
       this.context.user.id === post.user_id ? (
         <Confirm title="Confirm" description="Are you sure?">
-          {(confirm) => (
+          {confirm => (
             <Button
               type="delete"
               title="Delete"
@@ -60,7 +60,8 @@ export default class Post extends React.Component {
         <span className={cx(styles.postTitle, styles.postEl)}>
           <Link
             className={cx(
-              post.type === 'offer' ? styles.offerStyle : styles.requestStyle
+              post.type === 'offer' ? styles.offerStyle : styles.requestStyle,
+              post.resolved === true ? styles.resolvedStyle : null
             )}
             to={`/post/${post.id}`}>
             {title}

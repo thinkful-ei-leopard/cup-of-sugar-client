@@ -40,7 +40,8 @@
 }
 
 .cancelButton,
-.confirmButton {
+.confirmButton,
+.resolveButton {
   text-align: center;
   width: 120px;
   padding: 0.5rem 1.5rem;
@@ -55,7 +56,8 @@
   background-color: var(--neutral);
 }
 
-.confirmButton {
+.confirmButton,
+.resolveButton {
   margin-bottom: 1.5rem;
   background-color: var(--light2);
   transition: background-color 0.2s;
@@ -64,8 +66,12 @@
   }
 }
 
+.resolveButton:hover {
+  background-color: var(--dark1);
+}
+
 @include mobilePortrait {
-  .confirmButton {
+  .confirmButton, .resolveButton {
     margin: 0;
   }
 }

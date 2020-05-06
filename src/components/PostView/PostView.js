@@ -5,11 +5,12 @@ import Comment from '../CommentList/Comment/Comment';
 import styles from './PostView.module.scss';
 import cx from 'classnames';
 import Button from '../Button/Button';
+import Checkmark from '../Icons/Checkmark';
 import { Link } from 'react-router-dom';
 import PostsApiService from '../../services/posts-api-service';
 import Confirm from '../Confirm/Confirm';
 import CommentList from '../CommentList/CommentList';
-import MessageUser from '../../components/MessageUser/MessageUser'
+import MessageUser from '../../components/MessageUser/MessageUser';
 
 import '@reach/dialog/styles.css';
 
@@ -19,7 +20,7 @@ export default class PostView extends React.Component {
     edit: false
   };
 
-  static contextType = UserContext
+  static contextType = UserContext;
 
   componentDidUpdate() {
     if (this.state.comments === null) {
@@ -34,7 +35,7 @@ export default class PostView extends React.Component {
 
   handleEdit = () => {
     this.setState({
-      edit: !this.state.edit ? true : false
+      edit: !this.state.edit
     });
   };
 
@@ -62,6 +63,17 @@ export default class PostView extends React.Component {
   // toggle between static post or edit mode post
 
   displayPost(post, deleteButton, pContext) {
+    console.log(this.context, post);
+
+    let resolvedStamp =
+      post.resolved === true ? (
+        <img
+          className={styles.resolvedStamp}
+          src={require('../../images/resolved.png')}
+          alt="resolved stamp"
+        />
+      ) : null;
+
     if (this.state.edit) {
       return (
         <form
@@ -125,18 +137,32 @@ export default class PostView extends React.Component {
         <p className={styles.description}>{post.description}</p>
         <p className={styles.postedBy}>
           {post.type === 'offer' ? 'Offered' : 'Requested'} by{' '}
-          <span className={styles.nameHeader}>
-            {post.name} ({post.user_name})
-          </span>{' '}
+          {post.user_id !== this.context.user.id ? (
+            <MessageUser
+              user={this.context.user}
+              neighborId={post.user_id}
+              text={
+                <span
+                  className={cx(
+                    post.type === 'offer'
+                      ? styles.offerStyle
+                      : styles.requestStyle,
+                    styles.nameHeader
+                  )}>
+                  {post.name} ({post.user_name})
+                </span>
+              }
+            />
+          ) : (
+            'you'
+          )}{' '}
           on{' '}
           <span className={styles.date}>{post.date_modified.slice(0, 10)}</span>
-          <MessageUser
-            user={this.context.user}
-            neighborId={post.user_id}
-            text={'message'}
-          />
         </p>
-        <button className={styles.editButton} onClick={this.handleEdit}>
+        <button
+          title="Edit post"
+          className={styles.editButton}
+          onClick={this.handleEdit}>
           <img
             className={styles.editPostIcon}
             src={require('../../images/pencil.svg')}
@@ -144,24 +170,7 @@ export default class PostView extends React.Component {
           />
         </button>
         {deleteButton}
-        {/* <Confirm title="Mark Resolved" description="Are you sure?">
-                {confirm => (
-                  <Button
-                    onClick={confirm(() => {
-                      PostsApiService.editPost(post.id, {
-                        title: post.title,
-                        description: post.description,
-                        resolved: true
-                      });
-                      this.handleDelete();
-                    })}
-                    title="Resolved"
-                    className={styles.deletePostButton}
-                    id={styles.deletePostButton}>
-                    resolve
-                  </Button>
-                )}
-              </Confirm> */}
+        {resolvedStamp}
       </>
     );
   }
@@ -182,48 +191,46 @@ export default class PostView extends React.Component {
         {({ user }) =>
           user.id === post.user_id ? (
             <div>
-
               <Confirm title="Delete" description="Are you sure?">
-              {(confirm) => (
-                <Button
-                  onClick={confirm(() => {
-                    PostsApiService.deletePost(post.id);
-                    this.handleDelete();
-                  })}
-                  type="delete"
-                  title="Delete"
-                  className={styles.deletePostButton}
-                  id={styles.deletePostButton}>
-                  X
-                </Button>
-              )}
+                {confirm => (
+                  <Button
+                    onClick={confirm(() => {
+                      PostsApiService.deletePost(post.id);
+                      this.handleDelete();
+                    })}
+                    type="delete"
+                    title="Delete"
+                    className={styles.deletePostButton}
+                    id={styles.deletePostButton}>
+                    X
+                  </Button>
+                )}
               </Confirm>
-              <Confirm title="Mark Resolved" description="Are you sure?">
-              {(confirm) => (
-                <Button
-                  onClick={confirm(() => {
-                    PostsApiService.editPost(
-                      post.id,
-                      {
-                        title: post.title,
-                        description: post.description,
-                        resolved: true
-                      }
-                    );
-                    this.handleDelete();
-                  })}
-                  title="Resolved"
-                  className={styles.resolvePostButton}
-                  id={styles.resolvePostButton}>
-                  resolve
-                </Button>
+              {!post.resolved ? (
+                <Confirm
+                  title="Mark Resolved"
+                  description="Are you sure?"
+                  type="resolve">
+                  {confirm => (
+                    <button
+                      onClick={confirm(() => {
+                        PostsApiService.editPost(post.id, {
+                          title: post.title,
+                          description: post.description,
+                          resolved: true
+                        });
+                        this.handleDelete();
+                      })}
+                      title="Mark as resolved"
+                      className={styles.resolvePostButton}
+                      id={styles.resolvePostButton}>
+                      <Checkmark className={styles.resolvePostButton} />
+                    </button>
+                  )}
+                </Confirm>
+              ) : (
+                <></>
               )}
-              </Confirm>
-              {/* <Button
-                onClick={this.handleEdit}
-              >
-                Edit
-              </Button> */}
             </div>
           ) : (
             <Button

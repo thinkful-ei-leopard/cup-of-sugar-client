@@ -32,6 +32,7 @@ export default class Confirm extends React.Component {
   };
 
   render() {
+    const { type } = this.props;
     return (
       <>
         {this.props.children(this.show)}
@@ -45,8 +46,14 @@ export default class Confirm extends React.Component {
               <button className={styles.cancelButton} onClick={this.hide}>
                 <p className="buttonText">Cancel</p>
               </button>
-              <button className={styles.confirmButton} onClick={this.confirm}>
-                <p className={cx(styles.deleteText, "buttonText")}>Confirm</p>
+              <button
+                className={
+                  type === 'resolve'
+                    ? styles.resolveButton
+                    : styles.confirmButton
+                }
+                onClick={this.confirm}>
+                <p className={cx(styles.deleteText, 'buttonText')}>Confirm</p>
               </button>
             </div>
           </Dialog>
