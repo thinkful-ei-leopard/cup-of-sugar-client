@@ -27,7 +27,6 @@ class Header extends Component {
 
   renderLogoutLink() {
     let user = this.context.user;
-    console.log(user.img_src);
     return (
       <div className={styles.logoutDiv}>
         <Link to="/" className={styles.homeLink}>
