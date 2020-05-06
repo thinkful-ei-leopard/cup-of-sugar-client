@@ -27,6 +27,7 @@ export class AddPost extends Component {
   static contextType = PostsContext;
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.firstInput.current.focus();
   }
 

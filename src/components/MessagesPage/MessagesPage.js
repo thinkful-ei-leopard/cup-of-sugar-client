@@ -18,6 +18,10 @@ export default class MessagesPage extends React.Component {
     this.props.history.goBack();
   };
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <section className={styles.MessagesPage}>

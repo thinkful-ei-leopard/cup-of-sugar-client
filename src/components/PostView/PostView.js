@@ -21,6 +21,10 @@ export default class PostView extends React.Component {
 
   static contextType = UserContext;
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   componentDidUpdate() {
     if (this.state.comments === null) {
       this.setState({ comments: this.props.comments });

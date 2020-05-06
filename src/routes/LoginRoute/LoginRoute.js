@@ -7,9 +7,13 @@ class LoginRoute extends Component {
   static defaultProps = {
     location: {},
     history: {
-      push: () => {},
-    },
+      push: () => {}
+    }
   };
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   handleLoginSuccess = () => {
     const { location, history } = this.props;

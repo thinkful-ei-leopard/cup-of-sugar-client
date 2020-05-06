@@ -7,6 +7,10 @@ import styles from './ThreadsPage.module.scss';
 export default class ThreadsPage extends React.Component {
   static contextType = UserContext;
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <section className={styles.ThreadsPage}>

@@ -27,7 +27,7 @@ export default class MessageForm extends React.Component {
         <div className={styles.newMessageGroup}>
           <div className={styles.inputGroup}>
             <label htmlFor="message">New message: </label>
-            <input name="message" required className={styles.messageFormInput}></input>
+            <input name="message" required autoComplete="off" className={styles.messageFormInput}></input>
           </div>
           <Button type="submit" className={styles.sendButton}>
             <span className={styles.sendText}>Send</span>

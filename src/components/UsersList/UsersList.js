@@ -13,6 +13,7 @@ export default class UsersList extends React.Component {
   static contextType = UserContext;
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.getUser();
   }
 

@@ -6,9 +6,13 @@ import WelcomeDisplay from '../../components/WelcomeDisplay/WelcomeDisplay';
 class RegistrationRoute extends Component {
   static defaultProps = {
     history: {
-      push: () => {},
-    },
+      push: () => {}
+    }
   };
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   handleRegistrationSuccess = () => {
     const { history } = this.props;
@@ -30,4 +34,3 @@ class RegistrationRoute extends Component {
 }
 
 export default RegistrationRoute;
-

@@ -12,6 +12,12 @@ import SearchPosts from '../SearchPosts/SearchPosts';
 import UserPostsButton from '../UserPostsButton/UserPostsButton';
 
 export class Dashboard extends Component {
+  static contextType = PostsContext;
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   displayArrow = sortType => {
     switch (sortType) {
       case false:
@@ -32,8 +38,6 @@ export class Dashboard extends Component {
         );
     }
   };
-
-  static contextType = PostsContext;
 
   render() {
     return (
