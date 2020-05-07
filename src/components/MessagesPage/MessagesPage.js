@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import MessageList from './MessageList/MessageList';
 import styles from './MessagesPage.module.scss';
 import MessageForm from './MessageForm/MessageForm';
@@ -31,7 +32,7 @@ export default class MessagesPage extends React.Component {
     }
 
     return (
-      <section className={styles.MessagesPage}>
+      <section className={cx(styles.MessagesPage, "fadeIn")}>
         <div className={styles.messagesContainer}>
           <MessageList user={this.context.user} />
           <MessageForm user={this.context.user} />

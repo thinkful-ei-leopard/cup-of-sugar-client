@@ -67,7 +67,7 @@ export class AddPost extends Component {
   render() {
     const { error } = this.state;
     return (
-      <section className={styles.AddPost}>
+      <section className={cx(styles.AddPost, "fadeIn")}>
         <div className={styles.addPostContainer}>
           <h2 className={styles.addPostHeader}>Add Post</h2>
           {error ? <h3 className={styles.errorMessage}>{error}</h3> : null}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import cx from 'classnames';
 import UserContext from '../../contexts/UserContext';
 import ThreadsList from './ThreadsList/ThreadsList';
 import styles from './ThreadsPage.module.scss';
@@ -13,7 +14,7 @@ export default class ThreadsPage extends React.Component {
 
   render() {
     return (
-      <section className={styles.ThreadsPage}>
+      <section className={cx(styles.ThreadsPage, "fadeIn")}>
         <Link to="/neighbor-directory">
           <h2 className={styles.directoryLink}> Start new thread </h2>
         </Link>

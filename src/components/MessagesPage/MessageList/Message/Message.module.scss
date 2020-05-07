@@ -13,9 +13,8 @@
   background-color: var(--light1);
   position: relative;
   right: 0;
-  margin-left: 50%;
-  // width: 100%;
-  max-width: 50%;
+  margin-left: 30%;
+  max-width: 70%;
   word-wrap: break-word;
 }
 
@@ -23,8 +22,57 @@
   background-color: var(--light2);
   position: relative;
   left: 0;
-  margin-right: 50%;
+  margin-right: 30%;
+  max-width: 70%;
   word-wrap: break-word;
+}
+
+@include mobilePortrait {
+  .sentMessage {
+    margin-left: 35%;
+    max-width: 65%;
+  }
+
+  .receivedMessage {
+    margin-right: 35%;
+    max-width: 65%;
+  }
+}
+
+@include mobileLandscape {
+  .sentMessage {
+    margin-left: 40%;
+    max-width: 60%;
+  }
+
+  .receivedMessage {
+    margin-right: 40%;
+    max-width: 60%;
+  }
+}
+
+@include tabletPortrait {
+  .sentMessage {
+    margin-left: 45%;
+    max-width: 55%;
+  }
+
+  .receivedMessage {
+    margin-right: 45%;
+    max-width: 55%;
+  }
+}
+
+@include laptop {
+  .sentMessage {
+    margin-left: 50%;
+    max-width: 50%;
+  }
+
+  .receivedMessage {
+    margin-right: 50%;
+    max-width: 50%;
+  }
 }
 
 .deleteMessageButton {

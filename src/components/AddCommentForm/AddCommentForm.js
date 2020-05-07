@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cx from 'classnames';
 import { Label } from '../Form/Form';
 import Button from '../Button/Button';
 import CommentsApiService from '../../services/comments-api-service';
@@ -53,7 +54,7 @@ export class AddCommentForm extends Component {
 
   render() {
     return (
-      <section className={styles.AddComment}>
+      <section className={cx(styles.AddComment, 'fadeIn')}>
         <div className={styles.addCommentContainer}>
           <form className={styles.addCommentForm} onSubmit={this.handleSubmit}>
             <Label
