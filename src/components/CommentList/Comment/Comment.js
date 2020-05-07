@@ -5,21 +5,30 @@ import styles from './Comment.module.scss';
 import CommentsApiService from '../../../services/comments-api-service';
 import Confirm from '../../Confirm/Confirm';
 import '@reach/dialog/styles.css';
-import { withRouter } from 'react-router-dom'
-import MessageUser from '../../../components/MessageUser/MessageUser'
+import { withRouter } from 'react-router-dom';
+import MessageUser from '../../../components/MessageUser/MessageUser';
 
 class Comment extends React.Component {
+  state = { loading: true };
 
   static contextType = UserContext;
 
+  componentDidMount() {
+    this.setState({ loading: false });
+  }
+
   render() {
-    const user = this.context.user;
-    const comment = this.props.comment;
+    const { user } = this.context;
+    const { comment } = this.props;
+
+    if (this.state.loading == true) {
+      return <></>;
+    }
 
     let deleteButton =
       user.id === comment.user_id ? (
         <Confirm title="Confirm" description="Are you sure?">
-          {(confirm) => (
+          {confirm => (
             <Button
               onClick={confirm(() => {
                 CommentsApiService.handleCommentDelete(
@@ -36,14 +45,13 @@ class Comment extends React.Component {
             </Button>
           )}
         </Confirm>
-      ) : null;         
+      ) : null;
 
     return (
       <li className={styles.commentLi}>
         <div className={styles.commentDeleteContainer}>
           <p className={styles.content}>
-            {comment.content} <br />
-            {' '}
+            {comment.content} <br />{' '}
             <span className={styles.commenterName}>
               {comment.name} ({comment.user_name})
             </span>{' '}
@@ -52,7 +60,11 @@ class Comment extends React.Component {
             </span>
           </p>
           {deleteButton}
-          <MessageUser user={this.context.user} neighborId={this.props.comment.user_id} text={'message'}/>
+          <MessageUser
+            user={this.context.user}
+            neighborId={this.props.comment.user_id}
+            text={'message'}
+          />
         </div>
       </li>
     );
