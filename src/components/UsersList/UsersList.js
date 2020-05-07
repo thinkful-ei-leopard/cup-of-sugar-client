@@ -34,14 +34,25 @@ export default class UsersList extends React.Component {
         user => user.id !== this.context.user.id
       );
     }
+
+    let sortedUsers = users.sort((a, b) => {
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      }
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return 1;
+      }
+      return 0;
+    });
+
     return (
-      <section className={cx(styles.userListSection, "fadeIn")}>
+      <section className={cx(styles.userListSection, 'fadeIn')}>
         <h2 className={styles.directoryHeader}>Neighbor Directory</h2>
         <SearchUsers className={styles.searchUsersComponent} />
         <ul className={styles.UsersList}>
-            {users.map(user => (
-              <User user={this.state.user} neighbor={user} key={user.id} />
-            ))}
+          {sortedUsers.map(user => (
+            <User user={this.state.user} neighbor={user} key={user.id} />
+          ))}
         </ul>
         <Link to="/">
           <span className={styles.dashboardLink}>Back to dashboard</span>
