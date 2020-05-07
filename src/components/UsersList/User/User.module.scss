@@ -11,7 +11,7 @@
 .neighbor {
   font-size: 1.2rem;
   color: var(--dark2);
-  transition: color 0.2s;
+  transition: all 0.2s;
   &:hover {
     color: var(--black);
     cursor: pointer;

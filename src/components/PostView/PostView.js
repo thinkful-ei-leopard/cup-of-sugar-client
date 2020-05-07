@@ -16,13 +16,15 @@ import '@reach/dialog/styles.css';
 export default class PostView extends React.Component {
   state = {
     comments: null,
-    edit: false
+    edit: false,
+    loading: true
   };
 
   static contextType = UserContext;
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    this.setState({ loading: false });
   }
 
   componentDidUpdate() {
@@ -66,7 +68,6 @@ export default class PostView extends React.Component {
   // toggle between static post or edit mode post
 
   displayPost(post, deleteButton, pContext) {
-
     let resolvedStamp =
       post.resolved === true ? (
         <img
@@ -177,7 +178,8 @@ export default class PostView extends React.Component {
     const commentsForPost = comments.filter(
       comment => comment.post_id.toString() === this.props.id
     );
-    if (!post || !this.state.comments) {
+    console.log(commentsForPost, comments);
+    if (!post || !this.state.comments || this.state.loading === true) {
       return <></>;
     }
     let deleteButton = (
@@ -202,37 +204,37 @@ export default class PostView extends React.Component {
               </Confirm>
               {!post.resolved ? (
                 <>
-                <Confirm
-                  title="Mark Resolved"
-                  description="Are you sure?"
-                  type="resolve">
-                  {confirm => (
-                    <button
-                      onClick={confirm(() => {
-                        PostsApiService.editPost(post.id, {
-                          title: post.title,
-                          description: post.description,
-                          resolved: true
-                        });
-                        this.handleDelete();
-                      })}
-                      title="Mark as resolved"
-                      className={styles.resolvePostButton}
-                      id={styles.resolvePostButton}>
-                      <Checkmark className={styles.resolvePostButton} />
-                    </button>
-                  )}
-                </Confirm>
-                <button
-                  title="Edit post"
-                  className={styles.editButton}
-                  onClick={this.handleEdit}>
-                  <img
-                    className={styles.editPostIcon}
-                    src={require('../../images/pencil.svg')}
-                    alt="edit post icon"
-                  />
-                </button>
+                  <Confirm
+                    title="Mark Resolved"
+                    description="Are you sure?"
+                    type="resolve">
+                    {confirm => (
+                      <button
+                        onClick={confirm(() => {
+                          PostsApiService.editPost(post.id, {
+                            title: post.title,
+                            description: post.description,
+                            resolved: true
+                          });
+                          this.handleDelete();
+                        })}
+                        title="Mark as resolved"
+                        className={styles.resolvePostButton}
+                        id={styles.resolvePostButton}>
+                        <Checkmark className={styles.resolvePostButton} />
+                      </button>
+                    )}
+                  </Confirm>
+                  <button
+                    title="Edit post"
+                    className={styles.editButton}
+                    onClick={this.handleEdit}>
+                    <img
+                      className={styles.editPostIcon}
+                      src={require('../../images/pencil.svg')}
+                      alt="edit post icon"
+                    />
+                  </button>
                 </>
               ) : (
                 <></>
@@ -254,7 +256,7 @@ export default class PostView extends React.Component {
     // entirety of Postview
 
     return (
-      <section className={cx(styles.PostView, "fadeIn")}>
+      <section className={cx(styles.PostView, 'fadeIn')}>
         <PostsContext.Consumer>
           {pContext => (
             <div className={styles.postDetail}>
