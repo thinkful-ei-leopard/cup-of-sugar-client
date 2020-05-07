@@ -50,6 +50,7 @@ class User extends React.Component {
           this.handleThreadCreate();
         }}>
         <p className={styles.neighbor}>
+        <img src={neighbor.img_src} alt={neighbor.img_alt} className={styles.neighborDirectoryAvatar}></img>
           {neighbor.name} ({neighbor.user_name})
         </p>
       </li>

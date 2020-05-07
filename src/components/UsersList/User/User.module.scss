@@ -17,3 +17,15 @@
     cursor: pointer;
   }
 }
+
+.neighborDirectoryAvatar {
+  height: 30px;
+  width: 30px;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  position: relative;
+  left: -.5rem;
+  margin-bottom: 4px;
+  top: .8rem;
+}
