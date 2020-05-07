@@ -3,30 +3,11 @@
 
 .MessagesPage {
   text-align: center;
-  // background: linear-gradient(rgba(88, 57, 154, 0), rgba(73, 57, 154, 0.3))
-  //   no-repeat center center fixed;
   min-height: 100%;
   top: 20px;
   position: absolute;
   width: 100%;
   justify-content: center;
-  // padding-bottom: 700px;
-}
-
-.fadeIn {
-  animation-name: fadeIn;
-  animation-duration: 0.2s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
 
 .messagesContainer {
@@ -34,12 +15,12 @@
   top: 80px;
   display: flex;
   flex-direction: column;
-  max-height: 70vh;
+  max-height: 60vh;
 }
 
 .backButton {
   width: 50px;
-  margin: 1.5rem auto 2rem;
+  margin: 1.5rem auto 50px;
   outline: none;
   border: none;
   background-color: transparent;

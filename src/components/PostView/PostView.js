@@ -252,7 +252,7 @@ export default class PostView extends React.Component {
     // entirety of Postview
 
     return (
-      <section className={styles.PostView}>
+      <section className={cx(styles.PostView, "fadeIn")}>
         <PostsContext.Consumer>
           {pContext => (
             <div className={styles.postDetail}>

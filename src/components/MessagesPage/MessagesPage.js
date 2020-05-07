@@ -32,7 +32,7 @@ export default class MessagesPage extends React.Component {
     }
 
     return (
-      <section className={cx(styles.MessagesPage, styles.fadeIn)}>
+      <section className={cx(styles.MessagesPage, "fadeIn")}>
         <div className={styles.messagesContainer}>
           <MessageList user={this.context.user} />
           <MessageForm user={this.context.user} />

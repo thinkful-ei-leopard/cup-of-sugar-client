@@ -7,10 +7,15 @@
   border: 2px solid var(--black);
   max-width: 600px;
   width: 90%;
-//   max-height: 60vh;
-  min-height: 460px;
+  min-height: 360px;
   overflow-y: auto;
   margin: 0 auto 1rem;
+}
+
+@include mobilePortrait {
+  .messageListUl {
+    min-height: 460px;
+  }
 }
 
 .messagesAvatarImg {
