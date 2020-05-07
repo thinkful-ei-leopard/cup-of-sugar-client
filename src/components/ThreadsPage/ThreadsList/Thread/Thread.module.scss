@@ -109,7 +109,7 @@
 .deleteX {
   outline: none;
   background-color: transparent;
-  transition: color .2s;
+  transition: color 0.2s;
   &:hover {
     color: var(--warning);
   }
@@ -172,5 +172,23 @@
   .lastMessageContainer {
     flex-direction: row;
     align-items: center;
+  }
+}
+
+.mobileContent {
+  display: inline-block;
+}
+
+.desktopContent {
+  display: none;
+}
+
+@include tabletPortrait {
+  .mobileContent {
+    display: none;
+  }
+
+  .desktopContent {
+    display: inline-block;
   }
 }
