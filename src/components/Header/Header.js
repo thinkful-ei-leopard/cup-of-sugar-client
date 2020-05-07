@@ -30,7 +30,9 @@ class Header extends Component {
     return (
       <div className={styles.logoutDiv}>
         <Link to="/" className={styles.homeLink}>
-          Cup of Sugar
+          <h1 className={styles.cupOfSugarHeader}>
+            Cup of Sugar
+          </h1>
         </Link>
         <Link to="/">
           <img
