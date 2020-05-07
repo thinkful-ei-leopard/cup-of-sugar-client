@@ -41,7 +41,7 @@ export class Dashboard extends Component {
 
   render() {
     return (
-      <section className={styles.Dashboard}>
+      <section className={cx(styles.Dashboard, "fadeIn")}>
         <UserContext.Consumer>
           {({ user }) => (
             <p

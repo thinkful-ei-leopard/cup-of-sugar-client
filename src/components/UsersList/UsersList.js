@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import cx from 'classnames';
 import User from './User/User';
 import UserContext from '../../contexts/UserContext';
 import styles from './UsersList.module.scss';
@@ -34,9 +35,9 @@ export default class UsersList extends React.Component {
       );
     }
     return (
-      <section className={styles.userListSection}>
+      <section className={cx(styles.userListSection, "fadeIn")}>
         <h2 className={styles.directoryHeader}>Neighbor Directory</h2>
-        <SearchUsers className={styles.searchUsersComponent}/>
+        <SearchUsers className={styles.searchUsersComponent} />
         <ul className={styles.UsersList}>
           <div className={styles.usersContainer}>
             {users.map(user => (
