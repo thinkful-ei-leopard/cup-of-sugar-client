@@ -59,12 +59,12 @@ export class AddCommentForm extends Component {
           <form className={styles.addCommentForm} onSubmit={this.handleSubmit}>
             <Label
               className={styles.addCommentLabel}
-              htmlFor="add-comment-content">
+              htmlFor="comment-description">
               Add Comment:
             </Label>
             <textarea
               name="content"
-              id="post-description"
+              id="comment-description"
               className={styles.contentInput}
               rows="10"
               maxLength="500"

@@ -93,6 +93,7 @@ export default class PostView extends React.Component {
                 styles.titleInput
               )}
               name="newTitle"
+              aria-label="new title"
               defaultValue={post.title}
             />
           </h1>
@@ -100,6 +101,7 @@ export default class PostView extends React.Component {
             <textarea
               className={styles.descriptionInput}
               name="newDescription"
+              aria-label="new description"
               defaultValue={post.description}
             />
           </p>

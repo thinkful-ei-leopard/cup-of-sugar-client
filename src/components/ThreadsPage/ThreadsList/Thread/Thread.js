@@ -80,7 +80,7 @@ export default class Thread extends React.Component {
             <img
               className={styles.threadAvatarImg}
               src={img_src}
-              alt={img_alt}></img>
+              alt={img_alt !== null ? img_alt : "avatar image"}></img>
             <div className={styles.threadBlockDiv}>
               <h3 className={styles.threadTitle}>
                 <span className={styles.userRealName}>{name} </span>

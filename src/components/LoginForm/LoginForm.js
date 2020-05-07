@@ -61,7 +61,7 @@ class LoginForm extends Component {
             </div>
             <div className={styles.inputContainer}>
               <div className={styles.userNameDiv}>
-                <h3 className={styles.loginHeader}>Log In</h3>
+                <h2 className={styles.loginHeader}>Log In</h2>
                 <Label
                   htmlFor="login-username-input"
                   className={styles.loginLabel}>

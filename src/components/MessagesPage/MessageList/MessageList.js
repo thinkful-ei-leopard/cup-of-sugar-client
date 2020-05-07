@@ -28,10 +28,10 @@ export default class MessageList extends React.Component {
 
   render() {
     const { messages, currentThread } = this.context;
-    let name = '';
-    let user_name = '';
-    let img_src = '';
-    let img_alt = '';
+    let name,
+      user_name,
+      img_src,
+      img_alt = '';
     if (currentThread) {
       if (currentThread.user_id1 === this.props.user.id) {
         name = currentThread.name2;
@@ -48,11 +48,14 @@ export default class MessageList extends React.Component {
     return (
       <>
         <h2 className={styles.messagesWithHeader}>
-        <img className={styles.messagesAvatarImg} src={img_src} alt={img_alt}></img>
+          <img
+            className={styles.messagesAvatarImg}
+            src={img_src}
+            alt={img_alt !== null ? img_alt : 'avatar image'}></img>
           Thread with {name} ({user_name})
         </h2>
         {messages.length ? (
-          <ul className={styles.messageListUl}>
+          <ul className={styles.messageListUl} tabIndex="0">
             {messages.map(message => (
               <Message
                 key={message.id}
@@ -61,14 +64,12 @@ export default class MessageList extends React.Component {
                 handleMessageDelete={this.handleMessageDelete}
               />
             ))}
-            <div
-              ref={el => {
-                this.el = el;
-              }}
-            />
+            <li className={styles.bottomLi} ref={el => (this.el = el)} />
           </ul>
         ) : (
-          <p className={styles.noMessages}>No messages with this neighbor yet!</p>
+          <p className={styles.noMessages}>
+            No messages with this neighbor yet!
+          </p>
         )}
       </>
     );

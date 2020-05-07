@@ -39,11 +39,9 @@ export default class UsersList extends React.Component {
         <h2 className={styles.directoryHeader}>Neighbor Directory</h2>
         <SearchUsers className={styles.searchUsersComponent} />
         <ul className={styles.UsersList}>
-          <div className={styles.usersContainer}>
             {users.map(user => (
               <User user={this.state.user} neighbor={user} key={user.id} />
             ))}
-          </div>
         </ul>
         <Link to="/">
           <span className={styles.dashboardLink}>Back to dashboard</span>
