@@ -13,7 +13,7 @@ Live App:
 
 Cup of Sugar is an application that seeks to bring local communities together through meaningful interactions. Through it we enable users within close proximity to communicate and request and offer help. 
 
-### Features
+## Features
 
 1. Authorization system allows users to: 
     - Register with their information and an optional image upload for their avatar.
