@@ -103,7 +103,7 @@ class RegistrationForm extends Component {
         className={styles.RegForm}
         autoComplete="off">
         <div role="alert">{error ? <p>{error}</p> : null}</div>
-        <h3 className={styles.regHeader}>Sign Up</h3>
+        <h2 className={styles.regHeader}>Sign Up</h2>
         <div className={styles.inputContainer}>
           <div className={styles.regDiv}>
             <Label
@@ -151,7 +151,7 @@ class RegistrationForm extends Component {
               type="email"
               className={styles.regInput}
               required
-              autoComplete="new-off"
+              autoComplete="off"
             />
           </div>
           <div className={styles.regDiv}>
@@ -182,7 +182,7 @@ class RegistrationForm extends Component {
               type="number"
               className={styles.regInput}
               required
-              autoComplete="new-off"
+              autoComplete="off"
             />
           </div>
           <div className={styles.uploadContainer}>

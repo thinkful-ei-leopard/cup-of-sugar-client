@@ -67,7 +67,7 @@ export class AddPost extends Component {
   render() {
     const { error } = this.state;
     return (
-      <section className={cx(styles.AddPost, "fadeIn")}>
+      <section className={cx(styles.AddPost, 'fadeIn')}>
         <div className={styles.addPostContainer}>
           <h2 className={styles.addPostHeader}>Add Post</h2>
           {error ? <h3 className={styles.errorMessage}>{error}</h3> : null}
@@ -75,13 +75,17 @@ export class AddPost extends Component {
             className={styles.addPostForm}
             onSubmit={e => this.handleSubmit(e)}>
             {/* <Input ref={this.firstInput} /> */}
-            <Label htmlFor="title" className={styles.addLabel}>
+            <Label
+              htmlFor="title"
+              aria-label="title"
+              className={styles.addLabel}>
               Title:
             </Label>
             <Input
               ref={this.firstInput}
               type="text"
               name="title"
+              id="title"
               className={cx(styles.addInput, styles.titleInput)}
               autoComplete="off"
               maxLength="60"
@@ -99,7 +103,10 @@ export class AddPost extends Component {
                   onChange={e => this.updateField('type', e.target.value)}
                   required
                 />
-                <Label htmlFor="typeChoice1" className={styles.radioLabel}>
+                <Label
+                  htmlFor="typeChoice1"
+                  aria-label="type"
+                  className={styles.radioLabel}>
                   <span className={styles.offerText}>Offer</span>
                 </Label>
               </div>
@@ -113,13 +120,19 @@ export class AddPost extends Component {
                   onChange={e => this.updateField('type', e.target.value)}
                   required
                 />
-                <Label htmlFor="typeChoice2" className={styles.radioLabel}>
+                <Label
+                  htmlFor="typeChoice2"
+                  aria-label="type"
+                  className={styles.radioLabel}>
                   <span className={styles.requestText}>Request</span>
                 </Label>
               </div>
             </div>
 
-            <Label htmlFor="description" className={styles.addLabel}>
+            <Label
+              htmlFor="post-description"
+              aria-label="description"
+              className={styles.addLabel}>
               Description:
             </Label>
             <textarea

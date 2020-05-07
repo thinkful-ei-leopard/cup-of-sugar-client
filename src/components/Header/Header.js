@@ -34,11 +34,13 @@ class Header extends Component {
             Cup of Sugar
           </h1>
         </Link>
-        <Link to="/">
+        <Link className={styles.headerIcon} to="/">
           <img
             className={styles.headerIcon}
             src={require('../../images/give.svg')}
             alt="cup of sugar icon"
+            aria-label="home link"
+            name="home link"
           />
         </Link>
         <nav className={styles.linksContainer}>
