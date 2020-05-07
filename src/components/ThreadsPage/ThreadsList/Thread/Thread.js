@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import cx from 'classnames';
 import styles from './Thread.module.scss';
 import ThreadsApiService from '../../../../services/threads-api-service';
 import ThreadsContext from '../../../../contexts/ThreadsContext';
@@ -46,10 +47,19 @@ export default class Thread extends React.Component {
     }
 
     let currentMessage = this.findCurrentMessage();
-    let content,
+    let mobileContent,
+      desktopContent,
       date_modifiedMessage = '';
     if (currentMessage) {
-      content = currentMessage.content;
+      mobileContent =
+        currentMessage.content.length < 20
+          ? currentMessage.content
+          : currentMessage.content.slice(0, 20) + '...';
+
+      desktopContent =
+        currentMessage.content.length < 40
+          ? currentMessage.content
+          : currentMessage.content.slice(0, 40) + '...';
       if (currentMessage.user_id === user.id)
         date_modifiedMessage = `Sent on: ${currentMessage.date_modified.slice(
           0,
@@ -77,10 +87,23 @@ export default class Thread extends React.Component {
                 <span className={styles.userUserName}>({user_name})</span>
               </h3>
 
-              <p className={styles.lastMessage}>
-                last message:{' '}
-                <span className={styles.lastMessageContent}>{content}</span>
-              </p>
+              <div className={styles.lastMessageContainer}>
+                <p className={styles.lastMessage}>last message: </p>
+                <p
+                  className={cx(
+                    styles.lastMessageContent,
+                    styles.mobileContent
+                  )}>
+                  {mobileContent}
+                </p>
+                <p
+                  className={cx(
+                    styles.lastMessageContent,
+                    styles.desktopContent
+                  )}>
+                  {desktopContent}
+                </p>
+              </div>
               <p className={styles.lastMessageSent}>{date_modifiedMessage}</p>
             </div>
             <Confirm title="Confirm" description="Are you sure?">

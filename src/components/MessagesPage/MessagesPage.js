@@ -7,6 +7,8 @@ import UserContext from '../../contexts/UserContext';
 export default class MessagesPage extends React.Component {
   static contextType = UserContext;
 
+  state = { loading: true };
+
   static defaultProps = {
     location: {},
     history: {
@@ -20,9 +22,14 @@ export default class MessagesPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    this.setState({ loading: false });
   }
 
   render() {
+    if (this.state.loading === true) {
+      return <> </>;
+    }
+
     return (
       <section className={styles.MessagesPage}>
         <div className={styles.messagesContainer}>
