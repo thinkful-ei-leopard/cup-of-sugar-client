@@ -35,6 +35,8 @@ export class MessagesRoute extends React.Component {
   async getCurrentThread(threadId) {
     const currentThread = await ThreadsApiService.getThreadById(threadId);
     this.context.setCurrentThread(currentThread);
+    console.log(currentThread)
+    console.log(this.context.currentThread)
   }
 
   async getThreads() {

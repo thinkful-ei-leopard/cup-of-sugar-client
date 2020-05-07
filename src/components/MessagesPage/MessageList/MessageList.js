@@ -45,11 +45,6 @@ export default class MessageList extends React.Component {
         img_alt = currentThread.img_alt1;
       }
     }
-    if(!currentThread) {
-      return (
-        <></>
-      )
-    }
     return (
       <>
         <h2 className={styles.messagesWithHeader}>
