@@ -11,8 +11,8 @@ export default class MessageForm extends React.Component {
     let message = e.target.message.value;
     let thread = this.context.currentThread;
     let newMessage = await MessagesApiService.postMessage(thread.id, message);
-    this.context.addMessage(newMessage)
-  };
+    this.context.addMessage(newMessage);
+  }
 
   render() {
     return (
@@ -27,7 +27,12 @@ export default class MessageForm extends React.Component {
         <div className={styles.newMessageGroup}>
           <div className={styles.inputGroup}>
             <label htmlFor="message">New message: </label>
-            <input name="message" required autoComplete="off" className={styles.messageFormInput}></input>
+            <input
+              id="message"
+              name="message"
+              required
+              autoComplete="off"
+              className={styles.messageFormInput}></input>
           </div>
           <Button type="submit" className={styles.sendButton}>
             <span className={styles.sendText}>Send</span>
