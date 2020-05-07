@@ -102,7 +102,7 @@ class RegistrationForm extends Component {
         onSubmit={this.handleSubmit}
         className={styles.RegForm}
         autoComplete="off">
-        {/* <div role="alert">{error ? <p>{error}</p> : null}</div> */}
+        <div role="alert">{error ? <p>{error}</p> : null}</div>
         <h3 className={styles.regHeader}>Sign Up</h3>
         <div className={styles.inputContainer}>
           <div className={styles.regDiv}>
