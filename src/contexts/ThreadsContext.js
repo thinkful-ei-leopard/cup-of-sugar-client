@@ -33,9 +33,7 @@ export class ThreadsProvider extends Component {
   }
 
   setThreads = (threads) => {
-    this.setState({ threads,
-                    currentThread: null });
-    this.setState({})
+    this.setState({ threads });
   };
 
   addThread = (thread) => {

@@ -24,7 +24,7 @@ export default class PostRoute extends React.Component {
 
   async getComments() {
     const comments = await CommentsApiService.getComments();
-    this.context.setComments(comments);
+    await this.context.setComments(comments);
   }
 
   async getPosts() {
