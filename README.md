@@ -16,18 +16,18 @@ Cup of Sugar is an application that seeks to bring local communities together th
 ### Features
 
 1. Authorization system allows users to: 
-  - Register with their information and an optional image upload for their avatar.
-  - Login to their neighborhood, localized by zip code.
+    - Register with their information and an optional image upload for their avatar.
+    - Login to their neighborhood, localized by zip code.
 
 2. Requests and Offers System allows users to:
-  - Post requests and offers on the Community Bulletin, a searchable and sortable board containing all posts within their zipcode. 
-  - Filter the bulletin to only show request or offer posts they created.
-  - View other user's posts, and comment on them. 
-  - Mark their own posts as resolved when they wish to retract an offer or have their request fulfilled. 
+    - Post requests and offers on the Community Bulletin, a searchable and sortable board containing all posts within their zipcode. 
+    - Filter the bulletin to only show request or offer posts they created.
+    - View other user's posts, and comment on them. 
+    - Mark their own posts as resolved when they wish to retract an offer or have their request fulfilled. 
   
 3. Messaging System allows users to:
-  - Communicate 1 on 1 with other users in their neighborhood.
-  - Access the messaging system by looking up other users in their neighborhood or via other user's posts and comments. 
+    - Communicate 1 on 1 with other users in their neighborhood.
+    - Access the messaging system by looking up other users in their neighborhood or via other user's posts and comments. 
 
 ## Frontend Tech Stack
 
