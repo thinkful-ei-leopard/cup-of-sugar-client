@@ -56,7 +56,7 @@ class LoginForm extends Component {
           <form className={styles.LoginForm} onSubmit={this.handleSubmit}>
             <div role="alert">
               {error && (
-                <p className={styles.errorMessage}>There was an error!</p>
+                <p className={styles.errorMessage}>Incorrect Username or Password</p>
               )}
             </div>
             <div className={styles.inputContainer}>

@@ -23,6 +23,10 @@ export class MessagesRoute extends React.Component {
     this.getCurrentThread(this.props.match.params.thread_id);
   }
 
+  componentWillUnmount() {
+    this.context.clearCurrentThread()
+  }
+
   async getMessages(threadId) {
     const messages = await MessagesApiService.getMessages(threadId);
     this.context.setMessages(messages);
