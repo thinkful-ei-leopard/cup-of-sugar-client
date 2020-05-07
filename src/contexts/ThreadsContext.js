@@ -49,6 +49,10 @@ export class ThreadsProvider extends Component {
     this.setState({ messages: [...messages, message] });
   };
 
+  clearCurrentThread = () => {
+    this.setState({ currentThread: null });
+  }
+
   setCurrentThread = (thread) => {
     this.setState({ currentThread: thread });
   };
