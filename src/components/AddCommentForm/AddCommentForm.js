@@ -37,13 +37,13 @@ export class AddCommentForm extends Component {
     const { currentPostId } = this.context;
 
     this.addComment(currentPostId, description);
-    const { history } = this.props;
-    history.goBack();
   };
 
   async addComment(id, description) {
     // eslint-disable-next-line no-unused-vars
     const commentReturn = await CommentsApiService.postComment(id, description);
+    const { history } = this.props;
+    history.goBack();
   }
 
   updateField(field, value) {
