@@ -32,7 +32,7 @@ class User extends React.Component {
       user_name2: neighbor.user_name,
       img_src1: user.img_src,
       img_alt1: user.img_alt,
-      img_src2: neighbor.img_src,
+      img_src2: neighbor.img_src || require('../../../images/user.png'),
       img_alt2: neighbor.img_alt
     };
     thread = await ThreadsApiService.addThread(newThread);
