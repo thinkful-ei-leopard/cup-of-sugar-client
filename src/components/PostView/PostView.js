@@ -178,7 +178,6 @@ export default class PostView extends React.Component {
     const commentsForPost = comments.filter(
       comment => comment.post_id.toString() === this.props.id
     );
-    console.log(commentsForPost, comments);
     if (!post || !this.state.comments || this.state.loading === true) {
       return <></>;
     }
