@@ -15,7 +15,7 @@ Cup of Sugar is an application that seeks to bring local communities together th
 
 ### Features
 
-3. Authorization system allows users to: 
+1. Authorization system allows users to: 
   - Register with their information and an optional image upload for their avatar.
   - Login to their neighborhood, localized by zip code.
 
