@@ -36,7 +36,7 @@ export default class UsersList extends React.Component {
     return (
       <section className={styles.userListSection}>
         <h2 className={styles.directoryHeader}>Neighbor Directory</h2>
-        <SearchUsers />
+        <SearchUsers className={styles.searchUsersComponent}/>
         <ul className={styles.UsersList}>
           <div className={styles.usersContainer}>
             {users.map(user => (
