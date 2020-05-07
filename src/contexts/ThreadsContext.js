@@ -11,7 +11,8 @@ const ThreadsContext = React.createContext({
   setCurrentThread: () => {},
   deleteThread: () => {},
   deleteMessage: () => {},
-  clearCurrentThread: () => {}
+  clearCurrentThread: () => {},
+  clearMessages: () => {}
 });
 
 export default ThreadsContext;
@@ -26,6 +27,10 @@ export class ThreadsProvider extends Component {
   setMessages = (messages) => {
     this.setState({ messages });
   };
+
+  clearMessages = () => {
+    this.setState({ messages: [] })
+  }
 
   setThreads = (threads) => {
     this.setState({ threads,
@@ -77,7 +82,8 @@ export class ThreadsProvider extends Component {
       setCurrentThread: this.setCurrentThread,
       deleteThread: this.deleteThread,
       deleteMessage: this.deleteMessage,
-      clearCurrentThread: this.clearCurrentThread
+      clearCurrentThread: this.clearCurrentThread,
+      clearMessages: this.clearMessages
     };
 
     return (

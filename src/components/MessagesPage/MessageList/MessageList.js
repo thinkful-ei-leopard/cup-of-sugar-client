@@ -45,15 +45,11 @@ export default class MessageList extends React.Component {
         img_alt = currentThread.img_alt1;
       }
     }
-
-    // let lead = '';
-    // let lastMessage = null;
-    // let currentMessage = {};
-    // messages.forEach((message) => {
-      
-    //   let currentMessage = message
-    // })
-
+    if(!currentThread) {
+      return (
+        <></>
+      )
+    }
     return (
       <>
         <h2 className={styles.messagesWithHeader}>

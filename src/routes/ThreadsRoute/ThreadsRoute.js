@@ -13,6 +13,10 @@ export default class ThreadsRoute extends React.Component {
     this.getMessages();
   }
 
+  componentWillUnmount() {
+    this.context.clearMessages()
+  }
+
   async getMessages() {
     const messages = await MessagesApiService.getAllMessages();
     this.context.setMessages(messages);
