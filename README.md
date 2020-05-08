@@ -5,11 +5,7 @@ This project was created by a team of 3 members: Christopher Floyd, Daniel Fong,
 
 Server Repository: https://github.com/thinkful-ei-leopard/cup-of-sugar-api
 
-Live App: 
-
-<p align="center">
-<img src="./src/images/cupofsugarloop.gif" align="center" alt="Cup of Sugar demo gif" title="Cup of Sugar demo gif">  
-</p>
+Live App:
 
 Guest Login: 
 Username: Guest     
@@ -17,9 +13,11 @@ Password: GuestPassword1!
 
 ## What is Cup of Sugar?
 
-Cup of Sugar is a localized, community-oriented application that aims to bring neighbors closer together by fostering connections based on mutual aid. Users can post offers and requests to a public bulletin board, where other users can comment on posts and also message each other privately.
+Cup of Sugar is a localized, community-oriented application that aims to bring neighbors closer together by fostering connections based on mutual aid. Users can post offers and requests to a public bulletin board, where other users can respond by post comments or messaging other users privately.
 
-<!-- Cup of Sugar is an application that seeks to bring local communities together through meaningful interactions. Through it we enable users within close proximity to communicate and request and offer help.  -->
+<p align="center">
+<img src="./src/images/cupofsugarloop.gif" align="center" alt="Cup of Sugar demo gif" title="Cup of Sugar demo gif">  
+</p>
 
 ## Features
 
