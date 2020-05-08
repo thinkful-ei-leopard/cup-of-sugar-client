@@ -7,7 +7,7 @@ Server Repository: https://github.com/thinkful-ei-leopard/cup-of-sugar-api
 
 Live App:
 
-Guest Login: 
+Demo Login:   
 Username: Guest     
 Password: GuestPassword1!
 
@@ -37,16 +37,16 @@ Cup of Sugar is a localized, community-oriented application that aims to bring n
 
 ## Tech Stack
 
-React.js, 
-Context,
-SCSS, 
-Node.js,
-Express,
-PostgreSQL,
-Mocha/Chai,
-Jest,
-Heroku,
-Zeit
+React.js  
+Context  
+SCSS   
+Node.js  
+Express  
+PostgreSQL  
+Mocha/Chai  
+Jest  
+Heroku  
+Zeit  
 
 ## Technical Details
 
