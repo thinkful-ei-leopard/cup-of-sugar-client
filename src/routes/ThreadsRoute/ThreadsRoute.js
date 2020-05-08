@@ -3,6 +3,7 @@ import ThreadsPage from '../../components/ThreadsPage/ThreadsPage';
 import ThreadsContext from '../../contexts/ThreadsContext';
 import ThreadsApiService from '../../services/threads-api-service';
 import MessagesApiService from '../../services/messages-api-service';
+import UsersApiService from '../../services/users-api-service';
 import styles from './ThreadsRoute.module.scss';
 
 export default class ThreadsRoute extends React.Component {
@@ -14,7 +15,7 @@ export default class ThreadsRoute extends React.Component {
   }
 
   componentWillUnmount() {
-    this.context.clearMessages()
+    this.context.clearMessages();
   }
 
   async getMessages() {
@@ -26,6 +27,10 @@ export default class ThreadsRoute extends React.Component {
     const threads = await ThreadsApiService.getThreads();
     this.context.setThreads(threads);
   }
+
+  // getUsers = () => {
+  //   UsersApiService.getUsers();
+  // };
 
   render() {
     return (
