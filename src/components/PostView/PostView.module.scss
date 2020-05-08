@@ -30,6 +30,20 @@
   }
 }
 
+.posterAvatar {
+  width: 32px;
+  border-radius: 50%;
+  top: .4rem;
+  position: relative;
+  margin-bottom: 2px;
+}
+
+@include mobilePortrait {
+  .posterAvatar {
+  top: .5rem;
+  }
+}
+
 .Comments {
   margin: 0 auto;
   width: 80%;
@@ -147,6 +161,7 @@ textarea {
   text-align: center;
   font-style: italic;
   font-size: 0.9rem;
+  position: relative;
 }
 
 .date {
