@@ -38,10 +38,10 @@ Cup of Sugar is a localized, community-oriented application that aims to bring n
 React.js, 
 Context,
 SCSS, 
-Node.js
-Express
-PostgreSQL
-Mocha/Chai
+Node.js,
+Express,
+PostgreSQL,
+Mocha/Chai,
 Jest,
 Heroku,
 Zeit
