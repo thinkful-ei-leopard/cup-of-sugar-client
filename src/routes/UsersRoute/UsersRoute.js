@@ -8,6 +8,7 @@ export class UsersRoute extends Component {
   static contextType = UserContext;
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.getUsers()
   }
 

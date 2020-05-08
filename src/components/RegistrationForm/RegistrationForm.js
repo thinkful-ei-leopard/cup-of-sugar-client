@@ -69,14 +69,27 @@ class RegistrationForm extends Component {
     ev.preventDefault();
     const { name, username, password, zip, email } = ev.target;
 
+    let img_src = '';
+    let img_alt = '';
+
+    if(!this.state.img_src) {
+      img_src = 'https://res.cloudinary.com/mmpr/image/upload/v1588908186/user_knxeok.png'
+      img_alt = 'Default Profile'
+    }
+
+    else if (this.state.img_src) {
+      img_src = this.state.img_src
+      img_alt = `${username.value} Profile Picture`
+    }
+
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
       password: password.value,
       zip: zip.value,
       email: email.value,
-      img_src: this.state.imgSrc,
-      img_alt: `${username.value} Profile Picture`
+      img_src,
+      img_alt
     })
       .then(user => {
         name.value = '';
