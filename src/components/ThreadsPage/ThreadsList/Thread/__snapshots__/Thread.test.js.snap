@@ -32,15 +32,21 @@ exports[`renders the UI as expected 1`] = `
             )
           </span>
         </h3>
-        <p
-          className="lastMessage"
+        <div
+          className="lastMessageContainer"
         >
-          last message:
-           
-          <span
-            className="lastMessageContent"
+          <p
+            className="lastMessage"
+          >
+            last message: 
+          </p>
+          <p
+            className="lastMessageContent mobileContent"
           />
-        </p>
+          <p
+            className="lastMessageContent desktopContent"
+          />
+        </div>
         <p
           className="lastMessageSent"
         >
