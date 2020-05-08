@@ -7,11 +7,11 @@ import PostView from '../../components/PostView/PostView';
 export default class PostRoute extends React.Component {
   static defaultProps = {
     history: {
-      goBack: () => {},
+      goBack: () => {}
     },
     match: {
-      params: {},
-    },
+      params: {}
+    }
   };
 
   static contextType = PostsContext;
@@ -36,16 +36,23 @@ export default class PostRoute extends React.Component {
     this.context.setPostId(this.props.match.params.post_id);
   };
 
-  deleteComment = (id) => {
+  deleteComment = id => {
     this.context.deleteComment(id);
   };
 
   //save context in componentWillUnmount or componentDidUpdate
 
   render() {
-    let posts = this.context.posts
-    let comments = this.context.comments
+    let { posts, comments } = this.context;
     let id = this.props.match.params.post_id;
-    return <PostView id={id} history={this.props.history} deleteComment={this.deleteComment} comments={comments} posts={posts}/>;
+    return (
+      <PostView
+        id={id}
+        history={this.props.history}
+        deleteComment={this.deleteComment}
+        comments={comments}
+        posts={posts}
+      />
+    );
   }
 }
