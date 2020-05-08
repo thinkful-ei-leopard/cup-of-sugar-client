@@ -11,6 +11,8 @@ Live App: https://cup-of-sugar.now.sh/
 Username: Guest     
 Password: GuestPassword1!
 
+All seeded users and posts are in the Zip Code 00999. 
+
 ## What is Cup of Sugar?
 
 Cup of Sugar is a localized, community-oriented application that aims to bring neighbors closer together by fostering connections based on mutual aid. Users can post offers and requests to a public bulletin board, where other users can respond by post comments or messaging other users privately.
