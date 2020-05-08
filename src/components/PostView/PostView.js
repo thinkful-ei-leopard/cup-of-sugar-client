@@ -10,7 +10,7 @@ import PostsApiService from '../../services/posts-api-service';
 import Confirm from '../Confirm/Confirm';
 import CommentList from '../CommentList/CommentList';
 import MessageUser from '../../components/MessageUser/MessageUser';
-import UsersApiService from '../../services/users-api-service'
+import UsersApiService from '../../services/users-api-service';
 
 import '@reach/dialog/styles.css';
 
@@ -35,15 +35,6 @@ export default class PostView extends React.Component {
       this.setState({ comments: this.props.comments });
     }
   }
-
-  // async getPoster() {
-  //   let post = {}
-  //   if (this.props.posts.length > 0) {
-  //   post = await this.props.posts.find(post => post.id === this.props.id)
-  //   }
-  //   let poster = await UsersApiService.getUserById(post.user_id)
-  //   return poster
-  // }
 
   handleDelete = () => {
     const history = this.props.history;
@@ -80,7 +71,6 @@ export default class PostView extends React.Component {
   // toggle between static post or edit mode post
 
   displayPost(post, deleteButton, pContext) {
-    
     let resolvedStamp =
       post.resolved === true ? (
         <img
@@ -154,7 +144,8 @@ export default class PostView extends React.Component {
         </h1>
         <p className={styles.description}>{post.description}</p>
         <p className={styles.postedBy}>
-          {post.type === 'offer' ? 'Offered' : 'Requested'} by <img src={post.img_src} alt='Poster Profile Picture'/>{' '}
+          {post.type === 'offer' ? 'Offered' : 'Requested'} by{' '}
+          <img src={post.img_src} alt="Poster Avatar" className={styles.posterAvatar} />{' '}
           {post.user_id !== this.context.user.id ? (
             <MessageUser
               user={this.context.user}
