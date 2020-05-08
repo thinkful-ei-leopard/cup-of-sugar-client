@@ -26,7 +26,7 @@ export default class Post extends React.Component {
 
     let deleteButton =
       this.context.user.id === post.user_id ? (
-        <Confirm title="Confirm" description="Are you sure?">
+        <Confirm title="Delete" description="Are you sure?">
           {confirm => (
             <Button
               type="delete"
