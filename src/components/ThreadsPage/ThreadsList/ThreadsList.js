@@ -9,13 +9,19 @@ export default class ThreadsList extends React.Component {
   render() {
     const { threads, messages } = this.context;
     let threadsToDisplay = [];
-    threads.forEach((thread) => {
-      messages.forEach((message) => {
+    threads.forEach(thread => {
+      let counter = 0;
+      messages.forEach(message => {
         if (message.thread_id === thread.id) {
-          threadsToDisplay.push(thread)
+          counter++;
+          if (counter <= 1) {
+            threadsToDisplay.push(thread);
+          }
         }
-      })
-    })
+      });
+    });
+    console.log('threads', threads, 'messages', messages);
+    console.log('threadsToDisplay', threadsToDisplay);
 
     return (
       <ul className={styles.threadsListUl}>
