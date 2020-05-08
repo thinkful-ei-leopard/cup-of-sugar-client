@@ -99,6 +99,10 @@ textarea {
   color: var(--black);
 }
 
+.description {
+  word-wrap: break-word;
+}
+
 .descriptionInput {
   padding: 5px;
 }
