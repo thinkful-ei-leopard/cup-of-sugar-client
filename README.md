@@ -7,11 +7,13 @@ Server Repository: https://github.com/thinkful-ei-leopard/cup-of-sugar-api
 
 Live App: 
 
-Guest Login: Username: Guest     Password: GuestPassword1!
-
 <p align="center">
 <img src="./src/images/cupofsugarloop.gif" align="center" alt="Cup of Sugar demo gif" title="Cup of Sugar demo gif">  
 </p>
+
+Guest Login: 
+Username: Guest     
+Password: GuestPassword1!
 
 ## What is Cup of Sugar?
 
