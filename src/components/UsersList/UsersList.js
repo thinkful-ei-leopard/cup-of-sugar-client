@@ -18,6 +18,10 @@ export default class UsersList extends React.Component {
     this.getUser();
   }
 
+  componentWillUnmount() {
+    this.context.clearFilteredUsers()
+  }
+
   async getUser() {
     let user = this.context.user;
     this.setState({ user });

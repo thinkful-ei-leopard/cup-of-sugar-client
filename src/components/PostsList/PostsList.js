@@ -11,6 +11,10 @@ export default class PostsList extends React.Component {
     this.context.deletePost(id);
   };
 
+  componentWillUnmount() {
+    this.context.clearFilteredPosts()
+  }
+
   render() {
     let { posts, filteredPosts, filterTouched } = this.context;
 

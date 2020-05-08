@@ -147,6 +147,13 @@ export class PostsProvider extends Component {
     });
   };
 
+  clearFilteredPosts = () => {
+    this.setState({
+      filteredPosts: [],
+      filterTouched :false
+    })
+  }
+
   render() {
     const value = {
       posts: this.state.posts,
@@ -167,7 +174,8 @@ export class PostsProvider extends Component {
       deleteComment: this.deleteComment,
       filterPostsByTitle: this.filterPostsByTitle,
       sortPostsByKey: this.sortPostsByKey,
-      filterPostsByUserId: this.filterPostsByUserId
+      filterPostsByUserId: this.filterPostsByUserId,
+      clearFilteredPosts: this.clearFilteredPosts
     };
 
     return (

@@ -90,6 +90,13 @@ export class UserProvider extends Component {
     this.setState({ filteredUsers, filterTouched: true });
   };
 
+  clearFilteredUsers = () => {
+    this.setState({
+      filteredUsers: null,
+      filterTouched: false
+    })
+  }
+
   processLogin = authToken => {
     TokenService.saveAuthToken(authToken)
     const jwtPayload = TokenService.parseAuthToken()
@@ -151,6 +158,7 @@ export class UserProvider extends Component {
       isLoading: this.state.isLoading,
       setUsers: this.setUsers,
       filterUsersByName: this.filterUsersByName,
+      clearFilteredUsers: this.clearFilteredUsers,
     }
     return (
       <UserContext.Provider value={value}>
