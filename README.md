@@ -5,7 +5,7 @@ This project was created by a team of 3 members: Christopher Floyd, Daniel Fong,
 
 Server Repository: https://github.com/thinkful-ei-leopard/cup-of-sugar-api
 
-Live App:
+Live App: https://cup-of-sugar.now.sh/
 
 #### Demo Login   
 Username: Guest     
