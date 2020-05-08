@@ -7,7 +7,7 @@ Server Repository: https://github.com/thinkful-ei-leopard/cup-of-sugar-api
 
 Live App:
 
-Demo Login:   
+### Demo Login   
 Username: Guest     
 Password: GuestPassword1!
 
