@@ -27,7 +27,7 @@ class Comment extends React.Component {
 
     let deleteButton =
       user.id === comment.user_id ? (
-        <Confirm title="Confirm" description="Are you sure?">
+        <Confirm title="Delete" description="Are you sure?">
           {confirm => (
             <Button
               onClick={confirm(() => {

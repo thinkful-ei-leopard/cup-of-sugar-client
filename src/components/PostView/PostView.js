@@ -10,7 +10,6 @@ import PostsApiService from '../../services/posts-api-service';
 import Confirm from '../Confirm/Confirm';
 import CommentList from '../CommentList/CommentList';
 import MessageUser from '../../components/MessageUser/MessageUser';
-import UsersApiService from '../../services/users-api-service';
 
 import '@reach/dialog/styles.css';
 
@@ -27,7 +26,6 @@ export default class PostView extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     this.setState({ loading: false });
-    // this.getPoster()
   }
 
   componentDidUpdate() {
