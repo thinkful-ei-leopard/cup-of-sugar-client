@@ -155,7 +155,7 @@ export default class PostView extends React.Component {
         </h1>
         <p className={styles.description}>{post.description}</p>
         <p className={styles.postedBy}>
-          {post.type === 'offer' ? 'Offered' : 'Requested'} by{' '}
+          {post.type === 'offer' ? 'Offered' : 'Requested'} by <img src={post.img_src} alt='Poster Profile Picture'/>{' '}
           {post.user_id !== this.context.user.id ? (
             <MessageUser
               user={this.context.user}
