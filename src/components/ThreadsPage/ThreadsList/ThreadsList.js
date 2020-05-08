@@ -20,8 +20,6 @@ export default class ThreadsList extends React.Component {
         }
       });
     });
-    console.log('threads', threads, 'messages', messages);
-    console.log('threadsToDisplay', threadsToDisplay);
 
     return (
       <ul className={styles.threadsListUl}>
