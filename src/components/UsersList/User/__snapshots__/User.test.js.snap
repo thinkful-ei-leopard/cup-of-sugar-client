@@ -9,6 +9,9 @@ exports[`renders the UI as expected 1`] = `
   <p
     className="neighbor"
   >
+    <img
+      className="neighborDirectoryAvatar"
+    />
      (
     )
   </p>

@@ -28,10 +28,6 @@ export default class ThreadsRoute extends React.Component {
     this.context.setThreads(threads);
   }
 
-  // getUsers = () => {
-  //   UsersApiService.getUsers();
-  // };
-
   render() {
     return (
       <div className={styles.threadsRouteContainer}>
