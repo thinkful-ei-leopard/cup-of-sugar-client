@@ -10,6 +10,7 @@ import PostsApiService from '../../services/posts-api-service';
 import Confirm from '../Confirm/Confirm';
 import CommentList from '../CommentList/CommentList';
 import MessageUser from '../../components/MessageUser/MessageUser';
+import UsersApiService from '../../services/users-api-service'
 
 import '@reach/dialog/styles.css';
 
@@ -17,7 +18,8 @@ export default class PostView extends React.Component {
   state = {
     comments: null,
     edit: false,
-    loading: true
+    loading: true,
+    poster: {}
   };
 
   static contextType = UserContext;
@@ -25,6 +27,7 @@ export default class PostView extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     this.setState({ loading: false });
+    // this.getPoster()
   }
 
   componentDidUpdate() {
@@ -32,6 +35,15 @@ export default class PostView extends React.Component {
       this.setState({ comments: this.props.comments });
     }
   }
+
+  // async getPoster() {
+  //   let post = {}
+  //   if (this.props.posts.length > 0) {
+  //   post = await this.props.posts.find(post => post.id === this.props.id)
+  //   }
+  //   let poster = await UsersApiService.getUserById(post.user_id)
+  //   return poster
+  // }
 
   handleDelete = () => {
     const history = this.props.history;
@@ -68,6 +80,7 @@ export default class PostView extends React.Component {
   // toggle between static post or edit mode post
 
   displayPost(post, deleteButton, pContext) {
+    
     let resolvedStamp =
       post.resolved === true ? (
         <img
@@ -132,6 +145,7 @@ export default class PostView extends React.Component {
     }
     return (
       <>
+        {/* <img src={neighbor.img_src} alt={neighbor.img_alt} className={styles.postViewAvatar}></img> */}
         <h1
           className={cx(
             post.type === 'offer' ? styles.offerStyle : styles.requestStyle,
