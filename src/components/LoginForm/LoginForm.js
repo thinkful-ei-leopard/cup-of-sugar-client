@@ -73,6 +73,7 @@ class LoginForm extends Component {
                   name="username"
                   className={styles.loginInput}
                   autoComplete="off"
+                  defaultValue='Guest'
                   required
                 />
               </div>
@@ -87,6 +88,7 @@ class LoginForm extends Component {
                   name="password"
                   type="password"
                   className={styles.loginInput}
+                  defaultValue='GuestPassword1!'
                   autoComplete="off"
                   required
                 />
