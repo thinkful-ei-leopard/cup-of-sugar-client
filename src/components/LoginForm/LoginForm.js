@@ -36,6 +36,26 @@ class LoginForm extends Component {
       });
   };
 
+  handleSubmit = ev => {
+    ev.preventDefault();
+    const { username, password } = ev.target;
+    this.context.setLoading();
+
+    AuthApiService.postLogin({
+      username: username.value,
+      password: password.value
+    })
+      .then(res => {
+        username.value = '';
+        password.value = '';
+        this.context.processLogin(res.authToken);
+        this.props.onLoginSuccess();
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
+  };
+
   componentDidMount() {
     this.firstInput.current.focus();
     this.context.clearLoading();
@@ -95,6 +115,7 @@ class LoginForm extends Component {
             <Button className={styles.loginButton} type="submit">
               <span className="buttonText">Login</span>
             </Button>
+            <p className={styles.guestLogin}>For guest login use default credentials</p>
           </form>
         )}
       </>

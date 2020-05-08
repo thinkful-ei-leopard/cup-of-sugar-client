@@ -73,13 +73,13 @@ class RegistrationForm extends Component {
     let img_alt = '';
 
     if (this.state.imgSrc) {
-      img_src = this.state.img_src
-      img_alt = `${username.value} Profile Picture`
+      img_src = this.state.imgSrc;
+      img_alt = `${username.value} Profile Picture`;
     }
 
     else if(!this.state.imgSrc) {
-      img_src = 'https://res.cloudinary.com/mmpr/image/upload/v1588908186/user_knxeok.png'
-      img_alt = 'Default Profile'
+      img_src = 'https://res.cloudinary.com/mmpr/image/upload/v1588908186/user_knxeok.png';
+      img_alt = 'Default Profile';
     }
 
     
