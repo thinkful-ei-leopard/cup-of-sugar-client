@@ -9,6 +9,10 @@ class MessageUser extends React.Component {
 
     static contextType = ThreadsContext
 
+    componentWillUnmount() {
+      this.context.clearMessages();
+    }
+
     redirectToThread = (threadId) => {
       this.props.history.push(`/thread/${threadId}`)
     }
