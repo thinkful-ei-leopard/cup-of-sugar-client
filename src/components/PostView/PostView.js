@@ -145,7 +145,6 @@ export default class PostView extends React.Component {
     }
     return (
       <>
-        {/* <img src={neighbor.img_src} alt={neighbor.img_alt} className={styles.postViewAvatar}></img> */}
         <h1
           className={cx(
             post.type === 'offer' ? styles.offerStyle : styles.requestStyle,
