@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Input, Label } from '../Form/Form';
 import AuthApiService from '../../services/auth-api-service';
 import UserContext from '../../contexts/UserContext';
-import Button from '../Button/Button';
 import styles from './LoginForm.module.scss';
+import LoadingDots from '../LoadingDots/LoadingDots';
+import cx from 'classnames';
 
 class LoginForm extends Component {
   static defaultProps = {
@@ -12,7 +13,7 @@ class LoginForm extends Component {
 
   static contextType = UserContext;
 
-  state = { error: null };
+  state = { error: null, isLoggingIn: false };
 
   firstInput = React.createRef();
 
@@ -53,10 +54,17 @@ class LoginForm extends Component {
         {this.context.isLoading && this.state.error === null ? (
           <div id="loader"></div>
         ) : (
-          <form className={styles.LoginForm} onSubmit={this.handleSubmit}>
+          <form
+            className={styles.LoginForm}
+            onSubmit={e => {
+              this.setState({ isLoggingIn: true });
+              this.handleSubmit(e);
+            }}>
             <div role="alert">
               {error && (
-                <p className={styles.errorMessage}>Incorrect Username or Password</p>
+                <p className={styles.errorMessage}>
+                  Incorrect Username or Password
+                </p>
               )}
             </div>
             <div className={styles.inputContainer}>
@@ -73,7 +81,7 @@ class LoginForm extends Component {
                   name="username"
                   className={styles.loginInput}
                   autoComplete="off"
-                  defaultValue='Guest'
+                  defaultValue="Guest"
                   required
                 />
               </div>
@@ -88,16 +96,30 @@ class LoginForm extends Component {
                   name="password"
                   type="password"
                   className={styles.loginInput}
-                  defaultValue='GuestPassword1!'
+                  defaultValue="GuestPassword1!"
                   autoComplete="off"
                   required
                 />
               </div>
             </div>
-            <Button className={styles.loginButton} type="submit">
-              <span className="buttonText">Login</span>
-            </Button>
-            <p className={styles.guestLogin}>For guest login use default credentials</p>
+            <button
+              className={cx(
+                styles.loginButton,
+                this.state.isLoggingIn
+                  ? styles.isLoggingIn
+                  : styles.notLoggingIn
+              )}
+              type="submit"
+              disabled={this.state.isLoggingIn}>
+              {this.state.isLoggingIn ? (
+                <LoadingDots />
+              ) : (
+                <span className="buttonText">Login</span>
+              )}
+            </button>
+            <p className={cx(styles.guestLogin)}>
+              For guest login use default credentials
+            </p>
           </form>
         )}
       </>

@@ -280,7 +280,8 @@
   display: flex;
   justify-content: center;
   margin-bottom: 3rem;
-text-align: center;}
+  text-align: center;
+}
 
 @include tabletPortrait {
   .searchPostsContainer {

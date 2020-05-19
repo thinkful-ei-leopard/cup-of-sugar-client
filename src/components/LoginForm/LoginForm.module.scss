@@ -19,8 +19,8 @@
 
 .guestLogin {
   margin-top: 1.5rem;
-  font-size: .8rem;
-  opacity: .8;
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
 .loginHeader {
@@ -39,7 +39,39 @@
 }
 
 .loginButton {
-  margin-bottom: 0.5rem;
+  text-align: center;
+  padding: 1rem 2rem;
+  border: 2px solid var(--black);
+  transition: background-color 0.2s;
+  width: 120px;
+  height: 60px;
+  &:hover {
+    cursor: pointer;
+    background-color: var(--neutral);
+  }
+}
+
+.notLoggingIn {
+  transition: background-color 1s;
+  background-color: var(--bright);
+  &:hover {
+    background-color: var(--neutral);
+  }
+}
+
+.isLoggingIn {
+  transition: background-color 1s;
+  background-color: var(--post-background);
+  &:hover {
+    background-color: var(--post-background);
+  }
+}
+
+.buttonText {
+  font-family: Nunito;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--black);
 }
 
 .userNameDiv,

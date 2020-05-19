@@ -16,7 +16,6 @@ export class SearchPosts extends Component {
         <Label htmlFor="search-input"> Search Neighbors: </Label>
         <Input
           id="search-input"
-          placeholder="Insert query here"
           name="search"
           type="search"
           onChange={this.handleChange}

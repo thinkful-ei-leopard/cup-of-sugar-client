@@ -17,14 +17,20 @@ body {
 }
 
 body {
-  background: linear-gradient(rgba(88, 57, 154, 0), #49399a4d)
-    no-repeat center center fixed;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
+  background: linear-gradient(rgba(88, 57, 154, 0), #49399a4d) no-repeat center
+    center fixed;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
 }
 
 input {
   font-size: 1rem;
+  color: var(--black);
+}
+
+input::placeholder {
+  color: rgba(0, 0, 0, 0.29);
+  font-style: italic;
 }
 
 .fadeIn {

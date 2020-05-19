@@ -2,21 +2,23 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Input, Required, Label } from '../Form/Form';
 import AuthApiService from '../../services/auth-api-service';
-import Button from '../Button/Button';
+import cx from 'classnames';
+import LoadingDots from '../LoadingDots/LoadingDots';
 import styles from './RegistrationForm.module.scss';
 import { openUploadWidget } from '../../services/CloudinaryService';
-import UserContext from '../../contexts/UserContext'
+import UserContext from '../../contexts/UserContext';
 
 class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => {}
   };
 
-  static contextType = UserContext
+  static contextType = UserContext;
 
   state = {
     error: null,
-    imgSrc: null
+    imgSrc: null,
+    isRegistering: false
   };
 
   firstInput = React.createRef();
@@ -79,10 +81,9 @@ class RegistrationForm extends Component {
     if (this.state.imgSrc) {
       img_src = this.state.imgSrc;
       img_alt = `${username.value} Profile Picture`;
-    }
-
-    else if(!this.state.imgSrc) {
-      img_src = 'https://res.cloudinary.com/mmpr/image/upload/v1588908186/user_knxeok.png';
+    } else if (!this.state.imgSrc) {
+      img_src =
+        'https://res.cloudinary.com/mmpr/image/upload/v1588908186/user_knxeok.png';
       img_alt = 'Default Profile';
     }
 
@@ -101,7 +102,7 @@ class RegistrationForm extends Component {
         password.value = '';
         zip.value = '';
         email.value = '';
-        // this.props.onRegistrationSuccess();
+        this.props.onRegistrationSuccess();
       })
       .catch(res => {
         this.setState({ error: res.error });
@@ -129,7 +130,10 @@ class RegistrationForm extends Component {
     const { error } = this.state;
     return (
       <form
-        onSubmit={this.handleSubmit}
+        onSubmit={() => {
+          this.setState({ isRegistering: true });
+          this.handleSubmit();
+        }}
         className={styles.RegForm}
         autoComplete="off">
         <div role="alert">{error ? <p>{error}</p> : null}</div>
@@ -230,9 +234,20 @@ class RegistrationForm extends Component {
           </div>
         </div>
         <footer className="reg-footer">
-          <Button type="submit" className={styles.regButton}>
-            <span className="buttonText">Submit</span>
-          </Button>{' '}
+          <button
+            type="submit"
+            className={cx(
+              styles.registrationButton,
+              this.state.isRegistering
+                ? styles.isRegistering
+                : styles.notRegistering
+            )}>
+            {this.state.isRegistering ? (
+              <LoadingDots />
+            ) : (
+              <span className="buttonText">Submit</span>
+            )}
+          </button>{' '}
         </footer>
         <Link to="/login" className={styles.regLink}>
           Already have an account?
