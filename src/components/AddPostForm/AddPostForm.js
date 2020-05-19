@@ -85,7 +85,7 @@ export class AddPost extends Component {
               type="text"
               name="title"
               id="title"
-              placeholder='e.g. "Need to borrow a hammer"'  
+              placeholder='"Need to borrow a hammer"'  
               className={cx(styles.addInput, styles.titleInput)}
               autoComplete="off"
               maxLength="60"
@@ -138,7 +138,7 @@ export class AddPost extends Component {
             <textarea
               name="description"
               id="post-description"
-              placeholder='e.g. "Just have a few pictures I would like to hang around the house. I can come pick it up anytime, and I can return it the next day!"'
+              placeholder='"Just have a few pictures I would like to hang around the house. I can come pick it up anytime, and I can return it the next day!"'
               className={cx(styles.addInput, styles.descriptionInput)}
               rows="10"
               maxLength="500"

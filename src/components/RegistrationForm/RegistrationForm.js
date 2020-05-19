@@ -131,7 +131,7 @@ class RegistrationForm extends Component {
               ref={this.firstInput}
               id="registration-name-input"
               name="name"
-              placeholder="e.g. John Smith"
+              placeholder="John Smith"
               className={styles.regInput}
               required
               maxLength="20"
@@ -148,7 +148,7 @@ class RegistrationForm extends Component {
             <Input
               id="registration-username-input"
               name="username"
-              placeholder="e.g. Morty123"
+              placeholder="Morty123"
               className={styles.regInput}
               required
               maxLength="20"
@@ -166,7 +166,7 @@ class RegistrationForm extends Component {
               id="registration-email-input"
               name="email"
               type="email"
-              placeholder="emailname@domain.com"
+              placeholder="email@domain.com"
               className={styles.regInput}
               required
               autoComplete="off"
@@ -183,7 +183,7 @@ class RegistrationForm extends Component {
               id="registration-password-input"
               name="password"
               type="password"
-              placeholder="8 char min, 1 num 1 special char"
+              placeholder="8dsfah$!fdas"
               className={styles.regInput}
               required
               autoComplete="off"
@@ -198,7 +198,7 @@ class RegistrationForm extends Component {
             <Input
               id="registration-zip-input"
               name="zip"
-              placeholder="e.g. 00999"
+              placeholder="00999"
               type="number"
               className={styles.regInput}
               required
