@@ -19,6 +19,11 @@ body {
 body {
   background: linear-gradient(rgba(88, 57, 154, 0), #49399a4d)
     no-repeat center center fixed;
+    font-size: 16px;
+}
+
+input {
+  font-size: 1rem;
 }
 
 .fadeIn {
