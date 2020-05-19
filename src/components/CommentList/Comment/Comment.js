@@ -21,7 +21,7 @@ class Comment extends React.Component {
     const { user } = this.context;
     const { comment } = this.props;
 
-    if (this.state.loading == true) {
+    if (this.state.loading === true) {
       return <></>;
     }
 

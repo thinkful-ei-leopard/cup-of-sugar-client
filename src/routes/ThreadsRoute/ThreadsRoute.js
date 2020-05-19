@@ -3,7 +3,6 @@ import ThreadsPage from '../../components/ThreadsPage/ThreadsPage';
 import ThreadsContext from '../../contexts/ThreadsContext';
 import ThreadsApiService from '../../services/threads-api-service';
 import MessagesApiService from '../../services/messages-api-service';
-import UsersApiService from '../../services/users-api-service';
 import styles from './ThreadsRoute.module.scss';
 
 export default class ThreadsRoute extends React.Component {
