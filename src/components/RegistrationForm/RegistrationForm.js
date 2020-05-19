@@ -67,9 +67,9 @@ class RegistrationForm extends Component {
     return image;
   }
 
-  handleSubmit = ev => {
-    ev.preventDefault();
-    const { name, username, password, zip, email } = ev.target;
+  handleSubmit = e => {
+    e.preventDefault();
+    const { name, username, password, zip, email } = e.target;
 
     let img_src = '';
     let img_alt = '';
@@ -82,8 +82,6 @@ class RegistrationForm extends Component {
         'https://res.cloudinary.com/mmpr/image/upload/v1588908186/user_knxeok.png';
       img_alt = 'Default Profile';
     }
-
-    
 
     AuthApiService.postUser({
       name: name.value,
@@ -115,9 +113,9 @@ class RegistrationForm extends Component {
     const { error } = this.state;
     return (
       <form
-        onSubmit={() => {
+        onSubmit={e => {
           this.setState({ isRegistering: true });
-          this.handleSubmit();
+          this.handleSubmit(e);
         }}
         className={styles.RegForm}
         autoComplete="off">
@@ -186,7 +184,7 @@ class RegistrationForm extends Component {
             <Input
               id="registration-password-input"
               name="password"
-              title='Password must be at least 8 characters long with 1 number and 1 special character'
+              title="Password must be at least 8 characters long with 1 number and 1 special character"
               type="password"
               placeholder="8dsfah$!fdas"
               className={styles.regInput}
