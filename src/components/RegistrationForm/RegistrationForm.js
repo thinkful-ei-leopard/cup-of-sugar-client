@@ -5,11 +5,14 @@ import AuthApiService from '../../services/auth-api-service';
 import Button from '../Button/Button';
 import styles from './RegistrationForm.module.scss';
 import { openUploadWidget } from '../../services/CloudinaryService';
+import UserContext from '../../contexts/UserContext'
 
 class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => {}
   };
+
+  static contextType = UserContext
 
   state = {
     error: null,
@@ -68,6 +71,7 @@ class RegistrationForm extends Component {
   handleSubmit = ev => {
     ev.preventDefault();
     const { name, username, password, zip, email } = ev.target;
+    this.context.setLoading();
 
     let img_src = '';
     let img_alt = '';
@@ -100,6 +104,19 @@ class RegistrationForm extends Component {
         zip.value = '';
         email.value = '';
         this.props.onRegistrationSuccess();
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
+    AuthApiService.postLogin({
+      username: username.value,
+      password: password.value
+    })
+      .then(res => {
+        username.value = '';
+        password.value = '';
+        this.context.processLogin(res.authToken);
+        this.props.onLoginSuccess();
       })
       .catch(res => {
         this.setState({ error: res.error });

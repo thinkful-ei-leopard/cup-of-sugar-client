@@ -66,6 +66,7 @@ export class AddCommentForm extends Component {
               name="content"
               id="comment-description"
               className={styles.contentInput}
+              placeholder="I have a hammer you can borrow! I'll message you with details."
               rows="10"
               maxLength="500"
               required
