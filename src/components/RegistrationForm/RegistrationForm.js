@@ -6,21 +6,12 @@ import cx from 'classnames';
 import LoadingDots from '../LoadingDots/LoadingDots';
 import styles from './RegistrationForm.module.scss';
 import { openUploadWidget } from '../../services/CloudinaryService';
-<<<<<<< HEAD
-import UserContext from '../../contexts/UserContext';
-=======
->>>>>>> a57a3df82a24f3cbf3060fe6704ecc7f40b1dc44
 
 class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => {}
   };
 
-<<<<<<< HEAD
-  static contextType = UserContext;
-
-=======
->>>>>>> a57a3df82a24f3cbf3060fe6704ecc7f40b1dc44
   state = {
     error: null,
     imgSrc: null,
