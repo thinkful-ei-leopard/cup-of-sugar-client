@@ -5,6 +5,7 @@ import WelcomeDisplay from '../../components/WelcomeDisplay/WelcomeDisplay';
 
 class RegistrationRoute extends Component {
   static defaultProps = {
+    location: {},
     history: {
       push: () => {}
     }
@@ -13,6 +14,12 @@ class RegistrationRoute extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
   }
+
+  handleLoginSuccess = () => {
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || '/';
+    history.push(destination);
+  };
 
   handleRegistrationSuccess = () => {
     const { history } = this.props;
@@ -25,7 +32,7 @@ class RegistrationRoute extends Component {
         <div className={styles.registrationContainer}>
           <WelcomeDisplay />
           <RegistrationForm
-            onRegistrationSuccess={this.handleRegistrationSuccess}
+            onRegistrationSuccess={this.handleRegistrationSuccess} onLoginSuccess={this.handleLoginSuccess}
           />
         </div>
       </section>

@@ -12,6 +12,9 @@
 }
 
 @include mobilePortrait {
+  .loginHeader {
+    margin-top: 1.5rem;
+  }
   .LoginForm {
     padding: 0.5rem 2rem 2.5rem;
   }
@@ -27,6 +30,7 @@
   font-size: 1.5rem;
   color: var(--black);
   margin: 1.5rem auto;
+  margin-top: 2.5rem;
 }
 
 .loginLabel {
