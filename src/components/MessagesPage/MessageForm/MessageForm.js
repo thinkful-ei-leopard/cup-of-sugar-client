@@ -30,6 +30,7 @@ export default class MessageForm extends React.Component {
             <input
               id="message"
               name="message"
+              placeholder="Type message here"
               required
               autoComplete="off"
               className={styles.messageFormInput}></input>

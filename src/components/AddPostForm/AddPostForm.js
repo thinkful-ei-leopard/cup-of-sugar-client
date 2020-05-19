@@ -74,7 +74,6 @@ export class AddPost extends Component {
           <form
             className={styles.addPostForm}
             onSubmit={e => this.handleSubmit(e)}>
-            {/* <Input ref={this.firstInput} /> */}
             <Label
               htmlFor="title"
               aria-label="title"
@@ -86,6 +85,7 @@ export class AddPost extends Component {
               type="text"
               name="title"
               id="title"
+              placeholder='"Need to borrow a hammer"'  
               className={cx(styles.addInput, styles.titleInput)}
               autoComplete="off"
               maxLength="60"
@@ -96,7 +96,7 @@ export class AddPost extends Component {
               <div className={styles.typeContainer}>
                 <Input
                   type="radio"
-                  id="typeChoice1"
+                  id="typeChoice1"S
                   className={styles.radioSelect}
                   name="type"
                   value="offer"
@@ -138,6 +138,7 @@ export class AddPost extends Component {
             <textarea
               name="description"
               id="post-description"
+              placeholder='"Just have a few pictures I would like to hang around the house. I can come pick it up anytime, and I can return it the next day!"'
               className={cx(styles.addInput, styles.descriptionInput)}
               rows="10"
               maxLength="500"

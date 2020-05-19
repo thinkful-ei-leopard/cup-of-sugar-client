@@ -16,6 +16,7 @@ export class SearchPosts extends Component {
         <Input
           id="search-input"
           name="search"
+          placeholder="Insert query here"
           type="search"
           onChange={this.handleChange}
         />
