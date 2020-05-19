@@ -86,8 +86,6 @@ class RegistrationForm extends Component {
       img_alt = 'Default Profile';
     }
 
-    
-
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
@@ -103,7 +101,7 @@ class RegistrationForm extends Component {
         password.value = '';
         zip.value = '';
         email.value = '';
-        this.props.onRegistrationSuccess();
+        // this.props.onRegistrationSuccess();
       })
       .catch(res => {
         this.setState({ error: res.error });
