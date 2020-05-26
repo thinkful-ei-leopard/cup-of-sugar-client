@@ -30,7 +30,8 @@
   font-size: 1.5rem;
   color: var(--black);
   margin: 1.5rem auto;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .loginLabel {
@@ -38,17 +39,19 @@
 }
 
 .loginInput {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
   width: 150px;
 }
 
 .loginButton {
   text-align: center;
-  padding: 1rem 2rem;
+  padding: 0rem 1rem;
   border: 2px solid var(--black);
   transition: background-color 0.2s;
-  width: 120px;
-  height: 60px;
+  width: 100px;
+  height: 40px;
+  margin-top: -1rem;
+  margin-bottom: -1rem;
   &:hover {
     cursor: pointer;
     background-color: var(--neutral);
@@ -96,4 +99,26 @@
   font-weight: bold;
   left: 50%;
   transform: translateX(-50%);
+}
+
+@include mobilePortrait {
+  .loginHeader {
+    margin-top: 2.5rem;
+    margin: 1.5rem auto;
+    margin-bottom: 1.5rem;
+  }
+  .loginInput {
+    margin-bottom: 0.5rem;
+  }
+  .buttonText {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  .loginButton {
+    padding: 1rem 2rem;
+    width: 120px;
+    height: 60px;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+  }
 }
