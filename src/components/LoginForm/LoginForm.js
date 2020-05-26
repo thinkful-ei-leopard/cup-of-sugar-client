@@ -33,7 +33,7 @@ class LoginForm extends Component {
         this.props.onLoginSuccess();
       })
       .catch(res => {
-        this.setState({ error: res.error });
+        this.setState({ error: res.error, isLoggingIn: false });
       });
   };
 
@@ -60,7 +60,7 @@ class LoginForm extends Component {
               this.setState({ isLoggingIn: true });
               this.handleSubmit(e);
             }}>
-            <div role="alert">
+            <div role="alert" className={styles.errorMessageContainer}>
               {error && (
                 <p className={styles.errorMessage}>
                   Incorrect Username or Password
@@ -114,7 +114,7 @@ class LoginForm extends Component {
               {this.state.isLoggingIn ? (
                 <LoadingDots />
               ) : (
-                <span className="buttonText">Login</span>
+                <span className={styles.buttonText}>Login</span>
               )}
             </button>
             <p className={cx(styles.guestLogin)}>
