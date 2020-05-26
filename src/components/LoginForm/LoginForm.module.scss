@@ -22,7 +22,7 @@
 }
 
 .LoginForm Input {
-  outline: 1px solid rgba(68,68,68,.25);
+  outline: 1px solid rgba(68, 68, 68, 0.25);
 }
 
 .guestLogin {
@@ -55,7 +55,7 @@
   transition: background-color 0.2s;
   width: 120px;
   height: 45px;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   &:hover {
     cursor: pointer;
     background-color: var(--neutral);
@@ -96,7 +96,6 @@
 .passwordDiv {
   margin-bottom: 2rem;
 }
-
 
 .errorMessage {
   position: relative;
