@@ -47,8 +47,8 @@ export default class App extends Component {
               component={AddCommentRoute}
             />
             <PrivateRoute exact path={'/neighbor-directory'} component={UsersRoute} />
-            <PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
             <PublicOnlyRoute path={'/login'} component={LoginRoute} />
+            <PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
             <Route component={NotFoundRoute} />
           </Switch>
         </main>
