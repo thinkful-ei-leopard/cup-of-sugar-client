@@ -16,6 +16,7 @@ export class SearchPosts extends Component {
         <Label htmlFor="search-input"> Search posts: </Label>
         <Input
           id="search-input"
+          className={styles.searchPostsInput}
           name="search"
           type="search"
           onChange={this.handleChange}
