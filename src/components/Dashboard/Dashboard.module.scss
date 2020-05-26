@@ -85,6 +85,7 @@
   padding: 0.5rem;
   position: relative;
   margin-bottom: 1.5rem;
+  border: 1px solid blue;
 }
 
 @include tabletPortrait {
@@ -281,11 +282,12 @@
   justify-content: center;
   margin-bottom: 3rem;
   text-align: center;
+  border: 1px solid green;
 }
 
 @include tabletPortrait {
   .searchPostsContainer {
-    margin-bottom: 100px;
+    // margin-bottom: 100px;
   }
 }
 
