@@ -47,7 +47,7 @@
   padding: 0.5rem 1.5rem;
   border: 2px solid var(--black);
   transition: background-color 0.2s;
-  &:hover {
+  &:hover, &focus {
     cursor: pointer;
   }
 }
@@ -61,7 +61,7 @@
   margin-bottom: 1.5rem;
   background-color: var(--light2);
   transition: background-color 0.2s;
-  &:hover {
+  &:hover, &focus {
     background-color: var(--warning);
   }
 }
@@ -84,7 +84,7 @@
 .deleteText {
   transition: color 0.2s;
   text-align: center;
-  &:hover {
+  &:hover, &focus {
     color: white;
   }
 }

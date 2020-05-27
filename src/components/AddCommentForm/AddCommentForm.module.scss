@@ -75,7 +75,7 @@
   display: inline-block;
   text-align: center;
   transition: color 0.2s;
-  &:hover {
+  &:hover, &focus {
     color: var(--dark1);
   }
 }
@@ -97,7 +97,7 @@
 
 #backToPostButton p {
   transition: 0.2s color;
-  &:hover {
+  &:hover, &focus {
     color: var(--dark1);
   }
 }

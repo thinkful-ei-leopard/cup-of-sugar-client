@@ -40,7 +40,7 @@
   margin: 4rem auto 4rem;
   border: 2px solid var(--black);
   transition: background-color 0.2s;
-  &:hover {
+  &:hover, &focus {
     cursor: pointer;
     background-color: var(--neutral);
   }
@@ -189,7 +189,7 @@
   text-align: center;
   display: inline-block;
   position: relative;
-  &:hover {
+  &:hover, &focus {
     cursor: pointer;
   }
 }

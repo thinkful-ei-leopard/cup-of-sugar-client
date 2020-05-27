@@ -7,7 +7,7 @@
   border: 2px solid var(--black);
   background-color: var(--bright);
   transition: background-color 0.2s;
-  &:hover {
+  &:hover, &focus {
     cursor: pointer;
     background-color: var(--neutral);
   }

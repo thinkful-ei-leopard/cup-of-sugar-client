@@ -52,7 +52,7 @@
   height: 40px;
   margin-top: -1rem;
   margin-bottom: -1rem;
-  &:hover {
+  &:hover, &focus {
     cursor: pointer;
     background-color: var(--neutral);
   }
@@ -61,7 +61,7 @@
 .notLoggingIn {
   transition: background-color 1s;
   background-color: var(--bright);
-  &:hover {
+  &:hover, &focus {
     background-color: var(--neutral);
   }
 }
@@ -69,7 +69,7 @@
 .isLoggingIn {
   transition: background-color 1s;
   background-color: var(--post-background);
-  &:hover {
+  &:hover, &focus {
     background-color: var(--post-background);
   }
 }

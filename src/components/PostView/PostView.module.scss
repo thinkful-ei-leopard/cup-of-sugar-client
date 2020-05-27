@@ -185,7 +185,7 @@ textarea {
   display: inline-block;
   width: 100%;
   transition: color 0.2s;
-  &:hover {
+  &:hover, &focus {
     color: var(--dark1);
   }
   position: relative;
@@ -205,7 +205,7 @@ textarea {
   right: 1rem;
   font-size: 1rem;
   transition: color 0.2s;
-  &:hover {
+  &:hover, &focus {
     color: var(--warning);
   }
   border: none;
@@ -239,7 +239,7 @@ textarea {
   top: 8px;
   right: 2.5rem;
   transition: transform 0.5s;
-  &:hover {
+  &:hover, &focus {
     cursor: pointer;
     transform: scale(1.1);
   }
@@ -259,7 +259,7 @@ textarea {
   padding: 0;
   font-size: 0.9rem;
   transition: al 0.2s;
-  &:hover {
+  &:hover, &focus {
     color: var(--warning);
     cursor: pointer;
   }
@@ -286,7 +286,7 @@ textarea {
 .nameHeader {
   transition: color 0.2s;
   font-size: 0.88rem;
-  &:hover {
+  &:hover, &focus {
     color: var(--black);
   }
 }
@@ -298,14 +298,14 @@ textarea {
   position: absolute;
   top: 0.5rem;
   right: 4.5rem;
-  &:hover {
+  &:hover, &focus {
     cursor: pointer;
   }
 }
 
 .resolvePostButton {
   width: 18px;
-  &:hover {
+  &:hover, &focus {
     fill: var(--dark1);
   }
 }

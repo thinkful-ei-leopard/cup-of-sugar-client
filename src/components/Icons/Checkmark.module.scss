@@ -4,7 +4,7 @@
 .svgCheckmark {
   width: 18px;
   transition: fill .2s;
-  &:hover {
+  &:hover, &focus {
     fill: var(--dark1);
   }
 }

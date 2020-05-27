@@ -18,7 +18,7 @@
   font-family: 'Nunino', arial;
   transition: color .2s;
   color: var(--black);
-  &:hover {
+  &:hover, &focus {
     color: var(--dark1);
     cursor: pointer;
   }

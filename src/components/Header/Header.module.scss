@@ -41,7 +41,7 @@
   color: var(--black);
   text-decoration: none;
   transition: color 0.2s;
-  &:hover {
+  &:hover, &focus {
     color: var(--dark1);
   }
 }
@@ -51,7 +51,7 @@
 .threadsLink,
 .directoryLink {
   transition: color 0.2s;
-  &:hover {
+  &:hover, &focus {
     color: var(--dark1);
   }
 }

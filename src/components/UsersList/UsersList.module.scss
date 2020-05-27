@@ -29,7 +29,7 @@
 .messagesLink {
   color: var(--black);
   transition: color .2s;
-  &:hover {
+  &:hover, &focus {
     color: var(--dark1);
   }
 }
@@ -37,7 +37,7 @@
 .dashboardLink {
   color: var(--black);
   transition: color .2s;
-  &:hover {
+  &:hover, &focus {
     color: var(--dark2);
   }
 }

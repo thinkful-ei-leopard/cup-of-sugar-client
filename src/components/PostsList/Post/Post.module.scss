@@ -8,7 +8,7 @@
   margin: 0 auto;
   transition: background-color 0.2s;
   border-radius: 5px;
-  &:hover {
+  &:hover, &focus {
     background-color: var(--post-background);
   }
 }
@@ -126,7 +126,7 @@
   border: none;
   font-weight: bold;
   font-size: 0.7rem;
-  &:hover {
+  &:hover, &focus {
     color: var(--warning);
   }
 }

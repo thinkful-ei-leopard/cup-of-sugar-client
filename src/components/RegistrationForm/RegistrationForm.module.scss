@@ -65,7 +65,7 @@
   transition: background-color 0.2s;
   width: 150px;
   height: 60px;
-  &:hover {
+  &:hover, &focus {
     cursor: pointer;
     background-color: var(--neutral);
   }
@@ -74,7 +74,7 @@
 .notRegistering {
   transition: background-color 1s;
   background-color: var(--bright);
-  &:hover {
+  &:hover, &focus {
     background-color: var(--neutral);
   }
 }
@@ -82,7 +82,7 @@
 .isRegistering {
   transition: background-color 1s;
   background-color: var(--post-background);
-  &:hover {
+  &:hover, &focus {
     background-color: var(--post-background);
   }
 }
@@ -116,7 +116,7 @@
 
 .regLink {
   transition: color 0.2s;
-  &:hover {
+  &:hover, &focus {
     color: var(--dark1);
   }
 }
@@ -148,7 +148,7 @@
   border: none;
   border-bottom: 2px solid var(--black);
   transition: all 0.2s;
-  &:hover {
+  &:hover, &focus {
     cursor: pointer;
     color: var(--dark1);
   }

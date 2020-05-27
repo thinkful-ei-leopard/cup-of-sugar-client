@@ -17,7 +17,7 @@
   font-weight: bold;
   font-size: 0.7rem;
   transition: color 0.2s;
-  &:hover {
+  &:hover, &focus {
     color: var(--dark1);
     cursor: pointer;
   }
@@ -32,7 +32,7 @@
   font-weight: bold;
   font-size: 0.7rem;
   transition: color 0.2s;
-  &:hover {
+  &:hover, &focus {
     color: var(--warning);
     cursor: pointer;
   }
