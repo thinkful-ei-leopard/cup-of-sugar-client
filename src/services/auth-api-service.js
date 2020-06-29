@@ -5,6 +5,7 @@ const AuthApiService = {
   postUser(user) {
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
+      mode: 'no-cors',
       headers: {
         'content-type': 'application/json',
       },
@@ -19,6 +20,7 @@ const AuthApiService = {
   postLogin({ username, password }) {
     return fetch(`${config.API_ENDPOINT}/auth/token`, {
       method: 'POST',
+      mode: 'no-cors',
       headers: {
         'content-type': 'application/json',
       },
@@ -33,6 +35,7 @@ const AuthApiService = {
   refreshToken() {
     return fetch(`${config.API_ENDPOINT}/auth/token`, {
       method: 'PUT',
+      mode: 'no-cors',
       headers: {
         'authorization': `Bearer ${TokenService.getAuthToken()}`,
       },
